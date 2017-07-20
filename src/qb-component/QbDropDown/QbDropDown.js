@@ -57,6 +57,7 @@ const style = {
     button: {
         publicStyle: {
             border: '1px solid #cccccc',
+            lineHeight: 1
         },
         small: {
             height: 30,

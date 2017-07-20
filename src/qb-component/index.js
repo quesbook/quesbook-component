@@ -6,12 +6,13 @@ import ReactDOM from 'react-dom';
 import QbLayout from './QbLayout';
 import QbHeader from './QbHeader';
 import QbFooter from './QbFooter';
+import {QbDataPicker, QbTimePicker} from './QbDatePicker';
 
 import QbButton from './QbButton';
 import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
 import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
-import './scss/_variables.scss'
+import './scss/_variables.scss';
 
 class App extends Component {
     constructor(props) {
@@ -58,6 +59,7 @@ class App extends Component {
                         <QbDropDownDivider/>
                     </QbDropDown>
                     <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
+                    <QbTimePicker/>
                 </QbLayout>
             </div>
         )
