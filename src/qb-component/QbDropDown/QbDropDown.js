@@ -80,7 +80,6 @@ const style = {
             margin: '13px 62px',
         }
     },
-
 };
 
 export default QbDropDown;

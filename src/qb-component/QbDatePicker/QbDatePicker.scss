@@ -1,0 +1,56 @@
+@import '../scss/_variables.scss';
+@import '~react-dates/css/variables.scss';
+@import '~react-dates/css/styles.scss';
+
+.CalendarDay {
+  border: 0;
+}
+.CalendarDay--hovered {
+  border: 0 ;
+}
+.CalendarDay--selected-span.CalendarDay--hovered, .CalendarDay--selected-span:active {
+  border: 0;
+  border-radius: 0;
+}
+CalendarDay--selected-span:active{
+  border: 0;
+}
+.CalendarDay.CalendarDay--valid.CalendarDay--selected-span {
+  background: $clearSky;
+}
+.CalendarDay CalendarDay--valid CalendarDay--selected-span CalendarDay--hovered {
+  border: 0;
+}
+.DayPickerNavigation__prev--default:focus, .DayPickerNavigation__prev--default:hover, .DayPickerNavigation__next--default:focus, .DayPickerNavigation__next--default:hover{
+  border: 0;
+}
+.DayPickerNavigation__prev--default:focus, .DayPickerNavigation__prev--default:hover, .DayPickerNavigation__next--default:focus, .DayPickerNavigation__next--default:hover{
+  border: 0;
+}
+.CalendarDay--blocked-out-of-range {
+  border: 0;
+  border-radius: 50px;
+}
+.DayPickerNavigation__prev {
+  border: 0;
+}
+.DayPickerNavigation__next {
+  border: 0;
+}
+.DateRangePickerInput {
+  border-radius: 5px;
+}
+.DateInput {
+  border-radius: 5px;
+}
+.CalendarDay--selected-start {
+  border-radius: 5px 0 0 5px;
+  background: $darkSky;
+},
+.CalendarDay--selected-end {
+  border-radius: 0 5px 5px 0;
+  background: $darkSky
+}
+.DateInput__display-text--focused {
+  background: #ffffff
+}

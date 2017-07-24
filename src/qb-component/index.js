@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import QbLayout from './QbLayout';
 import QbHeader from './QbHeader';
 import QbFooter from './QbFooter';
-import {QbDataPicker, QbTimePicker} from './QbDatePicker';
+import {QbDatePicker, QbTimePicker} from './QbDatePicker';
 
 import QbButton from './QbButton';
 import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
@@ -59,7 +59,8 @@ class App extends Component {
                         <QbDropDownDivider/>
                     </QbDropDown>
                     <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
-                    <QbTimePicker/>
+                    <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
+                    <QbDatePicker/>
                 </QbLayout>
             </div>
         )
