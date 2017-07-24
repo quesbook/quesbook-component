@@ -33,6 +33,7 @@ class QbHeader extends Component {
     }
 
     onClick_NavLinkItem(e) {
+        console.log('onClick_NavLinkItem');
         this.resetNavLinkItem_Active(e.target.hash);
     }
 
@@ -66,7 +67,7 @@ class QbHeader extends Component {
                     ? 'active'
                     : ''}>
                     <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this)}>
-                        <div style={{color: '#FFFFFF'}}>{item.label}</div>
+                        {item.label}
                     </Link>
                 </li>
             );

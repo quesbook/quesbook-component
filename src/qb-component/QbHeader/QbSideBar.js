@@ -2,6 +2,28 @@ import React, {Component} from 'react';
 import './QbSideBar.scss';
 
 class QbSideBar extends Component {
+    render() {
+        let currentUser = this.state.currentUser;
+
+        return (
+            <div className="section-ct-navbarside">
+                <div className="col-4 col-md-8 col-lg-12 navbarside-cover" hidden={!this.state.isShow} onClick={this.hideNavSideBar} onMouseOver={this.hideNavSideBar.bind(this)}></div>
+                <div className='no-gutters col-lg-2 navbarside-section' hidden={!this.state.isShow}>
+                    <div className="no-gutters col-8 col-md-4 col-lg-2 navbarside-content">
+                        {this.renderUserIconSection(currentUser)}
+                        {this.renderUserExamSection(currentUser)}
+                        <div className='col-lg-12 section-user'>
+                            <div>
+                                <a href='/profile'>My Account</a>
+                            </div>
+                            <div onClick={this.onClick_SignOut.bind(this)}>Log out</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     constructor() {
         super();
 
@@ -78,28 +100,5 @@ class QbSideBar extends Component {
             );
         }
     }
-
-    render() {
-        let currentUser = this.state.currentUser;
-
-        return (
-            <div className="section-ct-navbarside">
-                <div className="col-4 col-md-8 col-lg-12 navbarside-cover" hidden={!this.state.isShow} onClick={this.hideNavSideBar} onMouseOver={this.hideNavSideBar.bind(this)}></div>
-                <div className='no-gutters col-lg-2 navbarside-section' hidden={!this.state.isShow}>
-                    <div className="no-gutters col-8 col-md-4 col-lg-2 navbarside-content">
-                        {this.renderUserIconSection(currentUser)}
-                        {this.renderUserExamSection(currentUser)}
-                        <div className='col-lg-12 section-user'>
-                            <div>
-                                <a href='/profile'>My Account</a>
-                            </div>
-                            <div onClick={this.onClick_SignOut.bind(this)}>Log out</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
 }
-
 export default QbSideBar;

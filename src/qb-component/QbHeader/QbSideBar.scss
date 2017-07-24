@@ -24,11 +24,15 @@
         z-index: 99;
     }
 
-    .navbarside-content {
-        position: fixed;
-        background-color: $white;
-        border-radius: 4px;
-        border: solid 1px rgba(25, 34, 48, 0.1);
+    .navbarside-section {
+        z-index: 100;
+
+        .navbarside-content {
+            position: fixed;
+            background-color: $white;
+            border-radius: 4px;
+            border: solid 1px rgba(25, 34, 48, 0.1);
+        }
     }
     @media (min-width: $mediaDesktop) {
         .navbarside-section {
@@ -37,7 +41,6 @@
             height: 65px;
             right: 10px;
             top: 0;
-            z-index: 100;
         }
 
         .navbarside-user {
