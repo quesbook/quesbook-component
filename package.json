@@ -1,6 +1,6 @@
 {
   "name": "quesbook-component",
-  "version": "0.0.30",
+  "version": "0.0.33",
   "description": "",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -22,26 +22,30 @@
     "webpack-dev-server": "1.16.2"
   },
   "dependencies": {
+    "apollo-client": "^1.9.0-0",
     "babel-preset-es2015": "^6.24.1",
     "bootstrap": "^4.0.0-alpha.6",
+    "graphql-tag": "^2.4.2",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
-    "react": "^15.6.1",
+    "js-cookie": "^2.1.4",
+    "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-shallow-compare": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
     "react-bootstrap": "^0.31.1",
     "react-dates": "^12.3.0",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.4.2",
+    "react-router": "^2.8.1"
   },
   "files": [
     "lib",
     "package.json"
   ],
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server --inline --hot",
+    "start": "node_modules/.bin/webpack-dev-server",
     "i": "webpack",
-    "build": "babel src/qb-component -d ./lib --copy-files",
+    "build": "babel src/qb-component -d ./lib --copy-files --source-maps",
     "dev": "webpack-dev-server --content-base dist/"
   },
   "repository": {

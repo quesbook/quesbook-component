@@ -1,3 +1,117 @@
-header {
-    color: red;
+@import "../scss/variables";
+
+.section-ct-navbar {
+    height: 60px;
+    display: flex;
+    // flex-direction: row;
+    // flex-wrap: nowrap;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    font-family: GothamNarrow;
+    font-weight: bold;
+
+    .navbar-logo,
+    .navbar-signed,
+    .navbar-unsigned {
+        flex-shrink: 0;
+    }
+
+    .navbar-logo {
+        margin-left: 10px;
+
+        img {
+            height: 24px;
+            margin: -10px 6px 0 0;
+        }
+    }
+
+    .navbar-logo > span {
+        font-size: 24px;
+        color: $clearSky;
+    }
+
+    .navbar-signed {
+        line-height: 38px;
+
+        .signed-arrowdown,
+        .signed-icon,
+        .signed-text {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .signed-text {
+            font-size: 16px;
+            text-align: right;
+            color: $midNight;
+        }
+
+        .signed-text {
+            @media (max-width: $mediaDesktop) {
+                display: none !important;
+            }
+        }
+
+        .signed-icon {
+            text-align: center;
+            width: 38px;
+            height: 38px;
+            color: $white;
+            border-radius: 19px;
+            background-color: $midNight;
+        }
+
+        .signed-arrowdown {
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 6px solid $midNight;
+        }
+    }
+
+    .navbar-signed:hover {
+        cursor: pointer;
+    }
+
+    .navbar-unsigned {
+        .btn-signup {
+            border: 1px solid $midNight !important;
+        }
+    }
+}
+
+.section-ct-link {
+    height: 50px;
+    background-color: $midNight;
+    font-size: 16px;
+    line-height: 50px;
+
+    > ul {
+        margin: 0 0 0 -10px;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        > li {
+            padding: 0 25px;
+        }
+
+        > li a {
+            opacity: 0.5;
+            color: $white;
+        }
+
+        > li.active a {
+            opacity: 1;
+        }
+    }
+
+    .section-ct-link:active {
+        opacity: 1;
+    }
 }
