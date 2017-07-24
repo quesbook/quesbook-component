@@ -20,7 +20,7 @@ class QbInput extends Component {
         }
         let finallClass = className? finallClass = className +' form-control': 'form-control';
         return (
-            <div>
+            <div style={{height: height}}>
                 <input type='text'
                              className={finallClass}
                              placeholder={placeHolder}

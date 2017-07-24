@@ -12,7 +12,7 @@ class QbDropDown extends Component {
                 let btnClass = "btn dropdown-toggle "+ (inputClassName?inputClassName:'btn-secondary');
                 let finalStyle = eval("style.button."+ (size?size:"default"));
                 return (
-                    <div className={compClass} style={compStyle}>
+                    <div className={compClass} style={{height: finalStyle.height, ...compStyle}}>
                         <button type="button"
                                 id={id}
                                 className={btnClass}
@@ -57,6 +57,7 @@ const style = {
     button: {
         publicStyle: {
             border: '1px solid #cccccc',
+            lineHeight: 1
         },
         small: {
             height: 30,
@@ -79,7 +80,6 @@ const style = {
             margin: '13px 62px',
         }
     },
-
 };
 
 export default QbDropDown;

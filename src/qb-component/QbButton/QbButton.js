@@ -2,7 +2,7 @@
  * Created by az on 2017/7/10.
  */
 import React, {Component} from 'react';
-import Button from 'react-bootstrap/lib/Button';
+
 /*eslint-disable*/
 class QbButton extends Component {
     constructor(props) {

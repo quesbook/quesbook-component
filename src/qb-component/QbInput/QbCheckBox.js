@@ -6,14 +6,16 @@ import React, {Component} from 'react';
 /*eslint-disable*/
 class QbCheckBox extends Component {
     render() {
-        const {className, value, changeHandler, style, label} = this.props;
+        const {className, value, changeHandler, style, label, fontStyle} = this.props;
         return (
-            <div>
-                <input type="checkbox"
-                       value={value}
-                       style={style}
-                       onChange={(e)=> changeHandler.bind(this)(e)}/>
-                {label}
+            <div style={{height: fontStyle.fontSize, ...fontStyle}}>
+                <label>
+                    <input type="checkbox"
+                           value={value}
+                           style={style}
+                           onChange={(e)=> changeHandler.bind(this)(e)}/>
+                    {label}
+                </label>
             </div>
         )
     }

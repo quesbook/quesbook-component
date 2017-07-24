@@ -14,6 +14,11 @@ $mediaPhone: 576px;
 $mediaTablet: 720px;
 $mediaDesktop: 960px;
 
+$brand-primary: $darkSky;
+
+$btn-secondary-color:            $midNight;
+$btn-secondary-border:           $midNight;
+@import "node_modules/bootstrap/scss/bootstrap.scss";
 // $breakpoints: (
 //   'phone': 320px,
 //   'phonemd': 375px,
