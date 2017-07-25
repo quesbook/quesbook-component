@@ -76,8 +76,17 @@
     }
 
     .navbar-unsigned {
-        .btn-signup {
+        margin-right: 10px;
+
+        > a {
+            color: $midNight;
+            padding: 8px 25px;
+            display: inline-block;
+        }
+
+        > a:hover {
             border: 1px solid $midNight !important;
+            border-radius: 20px;
         }
     }
 }

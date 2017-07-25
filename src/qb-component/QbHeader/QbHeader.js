@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './QbHeader.scss';
 import logo from '../assets/image/logo/dark.png';
-import QbButton from '../QbButton';
 import QbSideBar from './QbSideBar';
 import {Link} from 'react-router';
 
@@ -110,8 +109,8 @@ class QbHeader extends Component {
         } else {
             return (
                 <div className='navbar-unsigned'>
-                    <QbButton label="Log In" size="default" className="" clickHandler={() => {}}/>
-                    <QbButton label="Sign Up" size="default" className="btn-signup" clickHandler={() => {}}/>
+                    <a href="/users/sign_in">Log in</a>
+                    <a href="/users/sign_up">Sign up</a>
                 </div>
             );
         }
