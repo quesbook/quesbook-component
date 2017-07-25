@@ -9,6 +9,8 @@ import QbButton from './QbButton';
 import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
 import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
+import QbMessageCard from './QbMessageCard';
+
 import './scss/_variables.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,6 +20,7 @@ export default class Test extends Component {
         this.state ={
             show: false,
             switchState: true,
+            showCard: true,
         }
     }
     toggleModal () {
@@ -30,36 +33,47 @@ export default class Test extends Component {
         console.log('Tag click');
         this.setState((prevState, props) => ({ switchState: !prevState.switchState}));
     }
+    messageToggle() {
+        this.setState((prevState, props)=> ({
+            showCard: !prevState.showCard
+        }));
+    }
     render() {
         return (
             <div>
-                <QbLayout>
-                    <QbButton label="hello"
-                              className="btn btn-primary"
-                              size="small"
-                              clickHandler={this.toggleModal.bind(this)} dataTarget="#modal" dataToggle='modal'/>
-                    <QbCheckBox label="hello" changeHandler={()=> alert('hi')} fontStyle={{fontSize: 16}}/>
-                    <QbRadio label="hello" changeHandler={()=> alert('hello')} fontStyle={{fontSize: 16}}/>
-                    <QbInput size="small" changeHandler={(e)=> alert(e.target.value)}/>
-                    <QbModal target="modal" >
-                        <QbModalHeader>
-                            <div>header</div>
-                        </QbModalHeader>
-                        <QbModalBody>
-                            <div>body</div>
-                        </QbModalBody>
-                        <QbModalFooter>
-                            <QbButton label="close" dataTarget="#modal" dataToggle='modal'/>
-                        </QbModalFooter>
-                    </QbModal>
-                    <QbDropDown id="B" label="nihao" inputType="button" dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}>
-                        <QbDropDownItem label="hello"/>
-                        <QbDropDownDivider/>
-                    </QbDropDown>
-                    <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
-                    <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
-                    <QbDatePicker/>
-                </QbLayout>
+                <QbButton label="hello"
+                          className="btn btn-primary"
+                          size="small"
+                          clickHandler={this.toggleModal.bind(this)} dataTarget="#modal" dataToggle='modal'/>
+                <QbCheckBox label="hello" changeHandler={()=> alert('hi')} fontStyle={{fontSize: 16}}/>
+                <QbRadio label="hello" changeHandler={()=> alert('hello')} fontStyle={{fontSize: 16}}/>
+                <QbInput size="small" changeHandler={(e)=> alert(e.target.value)}/>
+                <QbModal target="modal" >
+                    <QbModalHeader>
+                        <div>header</div>
+                    </QbModalHeader>
+                    <QbModalBody>
+                        <div>body</div>
+                    </QbModalBody>
+                    <QbModalFooter>
+                        <QbButton label="close" dataTarget="#modal" dataToggle='modal'/>
+                    </QbModalFooter>
+                </QbModal>
+                <QbDropDown id="B" label="nihao" inputType="button" dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}>
+                    <QbDropDownItem label="hello"/>
+                    <QbDropDownDivider/>
+                </QbDropDown>
+                <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
+                <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
+                <QbDatePicker/>
+                <QbButton label="show message"
+                          className="btn btn-primary"
+                          size="small"
+                          clickHandler={this.messageToggle.bind(this)}/>
+                <QbMessageCard display={this.state.showCard}
+                               title="hello!"
+                               content="ha lou a !"
+                               onCancelClick={this.messageToggle.bind(this)}/>
             </div>
         )
     }
