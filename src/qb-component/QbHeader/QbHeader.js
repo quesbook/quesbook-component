@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './QbHeader.scss';
 import logo from '../assets/image/logo/dark.png';
-import QbButton from '../QbButton';
 import QbSideBar from './QbSideBar';
 import {Link} from 'react-router';
 
@@ -33,6 +32,7 @@ class QbHeader extends Component {
     }
 
     onClick_NavLinkItem(e) {
+        console.log('onClick_NavLinkItem');
         this.resetNavLinkItem_Active(e.target.hash);
     }
 
@@ -66,7 +66,7 @@ class QbHeader extends Component {
                     ? 'active'
                     : ''}>
                     <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this)}>
-                        <div style={{color: '#FFFFFF'}}>{item.label}</div>
+                        {item.label}
                     </Link>
                 </li>
             );
@@ -109,8 +109,8 @@ class QbHeader extends Component {
         } else {
             return (
                 <div className='navbar-unsigned'>
-                    <QbButton label="Log In" size="default" className="" clickHandler={() => {}}/>
-                    <QbButton label="Sign Up" size="default" className="btn-signup" clickHandler={() => {}}/>
+                    <a href="/users/sign_in">Log in</a>
+                    <a href="/users/sign_up">Sign up</a>
                 </div>
             );
         }

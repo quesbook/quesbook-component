@@ -1,7 +1,7 @@
 @import "../scss/variables";
 
 .section-ct-navbar {
-    height: 60px;
+    height: 50px;
     display: flex;
     // flex-direction: row;
     // flex-wrap: nowrap;
@@ -76,8 +76,17 @@
     }
 
     .navbar-unsigned {
-        .btn-signup {
+        margin-right: 10px;
+
+        > a {
+            color: $midNight;
+            padding: 8px 25px;
+            display: inline-block;
+        }
+
+        > a:hover {
             border: 1px solid $midNight !important;
+            border-radius: 20px;
         }
     }
 }
@@ -87,15 +96,17 @@
     background-color: $midNight;
     font-size: 16px;
     line-height: 50px;
+    overflow: hidden;
 
     > ul {
         margin: 0 0 0 -10px;
         padding: 0;
         list-style: none;
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row nowrap;
         justify-content: flex-start;
         align-items: flex-start;
+        overflow: auto;
 
         > li {
             padding: 0 25px;
