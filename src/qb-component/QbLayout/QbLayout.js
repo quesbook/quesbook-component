@@ -93,11 +93,16 @@ class QbLayout extends Component {
     }
 
     render() {
+        const {messageId} = this.props;
         let currentUser = this.state.currentUser;
 
         return (
             <div className="layout-ct">
-                <QbHeader currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)}/>
+                <QbHeader messageId={messageId}
+                          client={client}
+                          currentUser={currentUser}
+                          navItemList={this.state.navItemList}
+                          onClick_SignOut={this.onClick_SignOut.bind(this)}/>
                 <div className="body-content">
                     {this.props.children}
                 </div>

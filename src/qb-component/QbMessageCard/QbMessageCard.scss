@@ -1,0 +1,12 @@
+@media screen and (min-width: 375px) {
+  .qb-message-card {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .qb-message-card {
+    position: relative;
+  }
+}

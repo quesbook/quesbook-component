@@ -3,11 +3,12 @@
  */
 import React, {Component} from 'react';
 import cancelIcon from '../assets/image/icon/x-icon@3x.png';
+import './QbMessageCard.scss';
 
 /*eslint-disable*/
 class QbMessageCard extends Component {
     render() {
-        const {size, title, content, display, onCancelClick} = this.props;
+        const {size, title, content, display, onCancelClick, messageStyle} = this.props;
         let fontStyle = {
             titleSize: 26,
             contentSize: 18,
@@ -23,7 +24,8 @@ class QbMessageCard extends Component {
                 break;
         }
         return (
-            <div style={{display: display?'flex':'none', position: 'relative', ...style.frame,}}>
+            <div className="qb-message-card"
+                 style={{display: display?'flex':'none', ...style.frame, ...messageStyle}}>
                 <div style={style.cancelBtn} onClick={onCancelClick}>
                     <img style={{height: 16, width: 16}} src={cancelIcon} href=""/>
                 </div>
