@@ -10,6 +10,7 @@ class QbHeader extends Component {
         super();
 
         this.state = {
+            activeClass: '',
             currentUser: null,
             linkItems: [],
             isShowSideBar: false,
@@ -51,6 +52,21 @@ class QbHeader extends Component {
             currentUser: currentUser,
             linkItems: newProps.navItemList
         }, () => this.resetNavLinkItem_Active(window.location.hash));
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', (event) => {
+            var doc = document.documentElement;
+            var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+            let classScroll = '';
+            if (top > 50) {
+                classScroll = 'navbar-scroll-over';
+            } else {
+                classScroll = '';
+            }
+
+            this.setState({activeClass: classScroll});
+        });
     }
 
     onClick_NavLinkItem(e) {
@@ -149,7 +165,7 @@ class QbHeader extends Component {
             return (
                 <div className='navbar-unsigned'>
                     <a href="/users/sign_in">Log in</a>
-                    <a href="/users/sign_up">Sign up</a>
+                    <a className='navbar-unsigned-signup' href="/users/sign_up">Sign up</a>
                 </div>
             );
         }
@@ -167,7 +183,7 @@ class QbHeader extends Component {
         let currentUser = this.state.currentUser;
         return (
             <div>
-                <div>
+                <div className={this.state.activeClass}>
                     <div className='section-ct-navbar'>
                         <div className="navbar-logo">
                             <img src={logo} alt=""/>
@@ -175,6 +191,7 @@ class QbHeader extends Component {
                         </div>
                         {this.renderSign(currentUser)}
                     </div>
+                    <div className="section-ct-navbarstatic"></div>
                     <div>
                         {this.renderSignedLink(currentUser)}
                     </div>

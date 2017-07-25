@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './QbSideBar.scss';
+import cancelIcon from '../assets/image/icon/x-icon@3x.png';
 
 class QbSideBar extends Component {
     render() {
@@ -94,7 +95,7 @@ class QbSideBar extends Component {
                     </div>
                     <div className="text">{currentUser.name}</div>
                     <div className="close" onClick={this.hideNavSideBar.bind(this)}>
-                        <span aria-hidden="true">×</span>
+                        <img style={{height: 16, width: 16}} src={cancelIcon} href=""/>
                     </div>
                 </div>
             );

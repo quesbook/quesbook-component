@@ -10,6 +10,11 @@
     align-items: center;
     font-family: GothamNarrow;
     font-weight: bold;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    background-color: $white;
+    border: solid 1px rgba(25, 34, 48,0.2);
 
     .navbar-logo,
     .navbar-signed,
@@ -80,15 +85,22 @@
 
         > a {
             color: $midNight;
-            padding: 8px 25px;
+            padding: 5px 25px;
             display: inline-block;
         }
-
-        > a:hover {
-            border: 1px solid $midNight !important;
-            border-radius: 20px;
-        }
     }
+}
+
+.navbar-scroll-over {
+    .navbar-unsigned .navbar-unsigned-signup {
+        border: 1px solid $midNight !important;
+        border-radius: 20px;
+    }
+}
+
+.section-ct-navbarstatic {
+    height: 50px;
+    width: 100%;
 }
 
 .section-ct-link {
