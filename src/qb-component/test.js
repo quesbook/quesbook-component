@@ -10,6 +10,7 @@ import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
 import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
 import QbMessageCard from './QbMessageCard';
+import QbSlider from './QbSlider';
 
 import './scss/_variables.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,6 +38,9 @@ export default class Test extends Component {
         this.setState((prevState, props)=> ({
             showCard: !prevState.showCard
         }));
+    }
+    sliderChange(lowPrice, highPrice) {
+        console.log(lowPrice, highPrice);
     }
     render() {
         return (
@@ -74,6 +78,11 @@ export default class Test extends Component {
                                title="hello!"
                                content="ha lou a !"
                                onCancelClick={this.messageToggle.bind(this)}/>
+                <QbSlider maxMark="$10+"
+                          minMark="Free!"
+                          maxPrice={15}
+                          style={{height: 100, width:300}}
+                          changeHandler={this.sliderChange.bind(this)}/>
             </div>
         )
     }
