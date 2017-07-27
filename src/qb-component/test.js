@@ -43,6 +43,16 @@ export default class Test extends Component {
         console.log(lowPrice, highPrice);
     }
     render() {
+        const dropDownContent = [{
+            label: 'a',
+            value: 'a',
+        },{
+            label: 'b',
+            value: 'b',
+        },{
+            label: 'c',
+            value: 'c',
+        }];
         return (
             <div>
                 <QbButton label="hello"
@@ -63,10 +73,10 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal'/>
                     </QbModalFooter>
                 </QbModal>
-                <QbDropDown id="B" label="nihao" inputType="button" dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}>
-                    <QbDropDownItem label="hello"/>
-                    <QbDropDownDivider/>
-                </QbDropDown>
+                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="button" btnStyle={{width: 350, textAlign: 'left'}}
+                            dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
+                            content ={dropDownContent} onChange={(data)=> console.log('TAg data:', data)}
+                />
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
                 <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
                 <QbDatePicker/>

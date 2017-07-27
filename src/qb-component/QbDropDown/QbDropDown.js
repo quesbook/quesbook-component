@@ -2,31 +2,54 @@
  * Created by az on 2017/7/17.
  */
 import React, {Component} from 'react';
+import QbDropDownItem from './QbDropDownItem';
 
 /*eslint-disable*/
 class QbDropDown extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedObj: {
+                label: props?props.defaultData.label: '' ,
+                value: props?props.defaultData.value: '' ,
+            }
+        }
+    }
+    componentDidUpdate() {
+        const {onChange} = this.props;
+        onChange(this.state.selectedObj);
+    }
     renderInputComp() {
-        const {compClass, compStyle, inputType, id, btnStyle, size, inputClassName, label, inputButtonLabel, dropdownStyle} = this.props;
+        const {compClass,
+            compStyle, inputType, btnStyle, size, inputClassName, inputButtonLabel, dropdownStyle,
+            content
+        } = this.props;
+        let children = content.map((data, index)=>
+                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data)=> this.setState({
+                    selectedObj: data
+                })}/>
+        );
         switch (inputType) {
             case 'button':
-                let btnClass = "btn dropdown-toggle "+ (inputClassName?inputClassName:'btn-secondary');
+                let btnClass = "btn "+ (inputClassName?inputClassName:'btn-secondary');
                 let finalStyle = eval("style.button."+ (size?size:"default"));
                 return (
-                    <div className={compClass} style={{height: finalStyle.height, ...compStyle}}>
+                    <div className={compClass+ ' btn-group'} style={{height: finalStyle.height, ...compStyle}}>
                         <button type="button"
-                                id={id}
                                 className={btnClass}
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
                                 style={{...btnStyle,
                                     ...style.button.publicStyle,
                                     height: finalStyle.height,
+                                    borderRight: 0,
                                     fontSize: finalStyle.fontSize}}>
-                                {label}
+                                {this.state.selectedObj.label}
                         </button>
-                        <div className="dropdown-menu" aria-labelledby={id} style={dropdownStyle}>
-                            {this.props.children}
+                        <button type="button" style={{...style.button.publicStyle, borderLeft: 0,}}
+                                className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span className="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div className="dropdown-menu" style={dropdownStyle}>
+                            {children}
                         </div>
                     </div>
                 );
@@ -34,13 +57,13 @@ class QbDropDown extends Component {
                 return (
                     <div className={compClass} style={compStyle}>
                         <div className="input-group">
-                            <input type="text" className="form-control"/>
+                            <input type="text" className="form-control" value={this.state.selectedObj.value}/>
                             <div className="input-group-btn">
                                 <button style={{borderLeft: 0}} type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {inputButtonLabel}
                                 </button>
                                 <div className="dropdown-menu dropdown-menu-right" style={dropdownStyle}>
-                                    {this.props.children}
+                                    {children}
                                 </div>
                             </div>
                         </div>
