@@ -12,7 +12,8 @@ class QbDropDown extends Component {
             selectedObj: {
                 label: props?props.defaultData.label: '' ,
                 value: props?props.defaultData.value: '' ,
-            }
+            },
+            keyword: ''
         }
     }
     componentDidUpdate() {
@@ -21,14 +22,30 @@ class QbDropDown extends Component {
     }
     renderInputComp() {
         const {compClass,
-            compStyle, inputType, btnStyle, size, inputClassName, inputButtonLabel, dropdownStyle,
+            compStyle, inputType, btnStyle, size, inputClassName, dropdownStyle,
             content
         } = this.props;
-        let children = content.map((data, index)=>
-                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data)=> this.setState({
+        let children;
+        if (inputType === 'button') {
+            children = content.map((data, index) =>
+                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => this.setState({
                     selectedObj: data
                 })}/>
-        );
+            );
+        } else if (inputType === 'input') {
+            let filterArray = content.filter((data)=> {
+                if (data.label.indexOf(this.state.keyword) !== -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            children = filterArray.map((data, index) =>
+                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => this.setState({
+                    selectedObj: data
+                })}/>
+            );
+        }
         switch (inputType) {
             case 'button':
                 let btnClass = "btn "+ (inputClassName?inputClassName:'btn-secondary');
@@ -56,16 +73,13 @@ class QbDropDown extends Component {
             case 'input':
                 return (
                     <div className={compClass} style={compStyle}>
-                        <div className="input-group">
-                            <input type="text" className="form-control" value={this.state.selectedObj.value}/>
-                            <div className="input-group-btn">
-                                <button style={{borderLeft: 0}} type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {inputButtonLabel}
-                                </button>
-                                <div className="dropdown-menu dropdown-menu-right" style={dropdownStyle}>
-                                    {children}
-                                </div>
-                            </div>
+                        <input type="text" data-toggle="dropdown" className="form-control" onChange={(e)=>
+                            this.setState({
+                                keyword: e.target.value
+                            })
+                        }/>
+                        <div className="dropdown-menu dropdown-menu-right" style={dropdownStyle}>
+                            {children}
                         </div>
                     </div>
                 );

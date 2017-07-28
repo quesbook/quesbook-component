@@ -48,14 +48,14 @@ export default class Test extends Component {
     }
     render() {
         const dropDownContent = [{
-            label: 'a',
-            value: 'a',
+            label: 'abc',
+            value: 'abc',
         },{
-            label: 'b',
-            value: 'b',
+            label: 'bcd',
+            value: 'bcd',
         },{
-            label: 'c',
-            value: 'c',
+            label: 'cde',
+            value: 'cde',
         }];
         return (
             <div>
@@ -80,7 +80,7 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal'/>
                     </QbModalFooter>
                 </QbModal>
-                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="button" btnStyle={{width: 350, textAlign: 'left'}}
+                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="input" btnStyle={{width: 350, textAlign: 'left'}}
                             dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
                             content ={dropDownContent} onChange={(data)=> console.log('TAg data:', data)}
                 />
