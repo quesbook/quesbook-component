@@ -47,7 +47,7 @@ class QbButton extends Component {
         const {iconClick} = this.props;
         e.preventDefault();
         e.stopPropagation();
-        e.nativeEvent.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
         return iconClick();
     }
     render() {
