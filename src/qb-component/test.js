@@ -11,6 +11,7 @@ import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
 import QbMessageCard from './QbMessageCard';
 import QbSlider from './QbSlider';
+import CloseIcon from './assets/image/icon/x-icon@3x.png';
 
 import './scss/_variables.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -42,13 +43,29 @@ export default class Test extends Component {
     sliderChange(lowPrice, highPrice) {
         console.log(lowPrice, highPrice);
     }
+    buttonIconClick() {
+        alert('icon cliasc');
+    }
     render() {
+        const dropDownContent = [{
+            label: 'a',
+            value: 'a',
+        },{
+            label: 'b',
+            value: 'b',
+        },{
+            label: 'c',
+            value: 'c',
+        }];
         return (
             <div>
                 <QbButton label="hello"
-                          className="btn btn-primary"
+                          className="btn btn-secondary"
                           size="small"
-                          clickHandler={this.toggleModal.bind(this)} dataTarget="#modal" dataToggle='modal'/>
+                          iconClick={this.buttonIconClick.bind(this)}
+                          clickHandler={this.toggleModal.bind(this)} dataTarget="#modal" dataToggle='modal'>
+                    <img src={CloseIcon} style={{height: 'inherit', width: 'inherit'}}/>
+                </QbButton>
                 <QbCheckBox label="hello" changeHandler={()=> alert('hi')} fontStyle={{fontSize: 16}}/>
                 <QbRadio label="hello" changeHandler={()=> alert('hello')} fontStyle={{fontSize: 16}}/>
                 <QbInput size="small" changeHandler={(e)=> alert(e.target.value)}/>
@@ -63,10 +80,10 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal'/>
                     </QbModalFooter>
                 </QbModal>
-                <QbDropDown id="B" label="nihao" inputType="button" dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}>
-                    <QbDropDownItem label="hello"/>
-                    <QbDropDownDivider/>
-                </QbDropDown>
+                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="button" btnStyle={{width: 350, textAlign: 'left'}}
+                            dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
+                            content ={dropDownContent} onChange={(data)=> console.log('TAg data:', data)}
+                />
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
                 <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
                 <QbDatePicker/>
