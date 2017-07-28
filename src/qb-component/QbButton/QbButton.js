@@ -43,8 +43,15 @@ class QbButton extends Component {
     mouseDownHandler() {
         this.addClass('click');
     }
+    iconClick(e) {
+        const {iconClick} = this.props;
+        e.preventDefault();
+        e.stopPropagation();
+        e.nativeEvent.stopPropagation();
+        return iconClick();
+    }
     render() {
-        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id} = this.props;
+        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, iconClick} = this.props;
         let height = 38;
         let fontSize = 21;
         let margin = '9px 26px';
@@ -86,11 +93,11 @@ class QbButton extends Component {
                     style={{...privateStyle.frame, ...style, height, fontSize}}
                     data-target={dataTarget?dataTarget:''}
                     data-toggle={dataToggle?dataToggle:''}>
-                <div>
-                    {this.props.children}
-                </div>
                 <div style={{...privateStyle.content, ...fontStyle, margin}}>
                     {label}
+                </div>
+                <div style={{width: 12, height: 12, marginRight: 15}} onClick={(e)=> this.iconClick(e)}>
+                    {this.props.children}
                 </div>
             </button>
         );
@@ -100,12 +107,13 @@ class QbButton extends Component {
 const privateStyle = {
     frame: {
         borderRadius: 50,
-        border: 0,
         padding: 0,
-        lineHeight: 0
+        lineHeight: 0,
+        display: 'flex',
+        alignItems: 'center',
     },
     content: {
-
+        flex: 1,
     }
 };
 
