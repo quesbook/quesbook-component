@@ -11,6 +11,7 @@ import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
 import QbMessageCard from './QbMessageCard';
 import QbSlider from './QbSlider';
+import {QbCard} from './QbCard';
 import CloseIcon from './assets/image/icon/x-icon@3x.png';
 
 import './scss/_variables.scss';
@@ -100,6 +101,7 @@ export default class Test extends Component {
                           maxPrice={15}
                           style={{height: 100, width:300}}
                           changeHandler={this.sliderChange.bind(this)}/>
+                <QbCard/>
             </div>
         )
     }
