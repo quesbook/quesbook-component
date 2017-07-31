@@ -109,7 +109,7 @@ export default class Test extends Component {
                           maxPrice={15}
                           style={{height: 100, width:300}}
                           changeHandler={this.sliderChange.bind(this)}/>
-                <QbCard/>
+                <QbCard cardStyle={{height: 120, width: 500}} avatarSrc={CloseIcon} rate={3.5}/>
             </div>
         )
     }
