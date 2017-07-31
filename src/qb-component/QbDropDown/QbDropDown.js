@@ -72,7 +72,7 @@ class QbDropDown extends Component {
                 );
             case 'input':
                 return (
-                    <div className={compClass} style={compStyle}>
+                    <div className={compClass} style={{...style.inputStyle, ...compStyle}}>
                         <input type="text" data-toggle="dropdown" className="form-control" onChange={(e)=>
                             this.setState({
                                 keyword: e.target.value
@@ -116,6 +116,9 @@ const style = {
             fontSize: 25,
             margin: '13px 62px',
         }
+    },
+    inputStyle: {
+        position: 'relative',
     },
 };
 

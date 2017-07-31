@@ -48,10 +48,10 @@ class QbButton extends Component {
         e.preventDefault();
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
-        return iconClick();
+        return iconClick(e);
     }
     render() {
-        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, iconClick} = this.props;
+        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id} = this.props;
         let height = 38;
         let fontSize = 21;
         let margin = '9px 26px';
