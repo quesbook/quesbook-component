@@ -1,0 +1,15 @@
+@import "../scss/variables";
+
+.section-score {
+    display: inline;
+    border: solid 8px;
+    border-radius: 50%;
+    padding: 1rem;
+    font-size: 88px;
+
+    .score {
+        font-weight: bold;
+        display: inline-block;
+        transform: rotate(-15deg);
+    }
+}

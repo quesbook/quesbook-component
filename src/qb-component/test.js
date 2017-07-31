@@ -6,6 +6,8 @@ import QbLayout from './QbLayout';
 import {QbDatePicker, QbTimePicker} from './QbDatePicker';
 
 import QbButton from './QbButton';
+import QbHighlight from './QbHighlight';
+import QbScore from './QbScore';
 import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
 import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
@@ -60,6 +62,12 @@ export default class Test extends Component {
         }];
         return (
             <div>
+                <QbScore content="32"></QbScore>
+
+                <QbScore content="32" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
+                <h1>
+                    My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
+                </h1>
                 <QbButton label="hello"
                           className="btn btn-secondary"
                           size="small"
