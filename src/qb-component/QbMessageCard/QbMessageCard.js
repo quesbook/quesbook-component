@@ -29,8 +29,8 @@ class QbMessageCard extends Component {
                 <div style={style.cancelBtn} onClick={onCancelClick}>
                     <img style={{height: 16, width: 16}} src={cancelIcon} href=""/>
                 </div>
-                <div style={{...style.title, fontSize: fontStyle.titleSize,}}>{title}</div>
-                <div style={{...style.content, fontSize: fontStyle.contentSize}}>{content}</div>
+                <div className="qb-message-card-title" style={{...style.title, fontSize: fontStyle.titleSize,}}>{title}</div>
+                <div className="qb-message-card-content" style={{...style.content, fontSize: fontStyle.contentSize}}>{content}</div>
             </div>
         )
     }
