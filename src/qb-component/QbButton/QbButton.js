@@ -2,6 +2,7 @@
  * Created by az on 2017/7/10.
  */
 import React, {Component} from 'react';
+import './QbButton.scss';
 
 /*eslint-disable*/
 class QbButton extends Component {

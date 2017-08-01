@@ -17,7 +17,6 @@ import {QbCard} from './QbCard';
 import CloseIcon from './assets/image/icon/x-icon@3x.png';
 
 import './scss/_variables.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Test extends Component {
     constructor(props) {
