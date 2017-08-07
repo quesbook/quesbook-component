@@ -15,6 +15,7 @@ import QbMessageCard from './QbMessageCard';
 import QbSlider from './QbSlider';
 import {QbCard} from './QbCard';
 import CloseIcon from './assets/image/icon/x-icon@3x.png';
+import {QbTabs, QbTab} from './QbTabs';
 
 import './scss/_variables.scss';
 
@@ -109,6 +110,17 @@ export default class Test extends Component {
                           style={{height: 100, width:300}}
                           changeHandler={this.sliderChange.bind(this)}/>
                 <QbCard cardStyle={{height: 120, width: 500}} avatarSrc={CloseIcon} rate={3.5}/>
+                <QbTabs>
+                    <QbTab ref="hlo">
+                        <div>hello</div>
+                    </QbTab>
+                    <QbTab ref="bin">
+                        <div>asd</div>
+                    </QbTab>
+                    <QbTab ref="ho">
+                        <div>xixiix</div>
+                    </QbTab>
+                </QbTabs>
             </div>
         )
     }
