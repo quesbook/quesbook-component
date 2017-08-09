@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 class QbTab extends Component {
     render() {
         const {children, label, tabStyle} = this.props;
+        console.log('Tag tab render:', this.props.children);
         return (
             <div style={{...style.frame, ...tabStyle}} ref={label}>
                 {children}
@@ -19,7 +20,7 @@ const style = {
         height: 300,
         color: '#ffffff',
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
     },
 };
 

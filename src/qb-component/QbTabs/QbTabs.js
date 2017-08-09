@@ -16,13 +16,20 @@ class QbTabs extends Component {
         }
     }
     tabClick(e) {
-        console.log('Tag click e:', e.target, e.target.textContent);
         this.setState({
             selectedTab: e.target.textContent
         })
     }
+    componentWillReceiveProps(nextProps) {
+        let tabsMap = new Map();
+        for (let tab of nextProps.children) {
+            tabsMap.set(tab.ref, tab);
+        }
+        this.setState({
+            tabs: tabsMap,
+        })
+    }
     renderTabs() {
-        console.log('Tag map:', this.state.tabs.keys());
         const {tabStyle} = this.props;
         let tabs= [];
         for (let tabKey of this.state.tabs.keys()) {
@@ -36,13 +43,14 @@ class QbTabs extends Component {
         return tabs;
     }
     render() {
-        const {frameStyle, tabsStyle} = this.props;
+        const {frameStyle, tabsStyle, contentStyle} = this.props;
         let tabs = this.renderTabs();
         let content = this.state.tabs.get(this.state.selectedTab);
+        console.log('Tag tabs render: ');
         return (
             <div style={{...style.frame, ...frameStyle}}>
                 <div style={{...style.tabs, ...tabsStyle}}>{tabs}</div>
-                <div style={style.content}>
+                <div style={{...style.content, ...contentStyle}}>
                     {content}
                 </div>
             </div>

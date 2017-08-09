@@ -26,6 +26,7 @@ export default class Test extends Component {
             show: false,
             switchState: true,
             showCard: true,
+            numlist:['yahaha'],
         }
     }
     toggleModal () {
@@ -49,6 +50,14 @@ export default class Test extends Component {
     buttonIconClick() {
         alert('icon cliasc');
     }
+    add() {
+        console.log('Tag before numlist:', this.state.numlist);
+        let a = this.state.numlist;
+        a.push('another one');
+        this.setState({
+            numlist: a
+        })
+    }
     render() {
         const dropDownContent = [{
             label: 'abc',
@@ -60,6 +69,10 @@ export default class Test extends Component {
             label: 'cde',
             value: 'cde',
         }];
+        let list = this.state.numlist.map((data)=> {
+            return <div>{data}</div>
+        });
+        console.log('Tag numlist:', this.state.numlist);
         return (
             <div>
                 <QbScore content="32"></QbScore>
@@ -72,9 +85,10 @@ export default class Test extends Component {
                           className="btn btn-secondary"
                           size="small"
                           iconClick={this.buttonIconClick.bind(this)}
-                          clickHandler={this.toggleModal.bind(this)} dataTarget="#modal" dataToggle='modal'>
+                          dataTarget="#modal" dataToggle='modal'>
                     <img src={CloseIcon} style={{height: 'inherit', width: 'inherit'}}/>
                 </QbButton>
+                <button className="btn btn-primary" data-toggle="modal" data-target="#modal">t</button>
                 <QbCheckBox label="hello" changeHandler={()=> alert('hi')} fontStyle={{fontSize: 16}}/>
                 <QbRadio label="hello" changeHandler={()=> alert('hello')} fontStyle={{fontSize: 16}}/>
                 <QbInput size="small" changeHandler={(e)=> alert(e.target.value)}/>
@@ -89,7 +103,7 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal'/>
                     </QbModalFooter>
                 </QbModal>
-                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="input" btnStyle={{width: 350, textAlign: 'left'}}
+                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="button" btnStyle={{width: 350, textAlign: 'left'}}
                             dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
                             content ={dropDownContent} onChange={(data)=> console.log('TAg data:', data)}
                 />
@@ -110,9 +124,10 @@ export default class Test extends Component {
                           style={{height: 100, width:300}}
                           changeHandler={this.sliderChange.bind(this)}/>
                 <QbCard cardStyle={{height: 120, width: 500}} avatarSrc={CloseIcon} rate={3.5}/>
+                <button onClick={this.add.bind(this)}>add</button>
                 <QbTabs>
                     <QbTab ref="hlo">
-                        <div>hello</div>
+                        {list}
                     </QbTab>
                     <QbTab ref="bin">
                         <div>asd</div>
