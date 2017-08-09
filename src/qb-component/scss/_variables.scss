@@ -1,4 +1,5 @@
 // Colors
+
 $white: #fff;
 $black: #000;
 $qbYellow: #faee67;
@@ -18,7 +19,7 @@ $brand-primary: $darkSky;
 
 $btn-secondary-color:            $midNight;
 $btn-secondary-border:           $midNight;
-@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap.scss";
 // $breakpoints: (
 //   'phone': 320px,
 //   'phonemd': 375px,
