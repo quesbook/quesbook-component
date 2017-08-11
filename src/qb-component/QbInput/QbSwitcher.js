@@ -18,7 +18,7 @@ class QbSwitcher extends Component {
                     backgroundColor: '#cccccc',
                     border: 'solid 1px #cccccc',
                     borderRadius: 100
-                }}></div>
+                }}/>
             )
         } else {
             return (
@@ -31,7 +31,7 @@ class QbSwitcher extends Component {
                     backgroundColor: '#192230',
                     border: 'solid 1px #192230',
                     borderRadius: 100
-                }}></div>
+                }}/>
             )
         }
     }
@@ -49,9 +49,8 @@ class QbSwitcher extends Component {
                 <div style={{
                     height: bar.height,
                     width: '100%',
-                    opacity: 0.1,
                     borderRadius: 100,
-                    backgroundColor: '#192230',
+                    backgroundColor: '#e8e8ea',
                 }}>
                 </div>
                 {circle}

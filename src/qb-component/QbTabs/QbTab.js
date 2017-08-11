@@ -17,7 +17,6 @@ class QbTab extends Component {
 
 const style = {
     frame: {
-        height: 300,
         color: '#ffffff',
         display: 'flex',
         flexDirection: 'column',

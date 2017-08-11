@@ -1,0 +1,12 @@
+@import '../scss/_variables.scss';
+
+.rc-collapse-content{
+  color: #ffffff;
+  padding: 0 16px;
+  background-color: $darkSky;
+}
+.rc-collapse-header{
+  height: 60px;
+  display: flex;
+  align-content: center;
+}
