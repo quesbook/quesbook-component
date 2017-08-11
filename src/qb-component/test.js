@@ -16,6 +16,10 @@ import QbSlider from './QbSlider';
 import {QbCard} from './QbCard';
 import CloseIcon from './assets/image/icon/x-icon@3x.png';
 import {QbTabs, QbTab} from './QbTabs';
+import {QbCollapse} from './QbCollapse';
+import Collapse from 'rc-collapse';
+import 'rc-collapse/assets/index.css';
+const Panel = Collapse.Panel;
 
 import './scss/_variables.scss';
 
@@ -73,6 +77,21 @@ export default class Test extends Component {
             return <div>{data}</div>
         });
         console.log('Tag numlist:', this.state.numlist);
+        let collapseContent = [{
+            header:
+                <div>
+                    <img src=""/>
+                    <div style={{color: '#ffffff'}}>hello</div>
+                </div>,
+            content: <div>hi</div>,
+        },{
+            header:
+                <div>
+                    <img src=""/>
+                    <div>god</div>
+                </div>,
+            content: <div>like</div>
+        }]
         return (
             <div>
                 <QbScore content="32"></QbScore>
@@ -136,6 +155,8 @@ export default class Test extends Component {
                         <div>xixiix</div>
                     </QbTab>
                 </QbTabs>
+                <QbCollapse content={collapseContent}
+                            panelStyle={{color: '#ffffff', background: '#203a62'}}/>
             </div>
         )
     }
