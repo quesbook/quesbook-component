@@ -1,5 +1,4 @@
 // Colors
-
 $white: #fff;
 $black: #000;
 $qbYellow: #faee67;
@@ -20,6 +19,21 @@ $brand-primary: $darkSky;
 $btn-secondary-color:            $midNight;
 $btn-secondary-border:           $midNight;
 @import "~bootstrap/scss/bootstrap.scss";
+
+.btn:focus{
+  box-shadow: none;
+}
+.new::-webkit-scrollbar {display:none}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  background-color: #bcc4d0;
+  border-color: #bcc4d0;
+}
+.btn-secondary.disabled, .btn-secondary:disabled {
+  color: #bcc4d0;
+  background-color: #ffffff;
+  border-color: #bcc4d0;
+}
 // $breakpoints: (
 //   'phone': 320px,
 //   'phonemd': 375px,

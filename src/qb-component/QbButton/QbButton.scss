@@ -6,3 +6,12 @@
   background-color: $midNight;
   color: #ffffff
 }
+
+.btn-primary.disabled {
+  background-color: #bcc4d0;
+}
+
+.btn-secondary.disabled {
+  border: solid 1px #bcc4d0;
+  color: #bcc4d0;
+}

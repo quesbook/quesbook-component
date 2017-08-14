@@ -107,7 +107,10 @@ export default class Test extends Component {
                           dataTarget="#modal" dataToggle='modal'>
                     <img src={CloseIcon} style={{height: 'inherit', width: 'inherit'}}/>
                 </QbButton>
-                <button className="btn btn-primary" data-toggle="modal" data-target="#modal">t</button>
+                <QbButton label="t"
+                          className="btn btn-primary"
+                          disabled={true}
+                          data-toggle="modal" data-target="#modal"/>
                 <QbCheckBox label="hello" changeHandler={()=> alert('hi')} fontStyle={{fontSize: 16}}/>
                 <QbRadio label="hello" changeHandler={()=> alert('hello')} fontStyle={{fontSize: 16}}/>
                 <QbInput size="small" changeHandler={(e)=> alert(e.target.value)}/>
@@ -132,7 +135,7 @@ export default class Test extends Component {
                 <QbButton label="show message"
                           className="btn dark alternate"
                           size="large"
-                          clickHandler={this.messageToggle.bind(this)} style={{background: 'red'}}/>
+                          clickHandler={this.messageToggle.bind(this)}/>
                 <QbMessageCard display={this.state.showCard}
                                title="hello!"
                                content="ha lou a !"
@@ -151,7 +154,15 @@ export default class Test extends Component {
                     <QbTab ref="bin">
                         <div>asd</div>
                     </QbTab>
-                    <QbTab ref="ho">
+                    <QbTab ref="ho" className="new" style={{height: 50, overflowY: 'scroll'}}>
+                        <div>xixiix</div>
+                        <div>xixiix</div>
+                        <div>xixiix</div>
+                        <div>xixiix</div>
+                        <div>xixiix</div>
+                        <div>xixiix</div>
+                        <div>xixiix</div>
+                        <div>xixiix</div>
                         <div>xixiix</div>
                     </QbTab>
                 </QbTabs>
