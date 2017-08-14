@@ -6,7 +6,7 @@ import Collapse from 'rc-collapse';
 import 'rc-collapse/assets/index.css';
 const Panel = Collapse.Panel;
 import './QbCollapse.scss';
-
+/*eslint-disable*/
 class QbCollapse extends Component {
     render() {
         const {style, content, panelStyle} = this.props;

@@ -1,1 +1,8 @@
 @import "../scss/variables";
+
+.dark.alternate {
+  border-radius: 100px;
+  border: solid 1px #ffffff;
+  background-color: $midNight;
+  color: #ffffff
+}

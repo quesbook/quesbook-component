@@ -6,7 +6,9 @@
   background-color: $darkSky;
 }
 .rc-collapse-header{
-  height: 60px;
   display: flex;
-  align-content: center;
+  align-items: center;
+}
+.rc-collapse > .rc-collapse-item > .rc-collapse-header {
+  height: 60px;
 }
