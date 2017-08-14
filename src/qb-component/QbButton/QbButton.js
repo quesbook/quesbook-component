@@ -52,7 +52,7 @@ class QbButton extends Component {
         return iconClick(e);
     }
     render() {
-        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id} = this.props;
+        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, children} = this.props;
         let height = 38;
         let fontSize = 21;
         let margin = '9px 26px';
@@ -83,6 +83,14 @@ class QbButton extends Component {
         this.state.className.forEach((name)=> {
             className = className +' ' + name;
         });
+        let icon = null;
+        if(children) {
+            icon = (
+                <div style={{width: 12, height: 12, marginRight: 15}} onClick={(e)=> this.iconClick(e)}>
+                    {children}
+                </div>
+            )
+        }
         return (
             <button onMouseOver={this.mouseOverHandler}
                     onMouseOut={this.mouseOutHandler}
@@ -91,15 +99,13 @@ class QbButton extends Component {
                     onClick={clickHandler?(e)=> clickHandler(e):()=>{}}
                     className={className}
                     id={id?id:null}
-                    style={{...privateStyle.frame, ...style, height, fontSize}}
+                    style={{...privateStyle.frame, height, fontSize, ...style,}}
                     data-target={dataTarget?dataTarget:''}
                     data-toggle={dataToggle?dataToggle:''}>
                 <div style={{...privateStyle.content, ...fontStyle, margin}}>
                     {label}
                 </div>
-                <div style={{width: 12, height: 12, marginRight: 15}} onClick={(e)=> this.iconClick(e)}>
-                    {this.props.children}
-                </div>
+                {icon}
             </button>
         );
     }

@@ -3,4 +3,4 @@
  */
 import QbCollapse from './QbCollapse';
 
-export {QbCollapse};
+export default QbCollapse;

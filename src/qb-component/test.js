@@ -16,7 +16,7 @@ import QbSlider from './QbSlider';
 import {QbCard} from './QbCard';
 import CloseIcon from './assets/image/icon/x-icon@3x.png';
 import {QbTabs, QbTab} from './QbTabs';
-import {QbCollapse} from './QbCollapse';
+import QbCollapse from './QbCollapse';
 import Collapse from 'rc-collapse';
 import 'rc-collapse/assets/index.css';
 const Panel = Collapse.Panel;
@@ -130,9 +130,9 @@ export default class Test extends Component {
                 <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
                 <QbDatePicker/>
                 <QbButton label="show message"
-                          className="btn btn-primary"
-                          size="small"
-                          clickHandler={this.messageToggle.bind(this)}/>
+                          className="btn dark alternate"
+                          size="large"
+                          clickHandler={this.messageToggle.bind(this)} style={{background: 'red'}}/>
                 <QbMessageCard display={this.state.showCard}
                                title="hello!"
                                content="ha lou a !"
