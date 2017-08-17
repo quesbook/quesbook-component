@@ -16,5 +16,6 @@ build
 npm-debug.log
 
 .idea
-/dist
+/dist/*
+!/dist/index.html
 /lib
