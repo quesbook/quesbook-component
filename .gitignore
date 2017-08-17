@@ -17,5 +17,5 @@ npm-debug.log
 
 .idea
 /dist/*
-!/dist/index.html
+!index.html
 /lib
