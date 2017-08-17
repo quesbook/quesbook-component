@@ -94,9 +94,9 @@ export default class Test extends Component {
         }]
         return (
             <div>
-                <QbScore content="32"></QbScore>
+                <QbScore score="32"></QbScore>
 
-                <QbScore content="32" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
+                <QbScore score="32" content="over all" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
                 <h1>
                     My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
                 </h1>
