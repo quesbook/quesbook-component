@@ -191,7 +191,6 @@ class QbHeader extends Component {
                         </div>
                         {this.renderSign(currentUser)}
                     </div>
-                    <div className="section-ct-navbarstatic"></div>
                     <div>
                         {this.renderSignedLink(currentUser)}
                     </div>
