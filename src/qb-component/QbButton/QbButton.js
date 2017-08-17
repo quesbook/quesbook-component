@@ -52,7 +52,7 @@ class QbButton extends Component {
         return iconClick(e);
     }
     render() {
-        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, children} = this.props;
+        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, children, disabled} = this.props;
         let height = 38;
         let fontSize = 21;
         let margin = '9px 26px';
@@ -91,6 +91,9 @@ class QbButton extends Component {
                 </div>
             )
         }
+        if (disabled) {
+            className = className +' disabled';
+        }
         return (
             <button onMouseOver={this.mouseOverHandler}
                     onMouseOut={this.mouseOutHandler}
@@ -99,6 +102,7 @@ class QbButton extends Component {
                     onClick={clickHandler?(e)=> clickHandler(e):()=>{}}
                     className={className}
                     id={id?id:null}
+                    disabled={disabled}
                     style={{...privateStyle.frame, height, fontSize, ...style,}}
                     data-target={dataTarget?dataTarget:''}
                     data-toggle={dataToggle?dataToggle:''}>
