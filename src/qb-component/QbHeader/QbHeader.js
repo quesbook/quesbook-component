@@ -124,8 +124,6 @@ class QbHeader extends Component {
                     {this.renderLinkItems()}
                 </div>
             );
-        } else {
-            return null;
         }
     }
 
@@ -191,9 +189,7 @@ class QbHeader extends Component {
                         </div>
                         {this.renderSign(currentUser)}
                     </div>
-                    <div>
-                        {this.renderSignedLink(currentUser)}
-                    </div>
+                    {this.renderSignedLink(currentUser)}
                     <QbMessageCard display={this.state.showMessageCard}
                                    size="xs"
                                    title={this.state.messageTitle}
