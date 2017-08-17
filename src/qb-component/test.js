@@ -8,6 +8,7 @@ import {QbDatePicker, QbTimePicker} from './QbDatePicker';
 import QbButton from './QbButton';
 import QbHighlight from './QbHighlight';
 import QbScore from './QbScore';
+import QbStar from './QbStar';
 import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
 import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
@@ -94,6 +95,8 @@ export default class Test extends Component {
         }]
         return (
             <div>
+                <QbStar num="33"></QbStar>
+
                 <QbScore score="32"></QbScore>
 
                 <QbScore score="32" content="over all" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
