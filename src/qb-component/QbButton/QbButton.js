@@ -55,28 +55,28 @@ class QbButton extends Component {
         const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, children, disabled} = this.props;
         let height = 38;
         let fontSize = 21;
-        let margin = '9px 26px';
+        let padding = '9px 26px';
         let btnSize = size?size:'default';
         switch (btnSize) {
             case 'small':
                 height = 30;
                 fontSize = 16;
-                margin = '7px 20px';
+                padding = '7px 20px';
                 break;
             case 'default':
                 height = 38;
                 fontSize = 21;
-                margin = '9px 26px';
+                padding = '9px 26px';
                 break;
             case 'large':
                 height = 52;
                 fontSize = 25;
-                margin = '13px 36px';
+                padding = '13px 36px';
                 break;
             case 'blockLarge':
                 height = 52;
                 fontSize = 25;
-                margin = '13px 62px';
+                padding = '13px 62px';
                 break;
         }
         let className = '';
@@ -103,10 +103,10 @@ class QbButton extends Component {
                     className={className}
                     id={id?id:null}
                     disabled={disabled}
-                    style={{...privateStyle.frame, height, fontSize, ...style,}}
+                    style={{...privateStyle.frame, height, fontSize, padding, ...style}}
                     data-target={dataTarget?dataTarget:''}
                     data-toggle={dataToggle?dataToggle:''}>
-                <div style={{...privateStyle.content, ...fontStyle, margin}}>
+                <div style={{...privateStyle.content, ...fontStyle}}>
                     {label}
                 </div>
                 {icon}
