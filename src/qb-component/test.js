@@ -9,6 +9,7 @@ import QbButton from './QbButton';
 import QbHighlight from './QbHighlight';
 import QbScore from './QbScore';
 import QbStar from './QbStar';
+import QbImgSection from './QbImgSection';
 import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
 import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
@@ -95,6 +96,9 @@ export default class Test extends Component {
         }]
         return (
             <div>
+                <QbImgSection sectionType="English" style={{'height': '200px'}}></QbImgSection>
+                <QbImgSection sectionType="science"></QbImgSection>
+
                 <QbStar num="33"></QbStar>
 
                 <QbScore score="32"></QbScore>
