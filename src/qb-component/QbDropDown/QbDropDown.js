@@ -61,11 +61,9 @@ class QbDropDown extends Component {
                         <button type="button"
                                 className={btnClass}
                                 onChange={(e)=> {
-                                    console.log('this statr: ', this.state.keyword, e.target);
                                     this.setState({
                                         keyword: e.target.value
                                     });
-                                    console.log('this end : ', this.state.keyword);
                                     onChange(this.state.selectedObj);
                                 }}
                                 style={{
@@ -103,7 +101,7 @@ class QbDropDown extends Component {
         }
     }
     render() {
-        console.log('render begin :', this.state.keyword);
+        console.log('dropdown render begin :', this.state);
         return this.renderInputComp();
     }
 }

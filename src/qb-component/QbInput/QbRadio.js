@@ -14,7 +14,7 @@ class QbRadio extends Component {
                            value={value}
                            style={style}
                            name={name}
-                           onChange={(e)=> changeHandler.bind(this)(e)}/>
+                           onClick={()=> changeHandler(value)}/>
                     {label}
                 </label>
             </div>
