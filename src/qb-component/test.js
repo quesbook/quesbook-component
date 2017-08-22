@@ -8,10 +8,11 @@ import { QbDatePicker, QbTimePicker } from './QbDatePicker';
 import QbButton from './QbButton';
 import QbHighlight from './QbHighlight';
 import QbScore from './QbScore';
-import { QbCheckBox, QbRadio, QbInput, QbSwitcher } from './QbInput';
-import { QbModalBody, QbModalHeader, QbModalFooter, QbModal } from './QbModal';
-import { QbDropDown, QbDropDownDivider, QbDropDownItem } from './QbDropDown';
-import QbMessageCard from './QbMessageCard';
+import QbStar from './QbStar';
+import QbImgSection from './QbImgSection';
+import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
+import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
+import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
 import QbSlider from './QbSlider';
 import { QbCard } from './QbCard';
 import CloseIcon from './assets/image/icon/x-icon@3x.png';
@@ -96,9 +97,14 @@ export default class Test extends Component {
         return (
             <div>
                 <QbProgressBar compStyle={{ marginBottom: '50px' }} percentage={'35%'} />
-                <QbScore content="32"></QbScore>
+                <QbImgSection sectionType="English" style={{'height': '200px'}}></QbImgSection>
+                <QbImgSection sectionType="science"></QbImgSection>
 
-                <QbScore content="32" style={{ 'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px' }}></QbScore>
+                <QbStar num="33"></QbStar>
+
+                <QbScore score="32"></QbScore>
+
+                <QbScore score="32" content="over all" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
                 <h1>
                     My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
                 </h1>

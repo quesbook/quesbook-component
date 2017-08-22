@@ -54,11 +54,12 @@ class QbDropDown extends Component {
                     <div className={compClass+ ' btn-group'} style={{height: finalStyle.height, ...compStyle}}>
                         <button type="button"
                                 className={btnClass}
-                                style={{...btnStyle,
+                                style={{
                                     ...style.button.publicStyle,
                                     height: finalStyle.height,
                                     borderRight: 0,
-                                    fontSize: finalStyle.fontSize}}>
+                                    fontSize: finalStyle.fontSize,
+                                    ...btnStyle,}}>
                                 {this.state.selectedObj.label}
                         </button>
                         <button type="button" style={{...style.button.publicStyle, borderLeft: 0,}}
