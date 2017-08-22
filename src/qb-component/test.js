@@ -19,6 +19,7 @@ import CloseIcon from './assets/image/icon/x-icon@3x.png';
 import { QbTabs, QbTab } from './QbTabs';
 import QbCollapse from './QbCollapse';
 import Collapse from 'rc-collapse';
+import QbMessageCard from './QbMessageCard';
 import QbProgressBar from './QbProgressBar';
 import 'rc-collapse/assets/index.css';
 const Panel = Collapse.Panel;
