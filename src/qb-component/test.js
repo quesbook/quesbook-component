@@ -1,9 +1,9 @@
 /**
  * Created by az on 2017/7/24.
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import QbLayout from './QbLayout';
-import {QbDatePicker, QbTimePicker} from './QbDatePicker';
+import { QbDatePicker, QbTimePicker } from './QbDatePicker';
 
 import QbButton from './QbButton';
 import QbHighlight from './QbHighlight';
@@ -13,13 +13,13 @@ import QbImgSection from './QbImgSection';
 import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
 import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
 import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
-import QbMessageCard from './QbMessageCard';
 import QbSlider from './QbSlider';
-import {QbCard} from './QbCard';
+import { QbCard } from './QbCard';
 import CloseIcon from './assets/image/icon/x-icon@3x.png';
-import {QbTabs, QbTab} from './QbTabs';
+import { QbTabs, QbTab } from './QbTabs';
 import QbCollapse from './QbCollapse';
 import Collapse from 'rc-collapse';
+import QbProgressBar from './QbProgressBar';
 import 'rc-collapse/assets/index.css';
 const Panel = Collapse.Panel;
 
@@ -28,14 +28,14 @@ import './scss/_variables.scss';
 export default class Test extends Component {
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             show: false,
             switchState: true,
             showCard: true,
-            numlist:['yahaha'],
+            numlist: ['yahaha'],
         }
     }
-    toggleModal () {
+    toggleModal() {
         this.setState({
             show: !this.state.show
         });
@@ -43,10 +43,10 @@ export default class Test extends Component {
     }
     switchHandler() {
         console.log('Tag click');
-        this.setState((prevState, props) => ({ switchState: !prevState.switchState}));
+        this.setState((prevState, props) => ({ switchState: !prevState.switchState }));
     }
     messageToggle() {
-        this.setState((prevState, props)=> ({
+        this.setState((prevState, props) => ({
             showCard: !prevState.showCard
         }));
     }
@@ -68,34 +68,35 @@ export default class Test extends Component {
         const dropDownContent = [{
             label: 'abc',
             value: 'abc',
-        },{
+        }, {
             label: 'bcd',
             value: 'bcd',
-        },{
+        }, {
             label: 'cde',
             value: 'cde',
         }];
-        let list = this.state.numlist.map((data)=> {
+        let list = this.state.numlist.map((data) => {
             return <div>{data}</div>
         });
         console.log('Tag numlist:', this.state.numlist);
         let collapseContent = [{
             header:
-                <div>
-                    <img src=""/>
-                    <div style={{color: '#ffffff'}}>hello</div>
-                </div>,
+            <div>
+                <img src="" />
+                <div style={{ color: '#ffffff' }}>hello</div>
+            </div>,
             content: <div>hi</div>,
-        },{
+        }, {
             header:
-                <div>
-                    <img src=""/>
-                    <div>god</div>
-                </div>,
+            <div>
+                <img src="" />
+                <div>god</div>
+            </div>,
             content: <div>like</div>
         }]
         return (
             <div>
+                <QbProgressBar compStyle={{ marginBottom: '50px' }} percentage={'35%'} />
                 <QbImgSection sectionType="English" style={{'height': '200px'}}></QbImgSection>
                 <QbImgSection sectionType="science"></QbImgSection>
 
@@ -108,19 +109,19 @@ export default class Test extends Component {
                     My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
                 </h1>
                 <QbButton label="hello"
-                          className="btn btn-secondary"
-                          size="small"
-                          iconClick={this.buttonIconClick.bind(this)}
-                          dataTarget="#modal" dataToggle='modal'>
-                    <img src={CloseIcon} style={{height: 'inherit', width: 'inherit'}}/>
+                    className="btn btn-secondary"
+                    size="small"
+                    iconClick={this.buttonIconClick.bind(this)}
+                    dataTarget="#modal" dataToggle='modal'>
+                    <img src={CloseIcon} style={{ height: 'inherit', width: 'inherit' }} />
                 </QbButton>
                 <QbButton label="t"
-                          className="btn btn-primary"
-                          disabled={true}
-                          data-toggle="modal" data-target="#modal"/>
-                <QbCheckBox label="hello" changeHandler={()=> alert('hi')} fontStyle={{fontSize: 16}}/>
-                <QbRadio label="hello" changeHandler={()=> alert('hello')} fontStyle={{fontSize: 16}}/>
-                <QbInput size="small" changeHandler={(e)=> alert(e.target.value)}/>
+                    className="btn btn-primary"
+                    disabled={true}
+                    data-toggle="modal" data-target="#modal" />
+                <QbCheckBox label="hello" changeHandler={() => alert('hi')} fontStyle={{ fontSize: 16 }} />
+                <QbRadio label="hello" changeHandler={() => alert('hello')} fontStyle={{ fontSize: 16 }} />
+                <QbInput size="small" changeHandler={(e) => alert(e.target.value)} />
                 <QbModal target="modal" >
                     <QbModalHeader>
                         <div>header</div>
@@ -129,30 +130,30 @@ export default class Test extends Component {
                         <div>body</div>
                     </QbModalBody>
                     <QbModalFooter>
-                        <QbButton label="close" dataTarget="#modal" dataToggle='modal'/>
+                        <QbButton label="close" dataTarget="#modal" dataToggle='modal' />
                     </QbModalFooter>
                 </QbModal>
-                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="button" btnStyle={{width: 350, textAlign: 'left'}}
-                            dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
-                            content ={dropDownContent} onChange={(data)=> console.log('TAg data:', data)}
+                <QbDropDown defaultData={{ label: "nihao", value: 'hello' }} default inputType="button" btnStyle={{ width: 350, textAlign: 'left' }}
+                    dropdownStyle={{ width: 400 }} compStyle={{ position: 'relative', width: 400 }}
+                    content={dropDownContent} onChange={(data) => console.log('TAg data:', data)}
                 />
-                <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
-                <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
-                <QbDatePicker/>
+                <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
+                <QbTimePicker ensureTime={(time) => console.log('Tag time is:', time)} />
+                <QbDatePicker />
                 <QbButton label="show message"
-                          className="btn dark alternate"
-                          size="large"
-                          clickHandler={this.messageToggle.bind(this)}/>
+                    className="btn dark alternate"
+                    size="large"
+                    clickHandler={this.messageToggle.bind(this)} />
                 <QbMessageCard display={this.state.showCard}
-                               title="hello!"
-                               content="ha lou a !"
-                               onCancelClick={this.messageToggle.bind(this)}/>
+                    title="hello!"
+                    content="ha lou a !"
+                    onCancelClick={this.messageToggle.bind(this)} />
                 <QbSlider maxMark="$10+"
-                          minMark="Free!"
-                          maxPrice={15}
-                          style={{height: 100, width:300}}
-                          changeHandler={this.sliderChange.bind(this)}/>
-                <QbCard cardStyle={{height: 120, width: 500}} avatarSrc={CloseIcon} rate={3.5}/>
+                    minMark="Free!"
+                    maxPrice={15}
+                    style={{ height: 100, width: 300 }}
+                    changeHandler={this.sliderChange.bind(this)} />
+                <QbCard cardStyle={{ height: 120, width: 500 }} avatarSrc={CloseIcon} rate={3.5} />
                 <button onClick={this.add.bind(this)}>add</button>
                 <QbTabs>
                     <QbTab ref="hlo">
@@ -161,7 +162,7 @@ export default class Test extends Component {
                     <QbTab ref="bin">
                         <div>asd</div>
                     </QbTab>
-                    <QbTab ref="ho" className="new" style={{height: 50, overflowY: 'scroll'}}>
+                    <QbTab ref="ho" className="new" style={{ height: 50, overflowY: 'scroll' }}>
                         <div>xixiix</div>
                         <div>xixiix</div>
                         <div>xixiix</div>
@@ -174,7 +175,7 @@ export default class Test extends Component {
                     </QbTab>
                 </QbTabs>
                 <QbCollapse content={collapseContent}
-                            panelStyle={{color: '#ffffff', background: '#203a62'}}/>
+                    panelStyle={{ color: '#ffffff', background: '#203a62' }} />
             </div>
         )
     }
