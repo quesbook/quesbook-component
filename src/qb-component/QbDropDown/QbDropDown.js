@@ -16,21 +16,24 @@ class QbDropDown extends Component {
             keyword: ''
         }
     }
-    componentDidUpdate() {
-        const {onChange} = this.props;
-        onChange(this.state.selectedObj);
-    }
+    // componentDidUpdate() {
+    //     const {onChange} = this.props;
+    //     onChange(this.state.selectedObj);
+    // }
     renderInputComp() {
         const {compClass,
-            compStyle, inputType, btnStyle, size, inputClassName, dropdownStyle,
+            compStyle, inputType, btnStyle, size, inputClassName, dropdownStyle, onChange,
             content
         } = this.props;
         let children;
         if (inputType === 'button') {
             children = content.map((data, index) =>
-                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => this.setState({
-                    selectedObj: data
-                })}/>
+                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => {
+                    this.setState({
+                        selectedObj: data
+                    });
+                    onChange(data);
+                }}/>
             );
         } else if (inputType === 'input') {
             let filterArray = content.filter((data)=> {
@@ -41,9 +44,12 @@ class QbDropDown extends Component {
                 }
             });
             children = filterArray.map((data, index) =>
-                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => this.setState({
-                    selectedObj: data
-                })}/>
+                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => {
+                    this.setState({
+                        selectedObj: data
+                    });
+                    onChange(data);
+                }}/>
             );
         }
         switch (inputType) {
@@ -54,6 +60,14 @@ class QbDropDown extends Component {
                     <div className={compClass+ ' btn-group'} style={{height: finalStyle.height, ...compStyle}}>
                         <button type="button"
                                 className={btnClass}
+                                onChange={(e)=> {
+                                    console.log('this statr: ', this.state.keyword, e.target);
+                                    this.setState({
+                                        keyword: e.target.value
+                                    });
+                                    console.log('this end : ', this.state.keyword);
+                                    onChange(this.state.selectedObj);
+                                }}
                                 style={{
                                     ...style.button.publicStyle,
                                     height: finalStyle.height,
@@ -74,11 +88,13 @@ class QbDropDown extends Component {
             case 'input':
                 return (
                     <div className={compClass} style={{...style.inputStyle, ...compStyle}}>
-                        <input type="text" data-toggle="dropdown" className="form-control" onChange={(e)=>
+                        <input type="text" data-toggle="dropdown" className="form-control" onChange={(e)=> {
                             this.setState({
                                 keyword: e.target.value
-                            })
-                        }/>
+                            });
+                            // onChange(this.state.selectedObj);
+                            // console.log('this statr: ', this.state.keyword);
+                        }}/>
                         <div className="dropdown-menu dropdown-menu-right" style={dropdownStyle}>
                             {children}
                         </div>
@@ -87,6 +103,7 @@ class QbDropDown extends Component {
         }
     }
     render() {
+        console.log('render begin :', this.state.keyword);
         return this.renderInputComp();
     }
 }
