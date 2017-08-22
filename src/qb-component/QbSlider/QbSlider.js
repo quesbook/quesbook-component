@@ -12,14 +12,31 @@ const Range = createSliderWithTooltip(Slider.Range);
 const Handle = Slider.Handle;
 
 class QbSlider extends Component {
+    constructor(props) {
+        super(props);
+        this.value= {
+            low: 0,
+            high: 0,
+        }
+    }
     sliderChange(value) {
-        const {changeHandler, maxPrice} = this.props;
-        return changeHandler(((maxPrice/100)* value[0]).toFixed(1), ((maxPrice/100)* value[1]).toFixed(1));
+        const {maxPrice} = this.props;
+        this.value = {
+            ...this.value,
+            low: ((maxPrice/100)* value[0]).toFixed(1),
+            high: ((maxPrice/100)* value[1]).toFixed(1),
+        };
+    }
+    changHandle() {
+        console.log('up');
+        const {changeHandler } = this.props;
+        return changeHandler(this.value.low, this.value.high);
     }
     render () {
         const {maxMark, minMark, maxPrice, style} = this.props;
         return (
-            <div style={style}>
+            <div style={style}
+                 onMouseUp={this.changHandle.bind(this)}>
                 <Range defaultValue={[0,100]}
                        marks={{100: maxMark, 0: minMark}}
                        handleStyle={[{height: 28, width: 28, marginLeft: -14, marginTop: -13,

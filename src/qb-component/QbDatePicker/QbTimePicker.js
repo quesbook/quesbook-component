@@ -64,11 +64,16 @@ class QbTimePicker extends Component {
         let finalStyle = eval("style.button."+ (size?size:"default"));
         let hourStr = this.padNumber(this.state.hour, 2);
         let time = hourStr + ' ' + this.state.periods;
+        let timeHour = 1;
+        if (this.state.periods==='AM') {
+            timeHour = this.state.hour;
+        } else if(this.state.periods==='PM') {
+            timeHour = this.state.hour + 12;
+        }
         let display = this.state.displayPicker?'flex':'none';
         if (!this.state.displayPicker) {
-            ensureTime(time);
+            ensureTime(timeHour);
         }
-        console.log('Tag display is :', display);
         return (
             <div style={{height: finalStyle.height, position: 'relative'}}>
                 <button className="btn btn-secondary"

@@ -124,7 +124,8 @@ export default class Test extends Component {
                     disabled={true}
                     data-toggle="modal" data-target="#modal" />
                 <QbCheckBox label="hello" changeHandler={() => alert('hi')} fontStyle={{ fontSize: 16 }} />
-                <QbRadio label="hello" changeHandler={() => alert('hello')} fontStyle={{ fontSize: 16 }} />
+                <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbInput size="small" changeHandler={(e) => alert(e.target.value)} />
                 <QbModal target="modal" >
                     <QbModalHeader>
