@@ -56,6 +56,9 @@ export default class Test extends Component {
     buttonIconClick() {
         alert('icon cliasc');
     }
+    dateChange(start, end) {
+        console.log(start, end);
+    }
     add() {
         console.log('Tag before numlist:', this.state.numlist);
         let a = this.state.numlist;
@@ -133,13 +136,18 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal' />
                     </QbModalFooter>
                 </QbModal>
-                <QbDropDown defaultData={{ label: "nihao", value: 'hello' }} default inputType="button" btnStyle={{ width: 350, textAlign: 'left' }}
-                    dropdownStyle={{ width: 400 }} compStyle={{ position: 'relative', width: 400 }}
-                    content={dropDownContent} onChange={(data) => console.log('TAg data:', data)}
+                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="input" btnStyle={{width: 350, textAlign: 'left'}}
+                            dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
+                            content ={dropDownContent} onChange={(data)=> {
+                                console.log('TAg data:', data);
+                                this.setState({
+                                    show: !this.state.show
+                                });
+                }}
                 />
-                <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
-                <QbTimePicker ensureTime={(time) => console.log('Tag time is:', time)} />
-                <QbDatePicker />
+                <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
+                <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
+                <QbDatePicker onDatesChange = {this.dateChange.bind(this)}/>
                 <QbButton label="show message"
                     className="btn dark alternate"
                     size="large"
