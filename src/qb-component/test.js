@@ -138,15 +138,15 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal' />
                     </QbModalFooter>
                 </QbModal>
-                <QbDropDown defaultData={{label: "nihao", value: 'hello'}} default inputType="input" btnStyle={{width: 350, textAlign: 'left'}}
+                npm
+                <QbDropDown inputType="input" btnStyle={{width: 350, textAlign: 'left'}}
                             dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
-                            content ={dropDownContent} onChange={(data)=> {
+                            content ={[]} onChange={(data)=> {
                                 console.log('TAg data:', data);
                                 this.setState({
                                     show: !this.state.show
                                 });
-                }}
-                />
+                }}/>
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
                 <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)}/>
                 <QbDatePicker onDatesChange = {this.dateChange.bind(this)}/>

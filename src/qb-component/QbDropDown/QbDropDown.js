@@ -10,8 +10,8 @@ class QbDropDown extends Component {
         super(props);
         this.state = {
             selectedObj: {
-                label: props?props.defaultData.label: '' ,
-                value: props?props.defaultData.value: '' ,
+                label: props.defaultData?props.defaultData.label: '' ,
+                value: props.defaultData?props.defaultData.value: '' ,
             },
             keyword: ''
         }
@@ -101,7 +101,6 @@ class QbDropDown extends Component {
         }
     }
     render() {
-        console.log('dropdown render begin :', this.state);
         return this.renderInputComp();
     }
 }
