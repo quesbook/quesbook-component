@@ -19,3 +19,5 @@ npm-debug.log
 /dist/*
 !index.html
 /lib
+
+yarn.lock
