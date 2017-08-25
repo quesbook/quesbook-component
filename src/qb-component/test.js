@@ -2,7 +2,7 @@
  * Created by az on 2017/7/24.
  */
 import React, { Component } from 'react';
-
+import './_default.scss';
 import QbLayout from './QbLayout';
 import { QbDatePicker, QbTimePicker } from './QbDatePicker';
 
@@ -24,8 +24,6 @@ import QbMessageCard from './QbMessageCard';
 import QbProgressBar from './QbProgressBar';
 import 'rc-collapse/assets/index.css';
 const Panel = Collapse.Panel;
-
-import './_default.scss';
 
 export default class Test extends Component {
     constructor(props) {
