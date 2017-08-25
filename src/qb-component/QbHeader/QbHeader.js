@@ -16,20 +16,20 @@ class QbHeader extends Component {
             isShowSideBar: false,
             showMessageCard: false,
             messageTitle: '',
-            messageContent: '',
+            messageContent: ''
         };
     }
 
     componentWillMount() {
         const {client, messageId} = this.props;
-        if (messageId !== null && messageId!== undefined) {
+        if (messageId !== null && messageId !== undefined) {
             // query message content
             client.query({query: gql `
               query {
 
               }
             `, fetchPolicy: 'network-only'}).then((res) => {
-                this.setState((prevState, props)=> ({
+                this.setState((prevState, props) => ({
                     showMessageCard: !prevState.showMessageCard,
                     currentUser: props.currentUser,
                     linkItems: props.navItemList
@@ -88,11 +88,16 @@ class QbHeader extends Component {
     }
 
     onHover_Signed() {
+        console.log('onHover_Signed');
         this.setState({isShowSideBar: true});
     }
 
     onClick_SignOut() {
         this.props.onClick_SignOut();
+    }
+
+    hideSideBar(){
+        this.setState({isShowSideBar: false});
     }
 
     renderLinkItems() {
@@ -136,9 +141,9 @@ class QbHeader extends Component {
         //
         //   }
         // `, fetchPolicy: 'network-only'}).then((res) => {
-            this.setState((prevState, props)=> ({
-                showMessageCard: !prevState.showMessageCard
-            }));
+        this.setState((prevState, props) => ({
+            showMessageCard: !prevState.showMessageCard
+        }));
         // }).catch((e) => {
         //     console.info(e);
         // });
@@ -177,6 +182,17 @@ class QbHeader extends Component {
         }
     }
 
+    renderQbSideBar(currentUser) {
+        if (this.state.isShowSideBar) {
+            return (
+                <QbSideBar currentUser={currentUser}
+                isShow={this.state.isShowSideBar}
+                onHideSideBar={this.hideSideBar.bind(this)}
+                onClick_SignOut={this.onClick_SignOut.bind(this)}/>
+            );
+        }
+    }
+
     render() {
         let currentUser = this.state.currentUser;
         return (
@@ -190,14 +206,9 @@ class QbHeader extends Component {
                         {this.renderSign(currentUser)}
                     </div>
                     {this.renderSignedLink(currentUser)}
-                    <QbMessageCard display={this.state.showMessageCard}
-                                   size="xs"
-                                   title={this.state.messageTitle}
-                                   content={this.state.messageContent}
-                                   messageStyle={{}}
-                                   onCancelClick={this.messageToggle.bind(this)}/>
+                    <QbMessageCard display={this.state.showMessageCard} size="xs" title={this.state.messageTitle} content={this.state.messageContent} messageStyle={{}} onCancelClick={this.messageToggle.bind(this)}/>
                 </div>
-                <QbSideBar currentUser={currentUser} isShow={this.state.isShowSideBar} onClick_SignOut={this.onClick_SignOut.bind(this)}/>
+                {this.renderQbSideBar(currentUser)}
             </div>
         );
     }

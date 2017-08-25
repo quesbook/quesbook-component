@@ -8,8 +8,26 @@ class QbSideBar extends Component {
 
         return (
             <div className="section-ct-navbarside">
-                <div className="col-4 col-md-8 col-lg-12 navbarside-cover" hidden={!this.state.isShow} onClick={this.hideNavSideBar} onMouseOver={this.hideNavSideBar.bind(this)}></div>
-                <div className='no-gutters col-lg-2 navbarside-section' hidden={!this.state.isShow}>
+                {this.renderSideCover(currentUser)}
+                {this.renderSideSection(currentUser)}
+            </div>
+        );
+    }
+
+    renderSideCover(currentUser) {
+        if (this.state.isShow) {
+            return (
+                <div className="col-4 col-md-8 col-lg-12 navbarside-cover"
+                    onClick={this.hideNavSideBar.bind(this)}
+                    onMouseOver={this.hideNavSideBar.bind(this)}></div>
+            );
+        }
+    }
+
+    renderSideSection(currentUser) {
+        if (this.state.isShow) {
+            return (
+                <div className='no-gutters col-lg-2 navbarside-section'>
                     <div className="no-gutters col-8 col-md-4 col-lg-2 navbarside-content">
                         {this.renderUserIconSection(currentUser)}
                         {this.renderUserExamSection(currentUser)}
@@ -21,8 +39,8 @@ class QbSideBar extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 
     constructor() {
@@ -59,6 +77,7 @@ class QbSideBar extends Component {
     }
 
     hideNavSideBar() {
+        this.props.onHideSideBar();
         this.setState({isShow: false});
     }
 
@@ -95,7 +114,10 @@ class QbSideBar extends Component {
                     </div>
                     <div className="text">{currentUser.name}</div>
                     <div className="close" onClick={this.hideNavSideBar.bind(this)}>
-                        <img style={{height: 16, width: 16}} src={cancelIcon} href=""/>
+                        <img style={{
+                            height: 16,
+                            width: 16
+                        }} src={cancelIcon} href=""/>
                     </div>
                 </div>
             );

@@ -36,7 +36,7 @@
     }
     @media (min-width: $mediaDesktop) {
         .navbarside-section {
-            position: absolute;
+            position: fixed;
             width: 167px;
             height: 65px;
             right: 10px;
