@@ -86,7 +86,7 @@ class QbButton extends Component {
         let icon = null;
         if(children) {
             icon = (
-                <div style={{width: 12, height: 12, marginRight: 15}} onClick={(e)=> this.iconClick(e)}>
+                <div style={{width: 12, height: 12, marginLeft: 10}} onClick={(e)=> this.iconClick(e)}>
                     {children}
                 </div>
             )

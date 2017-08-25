@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react';
 import QbDropDownItem from './QbDropDownItem';
+import './QbDropDown.scss';
 
 /*eslint-disable*/
 class QbDropDown extends Component {

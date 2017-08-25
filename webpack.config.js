@@ -1,6 +1,7 @@
 /**
  * Created by az on 2017/7/11.
  */
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
     entry: __dirname+'/src/qb-component/index.js',

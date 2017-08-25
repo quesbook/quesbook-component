@@ -2,6 +2,7 @@
  * Created by az on 2017/7/24.
  */
 import React, { Component } from 'react';
+
 import QbLayout from './QbLayout';
 import { QbDatePicker, QbTimePicker } from './QbDatePicker';
 
@@ -24,7 +25,7 @@ import QbProgressBar from './QbProgressBar';
 import 'rc-collapse/assets/index.css';
 const Panel = Collapse.Panel;
 
-import './scss/_variables.scss';
+import './_default.scss';
 
 export default class Test extends Component {
     constructor(props) {
@@ -141,7 +142,7 @@ export default class Test extends Component {
                 npm
                 <QbDropDown inputType="input" btnStyle={{width: 350, textAlign: 'left'}}
                             dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
-                            content ={[]} onChange={(data)=> {
+                            content ={dropDownContent} onChange={(data)=> {
                                 console.log('TAg data:', data);
                                 this.setState({
                                     show: !this.state.show
