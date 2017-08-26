@@ -84,7 +84,7 @@ class QbLayout extends Component {
             console.log('success');
             Cookies.remove(TOKEN_KEY);
             this.setState({currentUser: null});
-            window.location.href = '/';
+            window.location.href = '/home_page';
             return res.data;
         }).catch(error => {
             alert('sign out error!');
