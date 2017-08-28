@@ -39,7 +39,7 @@ class QbLayout extends Component {
     componentWillMount() {
         client.query({query: gql `
           query {
-              currentUser: current_student {
+              currentUser {
                 id
                 name
                 avatar
