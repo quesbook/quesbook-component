@@ -69,8 +69,11 @@ class QbHeader extends Component {
         });
     }
 
-    onClick_NavLinkItem(e) {
-        console.log('onClick_NavLinkItem');
+    onClick_NavLinkItem(item, e) {
+        if (item && item.isRedirect) {
+            window.location.href = window.location.origin + item.href;
+        }
+
         this.resetNavLinkItem_Active(e.target.hash);
     }
 
@@ -96,7 +99,7 @@ class QbHeader extends Component {
         this.props.onClick_SignOut();
     }
 
-    hideSideBar(){
+    hideSideBar() {
         this.setState({isShowSideBar: false});
     }
 
@@ -108,7 +111,7 @@ class QbHeader extends Component {
                 <li key={index} className={item.isActive
                     ? 'active'
                     : ''}>
-                    <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this)}>
+                    <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
                         {item.label}
                     </Link>
                 </li>
@@ -184,12 +187,7 @@ class QbHeader extends Component {
 
     renderQbSideBar(currentUser) {
         if (this.state.isShowSideBar) {
-            return (
-                <QbSideBar currentUser={currentUser}
-                isShow={this.state.isShowSideBar}
-                onHideSideBar={this.hideSideBar.bind(this)}
-                onClick_SignOut={this.onClick_SignOut.bind(this)}/>
-            );
+            return (<QbSideBar currentUser={currentUser} isShow={this.state.isShowSideBar} onHideSideBar={this.hideSideBar.bind(this)} onClick_SignOut={this.onClick_SignOut.bind(this)}/>);
         }
     }
 
