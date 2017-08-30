@@ -28,7 +28,6 @@ class QbSlider extends Component {
         };
     }
     changHandle() {
-        console.log('up');
         const {changeHandler } = this.props;
         return changeHandler(this.value.low, this.value.high);
     }

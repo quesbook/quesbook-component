@@ -6,7 +6,6 @@ import React, {Component} from 'react';
 class QbTab extends Component {
     render() {
         const {children, label, style, className} = this.props;
-        console.log('Tag tab render:', this.props.children);
         return (
             <div style={{...tabStyle.frame, ...style}} ref={label} className={className}>
                 {children}
