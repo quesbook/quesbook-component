@@ -105,8 +105,10 @@ export default class Test extends Component {
 
                 <QbStar num="33"></QbStar>
 
-                <QbScore score="32"></QbScore>
+                <QbScore score="1"></QbScore>
+                <QbScore score="99"></QbScore>
 
+                <QbScore score="1" content="over all" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
                 <QbScore score="32" content="over all" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
                 <h1>
                     My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
