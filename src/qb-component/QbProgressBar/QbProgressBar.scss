@@ -2,41 +2,57 @@
 
 .QbProgressBar {
 
-    width: 100%;
-    height: 8px;
-    position: relative;
-    box-sizing: border-box;
-    line-height: 0;
+    display: flex;
+    align-items: center;
 
-    >.QbProgressBar_Indicator {
-
-        >span {
-            width: 20%;
-            height: 8px;
-            background-color: $clearSky;
-            border-right: 1px solid #fff;
-            display: inline-flex;
-        }
-
-        >span:first-child {
-            border-top-left-radius: 100px;
-            border-bottom-left-radius: 100px;
-        }
-
-        >span:last-child {
-            border-right: none;
-            border-top-right-radius: 100px;
-            border-bottom-right-radius: 100px;
-        }
+    .QbProgress-Text {
+        margin-left: 8px;
+        font-family: Gotham;
+        font-size: 11.2px;
+        line-height: 1.5;
+        color: #192230;
     }
 
-    >.QbProgressBar_Progress {
-        position: absolute;
-        left: 0;
-        top: 0;
+    .QbProgress-Bar {
+
+        width: 100%;
         height: 8px;
-        background-color: $sky;
-        border-top-left-radius: 100px;
-        border-bottom-left-radius: 100px
+        position: relative;
+        box-sizing: border-box;
+        line-height: 0;
+
+        >.QbProgressBar_Indicator {
+
+            >span {
+                width: 20%;
+                height: 8px;
+                background-color: $clearSky;
+                border-right: 1px solid #fff;
+                display: inline-flex;
+            }
+
+            >span:first-child {
+                border-top-left-radius: 100px;
+                border-bottom-left-radius: 100px;
+            }
+
+            >span:last-child {
+                border-right: none;
+                border-top-right-radius: 100px;
+                border-bottom-right-radius: 100px;
+            }
+        }
+
+        >.QbProgressBar_Progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 8px;
+            background-color: $sky;
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px
+        }
     }
+
 }
+
