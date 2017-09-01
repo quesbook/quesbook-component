@@ -99,7 +99,8 @@ export default class Test extends Component {
         }]
         return (
             <div>
-                <QbProgressBar compStyle={{ marginBottom: '50px' }} percentage={'35%'} />
+                <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'35%'} />
+                <QbProgressBar showProgressText={true} compStyle={{ margin: '50px 0' }} percentage={'35%'} />
                 <QbImgSection sectionType="English" style={{'height': '200px'}}></QbImgSection>
                 <QbImgSection sectionType="science"></QbImgSection>
 
