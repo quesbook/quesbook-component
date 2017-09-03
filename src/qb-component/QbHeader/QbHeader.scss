@@ -38,33 +38,22 @@
 
     .navbar-signed {
         line-height: 38px;
+        flex-wrap: nowrap;
 
-        .signed-arrowdown,
-        .signed-icon,
         .signed-text {
-            display: inline-block;
-            margin-right: 10px;
+            color: $midNight;
         }
 
+        .signed-arrowdown,
+        .signed-avatar,
         .signed-text {
-            font-size: 16px;
-            text-align: right;
-            color: $midNight;
+            margin-right: 12px;
         }
 
         .signed-text {
             @media (max-width: $mediaDesktop) {
                 display: none !important;
             }
-        }
-
-        .signed-icon {
-            text-align: center;
-            width: 38px;
-            height: 38px;
-            color: $white;
-            border-radius: 19px;
-            background-color: $midNight;
         }
 
         .signed-arrowdown {
@@ -82,6 +71,7 @@
 
     .navbar-unsigned {
         margin-right: 10px;
+        flex-wrap: nowrap;
 
         > a {
             color: $midNight;
@@ -118,7 +108,6 @@
         justify-content: flex-start;
         align-items: flex-start;
         overflow: auto;
-
 
         > li {
             padding: 0 25px;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './QbSideBar.scss';
 import cancelIcon from '../assets/image/icon/x-icon@3x.png';
+import QbAvatar from './QbAvatar';
 
 class QbSideBar extends Component {
     render() {
@@ -32,8 +33,8 @@ class QbSideBar extends Component {
                         {this.renderUserIconSection(currentUser)}
                         {this.renderUserExamSection(currentUser)}
                         <div className='col-lg-12 section-user'>
-                            <div>
-                                <a href='/profile'>My Account</a>
+                            <div onClick={this.props.onClick_Setting}>
+                                My Account
                             </div>
                             <div onClick={this.onClick_SignOut.bind(this)}>Log out</div>
                         </div>
@@ -108,9 +109,7 @@ class QbSideBar extends Component {
             return (
                 <div className="row no-gutters col-lg-12 navbarside-user">
                     <div className="icon">
-                        <div>
-                            {currentUser.name.charAt(0)}
-                        </div>
+                        <QbAvatar user={currentUser}></QbAvatar>
                     </div>
                     <div className="text">{currentUser.name}</div>
                     <div className="close" onClick={this.hideNavSideBar.bind(this)}>

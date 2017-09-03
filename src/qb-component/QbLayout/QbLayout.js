@@ -64,7 +64,18 @@ class QbLayout extends Component {
         this.setState({navItemList: navItemList});
     }
 
+    onClick_Setting() {
+        window.location.href = window.location.origin + '/start/#/setting';
+
+        // let navItemList = this.state.navItemList;
+        //
+        // this.setState({
+        //     navItemList: navItemList.slice(0, 1)
+        // });
+    }
+
     onClick_SignOut() {
+
         let token = Cookies.get(TOKEN_KEY);
 
         function handleErrors(response) {
@@ -98,11 +109,7 @@ class QbLayout extends Component {
 
         return (
             <div className="layout-ct">
-                <QbHeader messageId={messageId}
-                          client={client}
-                          currentUser={currentUser}
-                          navItemList={this.state.navItemList}
-                          onClick_SignOut={this.onClick_SignOut.bind(this)}/>
+                <QbHeader messageId={messageId} client={client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)}/>
                 <div className="body-content">
                     {this.props.children}
                 </div>

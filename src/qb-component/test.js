@@ -23,6 +23,10 @@ import Collapse from 'rc-collapse';
 import QbMessageCard from './QbMessageCard';
 import QbProgressBar from './QbProgressBar';
 import 'rc-collapse/assets/index.css';
+import {QbAvatar} from './QbHeader';
+
+
+
 const Panel = Collapse.Panel;
 
 export default class Test extends Component {
@@ -99,6 +103,7 @@ export default class Test extends Component {
         }]
         return (
             <div>
+                <QbAvatar user={{name: 'Tom Zhu', avatar: ''}} size='big'></QbAvatar>
                 <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'35%'} />
                 <QbProgressBar showProgressText={true} compStyle={{ margin: '50px 0' }} percentage={'35%'} />
                 <QbImgSection sectionType="English" style={{'height': '200px'}}></QbImgSection>
