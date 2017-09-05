@@ -4,6 +4,7 @@ import logo from '../assets/image/logo/dark.png';
 import QbSideBar from './QbSideBar';
 import {Link} from 'react-router';
 import QbMessageCard from '../QbMessageCard';
+import QbAvatar from './QbAvatar';
 
 class QbHeader extends Component {
     constructor() {
@@ -47,7 +48,6 @@ class QbHeader extends Component {
 
     componentWillReceiveProps(newProps) {
         let currentUser = newProps.currentUser;
-        console.log('Get new', currentUser);
         this.setState({
             currentUser: currentUser,
             linkItems: newProps.navItemList
@@ -55,18 +55,18 @@ class QbHeader extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', (event) => {
-            var doc = document.documentElement;
-            var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-            let classScroll = '';
-            if (top > 50) {
-                classScroll = 'navbar-scroll-over';
-            } else {
-                classScroll = '';
-            }
-
-            this.setState({activeClass: classScroll});
-        });
+        // window.addEventListener('scroll', (event) => {
+        //     var doc = document.documentElement;
+        //     var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+        //     let classScroll = '';
+        //     if (top > 50) {
+        //         classScroll = 'navbar-scroll-over';
+        //     } else {
+        //         classScroll = '';
+        //     }
+        //
+        //     this.setState({activeClass: classScroll});
+        // });
     }
 
     onClick_NavLinkItem(item, e) {
@@ -157,19 +157,19 @@ class QbHeader extends Component {
             let userName = currentUser.name;
 
             return (
-                <div className='navbar-signed'>
+                <div className='navbar-signed box-flex-center'>
                     <div className='signed-text'>
                         Welcome, {userName}!
                     </div>
-                    <span onClick={this.onHover_Signed.bind(this)} onMouseOver={this.onHover_Signed.bind(this)}>
-                        <div className='signed-icon'>{userName.charAt(0)}</div>
-                        <div className='signed-arrowdown'></div>
-                    </span>
+                    <div className='signed-avatar' onClick={this.onHover_Signed.bind(this)} onMouseOver={this.onHover_Signed.bind(this)}>
+                        <QbAvatar user={currentUser}></QbAvatar>
+                    </div>
+                    <div className='signed-arrowdown'></div>
                 </div>
             );
         } else {
             return (
-                <div className='navbar-unsigned'>
+                <div className='navbar-unsigned box-flex-center'>
                     <a href="/users/sign_in">Log in</a>
                     <a className='navbar-unsigned-signup' href="/users/sign_up">Sign up</a>
                 </div>
@@ -187,7 +187,12 @@ class QbHeader extends Component {
 
     renderQbSideBar(currentUser) {
         if (this.state.isShowSideBar) {
-            return (<QbSideBar currentUser={currentUser} isShow={this.state.isShowSideBar} onHideSideBar={this.hideSideBar.bind(this)} onClick_SignOut={this.onClick_SignOut.bind(this)}/>);
+            return (<QbSideBar
+                currentUser={currentUser}
+                isShow={this.state.isShowSideBar}
+                onHideSideBar={this.hideSideBar.bind(this)}
+                onClick_Setting={this.props.onClick_Setting} 
+                onClick_SignOut={this.onClick_SignOut.bind(this)}/>);
         }
     }
 
