@@ -24,7 +24,7 @@ class QbFooter extends Component {
                         <img src={logo} alt=""/>
                     </li>
                     <li>
-                        <a href="/help">Terms of use</a>
+                        <a href="//stg.quesbook.com/start/#/terms/">Terms of use</a>
                     </li>
                     <li className='copy-right'>
                         &copy; {new Date().getFullYear()} Quesbook USA, Inc.
