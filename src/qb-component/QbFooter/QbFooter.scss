@@ -30,8 +30,8 @@ footer {
         }
 
         > li {
-            text-align: left;
-            flex-grow: 1;
+            text-align: center;
+            flex-grow: 3;
             line-height: 60px;
             @media (max-width: $mediaDesktop) {
                 line-height: 19px;
@@ -47,7 +47,7 @@ footer {
 
         > li.logo {
             text-align: center;
-            flex-grow: 12;
+            flex-grow: 6;
             @media (max-width: $mediaDesktop) {
                 order: -1;
                 flex-basis: 100%;
@@ -59,9 +59,9 @@ footer {
 
         > li.copy-right {
             opacity: 0.5;
-            @media (min-width: $mediaDesktop) {
-                flex-grow: 0.5;
-            }
+            // @media (min-width: $mediaDesktop) {
+            //     flex-grow: 0.5;
+            // }
             @media (max-width: $mediaPhone) {
                 padding: 30px 0 40px;
             }
