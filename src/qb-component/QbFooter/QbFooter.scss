@@ -59,9 +59,9 @@ footer {
 
         > li.copy-right {
             opacity: 0.5;
-            // @media (min-width: $mediaDesktop) {
-            //     flex-grow: 0.5;
-            // }
+            @media (min-width: $mediaDesktop) {
+                flex-grow: 1;
+            }
             @media (max-width: $mediaPhone) {
                 padding: 30px 0 40px;
             }

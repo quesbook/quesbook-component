@@ -9,10 +9,10 @@ class QbFooter extends Component {
             <footer>
                 <ul>
                     <li>
-                        <a href="/help">Help</a>
+                        <a href="mailto:help@quesbook.com?Subject=Help!">Help</a>
                     </li>
                     <li>
-                        <a href="mailto:help@quesbook.com?Subject=Help!">Contact us!</a>
+                        <a href="mailto:help@quesbook.com?Subject=Help!">Contact</a>
                     </li>
                     <li className='logo'>
                         <a href="/home_page">
