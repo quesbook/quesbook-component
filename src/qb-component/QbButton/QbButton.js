@@ -52,7 +52,7 @@ class QbButton extends Component {
         return iconClick(e);
     }
     render() {
-        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, children, disabled} = this.props;
+        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, children, disabled, isSubmit} = this.props;
         let height = 38;
         let fontSize = 21;
         let padding = '9px 26px';
@@ -103,6 +103,7 @@ class QbButton extends Component {
                     className={className}
                     id={id?id:null}
                     disabled={disabled}
+                    type={isSubmit?'submit': 'button'}
                     style={{...privateStyle.frame, height, fontSize, padding, ...style}}
                     data-target={dataTarget?dataTarget:''}
                     data-toggle={dataToggle?dataToggle:''}>

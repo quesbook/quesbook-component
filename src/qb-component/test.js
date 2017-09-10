@@ -120,6 +120,7 @@ export default class Test extends Component {
                     My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
                 </h1>
                 <QbButton label="hello"
+                    isSubmit="true"
                     className="btn btn-secondary"
                     size="small"
                     iconClick={this.buttonIconClick.bind(this)}
