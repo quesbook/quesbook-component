@@ -71,6 +71,7 @@ class QbHeader extends Component {
 
     onClick_NavLinkItem(item, e) {
         if (item && item.isRedirect) {
+            e.preventDefault();
             window.location.href = window.location.origin + item.href;
         }
 
@@ -108,13 +109,9 @@ class QbHeader extends Component {
 
         ret = this.state.linkItems.map((item, index) => {
             return (
-                <li key={index} className={item.isActive
-                    ? 'active'
-                    : ''}>
-                    <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
-                        {item.label}
-                    </Link>
-                </li>
+                item.isRedirect
+                ? this.renderExternalLink(item, index)
+                : this.renderInnerLink(item, index)
             );
         });
 
@@ -133,6 +130,30 @@ class QbHeader extends Component {
                 </div>
             );
         }
+    }
+
+    renderInnerLink(item, index) {
+        return (
+            <li key={index} className={item.isActive
+                ? 'active'
+                : ''}>
+                <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
+                    {item.label}
+                </Link>
+            </li>
+        ); 
+    }
+
+    renderExternalLink(item, index) {
+        return (
+            <li key={index} className={item.isActive
+                ? 'active'
+                : ''}>
+                <a href='/eclass' onClick={this.onClick_NavLinkItem.bind(this, item)}>
+                    {item.label}
+                </a>
+            </li>
+        ); 
     }
 
     messageToggle() {
