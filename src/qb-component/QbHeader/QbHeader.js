@@ -191,7 +191,8 @@ class QbHeader extends Component {
                 currentUser={currentUser}
                 isShow={this.state.isShowSideBar}
                 onHideSideBar={this.hideSideBar.bind(this)}
-                onClick_Setting={this.props.onClick_Setting} 
+                onClick_MyClass={this.props.onClick_MyClass} 
+                onClick_Setting={this.props.onClick_Setting}
                 onClick_SignOut={this.onClick_SignOut.bind(this)}/>);
         }
     }
