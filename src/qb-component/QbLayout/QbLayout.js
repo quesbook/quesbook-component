@@ -75,7 +75,7 @@ class QbLayout extends Component {
     }
 
     onClick_MyClass() {
-        window.location.href = window.location.origin + '/eclass';
+        window.location.href = window.location.origin + '/start/#/myClasses';
     }
 
     onClick_SignOut() {
