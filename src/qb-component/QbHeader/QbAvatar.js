@@ -49,7 +49,10 @@ const styleMain = {
     'borderRadius': '100px',
     'width': '38px',
     'height': '38px',
-    'backgroundColor': '#192230'
+    'backgroundColor': '#192230',
+    'display': 'block',
+    'textAlign': 'center',
+    'color': '#fff',
 }
 
 const styleSizeBig = {
@@ -61,8 +64,6 @@ const styleSizeBig = {
 }
 
 const styleNoImg = {
-    'color': '#fff',
-    'textAlign': 'center'
 }
 
 const styleWithImg = {}
