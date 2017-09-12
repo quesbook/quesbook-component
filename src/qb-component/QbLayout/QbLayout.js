@@ -4,40 +4,45 @@ import QbHeader from '../QbHeader';
 import QbFooter from '../QbFooter';
 import gql from 'graphql-tag';
 import ApolloClient, {createNetworkInterface} from 'apollo-client';
-import {GQL_URL, API_URL, TOKEN_KEY} from '../common/const';
+import {QB_COMPONENT_GQL_URL, QB_COMPONENT_API_URL, TOKEN_KEY} from '../common/const';
 import Cookies from 'js-cookie';
-const networkInterface = createNetworkInterface({uri: GQL_URL});
-
-networkInterface.use([
-    {
-        applyMiddleware(req, next) {
-            if (!req.options.headers) {
-                req.options.headers = {}; // Create the header object if needed.
-            }
-            // get the authentication token from cookies if it exists, waiting for fix
-            const token = Cookies.get(TOKEN_KEY);
-            req.options.headers.authorization = token
-                ? `bearer ${token}`
-                : '';
-            next();
-        }
-    }
-]);
-
-const client = new ApolloClient({networkInterface});
 
 class QbLayout extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        const { gqlUrl } = this.props;
+        const GQL_URL = gqlUrl || QB_COMPONENT_GQL_URL;
+        const networkInterface = createNetworkInterface({uri: GQL_URL});
+        
+        networkInterface.use([
+            {
+                applyMiddleware(req, next) {
+                    if (!req.options.headers) {
+                        req.options.headers = {}; // Create the header object if needed.
+                    }
+                    // get the authentication token from cookies if it exists, waiting for fix
+                    const token = Cookies.get(TOKEN_KEY);
+                    req.options.headers.authorization = token
+                        ? `bearer ${token}`
+                        : '';
+                    next();
+                }
+            }
+        ]);
+        this.client = new ApolloClient({networkInterface});
+
 
         this.state = {
             currentUser: null,
             navItemList: {}
         };
+
+
     }
 
     componentWillMount() {
-        client.query({query: gql `
+        this.client.query({query: gql `
           query {
               currentUser: current_user {
                 id
@@ -72,6 +77,10 @@ class QbLayout extends Component {
         // this.setState({
         //     navItemList: navItemList.slice(0, 1)
         // });
+    }
+
+    onClick_MyClass() {
+        window.location.href = window.location.origin + '/start/#/myClasses';
     }
 
     onClick_SignOut() {
@@ -109,7 +118,9 @@ class QbLayout extends Component {
 
         return (
             <div className="layout-ct">
-                <QbHeader messageId={messageId} client={client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)}/>
+                <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)}
+                    onClick_MyClass={this.onClick_MyClass.bind(this)}
+                    onClick_Setting={this.onClick_Setting.bind(this)}/>
                 <div className="body-content">
                     {this.props.children}
                 </div>
