@@ -4,17 +4,17 @@ import QbHeader from '../QbHeader';
 import QbFooter from '../QbFooter';
 import gql from 'graphql-tag';
 import ApolloClient, {createNetworkInterface} from 'apollo-client';
-import {QB_COMPONENT_GQL_URL, QB_COMPONENT_API_URL, TOKEN_KEY} from '../common/const';
+import {QB_COMPONENT_GQL_URL, TOKEN_KEY, TOKEN_KEY_QB} from '../common/const';
 import Cookies from 'js-cookie';
 
 class QbLayout extends Component {
     constructor(props) {
         super(props);
 
-        const { gqlUrl } = this.props;
+        const {gqlUrl} = this.props;
         const GQL_URL = gqlUrl || QB_COMPONENT_GQL_URL;
         const networkInterface = createNetworkInterface({uri: GQL_URL});
-        
+
         networkInterface.use([
             {
                 applyMiddleware(req, next) {
@@ -32,12 +32,10 @@ class QbLayout extends Component {
         ]);
         this.client = new ApolloClient({networkInterface});
 
-
         this.state = {
             currentUser: null,
             navItemList: {}
         };
-
 
     }
 
@@ -93,7 +91,11 @@ class QbLayout extends Component {
             }
             return response;
         }
-        fetch(API_URL + '/api/v1/user/sign_out', {
+
+        const {gqlUrl} = this.props;
+        const GQL_URL = gqlUrl || QB_COMPONENT_GQL_URL;
+
+        fetch(GQL_URL.replace('/graphql', '') + '/api/v1/user/sign_out', {
             method: 'POST',
             headers: {
                 Accept: 'application/vnd.api+json',
@@ -103,6 +105,7 @@ class QbLayout extends Component {
         }).then(handleErrors).then(res => {
             console.log('success');
             Cookies.remove(TOKEN_KEY);
+            Cookies.remove(TOKEN_KEY_QB);
             this.setState({currentUser: null});
             window.location.href = '/home_page';
             return res.data;
@@ -118,9 +121,7 @@ class QbLayout extends Component {
 
         return (
             <div className="layout-ct">
-                <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)}
-                    onClick_MyClass={this.onClick_MyClass.bind(this)}
-                    onClick_Setting={this.onClick_Setting.bind(this)}/>
+                <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_MyClass={this.onClick_MyClass.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)}/>
                 <div className="body-content">
                     {this.props.children}
                 </div>

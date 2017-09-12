@@ -2,6 +2,7 @@ export let QB_COMPONENT_API_URL = 'https://stg.quesbook.com';
 export let QB_COMPONENT_GQL_URL = `${QB_COMPONENT_API_URL}/graphql`;
 // export const GQL_URL = 'http://localhost:8080/graphql';
 export const TOKEN_KEY = 'jwt';
+export const TOKEN_KEY_QB = '_quesbook_session';
 
 export const NAV_ITEM_LIST = [
     {
