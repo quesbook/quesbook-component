@@ -36,14 +36,12 @@ class QbSwitcher extends Component {
         }
     }
     render() {
-        console.log('TAg render');
         const {diameter, barStyle, clickHandler} = this.props;
         let circleDiameter = diameter?diameter:14;
         let bar = barStyle?{width: barStyle.width, height: barStyle.height}: {width: 24, height: 8};
         let circle = this.renderCircle(circleDiameter, bar);
         return (
             <div style={{position: 'relative', width: bar.width}} onClick={()=> {
-                console.log('Tg click again');
                 clickHandler();
             }}>
                 <div style={{

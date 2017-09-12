@@ -37,6 +37,7 @@ export default class Test extends Component {
             switchState: true,
             showCard: true,
             numlist: ['yahaha'],
+            showModal: false,
         }
     }
     toggleModal() {
@@ -129,15 +130,17 @@ export default class Test extends Component {
                 </QbButton>
                 <QbButton label="t"
                     className="btn btn-primary"
-                    disabled={true}
-                    data-toggle="modal" data-target="#modal" />
+                    clickHandler={()=> this.setState({showModal: true})} />
                 <QbCheckBox label="hello" changeHandler={() => alert('hi')} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbInput size="small" changeHandler={(e) => alert(e.target.value)}>
                     @
                 </QbInput>
-                <QbModal target="modal" >
+                <QbModal target="modal" show={this.state.showModal}
+                         afterHidden={()=> this.setState({showModal: false})}
+                         afterShown={()=> this.setState({showModal: true})}
+                >
                     <QbModalHeader>
                         <div>header</div>
                     </QbModalHeader>
