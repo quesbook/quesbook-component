@@ -24,7 +24,6 @@ class QbButton extends Component {
         });
     }
     removeClass(name) {
-        console.log('Tag ,', this.state.className.indexOf(name));
         let classNow = this.state.className;
         let index =this.state.className.indexOf(name);
         classNow.splice(index,1);

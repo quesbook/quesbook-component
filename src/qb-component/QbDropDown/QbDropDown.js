@@ -86,7 +86,6 @@ class QbDropDown extends Component {
                 );
             case 'input':
                 let finalInputStyle = eval("style.input."+ (size?size:"default"));
-                console.log('Tg input st :', finalInputStyle, size);
                 return (
                     <div className={compClass} style={{...finalInputStyle, position: 'relative', ...compStyle}}>
                         <input type="text" style={{...finalInputStyle, ...inputStyle}} data-toggle="dropdown" className="form-control" onChange={(e)=> {
@@ -94,7 +93,6 @@ class QbDropDown extends Component {
                                 keyword: e.target.value
                             });
                             // onChange(this.state.selectedObj);
-                            // console.log('this statr: ', this.state.keyword);
                         }}/>
                         <div className="dropdown-menu dropdown-menu-right" style={dropdownStyle}>
                             {children}
