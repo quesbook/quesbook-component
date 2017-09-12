@@ -4,8 +4,23 @@
 import React, {Component} from 'react';
 /*eslint-disable*/
 class QbModal extends Component {
+    constructor(props) {
+        super(props);
+        const {target, afterHidden, afterShown} = this.props;
+        $('#'+ target).on('hidden.bs.modal', function (e) {
+            afterHidden();
+        }).on('shown.bs.modal', function (e) {
+            afterShown();
+        });
+    }
     render() {
-        const {target} = this.props;
+        const {target, show} = this.props;
+        console.log('Tag show is :', show);
+        if (show) {
+            $('#'+ target).modal('show');
+        } else {
+            $('#'+ target).modal('hide');
+        }
         return (
             <div className="modal fade" id={target} role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
