@@ -11,8 +11,8 @@ class QbLayout extends Component {
     constructor(props) {
         super(props);
 
-        const {gqlUrl} = this.props;
-        const GQL_URL = gqlUrl || QB_COMPONENT_GQL_URL;
+        const {gqlUrl, route} = this.props;
+        const GQL_URL = gqlUrl || (route ? route.gqlUrl : route) || QB_COMPONENT_GQL_URL;
         const networkInterface = createNetworkInterface({uri: GQL_URL});
 
         networkInterface.use([
@@ -92,8 +92,8 @@ class QbLayout extends Component {
             return response;
         }
 
-        const {gqlUrl} = this.props;
-        const GQL_URL = gqlUrl || QB_COMPONENT_GQL_URL;
+        const {gqlUrl, route} = this.props;
+        const GQL_URL = gqlUrl || (route ? route.gqlUrl : route) || QB_COMPONENT_GQL_URL;
 
         fetch(GQL_URL.replace('/graphql', '') + '/api/v1/user/sign_out', {
             method: 'POST',
