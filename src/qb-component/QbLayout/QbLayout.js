@@ -95,13 +95,27 @@ class QbLayout extends Component {
         const {gqlUrl, route} = this.props;
         const GQL_URL = gqlUrl || (route ? route.gqlUrl : route) || QB_COMPONENT_GQL_URL;
 
-        fetch(GQL_URL.replace('/graphql', '') + '/api/v1/user/sign_out', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/vnd.api+json',
-                'Content-Type': 'application/vnd.api+json',
-                Authorization: 'bearer ' + token,
-            },
+        // fetch(GQL_URL.replace('/graphql', '') + '/api/v1/user/sign_out', {
+        //     method: 'POST',
+        //     headers: {
+        //         Accept: 'application/vnd.api+json',
+        //         'Content-Type': 'application/vnd.api+json',
+        //         Authorization: 'bearer ' + token,
+        //     },
+        //     credentials: 'include'
+        // }).then(handleErrors).then(res => {
+        //     console.log('success');
+        //     Cookies.remove(TOKEN_KEY);
+        //     Cookies.remove(TOKEN_KEY_QB);
+        //     this.setState({currentUser: null});
+        //     window.location.href = '/home_page';
+        //     return res.data;
+        // }).catch(error => {
+        //     alert('sign out error!');
+        //     console.log(error);
+        // });
+        fetch(GQL_URL.replace('/graphql', '') + '/users/sign_out', {
+            method: 'DELETE',
             credentials: 'include'
         }).then(handleErrors).then(res => {
             console.log('success');
