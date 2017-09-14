@@ -100,8 +100,9 @@ class QbLayout extends Component {
             headers: {
                 Accept: 'application/vnd.api+json',
                 'Content-Type': 'application/vnd.api+json',
-                Authorization: 'bearer ' + token
-            }
+                Authorization: 'bearer ' + token,
+            },
+            credentials: 'include'
         }).then(handleErrors).then(res => {
             console.log('success');
             Cookies.remove(TOKEN_KEY);
