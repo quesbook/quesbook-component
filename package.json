@@ -1,6 +1,6 @@
 {
   "name": "quesbook-component",
-  "version": "0.0.120",
+  "version": "0.1.2",
   "description": "",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -31,6 +31,7 @@
     "js-cookie": "^2.1.4",
     "moment": "^2.18.1",
     "rc-collapse": "^1.7.6",
+    "rc-notification": "^2.0.5",
     "rc-slider": "^8.2.0",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.6.0",
