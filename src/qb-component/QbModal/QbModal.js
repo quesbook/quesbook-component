@@ -15,7 +15,6 @@ class QbModal extends Component {
     }
     render() {
         const {target, show} = this.props;
-        console.log('Tag show is :', show);
         if (show) {
             $('#'+ target).modal('show');
         } else {
