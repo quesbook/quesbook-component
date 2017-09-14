@@ -24,8 +24,7 @@ import QbMessageCard from './QbMessageCard';
 import QbProgressBar from './QbProgressBar';
 import 'rc-collapse/assets/index.css';
 import {QbAvatar} from './QbHeader';
-
-
+import QbAlert from './QbAlert';
 
 const Panel = Collapse.Panel;
 
@@ -38,6 +37,7 @@ export default class Test extends Component {
             showCard: true,
             numlist: ['yahaha'],
             showModal: false,
+            showAlert: false,
         }
     }
     toggleModal() {
@@ -101,7 +101,7 @@ export default class Test extends Component {
                 <div>god</div>
             </div>,
             content: <div>like</div>
-        }]
+        }];
         return (
             <div>
                 <QbAvatar user={{name: 'Tom Zhu', avatar: ''}} size='big'></QbAvatar>
@@ -130,7 +130,7 @@ export default class Test extends Component {
                 </QbButton>
                 <QbButton label="t"
                     className="btn btn-primary"
-                    clickHandler={()=> this.setState({showModal: true})} />
+                    clickHandler={()=> this.setState({showAlert: !this.state.showAlert})} />
                 <QbCheckBox label="hello" changeHandler={() => alert('hi')} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
@@ -197,10 +197,18 @@ export default class Test extends Component {
                         <div>xixiix</div>
                         <div>xixiix</div>
                         <div>xixiix</div>
-                    </QbTab>
+                    </QbTab>`
                 </QbTabs>
                 <QbCollapse content={collapseContent}
-                    panelStyle={{ color: '#ffffff', background: '#203a62' }} />
+                    panelStyle={{ color: '#ffffff', background: '#203a62'}} />
+                <button onClick={()=> {
+                    QbAlert.error('title',
+                        (<div>hello inhao jodhqwhbdlsjcn ijbib2ekwnijwienf l</div>),
+                        100,
+                        {fontWeight: 'bold'});
+                }}>
+                    booooo
+                </button>
             </div>
         )
     }
