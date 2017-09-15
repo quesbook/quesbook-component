@@ -11,9 +11,9 @@ import QbHighlight from './QbHighlight';
 import QbScore from './QbScore';
 import QbStar from './QbStar';
 import QbImgSection from './QbImgSection';
-import {QbCheckBox, QbRadio, QbInput, QbSwitcher} from './QbInput';
-import {QbModalBody, QbModalHeader, QbModalFooter, QbModal} from './QbModal';
-import {QbDropDown, QbDropDownDivider, QbDropDownItem} from './QbDropDown';
+import { QbCheckBox, QbRadio, QbInput, QbSwitcher } from './QbInput';
+import { QbModalBody, QbModalHeader, QbModalFooter, QbModal } from './QbModal';
+import { QbDropDown, QbDropDownDivider, QbDropDownItem } from './QbDropDown';
 import QbSlider from './QbSlider';
 import { QbCard } from './QbCard';
 import CloseIcon from './assets/image/icon/x-icon@3x.png';
@@ -23,8 +23,9 @@ import Collapse from 'rc-collapse';
 import QbMessageCard from './QbMessageCard';
 import QbProgressBar from './QbProgressBar';
 import 'rc-collapse/assets/index.css';
-import {QbAvatar} from './QbHeader';
+import { QbAvatar } from './QbHeader';
 import QbAlert from './QbAlert';
+import QbClassCard from './QbClassCard';
 
 const Panel = Collapse.Panel;
 
@@ -102,12 +103,27 @@ export default class Test extends Component {
             </div>,
             content: <div>like</div>
         }];
+        const classCardData = {
+            btnText: 'Finished',
+            compClass: null,
+            compStyle: { width: '450px', margin: 30 },
+            expand: false,
+            disabled: false,
+            sectionName: 'math',
+            courseName: 'E-Class for Opening, Transitional & Closing Sentences',
+            startsAt: 'Jan. 15th at 5PM',
+            description: 'Take this e-class to learn the important elements that go into writing and identifying effective paragraphs made up of opening, transitional and closing sentences. This class will teach you how to master this skill for the ACT',
+            skillName: 'Analyzing Function'
+        };
+        const classCardData2 = { ...classCardData, expand: true, btnText: 'Join Class' }
         return (
             <div>
-                <QbAvatar user={{name: 'Tom Zhu', avatar: ''}} size='big'></QbAvatar>
+                <QbClassCard {...classCardData} />
+                <QbClassCard {...classCardData2} />
+                <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
                 <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'35%'} />
                 <QbProgressBar showProgressText={true} compStyle={{ margin: '50px 0' }} percentage={'35%'} />
-                <QbImgSection sectionType="English" style={{'height': '200px'}}></QbImgSection>
+                <QbImgSection sectionType="English" style={{ 'height': '200px' }}></QbImgSection>
                 <QbImgSection sectionType="science"></QbImgSection>
 
                 <QbStar num="33"></QbStar>
@@ -115,8 +131,8 @@ export default class Test extends Component {
                 <QbScore score="1"></QbScore>
                 <QbScore score="99"></QbScore>
 
-                <QbScore score="1" content="over all" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
-                <QbScore score="32" content="over all" style={{'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px'}}></QbScore>
+                <QbScore score="1" content="over all" style={{ 'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px' }}></QbScore>
+                <QbScore score="32" content="over all" style={{ 'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px' }}></QbScore>
                 <h1>
                     My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
                 </h1>
@@ -130,7 +146,7 @@ export default class Test extends Component {
                 </QbButton>
                 <QbButton label="t"
                     className="btn btn-primary"
-                    clickHandler={()=> this.setState({showAlert: !this.state.showAlert})} />
+                    clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
                 <QbCheckBox label="hello" changeHandler={() => alert('hi')} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
@@ -138,8 +154,8 @@ export default class Test extends Component {
                     @
                 </QbInput>
                 <QbModal target="modal" show={this.state.showModal}
-                         afterHidden={()=> this.setState({showModal: false})}
-                         afterShown={()=> this.setState({showModal: true})}
+                    afterHidden={() => this.setState({ showModal: false })}
+                    afterShown={() => this.setState({ showModal: true })}
                 >
                     <QbModalHeader>
                         <div>header</div>
@@ -152,19 +168,19 @@ export default class Test extends Component {
                     </QbModalFooter>
                 </QbModal>
                 npm
-                <QbDropDown inputType="input" btnStyle={{width: 350, textAlign: 'left'}}
-                            dropdownStyle={{width: 400}} compStyle={{position: 'relative', width: 400}}
-                            size="large"
-                            content ={dropDownContent} onChange={(data)=> {
-                                console.log('TAg data:', data);
-                                this.setState({
-                                    show: !this.state.show
-                                });
-                }}/>
-                <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)}/>
-                <QbTimePicker ensureTime={(time)=> console.log('Tag time is:', time)} size="large"
-                              btnStyle={{width: 100, height: 52, fontSize: 20}}/>
-                <QbDatePicker onDatesChange = {this.dateChange.bind(this)} style={{width: 500}}/>
+                <QbDropDown inputType="input" btnStyle={{ width: 350, textAlign: 'left' }}
+                    dropdownStyle={{ width: 400 }} compStyle={{ position: 'relative', width: 400 }}
+                    size="large"
+                    content={dropDownContent} onChange={(data) => {
+                        console.log('TAg data:', data);
+                        this.setState({
+                            show: !this.state.show
+                        });
+                    }} />
+                <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
+                <QbTimePicker ensureTime={(time) => console.log('Tag time is:', time)} size="large"
+                    btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
+                <QbDatePicker onDatesChange={this.dateChange.bind(this)} style={{ width: 500 }} />
                 <QbButton label="show message"
                     className="btn dark alternate"
                     size="large"
@@ -200,12 +216,12 @@ export default class Test extends Component {
                     </QbTab>`
                 </QbTabs>
                 <QbCollapse content={collapseContent}
-                    panelStyle={{ color: '#ffffff', background: '#203a62'}} />
-                <button onClick={()=> {
+                    panelStyle={{ color: '#ffffff', background: '#203a62' }} />
+                <button onClick={() => {
                     QbAlert.error('title',
                         (<div>hello inhao jodhqwhbdlsjcn ijbib2ekwnijwienf l</div>),
                         100,
-                        {fontWeight: 'bold'});
+                        { fontWeight: 'bold' });
                 }}>
                     booooo
                 </button>
