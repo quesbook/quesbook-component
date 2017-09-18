@@ -32,9 +32,9 @@ class QbTutorSideBar extends Component {
                     <div className="no-gutters col-8 col-md-4 col-lg-2 navbarside-content tutor">
                         {this.renderUserIconSection(currentUser)}
                         <div className='col-lg-12 section-user'>
-                            <div onClick={this.props.onClick_Setting}>
+                            {/* <div onClick={this.props.onClick_Setting}>
                                 My Account
-                            </div>
+                            </div> */}
                             <div onClick={this.onClick_SignOut.bind(this)}>Log out</div>
                         </div>
                     </div>

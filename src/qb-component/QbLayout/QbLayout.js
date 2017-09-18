@@ -12,7 +12,9 @@ class QbLayout extends Component {
         super(props);
 
         const {gqlUrl, route} = this.props;
-        const GQL_URL = gqlUrl || (route ? route.gqlUrl : route) || QB_COMPONENT_GQL_URL;
+        const GQL_URL = gqlUrl || (route
+            ? route.gqlUrl
+            : route) || QB_COMPONENT_GQL_URL;
         const networkInterface = createNetworkInterface({uri: GQL_URL});
 
         networkInterface.use([
@@ -50,6 +52,7 @@ class QbLayout extends Component {
                 first_name
                 last_name
                 exam_type_names
+                type
               }
           }
         `, fetchPolicy: 'network-only'}).then((res) => {
@@ -93,7 +96,9 @@ class QbLayout extends Component {
         }
 
         const {gqlUrl, route} = this.props;
-        const GQL_URL = gqlUrl || (route ? route.gqlUrl : route) || QB_COMPONENT_GQL_URL;
+        const GQL_URL = gqlUrl || (route
+            ? route.gqlUrl
+            : route) || QB_COMPONENT_GQL_URL;
 
         // fetch(GQL_URL.replace('/graphql', '') + '/api/v1/user/sign_out', {
         //     method: 'POST',
@@ -133,11 +138,13 @@ class QbLayout extends Component {
     render() {
         const {messageId} = this.props;
         let currentUser = this.state.currentUser;
-
+        let styleNoLogin = !currentUser.id && {
+            marginTop: '50px'
+        };
         return (
             <div className="layout-ct">
                 <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_MyClass={this.onClick_MyClass.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)}/>
-                <div className="body-content">
+                <div className="body-content" style={styleNoLogin}>
                     {this.props.children}
                 </div>
                 <QbFooter/>

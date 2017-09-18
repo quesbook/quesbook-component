@@ -141,7 +141,7 @@ class QbHeader extends Component {
                     {item.label}
                 </Link>
             </li>
-        ); 
+        );
     }
 
     renderExternalLink(item, index) {
@@ -153,7 +153,7 @@ class QbHeader extends Component {
                     {item.label}
                 </a>
             </li>
-        ); 
+        );
     }
 
     messageToggle() {
@@ -212,7 +212,7 @@ class QbHeader extends Component {
                 currentUser={currentUser}
                 isShow={this.state.isShowSideBar}
                 onHideSideBar={this.hideSideBar.bind(this)}
-                onClick_MyClass={this.props.onClick_MyClass} 
+                onClick_MyClass={this.props.onClick_MyClass}
                 onClick_Setting={this.props.onClick_Setting}
                 onClick_SignOut={this.onClick_SignOut.bind(this)}/>);
         }
@@ -221,7 +221,7 @@ class QbHeader extends Component {
     render() {
         let currentUser = this.state.currentUser;
         return (
-            <div>
+            <div className="a-nostyle">
                 <div className={this.state.activeClass}>
                     <div className='section-ct-navbar'>
                         <div className="navbar-logo">
