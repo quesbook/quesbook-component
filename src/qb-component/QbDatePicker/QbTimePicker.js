@@ -59,27 +59,50 @@ class QbTimePicker extends Component {
             displayPicker: !prevState.displayPicker,
         }));
     }
-    render() {
-        const {size, btnStyle, ensureTime} = this.props;
-        let finalStyle = eval("style.button."+ (size?size:"default"));
-        let hourStr = this.padNumber(this.state.hour, 2);
-        let time = hourStr + ' ' + this.state.periods;
+    componentOpen() {
+        console.log('TAg open');
+        this.toggleDisplayPicker()
+    }
+    componentClose() {
+        console.log('TAg close');
+        const {ensureTime} = this.props;
         let timeHour = 1;
         if (this.state.periods==='AM') {
             timeHour = this.state.hour;
         } else if(this.state.periods==='PM') {
             timeHour = this.state.hour + 12;
         }
+        ensureTime(timeHour);
+        this.toggleDisplayPicker()
+    }
+    render() {
+        const {size, btnStyle} = this.props;
+        let finalStyle = eval("style.button."+ (size?size:"default"));
+        let hourStr = this.padNumber(this.state.hour, 2);
+        let time = hourStr + ' ' + this.state.periods;
+        // let timeHour = 1;
+        // if (this.state.periods==='AM') {
+        //     timeHour = this.state.hour;
+        // } else if(this.state.periods==='PM') {
+        //     timeHour = this.state.hour + 12;
+        // }
         let display = this.state.displayPicker?'flex':'none';
-        if (!this.state.displayPicker) {
-            ensureTime(timeHour);
-        }
+        // if (!this.state.displayPicker) {
+        //     ensureTime(timeHour);
+        // }
         return (
             <div style={{height: finalStyle.height, position: 'relative'}}>
                 <button className="btn btn-secondary"
                         style={{...style.button.publicStyle,
                     height: finalStyle.height,
-                    fontSize: finalStyle.fontSize, ...btnStyle,}} onClick={this.toggleDisplayPicker.bind(this)}>{time}</button>
+                    fontSize: finalStyle.fontSize, ...btnStyle,}} onClick={()=> {
+                        if (this.state.displayPicker) {
+                            this.componentClose();
+                        } else {
+                            this.componentOpen();
+                        }
+                        this.toggleDisplayPicker.bind(this);
+                }}>{time}</button>
                 <div className="dropdown-menu dropdown-menu-left"
                      style={{...style.timePicker, display: display}}>
                     <div style={style.hourPicker}>
