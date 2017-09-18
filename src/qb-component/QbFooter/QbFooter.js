@@ -20,7 +20,7 @@ class QbFooter extends Component {
                         </a>
                     </li>
                     <li>
-                        <a href="//stg.quesbook.com/start/#/terms/">Terms of use</a>
+                         <a href={`${window.location.origin}/start/#/terms/`}>Terms of use</a>
                     </li>
                     <li className='copy-right'>
                         &copy; {new Date().getFullYear()} Quesbook USA, Inc.
