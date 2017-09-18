@@ -221,9 +221,9 @@ class QbHeader extends Component {
     render() {
         let currentUser = this.state.currentUser;
         return (
-            <div className="a-nostyle">
+            <div className="box-a-nostyle">
                 <div className={this.state.activeClass}>
-                    <div className='section-ct-navbar'>
+                    <div className='section-ct-navbar box-font-narrow'>
                         <div className="navbar-logo">
                             <img src={logo} alt=""/>
                             <span>{this.renderTargetExam(currentUser)}</span>

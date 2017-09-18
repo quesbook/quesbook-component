@@ -98,7 +98,7 @@ class QbSideBar extends Component {
 
             return (
                 <div className='col-lg-12 section-exam'>
-                    <div className='title'>
+                    <div className='box-font-narrow title'>
                         My tests
                     </div>
                     {examItemList}
@@ -114,7 +114,7 @@ class QbSideBar extends Component {
                     <div className="icon">
                         <QbAvatar user={currentUser}></QbAvatar>
                     </div>
-                    <div className="text">{currentUser.name}</div>
+                    <div className="box-font-narrow text">{currentUser.name}</div>
                     <div className="close" onClick={this.hideNavSideBar.bind(this)}>
                         <img style={{
                             height: 16,
