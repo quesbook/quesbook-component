@@ -44,13 +44,14 @@ class QbDropDown extends Component {
                     return false;
                 }
             });
-            children = filterArray.map((data, index) =>
-                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => {
-                    this.setState({
-                        selectedObj: data
-                    });
-                    onChange(data);
-                }}/>
+            children = filterArray.map((data) =>{
+                    return (<QbDropDownItem label={data.label} value={data.value} onClick={() => {
+                        this.setState({
+                            selectedObj: data
+                        });
+                        onChange(data);
+                    }}/>);
+                }
             );
         }
         switch (inputType) {
