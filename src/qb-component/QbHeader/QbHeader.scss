@@ -117,6 +117,7 @@
             opacity: 0.5;
             color: $white;
             text-decoration: none;
+            white-space: nowrap;
         }
 
         > li.active a {
