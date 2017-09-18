@@ -138,9 +138,14 @@ class QbLayout extends Component {
     render() {
         const {messageId} = this.props;
         let currentUser = this.state.currentUser;
-        let styleNoLogin = !currentUser.id && {
-            marginTop: '50px'
-        };
+        let styleNoLogin;
+
+        if (!currentUser) {
+            styleNoLogin = {
+                marginTop: '50px'
+            };
+        }
+
         return (
             <div className="layout-ct">
                 <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_MyClass={this.onClick_MyClass.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)}/>
