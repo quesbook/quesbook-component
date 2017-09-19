@@ -1,7 +1,7 @@
 /**
  * Created by az on 2017/7/17.
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import QbDropDownItem from './QbDropDownItem';
 import './QbDropDown.scss';
 
@@ -10,10 +10,7 @@ class QbDropDown extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedObj: {
-                label: props.defaultData?props.defaultData.label: '' ,
-                value: props.defaultData?props.defaultData.value: '' ,
-            },
+            selectedObj: props.defaultData,
             keyword: ''
         }
     }
@@ -21,8 +18,17 @@ class QbDropDown extends Component {
     //     const {onChange} = this.props;
     //     onChange(this.state.selectedObj);
     // }
+    componentWillReceiveProps(nextProps) {
+        let oldDefaultValue = this.props.defaultData.value;
+        let newDefaultValue = nextProps.defaultData.value;
+        if (oldDefaultValue !== newDefaultValue) {
+            this.setState({
+                selectedObj: nextProps.defaultData
+            })
+        }
+    }
     renderInputComp() {
-        const {compClass,
+        const { compClass,
             compStyle, inputType, btnStyle, size, inputClassName, dropdownStyle, onChange,
             content, inputStyle
         } = this.props;
@@ -34,50 +40,51 @@ class QbDropDown extends Component {
                         selectedObj: data
                     });
                     onChange(data);
-                }}/>
+                }} />
             );
         } else if (inputType === 'input') {
-            let filterArray = content.filter((data)=> {
+            let filterArray = content.filter((data) => {
                 if (data.label.indexOf(this.state.keyword) !== -1) {
                     return true;
                 } else {
                     return false;
                 }
             });
-            children = filterArray.map((data) =>{
-                    return (<QbDropDownItem label={data.label} value={data.value} onClick={() => {
-                        this.setState({
-                            selectedObj: data
-                        });
-                        onChange(data);
-                    }}/>);
-                }
+            children = filterArray.map((data) => {
+                return (<QbDropDownItem label={data.label} value={data.value} onClick={() => {
+                    this.setState({
+                        selectedObj: data
+                    });
+                    onChange(data);
+                }} />);
+            }
             );
         }
         switch (inputType) {
             case 'button':
-                let btnClass = "btn "+ (inputClassName?inputClassName:'btn-secondary');
-                let finalStyle = eval("style.button."+ (size?size:"default"));
+                let btnClass = "btn " + (inputClassName ? inputClassName : 'btn-secondary');
+                let finalStyle = eval("style.button." + (size ? size : "default"));
                 return (
-                    <div className={compClass+ ' btn-group'} style={{height: finalStyle.height, ...compStyle}}>
+                    <div className={compClass + ' btn-group'} style={{ height: finalStyle.height, ...compStyle }}>
                         <button type="button"
-                                className={btnClass}
-                                onChange={(e)=> {
-                                    this.setState({
-                                        keyword: e.target.value
-                                    });
-                                    onChange(this.state.selectedObj);
-                                }}
-                                style={{
-                                    ...style.button.publicStyle,
-                                    height: finalStyle.height,
-                                    borderRight: 0,
-                                    fontSize: finalStyle.fontSize,
-                                    ...btnStyle,}}>
-                                {this.state.selectedObj.label}
+                            className={btnClass}
+                            onChange={(e) => {
+                                this.setState({
+                                    keyword: e.target.value
+                                });
+                                onChange(this.state.selectedObj);
+                            }}
+                            style={{
+                                ...style.button.publicStyle,
+                                height: finalStyle.height,
+                                borderRight: 0,
+                                fontSize: finalStyle.fontSize,
+                                ...btnStyle,
+                            }}>
+                            {this.state.selectedObj.label}
                         </button>
-                        <button type="button" style={{...style.button.publicStyle, borderLeft: 0,}}
-                                className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" style={{ ...style.button.publicStyle, borderLeft: 0, }}
+                            className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span className="sr-only">Toggle Dropdown</span>
                         </button>
                         <div className="dropdown-menu" style={dropdownStyle}>
@@ -86,15 +93,15 @@ class QbDropDown extends Component {
                     </div>
                 );
             case 'input':
-                let finalInputStyle = eval("style.input."+ (size?size:"default"));
+                let finalInputStyle = eval("style.input." + (size ? size : "default"));
                 return (
-                    <div className={compClass} style={{...finalInputStyle, position: 'relative', ...compStyle}}>
-                        <input type="text" style={{...finalInputStyle, ...inputStyle}} data-toggle="dropdown" className="form-control" onChange={(e)=> {
+                    <div className={compClass} style={{ ...finalInputStyle, position: 'relative', ...compStyle }}>
+                        <input type="text" style={{ ...finalInputStyle, ...inputStyle }} data-toggle="dropdown" className="form-control" onChange={(e) => {
                             this.setState({
                                 keyword: e.target.value
                             });
                             // onChange(this.state.selectedObj);
-                        }}/>
+                        }} />
                         <div className="dropdown-menu dropdown-menu-right" style={dropdownStyle}>
                             {children}
                         </div>
@@ -153,5 +160,12 @@ const style = {
         }
     },
 };
+
+QbDropDown.defaultProps = {
+    defaultData: {
+        value: null,
+        label: null
+    }
+}
 
 export default QbDropDown;
