@@ -11,13 +11,13 @@ class QbMessageCard extends Component {
         const {size, title, content, display, onCancelClick, messageStyle} = this.props;
         let fontStyle = {
             titleSize: 26,
-            contentSize: 18,
+            contentSize: '1rem',
         };
         switch (size) {
             case 'xs':
                 fontStyle = {
                     titleSize: 20,
-                    contentSize: 16,
+                    contentSize: '1rem',
                 };
                 break;
             case 'lg':
@@ -49,6 +49,7 @@ const style = {
         top: 10,
         right: 10,
         cursor: 'pointer',
+        fontSize: '1rem',
     },
     title: {
         fontWeight: 'bold',
@@ -60,7 +61,7 @@ const style = {
         color: '#192230',
         width: '100%',
         flex: 1,
-        padding: '0 15px 25px 15px',
+        padding: '0 15px 15px',
     }
 }
 
