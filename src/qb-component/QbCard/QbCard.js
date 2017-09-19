@@ -14,7 +14,7 @@ class QbCard extends Component {
                     <img src={avatarSrc}/>
                 </div>
                 <div style={style.rightFrame}>
-                    <div style={style.classTitle}>asdasmd koamo kmo jm osdjonqc dqwj dncpian apdijcn pdj pfidf n</div>
+                    <div className="box-font-narrow" style={style.classTitle}>asdasmd koamo kmo jm osdjonqc dqwj dncpian apdijcn pdj pfidf n</div>
                     <div style={style.priceAndTime}>
                         <div style={style.time}>120912321</div>
                         <div style={style.price}>$666</div>
@@ -50,7 +50,6 @@ const style = {
         padding: '9px 15px 9px 12px',
     },
     classTitle: {
-        fontFamily: 'GothamNarrow',
         fontSize: 21,
         fontWeight: 'bold',
         lineHeight: 1.2,
