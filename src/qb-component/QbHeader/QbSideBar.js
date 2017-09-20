@@ -86,7 +86,7 @@ class QbSideBar extends Component {
     }
 
     renderUserExamSection(currentUser) {
-        if (currentUser) {
+        if (currentUser && currentUser.type !== 'Tutor') {
             let currentUserExamList = currentUser.exam_type_names;
             let examItemList = currentUserExamList.map((item, index) => {
                 return (

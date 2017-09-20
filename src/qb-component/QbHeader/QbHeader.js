@@ -125,7 +125,7 @@ class QbHeader extends Component {
     renderSignedLink(currentUser) {
         if (currentUser && this.state.linkItems) {
             return (
-                <div className='section-ct-link'>
+                <div className='section-ct-link box-cursor'>
                     {this.renderLinkItems()}
                 </div>
             );
