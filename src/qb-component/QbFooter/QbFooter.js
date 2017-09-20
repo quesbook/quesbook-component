@@ -23,7 +23,7 @@ class QbFooter extends Component {
                          <a href={`${window.location.origin}/start/#/terms/refundPolicy`}>Refund Policy</a>
                     </li>
                     <li className='footer-right'>
-                         <a href={`${window.location.origin}/start/#/terms/`}>Terms of use</a>
+                         <a href={`${window.location.origin}/start/#/terms/termofService`}>Terms of use</a>
                     </li>
                     <li className='copy-right'>
                         &copy; {new Date().getFullYear()} Quesbook USA, Inc.
