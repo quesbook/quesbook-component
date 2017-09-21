@@ -7,11 +7,11 @@ class QbFooter extends Component {
         // let logo;
         return (
             <footer>
-                <ul>
-                    <li>
+                <ul className='box-a-nostyle'>
+                    <li className='footer-left'>
                         <a href="mailto:help@quesbook.com?Subject=Help!">Help</a>
                     </li>
-                    <li>
+                    <li className='footer-left'>
                         <a href="mailto:help@quesbook.com?Subject=Help!">Contact</a>
                     </li>
                     <li className='logo'>
@@ -19,8 +19,11 @@ class QbFooter extends Component {
                             <img src={logo} alt="" />
                         </a>
                     </li>
-                    <li>
-                        <a href="//stg.quesbook.com/start/#/terms/">Terms of use</a>
+                    <li className='footer-right'>
+                         <a href={`${window.location.origin}/start/#/terms/refundPolicy`}>Refund Policy</a>
+                    </li>
+                    <li className='footer-right'>
+                         <a href={`${window.location.origin}/start/#/terms/termofService`}>Terms of use</a>
                     </li>
                     <li className='copy-right'>
                         &copy; {new Date().getFullYear()} Quesbook USA, Inc.

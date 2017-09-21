@@ -33,10 +33,10 @@ class QbSideBar extends Component {
                         {this.renderUserIconSection(currentUser)}
                         {this.renderUserExamSection(currentUser)}
                         <div className='col-lg-12 section-user'>
-                            <div onClick={this.props.onClick_MyClass}>
+                            <div hidden={currentUser.type==='Tutor'} onClick={this.props.onClick_MyClass}>
                                 My Class
                             </div>
-                            <div onClick={this.props.onClick_Setting}>
+                            <div hidden={currentUser.type==='Tutor'} onClick={this.props.onClick_Setting}>
                                 My Account
                             </div>
                             <div onClick={this.onClick_SignOut.bind(this)}>Log out</div>
@@ -86,7 +86,7 @@ class QbSideBar extends Component {
     }
 
     renderUserExamSection(currentUser) {
-        if (currentUser) {
+        if (currentUser && currentUser.type !== 'Tutor') {
             let currentUserExamList = currentUser.exam_type_names;
             let examItemList = currentUserExamList.map((item, index) => {
                 return (
@@ -98,7 +98,7 @@ class QbSideBar extends Component {
 
             return (
                 <div className='col-lg-12 section-exam'>
-                    <div className='title'>
+                    <div className='box-font-narrow title'>
                         My tests
                     </div>
                     {examItemList}
@@ -114,7 +114,7 @@ class QbSideBar extends Component {
                     <div className="icon">
                         <QbAvatar user={currentUser}></QbAvatar>
                     </div>
-                    <div className="text">{currentUser.name}</div>
+                    <div className="box-font-narrow text">{currentUser.name}</div>
                     <div className="close" onClick={this.hideNavSideBar.bind(this)}>
                         <img style={{
                             height: 16,

@@ -6,6 +6,36 @@ html {
         font-style: normal;
         font-weight: 400;
 
+        .box-font-narrow {
+            font-family: "Gotham Narrow A", "Gotham Narrow B";
+        }
+        .box-a-nostyle {
+            a,
+            a:hover {
+                text-decoration: none;
+            }
+        }
+        .box-cursor:hover {
+            cursor: pointer;
+        }
+        .box-list {
+            ul {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+        }
+        .box-ct {
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+        }
+        .box-block {
+            display: block;
+        }
+        .box-hidden {
+            display: none !important;
+        }
         .box-flex {
             display: flex;
         }
@@ -16,11 +46,6 @@ html {
         }
         .box-flex-item {
             flex: 1;
-        }
-
-        a,
-        a:hover {
-            text-decoration: none;
         }
 
         .layout-ct {
