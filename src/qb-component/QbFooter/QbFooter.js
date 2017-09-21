@@ -4,7 +4,6 @@ import logo from '../assets/image/logo/light-condensed.png';
 
 class QbFooter extends Component {
     render() {
-        // let logo;
         return (
             <footer>
                 <ul className='box-a-nostyle'>

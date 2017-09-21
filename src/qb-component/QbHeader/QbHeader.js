@@ -108,11 +108,9 @@ class QbHeader extends Component {
         let ret = [];
 
         ret = this.state.linkItems.map((item, index) => {
-            return (
-                item.isRedirect
+            return (item.isRedirect
                 ? this.renderExternalLink(item, index)
-                : this.renderInnerLink(item, index)
-            );
+                : this.renderInnerLink(item, index));
         });
 
         return (
@@ -208,13 +206,7 @@ class QbHeader extends Component {
 
     renderQbSideBar(currentUser) {
         if (this.state.isShowSideBar) {
-            return (<QbSideBar
-                currentUser={currentUser}
-                isShow={this.state.isShowSideBar}
-                onHideSideBar={this.hideSideBar.bind(this)}
-                onClick_MyClass={this.props.onClick_MyClass}
-                onClick_Setting={this.props.onClick_Setting}
-                onClick_SignOut={this.onClick_SignOut.bind(this)}/>);
+            return (<QbSideBar currentUser={currentUser} isShow={this.state.isShowSideBar} onHideSideBar={this.hideSideBar.bind(this)} onClick_MyClass={this.props.onClick_MyClass} onClick_Setting={this.props.onClick_Setting} onClick_SignOut={this.onClick_SignOut.bind(this)}/>);
         }
     }
 

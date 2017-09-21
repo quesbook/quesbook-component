@@ -88,6 +88,7 @@
 }
 
 .section-ct-link {
+    color: $white !important;
     height: 50px;
     background-color: $darkSky;
     font-size: 16px;
@@ -117,6 +118,10 @@
             color: $white !important;
             text-decoration: none;
             white-space: nowrap;
+        }
+
+        > li:hover a {
+            opacity: 1;
         }
 
         > li.active a {
