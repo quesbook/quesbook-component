@@ -2,9 +2,6 @@
 
 .section-ct-navbar {
     height: 50px;
-    display: flex;
-    // flex-direction: row;
-    // flex-wrap: nowrap;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
@@ -61,6 +58,10 @@
             border-left: 4px solid transparent;
             border-right: 4px solid transparent;
             border-top: 6px solid $midNight;
+
+            @media (max-width: $mediaDesktop) {
+                display: none !important;
+            }
         }
     }
 
