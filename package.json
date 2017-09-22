@@ -1,6 +1,6 @@
 {
   "name": "quesbook-component",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -50,7 +50,8 @@
     "start": "node_modules/.bin/webpack-dev-server",
     "i": "webpack",
     "build": "babel src/qb-component -d ./lib --copy-files --source-maps",
-    "dev": "webpack-dev-server --content-base dist/"
+    "dev": "webpack-dev-server --content-base dist/",
+    "deploy": "yarn run build && npm publish"
   },
   "repository": {
     "type": "git",

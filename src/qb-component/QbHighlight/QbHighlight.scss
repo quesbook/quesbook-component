@@ -1,14 +1,6 @@
 @import "../scss/variables";
 
-.section-highlight {
-    display: inline-block;
-
-    .highlight {
-        position: relative;
-        height: 8px;
-        width: 103%;
-        border-radius: 4.5px;
-        background-color: $qbYellow;
-        z-index: -1;
-    }
+mark {
+    border-bottom: 0.4rem solid $qbYellow;
+    background-color: transparent;
 }

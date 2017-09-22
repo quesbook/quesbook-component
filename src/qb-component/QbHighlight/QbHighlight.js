@@ -12,10 +12,7 @@ import './QbHighlight.scss';
 class QbHighlight extends Component {
     render() {
         return (
-            <div className="section-highlight">
-                {this.props.content}
-                <div className="highlight" style={this.props.style}></div>
-            </div>
+            <mark style={this.props.style}>{this.props.content}</mark>
         );
     }
 }
