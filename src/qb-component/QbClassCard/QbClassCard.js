@@ -5,13 +5,7 @@ import QbButton from '../QbButton';
 import './QbClassCard.scss';
 
 const btnStyle = {
-    width: '100%',
-    maxWidth: '325px'
-};
-
-const linkStyle = {
-    width: '100%',
-    maxWidth: '325px'
+    width: '100%'
 };
 
 class QbClassCard extends Component {
