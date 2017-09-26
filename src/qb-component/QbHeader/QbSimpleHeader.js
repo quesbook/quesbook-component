@@ -24,8 +24,8 @@ class QbSimpleHeader extends Component {
     render() {
         const { currentUser } = this.state;
         return (
-            <div>
-                <div className='section-ct-navbar'>
+            <div className="box-a-nostyle">
+                <div className="section-ct-navbar box-flex box-font-narrow">
                     <div className="navbar-logo">
                         <img src={logo} alt=""/>
                     </div>
