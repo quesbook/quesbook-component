@@ -179,6 +179,8 @@ export default class Test extends Component {
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
                 <QbTimePicker ensureTime={(time) => console.log('Tag time is:', time)} size="large"
                     btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
+                <QbTimePicker ensureTime={(time) => console.log('Tag time is:', time)} size="large"
+                              btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
                 <QbDatePicker onDatesChange={this.dateChange.bind(this)} style={{ width: 500 }} />
                 <QbButton label="show message"
                     className="btn btn-lg btn-primary"
