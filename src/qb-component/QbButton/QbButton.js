@@ -51,33 +51,7 @@ class QbButton extends Component {
         return iconClick(e);
     }
     render() {
-        const {label, size, clickHandler, style, fontStyle, dataTarget, dataToggle, id, children, disabled, isSubmit} = this.props;
-        let height = 38;
-        let fontSize = 21;
-        let padding = '9px 26px';
-        let btnSize = size?size:'default';
-        switch (btnSize) {
-            case 'small':
-                height = 30;
-                fontSize = 16;
-                padding = '7px 20px';
-                break;
-            case 'default':
-                height = 38;
-                fontSize = 21;
-                padding = '9px 26px';
-                break;
-            case 'large':
-                height = 52;
-                fontSize = 25;
-                padding = '13px 36px';
-                break;
-            case 'blockLarge':
-                height = 52;
-                fontSize = 25;
-                padding = '13px 62px';
-                break;
-        }
+        const {label, clickHandler, style, fontStyle, dataTarget, dataToggle, id, children, disabled, isSubmit} = this.props;
         let className = '';
         this.state.className.forEach((name)=> {
             className = className +' ' + name;
@@ -103,7 +77,7 @@ class QbButton extends Component {
                     id={id?id:null}
                     disabled={disabled}
                     type={isSubmit?'submit': 'button'}
-                    style={{...privateStyle.frame, height, fontSize, padding, ...style}}
+                    style={{...style}}
                     data-target={dataTarget?dataTarget:''}
                     data-toggle={dataToggle?dataToggle:''}>
                 <div style={{...privateStyle.content, ...fontStyle}}>
@@ -117,14 +91,14 @@ class QbButton extends Component {
 
 const privateStyle = {
     frame: {
-        borderRadius: 50,
-        padding: 0,
-        lineHeight: 0,
+        borderRadius: '100rem',
         display: 'flex',
         alignItems: 'center',
+        fontFamily: 'Gotham Narrow A, Gotham Narrow B',
     },
     content: {
         flex: 1,
+        fontFamily: 'Gotham Narrow A, Gotham Narrow B',
     }
 };
 
