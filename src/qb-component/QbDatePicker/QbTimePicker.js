@@ -14,6 +14,8 @@ class QbTimePicker extends Component {
             periods: 'AM',
             displayPicker: false,
         }
+        this.componentOpen = this.componentOpen.bind(this);
+        this.componentClose = this.componentClose.bind(this);
     }
     padNumber(num, fill) {
         let len = ('' + num).length;
@@ -60,11 +62,17 @@ class QbTimePicker extends Component {
         }));
     }
     componentOpen() {
-        console.log('TAg open');
-        this.toggleDisplayPicker()
+        document.onclick = (e)=> {
+            let dropdown = document.getElementById('class-filter-time-dropdown');
+            if (!dropdown.contains(e.target)) {
+                this.componentClose(e);
+            }
+        };
+        this.toggleDisplayPicker();
     }
-    componentClose() {
-        console.log('TAg close');
+    componentClose(e) {
+        console.log('TAg close', e);
+        if (e) e.stopPropagation();
         const {ensureTime} = this.props;
         let timeHour = 1;
         if (this.state.periods==='AM') {
@@ -73,25 +81,16 @@ class QbTimePicker extends Component {
             timeHour = this.state.hour + 12;
         }
         ensureTime(timeHour);
-        this.toggleDisplayPicker()
+        this.toggleDisplayPicker();
     }
     render() {
         const {size, btnStyle} = this.props;
         let finalStyle = eval("style.button."+ (size?size:"default"));
         let hourStr = this.padNumber(this.state.hour, 2);
         let time = hourStr + ' ' + this.state.periods;
-        // let timeHour = 1;
-        // if (this.state.periods==='AM') {
-        //     timeHour = this.state.hour;
-        // } else if(this.state.periods==='PM') {
-        //     timeHour = this.state.hour + 12;
-        // }
         let display = this.state.displayPicker?'flex':'none';
-        // if (!this.state.displayPicker) {
-        //     ensureTime(timeHour);
-        // }
         return (
-            <div style={{height: finalStyle.height, position: 'relative'}}>
+            <div className='qb-component-time-picker' style={{height: finalStyle.height, position: 'relative'}}>
                 <button className="btn btn-secondary"
                         style={{...style.button.publicStyle,
                     height: finalStyle.height,
@@ -103,9 +102,9 @@ class QbTimePicker extends Component {
                         }
                         this.toggleDisplayPicker.bind(this);
                 }}>{time}</button>
-                <div className="dropdown-menu dropdown-menu-left"
+                <div id="class-filter-time-dropdown" className="dropdown-menu dropdown-menu-left"
                      style={{...style.timePicker, display: display}}>
-                    <div style={style.hourPicker}>
+                    <div className="filter-time-dropdown" style={style.hourPicker}>
                         <button className="btn btn-secondary"
                                 style={style.pickerButton}
                                 onClick={this.addHour.bind(this)}>
@@ -117,7 +116,7 @@ class QbTimePicker extends Component {
                             <img style={style.downImg} src={down} alt=""/>
                         </button>
                     </div>
-                    <div style={style.hourPicker}>
+                    <div className="filter-time-dropdown" style={style.hourPicker}>
                         <button className="btn btn-secondary" style={style.pickerButton}
                                 onClick={this.togglePeriods.bind(this)}>
                             <img style={style.upImg} src={up} alt=""/>
@@ -139,7 +138,8 @@ const style = {
         height: 50,
         width: 50,
         border: 0,
-        padding: 0
+        padding: 0,
+        justifyContent: 'center',
     },
     upImg: {
         height: 12,
