@@ -64,10 +64,22 @@ class QbDropDown extends Component {
             case 'button':
                 let btnClass = "btn " + (inputClassName ? inputClassName : 'btn-secondary');
                 let finalStyle = eval("style.button." + (size ? size : "default"));
+                let btnSize = '';
+                switch (size) {
+                    case 'default':
+                        break;
+                    case 'large' || 'blockLarge':
+                        btnSize = 'btn-lg ';
+                        break;
+                    case 'small':
+                        btnSize = 'btn-sm ';
+                        break;
+                }
+                let dropDownClass = btnSize + 'btn btn-secondary dropdown-toggle';
                 return (
                     <div className={compClass + ' btn-group'} style={{ height: finalStyle.height, ...compStyle }}>
                         <button type="button"
-                            className={btnClass}
+                            className={btnSize + btnClass}
                             onChange={(e) => {
                                 this.setState({
                                     keyword: e.target.value
@@ -84,7 +96,7 @@ class QbDropDown extends Component {
                             {this.state.selectedObj.label}
                         </button>
                         <button type="button" style={{ ...style.button.publicStyle, borderLeft: 0, }}
-                            className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            className={dropDownClass} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span className="sr-only">Toggle Dropdown</span>
                         </button>
                         <div className="dropdown-menu" style={dropdownStyle}>
@@ -118,7 +130,8 @@ const style = {
     button: {
         publicStyle: {
             border: '1px solid #cccccc',
-            lineHeight: 1
+            lineHeight: 1,
+            boderRadius: 0,
         },
         small: {
             height: 30,

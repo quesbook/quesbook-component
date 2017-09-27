@@ -138,14 +138,13 @@ export default class Test extends Component {
                 </h1>
                 <QbButton label="hello"
                     isSubmit="true"
-                    className="btn btn-secondary"
-                    size="small"
+                    className="btn btn-secondary btn-sm"
                     iconClick={this.buttonIconClick.bind(this)}
                     dataTarget="#modal" dataToggle='modal'>
                     <img src={CloseIcon} style={{ height: 'inherit', width: 'inherit' }} />
                 </QbButton>
                 <QbButton label="t"
-                    className="btn btn-primary"
+                    className="btn btn-primary btn-lg"
                     clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
                 <QbCheckBox label="hello" changeHandler={() => alert('hi')} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
@@ -168,7 +167,7 @@ export default class Test extends Component {
                     </QbModalFooter>
                 </QbModal>
                 npm
-                <QbDropDown inputType="input" btnStyle={{ width: 350, textAlign: 'left' }}
+                <QbDropDown inputType="button" btnStyle={{ width: 350, textAlign: 'left' }}
                     dropdownStyle={{ width: 400 }} compStyle={{ position: 'relative', width: 400 }}
                     size="large"
                     content={dropDownContent} onChange={(data) => {
@@ -182,8 +181,7 @@ export default class Test extends Component {
                     btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
                 <QbDatePicker onDatesChange={this.dateChange.bind(this)} style={{ width: 500 }} />
                 <QbButton label="show message"
-                    className="btn dark alternate"
-                    size="large"
+                    className="btn btn-lg btn-primary"
                     clickHandler={this.messageToggle.bind(this)} />
                 <QbMessageCard display={this.state.showCard}
                     title="hello!"

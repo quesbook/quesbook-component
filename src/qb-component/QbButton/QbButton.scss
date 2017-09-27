@@ -15,3 +15,12 @@
   border: solid 1px #bcc4d0;
   color: #bcc4d0;
 }
+.btn {
+  font-family: 'Gotham Narrow A', 'Gotham Narrow B';
+  border-radius: 100rem;
+  display: flex;
+  align-items: center;
+}
+.btn-lg {
+  font-weight: 700;
+}
