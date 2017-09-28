@@ -47,7 +47,7 @@ footer {
 
         > li.logo {
             text-align: center;
-            flex-grow: 6;
+            flex-grow: 8;
             @media (max-width: $mediaDesktop) {
                 order: -1;
                 flex-basis: 100%;
@@ -73,7 +73,7 @@ footer {
         }
         > li.footer-right {
             @media (min-width: $mediaDesktop) {
-                flex-grow: 2;
+                flex-grow: 1;
             }
         }
 
