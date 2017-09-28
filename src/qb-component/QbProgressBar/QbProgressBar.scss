@@ -50,7 +50,12 @@
             height: 8px;
             background-color: $sky;
             border-top-left-radius: 100px;
-            border-bottom-left-radius: 100px
+            border-bottom-left-radius: 100px;
+        }
+
+        >.QbProgressBar_Progress.QbProgress_finished {
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
         }
     }
 

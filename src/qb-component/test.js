@@ -84,8 +84,8 @@ export default class Test extends Component {
             label: 'cde',
             value: 'cde',
         }];
-        let list = this.state.numlist.map((data) => {
-            return <div>{data}</div>
+        let list = this.state.numlist.map((data, index) => {
+            return <div key={index}>{data}</div>
         });
         console.log('Tag numlist:', this.state.numlist);
         let collapseContent = [{
@@ -121,7 +121,7 @@ export default class Test extends Component {
                 <QbClassCard {...classCardData} />
                 <QbClassCard {...classCardData2} />
                 <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
-                <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'35%'} />
+                <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
                 <QbProgressBar showProgressText={true} compStyle={{ margin: '50px 0' }} percentage={'35%'} />
                 <QbImgSection sectionType="English" style={{ 'height': '200px' }}></QbImgSection>
                 <QbImgSection sectionType="science"></QbImgSection>
