@@ -22,3 +22,5 @@ export const NAV_ITEM_LIST = [
         href: '/simulation'
     }
 ];
+
+export const HOME_PAGE = '/home_page';
