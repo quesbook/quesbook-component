@@ -12,6 +12,7 @@ class QbProgressBar extends Component {
         let progressStyle = {
             width: percentage
         };
+        let additionalClass = percentage === '100%' ? 'QbProgress_finished' : '';
         return (
             <div className="QbProgressBar" style={compStyle}>
                 <div className="QbProgress-Bar">
@@ -22,7 +23,7 @@ class QbProgressBar extends Component {
                         <span />
                         <span />
                     </div>
-                    <div className="QbProgressBar_Progress" style={progressStyle} />
+                    <div className={`QbProgressBar_Progress ${additionalClass}`} style={progressStyle} />
                 </div>
                 {
                     showProgressText ? <span className="QbProgress-Text">{percentage}</span> : null
