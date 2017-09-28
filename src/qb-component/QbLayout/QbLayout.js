@@ -57,10 +57,13 @@ class QbLayout extends Component {
           }
         `, fetchPolicy: 'network-only'}).then((res) => {
             let navItemList = this.props.navItemList || this.props.route.navItemList;
-            console.log('test', res.data.currentUser);
-            this.setState({currentUser: res.data.currentUser, navItemList: navItemList})
+            if (!res.data.currentUser) {
+                window.location.href = '/home_page';
+            } else {
+                this.setState({currentUser: res.data.currentUser, navItemList: navItemList})
+            }
         }).catch((e) => {
-            console.info(e);
+            console.info('currentUser none',e);
         });
     }
 

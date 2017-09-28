@@ -84,8 +84,8 @@ export default class Test extends Component {
             label: 'cde',
             value: 'cde',
         }];
-        let list = this.state.numlist.map((data) => {
-            return <div>{data}</div>
+        let list = this.state.numlist.map((data, index) => {
+            return <div key={index}>{data}</div>
         });
         console.log('Tag numlist:', this.state.numlist);
         let collapseContent = [{
