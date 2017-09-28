@@ -13,7 +13,8 @@ class QbTimePicker extends Component {
             hour: 1,
             periods: 'AM',
             displayPicker: false,
-        }
+        };
+        this.clickEvent = null;
         this.componentOpen = this.componentOpen.bind(this);
         this.componentClose = this.componentClose.bind(this);
     }
@@ -62,16 +63,18 @@ class QbTimePicker extends Component {
         }));
     }
     componentOpen() {
-        document.onclick = (e)=> {
-            let dropdown = document.getElementById('class-filter-time-dropdown');
+        const {id} = this.props;
+        let event = (e)=> {
+            let dropdown = document.getElementById(id);
             if (!dropdown.contains(e.target)) {
                 this.componentClose(e);
             }
         };
+        this.clickEvent = event;
+        document.addEventListener('click', event);
         this.toggleDisplayPicker();
     }
     componentClose(e) {
-        console.log('TAg close', e);
         if (e) e.stopPropagation();
         const {ensureTime} = this.props;
         let timeHour = 1;
@@ -82,9 +85,12 @@ class QbTimePicker extends Component {
         }
         ensureTime(timeHour);
         this.toggleDisplayPicker();
+        if (this.clickEvent) {
+            document.removeEventListener('click', this.clickEvent);
+        }
     }
     render() {
-        const {size, btnStyle} = this.props;
+        const {size, btnStyle, id} = this.props;
         let finalStyle = eval("style.button."+ (size?size:"default"));
         let hourStr = this.padNumber(this.state.hour, 2);
         let time = hourStr + ' ' + this.state.periods;
@@ -102,7 +108,7 @@ class QbTimePicker extends Component {
                         }
                         this.toggleDisplayPicker.bind(this);
                 }}>{time}</button>
-                <div id="class-filter-time-dropdown" className="dropdown-menu dropdown-menu-left"
+                <div id={id} className="dropdown-menu dropdown-menu-left"
                      style={{...style.timePicker, display: display}}>
                     <div className="filter-time-dropdown" style={style.hourPicker}>
                         <button className="btn btn-secondary"
