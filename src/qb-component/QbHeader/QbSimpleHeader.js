@@ -77,8 +77,8 @@ class QbSimpleHeader extends Component {
         } else {
             return (
                 <div className='navbar-unsigned box-flex-center'>
-                    <a href="/users/sign_in">Log in</a>
-                    <a className='navbar-unsigned-signup' href="/users/sign_up">Sign up</a>
+                    <a href="/">Log in</a>
+                    <a className='navbar-unsigned-signup' href="/">Sign up</a>
                 </div>
             );
         }
