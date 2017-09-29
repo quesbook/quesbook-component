@@ -16,66 +16,43 @@ footer {
 
     > ul {
         margin: 0;
-        padding: 0 0 0 15px;
         list-style: none;
-        display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
         align-items: center;
-        @media (max-width: $mediaDesktop) {
-            padding: 20px 0;
+        @media (min-width: $mediaTablet) {
+            padding: 0 10px 0 20px;
         }
         @media (max-width: $mediaPhone) {
             padding: 0;
         }
 
         > li {
-            text-align: center;
-            flex-grow: 3;
+            margin: 0 10px;
             line-height: 60px;
-            @media (max-width: $mediaDesktop) {
-                line-height: 19px;
-                text-align: center;
-                padding: 21.2px 0;
-            }
             @media (max-width: $mediaPhone) {
                 text-align: center;
                 flex-basis: 100%;
-                padding: 10px 0;
+                line-height: 1;
+                padding: 20px 0
             }
         }
 
         > li.logo {
-            text-align: center;
-            flex-grow: 8;
-            @media (max-width: $mediaDesktop) {
-                order: -1;
-                flex-basis: 100%;
-            }
+            margin: 0;
+            flex: 1;
             @media (max-width: $mediaPhone) {
-                padding: 40px 0 30px;
+                padding: 40px 0 20px;
             }
         }
 
         > li.copy-right {
             opacity: 0.5;
-            @media (min-width: $mediaDesktop) {
-                flex-grow: 1;
-            }
             @media (max-width: $mediaPhone) {
-                padding: 30px 0 40px;
+                padding: 20px 0 40px;
             }
         }
-        > li.footer-left {
-            @media (min-width: $mediaDesktop) {
-                flex-grow: 4;
-            }
-        }
-        > li.footer-right {
-            @media (min-width: $mediaDesktop) {
-                flex-grow: 1;
-            }
-        }
+
 
         li > a {
             color: $white !important;
