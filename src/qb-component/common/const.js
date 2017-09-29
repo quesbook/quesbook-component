@@ -23,4 +23,5 @@ export const NAV_ITEM_LIST = [
     }
 ];
 
-export const HOME_PAGE = '/home_page';
+// export const HOME_PAGE = '/home_page';
+export const HOME_PAGE = '/';
