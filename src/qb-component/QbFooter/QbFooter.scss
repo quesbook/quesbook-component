@@ -34,25 +34,36 @@ footer {
                 text-align: center;
                 flex-basis: 100%;
                 line-height: 1;
-                padding: 20px 0
+            }
+        }
+
+        > li.footer-right {
+            @media (max-width: $mediaPhone) {
+                padding: 10px 0;
             }
         }
 
         > li.logo {
             margin: 0;
-            flex: 1;
             @media (max-width: $mediaPhone) {
                 padding: 40px 0 20px;
             }
         }
 
         > li.copy-right {
-            opacity: 0.5;
+            line-height: 1;
+            font-size: 11px;
+            flex: 1;
             @media (max-width: $mediaPhone) {
-                padding: 20px 0 40px;
+                order: 10;
             }
         }
 
+        > li.logo, li.copy-right {
+            @media (max-width: $mediaPhone) {
+                padding: 40px 0;
+            }
+        }
 
         li > a {
             color: $white !important;
