@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import ApolloClient, {createNetworkInterface} from 'apollo-client';
 import {QB_COMPONENT_GQL_URL, TOKEN_KEY, TOKEN_KEY_QB, HOME_PAGE} from '../common/const';
 import Cookies from 'js-cookie';
+import iconLoading from '../assets/image/icon/loading.gif';
 
 class QbLayout extends Component {
     constructor(props) {
@@ -36,7 +37,8 @@ class QbLayout extends Component {
 
         this.state = {
             currentUser: null,
-            navItemList: {}
+            navItemList: {},
+            isShowLoading: false
         };
 
     }
@@ -58,11 +60,12 @@ class QbLayout extends Component {
         `, fetchPolicy: 'network-only'}).then((res) => {
             let navItemList = this.props.navItemList || this.props.route.navItemList;
             if (!res.data.currentUser && window.location.pathname.indexOf(HOME_PAGE) === -1) {
-                window.location.href = HOME_PAGE;
+                this.navHomePage();
             } else {
                 this.setState({currentUser: res.data.currentUser, navItemList: navItemList})
             }
         }).catch((e) => {
+            this.navHomePage();
             console.info('currentUser none', e);
         });
     }
@@ -71,6 +74,16 @@ class QbLayout extends Component {
         let navItemList = newProps.navItemList || newProps.route.navItemList;
 
         this.setState({navItemList: navItemList});
+    }
+
+    navHomePage = () => {
+        if (!this.state.isShowLoading) {
+            this.setState({isShowLoading: true});
+
+            if (window.location.hostname !== 'localhost') {
+                window.location.href = HOME_PAGE;
+            }
+        }
     }
 
     onClick_Setting() {
@@ -103,25 +116,6 @@ class QbLayout extends Component {
             ? route.gqlUrl
             : route) || QB_COMPONENT_GQL_URL;
 
-        // fetch(GQL_URL.replace('/graphql', '') + '/api/v1/user/sign_out', {
-        //     method: 'POST',
-        //     headers: {
-        //         Accept: 'application/vnd.api+json',
-        //         'Content-Type': 'application/vnd.api+json',
-        //         Authorization: 'bearer ' + token,
-        //     },
-        //     credentials: 'include'
-        // }).then(handleErrors).then(res => {
-        //     console.log('success');
-        //     Cookies.remove(TOKEN_KEY);
-        //     Cookies.remove(TOKEN_KEY_QB);
-        //     this.setState({currentUser: null});
-        //     window.location.href = HOME_PAGE;
-        //     return res.data;
-        // }).catch(error => {
-        //     alert('sign out error!');
-        //     console.log(error);
-        // });
         fetch(GQL_URL.replace('/graphql', '') + '/users/sign_out', {
             method: 'DELETE',
             credentials: 'include'
@@ -130,12 +124,31 @@ class QbLayout extends Component {
             Cookies.remove(TOKEN_KEY);
             Cookies.remove(TOKEN_KEY_QB);
             this.setState({currentUser: null});
-            window.location.href = HOME_PAGE;
+            this.navHomePage();
             return res.data;
         }).catch(error => {
             alert('sign out error!');
             console.log(error);
         });
+    }
+
+    renderLoading() {
+        if (this.state.isShowLoading) {
+            return (
+                <div className='box-flex-center' style={{
+                    position: 'absolute',
+                    width: '100vw',
+                    height: '100vh',
+                    opacity: '0.8',
+                    backgroundColor: '#fff',
+                    zIndex: '999'
+                }}>
+                    <img style={{
+                        margin: 'auto'
+                    }} src={iconLoading} alt=""/>
+                </div>
+            );
+        }
     }
 
     render() {
@@ -151,6 +164,7 @@ class QbLayout extends Component {
 
         return (
             <div className="layout-ct">
+                {this.renderLoading()}
                 <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_MyClass={this.onClick_MyClass.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)}/>
                 <div className="body-content" style={styleNoLogin}>
                     {this.props.children}
