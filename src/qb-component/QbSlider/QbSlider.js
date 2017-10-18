@@ -4,12 +4,10 @@
 import React, {Component} from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import Tooltip from 'rc-tooltip';
 import './QbSlider.scss';
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
-const Handle = Slider.Handle;
 
 class QbSlider extends Component {
     constructor(props) {
@@ -20,29 +18,26 @@ class QbSlider extends Component {
         }
     }
     sliderChange(value) {
+        const {changeHandler } = this.props;
         const {maxPrice} = this.props;
         this.value = {
             ...this.value,
             low: ((maxPrice/100)* value[0]).toFixed(1),
             high: ((maxPrice/100)* value[1]).toFixed(1),
         };
-    }
-    changHandle() {
-        const {changeHandler } = this.props;
         return changeHandler(this.value.low, this.value.high);
     }
     render () {
         const {maxMark, minMark, maxPrice, style} = this.props;
         return (
-            <div style={style}
-                 onMouseUp={this.changHandle.bind(this)}>
+            <div style={style}>
                 <Range defaultValue={[0,100]}
                        marks={{100: maxMark, 0: minMark}}
                        handleStyle={[{height: 28, width: 28, marginLeft: -14, marginTop: -13,
                            border: 'solid 1px rgba(25, 34, 48, 0.1)'}]}
                        trackStyle={[{height: 4, color: '#5d90e3', background: '#5d90e3'}]}
-                       tipFormatter={value=> ((maxPrice/100)* value).toFixed(1)}
-                       onChange={(value)=> this.sliderChange.bind(this)(value)}
+                       tipFormatter={(value)=> ((maxPrice/100)* value).toFixed(1)}
+                       onAfterChange={(value)=> this.sliderChange.bind(this)(value)}
                        pushable={1}/>
             </div>
         )
