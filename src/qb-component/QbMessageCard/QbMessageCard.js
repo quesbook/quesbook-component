@@ -3,46 +3,32 @@
  */
 import React, {Component} from 'react';
 import cancelIcon from '../assets/image/icon/x-icon@3x.png';
-import './QbMessageCard.scss';
 
-/*eslint-disable*/
 class QbMessageCard extends Component {
     render() {
-        const {size, title, content, display, onCancelClick, messageStyle} = this.props;
-        let fontStyle = {
-            titleSize: 26,
-            contentSize: '1rem',
-        };
-        switch (size) {
-            case 'xs':
-                fontStyle = {
-                    titleSize: 20,
-                    contentSize: '1rem',
-                };
-                break;
-            case 'lg':
-                break;
-        }
+        const {title, className, content, onCancelClick, option} = this.props;
+        console.log('Tag option, ', option);
         return (
-            <div className="qb-message-card"
-                 style={{display: display?'flex':'none', ...style.frame, ...messageStyle}}>
-                <div style={style.cancelBtn} onClick={onCancelClick}>
-                    <img style={{height: 16, width: 16}} src={cancelIcon} href=""/>
+            <div className={className}
+                 style={{display: option.display?'flex':'none', ...defaultStyle.frame, ...option.style}}>
+                <div style={defaultStyle.cancelBtn} onClick={onCancelClick}>
+                    <img style={defaultStyle.cancelIcon} src={cancelIcon} href=""/>
                 </div>
-                <div className="qb-message-card-title" style={{...style.title, fontSize: fontStyle.titleSize,}}>{title}</div>
-                <div className="qb-message-card-content" style={{...style.content, fontSize: fontStyle.contentSize}}>{content}</div>
+                <div className="qb-message-card-title" style={defaultStyle.title}>{title}</div>
+                <div className="qb-message-card-content" style={defaultStyle.content}>{content}</div>
             </div>
         )
     }
 }
 
-const style = {
+const defaultStyle = {
     frame: {
         width: 300,
         border: '1px solid rgba(25, 34, 48, 0.1)',
         borderRadius: 5,
         background: '#ffffff',
         flexDirection: 'column',
+        position: 'relative',
     },
     cancelBtn: {
         position: 'absolute',
@@ -55,14 +41,28 @@ const style = {
         fontWeight: 'bold',
         width: '100%',
         color: '#192230',
-        padding: '15px 15px 10px 15px'
+        padding: '15px 15px 10px 15px',
+        fontSize: 20,
     },
     content: {
         color: '#192230',
         width: '100%',
         flex: 1,
         padding: '0 15px 15px',
+        fontSize: '1rem',
+    },
+    cancelIcon: {
+        height: 16,
+        width: 16
     }
+}
+
+QbMessageCard.propTypes = {
+    option: React.PropTypes.object,
+    title: React.PropTypes.node,
+    content: React.PropTypes.node,
+    onCancelClick: React.PropTypes.func,
+    className: React.PropTypes.string,
 }
 
 export default QbMessageCard;

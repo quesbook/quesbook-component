@@ -223,7 +223,9 @@ class QbHeader extends Component {
                         {this.renderSign(currentUser)}
                     </div>
                     {this.renderSignedLink(currentUser)}
-                    <QbMessageCard display={this.state.showMessageCard} size="xs" title={this.state.messageTitle} content={this.state.messageContent} messageStyle={{}} onCancelClick={this.messageToggle.bind(this)}/>
+                    <QbMessageCard option={{display: this.state.showMessageCard}}
+                                   title={this.state.messageTitle} content={this.state.messageContent}
+                                   onCancelClick={this.messageToggle.bind(this)}/>
                 </div>
                 {this.renderQbSideBar(currentUser)}
             </div>
