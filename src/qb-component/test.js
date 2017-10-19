@@ -62,8 +62,11 @@ export default class Test extends Component {
     buttonIconClick() {
         alert('icon cliasc');
     }
-    dateChange(start, end) {
+    datesChange(start, end) {
         console.log(start, end);
+    }
+    dateChange(date) {
+        console.log(date);
     }
     add() {
         console.log('Tag before numlist:', this.state.numlist);
@@ -172,7 +175,7 @@ export default class Test extends Component {
                 </QbModal>
                 npm
                 <QbDropDown inputType="button" btnStyle={{ width: 350, textAlign: 'left' }}
-                    dropdownStyle={{ width: 400 }} compStyle={{ position: 'relative', width: 400 }}
+                    dropdownStyle={{ width: '100%' }} compStyle={{ position: 'relative', width: 400 }}
                     size="large"
                     content={dropDownContent} onChange={(data) => {
                         console.log('TAg data:', data);
@@ -185,7 +188,9 @@ export default class Test extends Component {
                     btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
                 <QbTimePicker id="endPicker" ensureTime={(time) => console.log('Tag time is:', time)} size="large"
                               btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
-                <QbDatePicker onDatesChange={this.dateChange.bind(this)} style={{ width: 500 }} />
+                <QbDatePicker onDatesChange={this.datesChange.bind(this)}
+                              onDateChange={this.dateChange.bind(this)}
+                              style={{ width: 500 }} singlePicker={true}/>
                 <QbButton label="show message"
                     className="btn btn-lg btn-primary"
                     clickHandler={this.messageToggle.bind(this)} />

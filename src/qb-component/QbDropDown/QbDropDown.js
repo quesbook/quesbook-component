@@ -99,7 +99,7 @@ class QbDropDown extends Component {
                             className={dropDownClass} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span className="sr-only">Toggle Dropdown</span>
                         </button>
-                        <div className="dropdown-menu" style={dropdownStyle}>
+                        <div className="dropdown-menu dropdown-menu-right" style={dropdownStyle}>
                             {children}
                         </div>
                     </div>

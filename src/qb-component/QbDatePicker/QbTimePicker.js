@@ -11,6 +11,7 @@ class QbTimePicker extends Component {
         super(props);
         this.state= {
             hour: 1,
+            minute: 0,
             periods: 'AM',
             displayPicker: false,
         };
@@ -51,6 +52,21 @@ class QbTimePicker extends Component {
             }));
         }
     }
+    addMinute(interval) {
+        let realMinute = (this.state.minute + interval) % 60;
+        console.log('Tag realMinute:', realMinute);
+        this.setState({
+            minute: realMinute,
+        });
+    }
+    minMinute(interval) {
+        let min = this.state.minute - interval;
+        let realMinute = min<0? min+60: 0;
+        console.log('Tag realMinute:', realMinute);
+        this.setState({
+            minute: realMinute,
+        });
+    }
     togglePeriods() {
         let p = this.state.periods==='AM'?'PM':'AM';
         this.setState({
@@ -89,12 +105,35 @@ class QbTimePicker extends Component {
             document.removeEventListener('click', this.clickEvent);
         }
     }
+    renderMinutePicker() {
+        const {displayMinute} = this.props;
+        if (displayMinute) {
+            let minStr = this.padNumber(this.state.minute, 2);
+            return (
+                <div className="filter-time-dropdown" style={style.hourPicker}>
+                    <button className="btn btn-secondary"
+                            style={style.pickerButton}
+                            onClick={this.addMinute.bind(this)}>
+                        <img style={style.upImg} src={up} alt=""/>
+                    </button>
+                    <div style={style.hour}>{minStr}</div>
+                    <button className="btn btn-secondary" style={style.pickerButton}
+                            onClick={this.minMinute.bind(this)}>
+                        <img style={style.downImg} src={down} alt=""/>
+                    </button>
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
     render() {
         const {size, btnStyle, id} = this.props;
         let finalStyle = eval("style.button."+ (size?size:"default"));
         let hourStr = this.padNumber(this.state.hour, 2);
         let time = hourStr + ' ' + this.state.periods;
         let display = this.state.displayPicker?'flex':'none';
+        let minutePicker = this.renderMinutePicker();
         return (
             <div className='qb-component-time-picker' style={{height: finalStyle.height, position: 'relative'}}>
                 <button className="btn btn-secondary"
@@ -122,6 +161,7 @@ class QbTimePicker extends Component {
                             <img style={style.downImg} src={down} alt=""/>
                         </button>
                     </div>
+                    {minutePicker}
                     <div className="filter-time-dropdown" style={style.hourPicker}>
                         <button className="btn btn-secondary" style={style.pickerButton}
                                 onClick={this.togglePeriods.bind(this)}>
@@ -169,6 +209,9 @@ const style = {
         alignItems: 'center',
     },
     hour: {
+        fontSize: 56
+    },
+    minute: {
         fontSize: 56
     },
     periodsPicker: {
