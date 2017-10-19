@@ -115,7 +115,11 @@ export default class Test extends Component {
             description: 'Take this e-class to learn the important elements that go into writing and identifying effective paragraphs made up of opening, transitional and closing sentences. This class will teach you how to master this skill for the ACT',
             skillName: 'Analyzing Function'
         };
-        const classCardData2 = { ...classCardData, expand: true, btnText: 'Join Class' }
+        const classCardData2 = { ...classCardData, expand: true, btnText: 'Join Class' };
+        let option = {
+            display: this.state.showCard
+        };
+        console.log('Tg option:', option);
         return (
             <div>
                 <QbClassCard {...classCardData} />
@@ -185,7 +189,7 @@ export default class Test extends Component {
                 <QbButton label="show message"
                     className="btn btn-lg btn-primary"
                     clickHandler={this.messageToggle.bind(this)} />
-                <QbMessageCard display={this.state.showCard}
+                <QbMessageCard option={option}
                     title="hello!"
                     content="ha lou a !"
                     onCancelClick={this.messageToggle.bind(this)} />
