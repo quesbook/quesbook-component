@@ -20,7 +20,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|gif|svg)$/,
                 // loader: 'url-loader?limit=819200'
                 loader: 'file-loader?name=[name].[ext]&outputPath=/assets/image/',
             },
@@ -38,7 +38,7 @@ module.exports = {
                 loaders: ['style', 'css', 'sass']
             },
             {
-                test: /\.(woff|svg|eot|ttf)\??.*$/,
+                test: /\.(woff|eot|ttf)\??.*$/,
                 loader: 'url-loader?limit=50000&name=[path][name].[ext]'
             }
         ]

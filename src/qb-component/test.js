@@ -26,6 +26,7 @@ import 'rc-collapse/assets/index.css';
 import { QbAvatar } from './QbHeader';
 import QbAlert from './QbAlert';
 import QbClassCard from './QbClassCard';
+import Calendar from './assets/image/icon/calendar.svg';
 
 const Panel = Collapse.Panel;
 
@@ -123,6 +124,9 @@ export default class Test extends Component {
             display: this.state.showCard
         };
         console.log('Tg option:', option);
+        let CalendarIcon = (
+            <img src={Calendar} alt='calendar'/>
+        );
         return (
             <div>
                 <QbClassCard {...classCardData} />
@@ -184,13 +188,15 @@ export default class Test extends Component {
                         });
                     }} />
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
-                <QbTimePicker id="startPicker" ensureTime={(time) => console.log('Tag time is:', time)} size="large"
-                    btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
-                <QbTimePicker id="endPicker" ensureTime={(time) => console.log('Tag time is:', time)} size="large"
-                              btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
+                <QbTimePicker id="startPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
+                    option={{btnStyle: { width: 100, height: 52, fontSize: 20 },
+                        style: {width: 100}}} />
+                <QbTimePicker id="endPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
+                              option={{btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
+                                  displayMinute: true}}/>
                 <QbDatePicker onDatesChange={this.datesChange.bind(this)}
                               onDateChange={this.dateChange.bind(this)}
-                              style={{ width: 500 }} singlePicker={true}/>
+                              option={{style: { width: 500 }, icon: CalendarIcon}}/>
                 <QbButton label="show message"
                     className="btn btn-lg btn-primary"
                     clickHandler={this.messageToggle.bind(this)} />
