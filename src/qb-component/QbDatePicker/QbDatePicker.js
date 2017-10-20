@@ -86,5 +86,15 @@ QbDatePicker.propTypes = {
     onDatesChange: React.PropTypes.func,
     className: React.PropTypes.string,
 }
+QbDatePicker.defaultProps = {
+    option: {
+        style: {},
+        icon: null,
+        singlePicker: false,
+    },
+    onDateChange: ()=> {},
+    onDatesChange: ()=> {},
+    className: ''
+}
 
 export default QbDatePicker;

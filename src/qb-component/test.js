@@ -195,8 +195,7 @@ export default class Test extends Component {
                               option={{btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
                                   displayMinute: true}}/>
                 <QbDatePicker onDatesChange={this.datesChange.bind(this)}
-                              onDateChange={this.dateChange.bind(this)}
-                              option={{style: { width: 500 }, icon: CalendarIcon}}/>
+                              onDateChange={this.dateChange.bind(this)}/>
                 <QbButton label="show message"
                     className="btn btn-lg btn-primary"
                     clickHandler={this.messageToggle.bind(this)} />

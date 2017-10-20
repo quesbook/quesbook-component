@@ -16,12 +16,6 @@ class QbTimePicker extends Component {
             displayPicker: false,
         };
         this.clickEvent = null;
-        this.option = {
-            style: {},
-            buttonStyle:  {},
-            btnClassName: '',
-            displayMinute: false,
-        };
         this.componentOpen = this.componentOpen.bind(this);
         this.componentClose = this.componentClose.bind(this);
     }
@@ -144,7 +138,6 @@ class QbTimePicker extends Component {
     }
     render() {
         const {option, className, id} = this.props;
-        this.option = {...this.option, ...option};
         let hourStr = this.padNumber(this.state.hour, 2);
         let time = '';
         if (option.displayMinute) {
@@ -154,12 +147,12 @@ class QbTimePicker extends Component {
         }
         let display = this.state.displayPicker?'flex':'none';
         let minutePicker = this.renderMinutePicker();
-        let btnClassName = 'btn btn-secondary ' + (this.option.btnClassName?this.option.btnClassName: '');
+        let btnClassName = 'btn btn-secondary ' + (option.btnClassName?option.btnClassName: '');
         let finalClassName =  'qb-component-time-picker ' + (className?className: '');
         return (
-            <div className={finalClassName} style={{position: 'relative', ...this.option.style}}>
+            <div className={finalClassName} style={{position: 'relative', ...option.style}}>
                 <button className={btnClassName}
-                        style={{...style.button.defaultStyle, ...this.option.btnStyle,}} onClick={()=> {
+                        style={{...style.button.defaultStyle, ...option.btnStyle,}} onClick={()=> {
                         if (this.state.displayPicker) {
                             this.componentClose();
                         } else {
@@ -267,6 +260,16 @@ QbTimePicker.PropTypes = {
     className: React.PropTypes.string,
     id: React.PropTypes.string.isRequired,
     onPickerClose:  React.PropTypes.func,
+}
+QbTimePicker.defaultProps = {
+    option : {
+        style: {},
+        buttonStyle:  {},
+        btnClassName: '',
+        displayMinute: false,
+    },
+    className: '',
+    onPickerClose: ()=> {}
 }
 
 export default QbTimePicker;
