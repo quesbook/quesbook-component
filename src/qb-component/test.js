@@ -178,15 +178,15 @@ export default class Test extends Component {
                     </QbModalFooter>
                 </QbModal>
                 npm
-                <QbDropDown inputType="button" btnStyle={{ width: 350, textAlign: 'left' }}
-                    dropdownStyle={{ width: '100%' }} compStyle={{ position: 'relative', width: 400 }}
-                    size="large"
-                    content={dropDownContent} onChange={(data) => {
-                        console.log('TAg data:', data);
-                        this.setState({
-                            show: !this.state.show
-                        });
-                    }} />
+                <QbDropDown option={{
+                                inputType: "input",
+                                btnStyle:{ width: 350, textAlign: 'left' },
+                                style: { position: 'relative', width: 400, height: 52 },
+                                dropdownStyle:{ width: '100%' }}} content={dropDownContent}
+                            onChange={(data) => {
+                                console.log('TAg data:', data);
+                                this.setState({show: !this.state.show});
+                            }}/>
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
                 <QbTimePicker id="startPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
                     option={{btnStyle: { width: 100, height: 52, fontSize: 20 },

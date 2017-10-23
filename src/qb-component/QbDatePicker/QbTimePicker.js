@@ -253,7 +253,7 @@ const style = {
 QbTimePicker.PropTypes = {
     option: React.PropTypes.shape({
         style: React.PropTypes.object,
-        buttonStyle:  React.PropTypes.object,
+        btnStyle:  React.PropTypes.object,
         btnClassName: React.PropTypes.string,
         displayMinute: React.PropTypes.bool,
     }),
@@ -264,7 +264,7 @@ QbTimePicker.PropTypes = {
 QbTimePicker.defaultProps = {
     option : {
         style: {},
-        buttonStyle:  {},
+        btnStyle:  {},
         btnClassName: '',
         displayMinute: false,
     },

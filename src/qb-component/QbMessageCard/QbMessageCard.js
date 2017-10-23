@@ -27,6 +27,7 @@ const defaultStyle = {
         borderRadius: 5,
         background: '#ffffff',
         flexDirection: 'column',
+        position: 'relative'
     },
     cancelBtn: {
         position: 'absolute',
