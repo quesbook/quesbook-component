@@ -42,7 +42,7 @@ class QbDropDown extends Component {
             children = this.renderDropDownList(content);
             console.log('option.style: ', option.style);
             return (
-                <div className={className + ' btn-group'} style={option.style}>
+                <div className={className + ' btn-group'} style={{position: 'relative', ...option.style}}>
                     <button type="button"
                             className={btnClassName}
                             onChange={(e) => {
@@ -72,7 +72,7 @@ class QbDropDown extends Component {
             let filterArray = content.filter((data) => data.label.indexOf(this.state.keyword) !== -1);
             children = this.renderDropDownList(filterArray);
             return (
-                <div className={className} style={option.style}>
+                <div className={className} style={{position: 'relative', ...option.style}}>
                     <input type="text" style={{...style.input.default, ...option.inputStyle}}
                            data-toggle="dropdown" className="form-control"
                            onChange={(e) => {
@@ -140,8 +140,8 @@ QbDropDown.propTypes = {
         style: React.PropTypes.object,
         btnStyle: React.PropTypes.object,
         dropdownStyle: React.PropTypes.object,
-        defaultData: React.PropTypes.object,
     }),
+    defaultData: React.PropTypes.object,
     content: React.PropTypes.array,
     onChange: React.PropTypes.func,
     className: React.PropTypes.string,
