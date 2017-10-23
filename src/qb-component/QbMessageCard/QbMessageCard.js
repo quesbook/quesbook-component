@@ -7,7 +7,6 @@ import cancelIcon from '../assets/image/icon/x-icon@3x.png';
 class QbMessageCard extends Component {
     render() {
         const {title, className, content, onCancelClick, option} = this.props;
-        console.log('Tag option, ', option);
         return (
             <div className={className}
                  style={{display: option.display?'flex':'none', ...defaultStyle.frame, ...option.style}}>
@@ -28,7 +27,7 @@ const defaultStyle = {
         borderRadius: 5,
         background: '#ffffff',
         flexDirection: 'column',
-        position: 'relative',
+        position: 'relative'
     },
     cancelBtn: {
         position: 'absolute',
@@ -42,7 +41,7 @@ const defaultStyle = {
         width: '100%',
         color: '#192230',
         padding: '15px 15px 10px 15px',
-        fontSize: 20,
+        fontSize: 26,
     },
     content: {
         color: '#192230',
@@ -58,7 +57,10 @@ const defaultStyle = {
 }
 
 QbMessageCard.propTypes = {
-    option: React.PropTypes.object,
+    option: React.PropTypes.shape({
+        style: React.PropTypes.object,
+        display: React.PropTypes.bool,
+    }),
     title: React.PropTypes.node,
     content: React.PropTypes.node,
     onCancelClick: React.PropTypes.func,

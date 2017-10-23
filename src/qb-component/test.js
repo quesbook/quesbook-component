@@ -26,6 +26,7 @@ import 'rc-collapse/assets/index.css';
 import { QbAvatar } from './QbHeader';
 import QbAlert from './QbAlert';
 import QbClassCard from './QbClassCard';
+import Calendar from './assets/image/icon/calendar.svg';
 
 const Panel = Collapse.Panel;
 
@@ -62,8 +63,11 @@ export default class Test extends Component {
     buttonIconClick() {
         alert('icon cliasc');
     }
-    dateChange(start, end) {
+    datesChange(start, end) {
         console.log(start, end);
+    }
+    dateChange(date) {
+        console.log(date);
     }
     add() {
         console.log('Tag before numlist:', this.state.numlist);
@@ -120,6 +124,9 @@ export default class Test extends Component {
             display: this.state.showCard
         };
         console.log('Tg option:', option);
+        let CalendarIcon = (
+            <img src={Calendar} alt='calendar'/>
+        );
         return (
             <div>
                 <QbClassCard {...classCardData} />
@@ -171,21 +178,24 @@ export default class Test extends Component {
                     </QbModalFooter>
                 </QbModal>
                 npm
-                <QbDropDown inputType="button" btnStyle={{ width: 350, textAlign: 'left' }}
-                    dropdownStyle={{ width: 400 }} compStyle={{ position: 'relative', width: 400 }}
-                    size="large"
-                    content={dropDownContent} onChange={(data) => {
-                        console.log('TAg data:', data);
-                        this.setState({
-                            show: !this.state.show
-                        });
-                    }} />
+                <QbDropDown option={{
+                                inputType: "input",
+                                btnStyle:{ width: 350, textAlign: 'left' },
+                                style: { position: 'relative', width: 400, height: 52 },
+                                dropdownStyle:{ width: '100%' }}} content={dropDownContent}
+                            onChange={(data) => {
+                                console.log('TAg data:', data);
+                                this.setState({show: !this.state.show});
+                            }}/>
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
-                <QbTimePicker id="startPicker" ensureTime={(time) => console.log('Tag time is:', time)} size="large"
-                    btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
-                <QbTimePicker id="endPicker" ensureTime={(time) => console.log('Tag time is:', time)} size="large"
-                              btnStyle={{ width: 100, height: 52, fontSize: 20 }} />
-                <QbDatePicker onDatesChange={this.dateChange.bind(this)} style={{ width: 500 }} />
+                <QbTimePicker id="startPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
+                    option={{btnStyle: { width: 100, height: 52, fontSize: 20 },
+                        style: {width: 100}}} />
+                <QbTimePicker id="endPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
+                              option={{btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
+                                  displayMinute: true}}/>
+                <QbDatePicker onDatesChange={this.datesChange.bind(this)}
+                              onDateChange={this.dateChange.bind(this)}/>
                 <QbButton label="show message"
                     className="btn btn-lg btn-primary"
                     clickHandler={this.messageToggle.bind(this)} />

@@ -21,13 +21,9 @@ class QbDropDownItem extends Component {
         let c = className?className: '';
         let itemClass = "dropdown-item " + c;
         return (
-            <a className={itemClass} href={href} style={{defaultStyle, ...style}} onClick={this.clickHandler.bind(this)}>{label}</a>
+            <a className={itemClass} href={href} style={style} onClick={this.clickHandler.bind(this)}>{label}</a>
         )
     }
-}
-
-const defaultStyle = {
-
 }
 
 export default QbDropDownItem;

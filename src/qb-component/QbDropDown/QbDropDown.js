@@ -9,15 +9,12 @@ import './QbDropDown.scss';
 class QbDropDown extends Component {
     constructor(props) {
         super(props);
+        console.log(props.defaultData);
         this.state = {
             selectedObj: props.defaultData,
             keyword: ''
         }
     }
-    // componentDidUpdate() {
-    //     const {onChange} = this.props;
-    //     onChange(this.state.selectedObj);
-    // }
     componentWillReceiveProps(nextProps) {
         let oldDefaultValue = this.props.defaultData.value;
         let newDefaultValue = nextProps.defaultData.value;
@@ -27,59 +24,27 @@ class QbDropDown extends Component {
             })
         }
     }
-    renderInputComp() {
-        const { compClass,
-            compStyle, inputType, btnStyle, size, inputClassName, dropdownStyle, onChange,
-            content, inputStyle
-        } = this.props;
+    renderDropDownList(content) {
+        const {onChange} = this.props;
+        return content.map((data, index) =>
+            <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => {
+                this.setState({
+                    selectedObj: data
+                });
+                onChange(data);
+            }} />
+        );
+    }
+    render() {
+        const { option, className, btnClassName, onChange, content} = this.props;
         let children;
-        if (inputType === 'button') {
-            children = content.map((data, index) =>
-                <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => {
-                    this.setState({
-                        selectedObj: data
-                    });
-                    onChange(data);
-                }} />
-            );
-        } else if (inputType === 'input') {
-            let filterArray = content.filter((data) => {
-                if (data.label.indexOf(this.state.keyword) !== -1) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-            children = filterArray.map((data) => {
-                return (<QbDropDownItem label={data.label} value={data.value} onClick={() => {
-                    this.setState({
-                        selectedObj: data
-                    });
-                    onChange(data);
-                }} />);
-            }
-            );
-        }
-        switch (inputType) {
-            case 'button':
-                let btnClass = "btn " + (inputClassName ? inputClassName : 'btn-secondary');
-                let finalStyle = eval("style.button." + (size ? size : "default"));
-                let btnSize = '';
-                switch (size) {
-                    case 'default':
-                        break;
-                    case 'large' || 'blockLarge':
-                        btnSize = 'btn-lg ';
-                        break;
-                    case 'small':
-                        btnSize = 'btn-sm ';
-                        break;
-                }
-                let dropDownClass = btnSize + 'btn btn-secondary dropdown-toggle';
-                return (
-                    <div className={compClass + ' btn-group'} style={{ height: finalStyle.height, ...compStyle }}>
-                        <button type="button"
-                            className={btnSize + btnClass}
+        if (option.inputType === 'button') {
+            children = this.renderDropDownList(content);
+            console.log('option.style: ', option.style);
+            return (
+                <div className={className + ' btn-group'} style={{position: 'relative', ...option.style}}>
+                    <button type="button"
+                            className={btnClassName}
                             onChange={(e) => {
                                 this.setState({
                                     keyword: e.target.value
@@ -88,41 +53,39 @@ class QbDropDown extends Component {
                             }}
                             style={{
                                 ...style.button.publicStyle,
-                                height: finalStyle.height,
                                 borderRight: 0,
-                                fontSize: finalStyle.fontSize,
-                                ...btnStyle,
+                                ...option.btnStyle,
                             }}>
-                            {this.state.selectedObj.label}
-                        </button>
-                        <button type="button" style={{ ...style.button.publicStyle, borderLeft: 0, }}
-                            className={dropDownClass} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span className="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div className="dropdown-menu" style={dropdownStyle}>
-                            {children}
-                        </div>
+                        {this.state.selectedObj.label}
+                    </button>
+                    <button type="button" style={{ ...style.button.publicStyle, borderLeft: 0}}
+                            className={btnClassName + ' dropdown-toggle'} data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <span className="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-right" style={option.dropdownStyle}>
+                        {children}
                     </div>
-                );
-            case 'input':
-                let finalInputStyle = eval("style.input." + (size ? size : "default"));
-                return (
-                    <div className={compClass} style={{ ...finalInputStyle, position: 'relative', ...compStyle }}>
-                        <input type="text" style={{ ...finalInputStyle, ...inputStyle }} data-toggle="dropdown" className="form-control" onChange={(e) => {
-                            this.setState({
-                                keyword: e.target.value
-                            });
-                            // onChange(this.state.selectedObj);
-                        }} />
-                        <div className="dropdown-menu dropdown-menu-right" style={dropdownStyle}>
-                            {children}
-                        </div>
+                </div>
+            );
+        } else if (option.inputType === 'input') {
+            let filterArray = content.filter((data) => data.label.indexOf(this.state.keyword) !== -1);
+            children = this.renderDropDownList(filterArray);
+            return (
+                <div className={className} style={{position: 'relative', ...option.style}}>
+                    <input type="text" style={{...style.input.default, ...option.inputStyle}}
+                           data-toggle="dropdown" className="form-control"
+                           onChange={(e) => {
+                               this.setState({
+                                   keyword: e.target.value
+                               });
+                    }} />
+                    <div className="dropdown-menu dropdown-menu-right" style={option.dropdownStyle}>
+                        {children}
                     </div>
-                );
+                </div>
+            );
         }
-    }
-    render() {
-        return this.renderInputComp();
     }
 }
 
@@ -132,53 +95,57 @@ const style = {
             border: '1px solid #cccccc',
             lineHeight: 1,
             boderRadius: 0,
-        },
-        small: {
-            height: 30,
-            fontSize: 16,
-            margin: '7px 20px',
+            height: '100%',
         },
         default: {
-            height: 38,
-            fontSize: 21,
             margin: '9px 26px',
         },
-        large: {
-            height: 52,
-            fontSize: 25,
-            margin: '13px 36px',
-        },
-        blockLarge: {
-            height: 52,
-            fontSize: 25,
-            margin: '13px 62px',
-        }
     },
     input: {
-        small: {
-            height: 30,
-            fontSize: 14,
-        },
         default: {
-            height: 38,
+            height: '100%',
             fontSize: 16,
         },
-        large: {
-            height: 52,
-            fontSize: 20,
-        },
-        blockLarge: {
-            height: 52,
-            fontSize: 20,
-        }
     },
 };
 
 QbDropDown.defaultProps = {
+    option: {
+        inputType: 'button',
+        style: {
+            height: 52,
+            width: 100,
+            position: 'relative'
+        },
+        btnStyle: {
+            fontSize: 20
+        },
+        inputStyle: {
+            fontSize: 20
+        },
+        dropdownStyle: {},
+    },
     defaultData: {
+        label: null,
         value: null,
-        label: null
-    }
+    },
+    content: [],
+    onChange: ()=>{},
+    className: '',
+    btnClassName:  'btn btn-secondary',
+}
+QbDropDown.propTypes = {
+    option: React.PropTypes.shape({
+        inputType: React.PropTypes.string,
+        style: React.PropTypes.object,
+        btnStyle: React.PropTypes.object,
+        dropdownStyle: React.PropTypes.object,
+    }),
+    defaultData: React.PropTypes.object,
+    content: React.PropTypes.array,
+    onChange: React.PropTypes.func,
+    className: React.PropTypes.string,
+    btnClassName: React.PropTypes.string,
 }
 
 export default QbDropDown;
