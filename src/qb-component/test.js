@@ -26,7 +26,7 @@ import 'rc-collapse/assets/index.css';
 import { QbAvatar } from './QbHeader';
 import QbAlert from './QbAlert';
 import QbClassCard from './QbClassCard';
-import Calendar from './assets/image/icon/calendar.svg';
+import {QbNavLeft, QbNavDDL} from './QbNavLeftDDL';
 
 const Panel = Collapse.Panel;
 
@@ -119,19 +119,33 @@ export default class Test extends Component {
             description: 'Take this e-class to learn the important elements that go into writing and identifying effective paragraphs made up of opening, transitional and closing sentences. This class will teach you how to master this skill for the ACT',
             skillName: 'Analyzing Function'
         };
-        const classCardData2 = { ...classCardData, expand: true, btnText: 'Join Class' };
-        let option = {
-            display: this.state.showCard
+        const classCardData2 = { ...classCardData, expand: true, btnText: 'Join Class' }
+        let paramQbNav = {
+            itemList: [
+                {
+                    "key": "item01",
+                    "value": "Item 01",
+                    "href": "/",
+                    "isRedirect": false
+                }, {
+                    "key": "item02",
+                    "value": "Item 02",
+                    "href": "/",
+                    "isRedirect": false
+                }
+            ],
+            queryStrName: 'keyNav',
         };
-        console.log('Tg option:', option);
-        let CalendarIcon = (
-            <img src={Calendar} alt='calendar'/>
-        );
         return (
             <div>
-                <QbClassCard {...classCardData} />
-                <QbClassCard {...classCardData2} />
-                <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
+                <QbNavLeft params={paramQbNav} />
+
+                {/* <QbClassCard {...classCardData} /> */}
+
+                <QbNavDDL params={paramQbNav} />
+
+                {/* <QbClassCard {...classCardData2} /> */}
+                {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
                 <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
                 <QbProgressBar showProgressText={true} compStyle={{ margin: '50px 0' }} percentage={'35%'} />
                 <QbImgSection sectionType="English" style={{ 'height': '200px' }}></QbImgSection>
@@ -238,7 +252,7 @@ export default class Test extends Component {
                         { fontWeight: 'bold' });
                 }}>
                     booooo
-                </button>
+                </button> */}
             </div>
         )
     }

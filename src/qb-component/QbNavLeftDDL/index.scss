@@ -1,0 +1,20 @@
+@import "../scss/variables";
+
+.section-navleft {
+    display: none;
+	font-size: 21.6px;
+	line-height: 1.5;
+	color: $midNight;
+    padding: 0 0 20px;
+
+    @media (min-width: $mediaTablet) {
+        display: block;
+    }
+}
+
+.section-navddl {
+    display: none;
+    @media (max-width: $mediaTablet) {
+        display: block;
+    }
+}
