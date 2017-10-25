@@ -171,7 +171,10 @@ export default class Test extends Component {
                         <div>header</div>
                     </QbModalHeader>
                     <QbModalBody>
-                        <div>body</div>
+                        <div>
+                            <QbSwitcher switchState={this.state.switchState}
+                                        clickHandler={this.switchHandler.bind(this)}/>
+                        </div>
                     </QbModalBody>
                     <QbModalFooter>
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal' />
