@@ -14,12 +14,7 @@ class QbModal extends Component {
         });
     }
     render() {
-        const {target, show} = this.props;
-        if (show) {
-            $('#'+ target).modal('show');
-        } else {
-            $('#'+ target).modal('hide');
-        }
+        const {target} = this.props;
         return (
             <div className="modal fade" id={target} role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -29,6 +24,14 @@ class QbModal extends Component {
                 </div>
             </div>
         )
+    }
+    componentDidMount() {
+        const {target, show} = this.props;
+        if (show) {
+            $('#'+ target).modal('show');
+        } else {
+            $('#'+ target).modal('hide');
+        }
     }
 }
 

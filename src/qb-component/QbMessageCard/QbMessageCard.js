@@ -66,5 +66,12 @@ QbMessageCard.propTypes = {
     onCancelClick: React.PropTypes.func,
     className: React.PropTypes.string,
 }
+QbMessageCard.defaultProps = {
+    option: {
+        style: {},
+        display: true
+    },
+    onCancelClick: ()=>{},
+}
 
 export default QbMessageCard;
