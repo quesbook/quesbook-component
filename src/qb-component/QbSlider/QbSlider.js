@@ -22,19 +22,16 @@ class QbSlider extends Component {
     sliderChange(value) {
         const {changeHandler } = this.props;
         const {maxPrice} = this.props;
+        let low = ((maxPrice/100)* value[0]).toFixed(1);
+        let high = ((maxPrice/100)* value[1]).toFixed(1);
         this.setState((prevState, props)=> {
             return {...prevState.value,
                 value: {
-                    low: ((maxPrice/100)* value[0]).toFixed(1),
-                    high: ((maxPrice/100)* value[1]).toFixed(1),}
+                    low: low,
+                    high: high,}
                 }
         });
-        // this.value = {
-        //     ...this.value,
-        //     low: ((maxPrice/100)* value[0]).toFixed(1),
-        //     high: ((maxPrice/100)* value[1]).toFixed(1),
-        // };
-        return changeHandler(this.state.value.low, this.state.value.high);
+        return changeHandler(low, high);
     }
     render () {
         const {style} = this.props;
