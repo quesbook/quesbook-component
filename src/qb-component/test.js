@@ -27,6 +27,9 @@ import { QbAvatar } from './QbHeader';
 import QbAlert from './QbAlert';
 import QbClassCard from './QbClassCard';
 import {QbNavLeft, QbNavDDL} from './QbNavLeftDDL';
+import Rheostat from 'rheostat';
+import 'rheostat/css/slider.css';
+import 'rheostat/css/slider-horizontal.css';
 
 const Panel = Collapse.Panel;
 
@@ -59,6 +62,8 @@ export default class Test extends Component {
     }
     sliderChange(lowPrice, highPrice) {
         console.log(lowPrice, highPrice);
+        // setTimeout(()=> {throw new Error('wtf')}, 0);
+        this.setState((prevState, props) => ({ switchState: !prevState.switchState }));
     }
     buttonIconClick() {
         alert('icon cliasc');
@@ -143,8 +148,23 @@ export default class Test extends Component {
                 {/* <QbClassCard {...classCardData} /> */}
 
                 <QbNavDDL params={paramQbNav} />
-
-                {/* <QbClassCard {...classCardData2} /> */}
+                <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
+                <QbSlider maxMark="$10+"
+                          minMark="Free!"
+                          maxPrice={15}
+                          style={{ height: 100, width: 300 }}
+                          changeHandler={this.sliderChange.bind(this)} />
+                <QbSlider maxMark="$10+"
+                          minMark="Free!"
+                          maxPrice={15}
+                          style={{height: 80, width: '100%', padding: '0 15px', marginTop: 15}}
+                          changeHandler={this.sliderChange.bind(this)}/>
+                <Rheostat
+                    min={1}
+                    max={100}
+                    values={[1, 100]}
+                />
+                {/*/!* <QbClassCard {...classCardData2} /> *!/*/}
                 {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
                 <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
                 <QbProgressBar showProgressText={true} compStyle={{ margin: '50px 0' }} percentage={'35%'} />
@@ -255,7 +275,7 @@ export default class Test extends Component {
                         { fontWeight: 'bold' });
                 }}>
                     booooo
-                </button> */}
+                {/*</button> *!/*/}
             </div>
         )
     }

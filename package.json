@@ -1,6 +1,6 @@
 {
   "name": "quesbook-component",
-  "version": "0.1.45",
+  "version": "0.1.47",
   "description": "",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -32,7 +32,7 @@
     "moment": "^2.18.1",
     "rc-collapse": "^1.7.6",
     "rc-notification": "^2.0.5",
-    "rc-slider": "^8.2.0",
+    "rc-slider": "^8.3.4",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-shallow-compare": "^15.6.0",
@@ -40,7 +40,8 @@
     "react-bootstrap": "^0.31.1",
     "react-dates": "^12.3.0",
     "react-dom": "^15.4.2",
-    "react-router": "^2.8.1"
+    "react-router": "^2.8.1",
+    "rheostat": "^2.1.1"
   },
   "files": [
     "lib",
