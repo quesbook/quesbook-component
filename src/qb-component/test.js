@@ -92,6 +92,9 @@ export default class Test extends Component {
         }, {
             label: 'cde',
             value: 'cde',
+        }, {
+            label: 'def',
+            value: 'def',
         }];
         let list = this.state.numlist.map((data, index) => {
             return <div key={index}>{data}</div>
@@ -164,6 +167,15 @@ export default class Test extends Component {
                     max={100}
                     values={[1, 100]}
                 />
+                <QbDropDown option={{
+                    inputType: "input",
+                    btnStyle:{ width: 350, textAlign: 'left' },
+                    style: { position: 'relative', width: 400, height: 52 },
+                    dropdownStyle:{ width: '100%' }}} content={dropDownContent}
+                            onChange={(data) => {
+                                console.log('TAg data:', data);
+                                this.setState({show: !this.state.show});
+                            }}/>
                 {/*/!* <QbClassCard {...classCardData2} /> *!/*/}
                 {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
                 <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
