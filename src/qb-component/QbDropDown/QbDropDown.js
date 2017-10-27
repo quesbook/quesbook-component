@@ -26,7 +26,7 @@ class QbDropDown extends Component {
     renderDropDownList(content) {
         const {onChange} = this.props;
         return content.map((data, index) =>
-            <QbDropDownItem label={data.label} key={index} value={data.value} onClick={(data) => {
+            <QbDropDownItem label={data.label} key={index} value={data.value} onClick={() => {
                 this.setState({
                     selectedObj: data
                 });
