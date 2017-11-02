@@ -30,11 +30,11 @@ class QbNavDDL extends Component {
 
     renderLeftNavDDL(list, selItem) {
         let dropDownContent = list.map((item, index) => {
-            return {'label': item.key, 'value': item.value};
+            return {'label': item.value, 'value': item.key};
         });
         let defaultData = {
-            label: selItem.key,
-            value: selItem.value
+            label: selItem.value,
+            value: selItem.key
         };
 
         return (<QbDropDown defaultData={defaultData} default
@@ -55,7 +55,7 @@ class QbNavDDL extends Component {
     }
 
     onChange_DDL = (data) => {
-        let selItem = itemList.find(item => item.key === data.label);
+        let selItem = itemList.find(item => item.key === data.value);
         if (selItem.isRedirect) {
             window.location.href = window.location.origin + selItem.href;
         } else {
