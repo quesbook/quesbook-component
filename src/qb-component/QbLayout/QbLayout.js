@@ -87,16 +87,17 @@ class QbLayout extends Component {
     }
 
     onClick_Setting(userType) {
-        switch (userType) {
-            case 'Student':
-                window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/setting`;
-                break;
-            case 'Tutor':
-                window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/settingTutor`;
-                break;
-            default:
-                window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/setting`;
-        }
+        window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/setting`;
+        // switch (userType) {
+        //     case 'Student':
+        //         window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/setting`;
+        //         break;
+        //     case 'Tutor':
+        //         window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/settingTutor`;
+        //         break;
+        //     default:
+        //         window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/setting`;
+        // }
     }
 
     onClick_MyClass() {
