@@ -24,3 +24,5 @@ export const NAV_ITEM_LIST = [
 ];
 
 export const HOME_PAGE = '/';
+
+export const DEFAULT_FOLDER='/start';

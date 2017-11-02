@@ -36,7 +36,7 @@ class QbSideBar extends Component {
                             <div hidden={currentUser.type==='Tutor'} onClick={this.props.onClick_MyClass}>
                                 My Class
                             </div>
-                            <div hidden={currentUser.type==='Tutor'} onClick={this.props.onClick_Setting}>
+                            <div onClick={this.props.onClick_Setting.bind(this, currentUser.type)}>
                                 My Account
                             </div>
                             <div onClick={this.onClick_SignOut.bind(this)}>Log out</div>

@@ -4,7 +4,7 @@ import QbHeader from '../QbHeader';
 import QbFooter from '../QbFooter';
 import gql from 'graphql-tag';
 import ApolloClient, {createNetworkInterface} from 'apollo-client';
-import {QB_COMPONENT_GQL_URL, TOKEN_KEY, TOKEN_KEY_QB, HOME_PAGE} from '../common/const';
+import {QB_COMPONENT_GQL_URL, TOKEN_KEY, TOKEN_KEY_QB, HOME_PAGE, DEFAULT_FOLDER} from '../common/const';
 import Cookies from 'js-cookie';
 import iconLoading from '../assets/image/icon/loading.gif';
 
@@ -86,14 +86,17 @@ class QbLayout extends Component {
         }
     }
 
-    onClick_Setting() {
-        window.location.href = window.location.origin + '/start/#/setting';
-
-        // let navItemList = this.state.navItemList;
-        //
-        // this.setState({
-        //     navItemList: navItemList.slice(0, 1)
-        // });
+    onClick_Setting(userType) {
+        switch (userType) {
+            case 'Student':
+                window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/setting`;
+                break;
+            case 'Tutor':
+                window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/settingTutor`;
+                break;
+            default:
+                window.location.href = window.location.origin + `${DEFAULT_FOLDER}/#/setting`;
+        }
     }
 
     onClick_MyClass() {
