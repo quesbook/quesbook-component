@@ -104,10 +104,10 @@ class QbHeader extends Component {
         this.setState({isShowSideBar: false});
     }
 
-    renderLinkItems() {
+    renderLinkItems(currentUser) {
         let ret = [];
 
-        ret = this.state.linkItems.map((item, index) => {
+        ret = this.state.linkItems.filter(item=>item.userType.indexOf(currentUser.type)!==-1).map((item, index) => {
             return (item.isRedirect
                 ? this.renderExternalLink(item, index)
                 : this.renderInnerLink(item, index));
@@ -124,7 +124,7 @@ class QbHeader extends Component {
         if (currentUser && this.state.linkItems) {
             return (
                 <div className='section-ct-link box-cursor'>
-                    {this.renderLinkItems()}
+                    {this.renderLinkItems(currentUser)}
                 </div>
             );
         }

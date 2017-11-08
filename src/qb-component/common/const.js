@@ -7,19 +7,24 @@ export const TOKEN_KEY_QB = '_quesbook_session';
 export const NAV_ITEM_LIST = [
     {
         label: 'Getting started',
-        href: '/start'
+        href: '/start',
+        userType: ['Tutor', 'Student', 'TutorAdmin', 'EditorAdmin', 'SuperAdmin', 'Guest']
     }, {
-        label: 'Study plan',
+        label: 'Student Menu',
         href: '/studyplan',
+        userType: ['Student']
     }, {
-        label: 'Practice questions',
-        href: '/practicequestions'
+        label: 'Tutor Menu',
+        href: '/practicequestions',
+        userType: ['Tutor']
     }, {
         label: 'Articles',
-        href: '/articles'
+        href: '/articles',
+        userType: ['Tutor', 'Student']
     }, {
         label: 'Simulation',
-        href: '/simulation'
+        href: '/simulation',
+        userType: ['Tutor', 'Student']
     }
 ];
 
