@@ -176,23 +176,6 @@ export default class Test extends Component {
                                 console.log('TAg data:', data);
                                 this.setState({show: !this.state.show});
                             }}/>
-                {/*/!* <QbClassCard {...classCardData2} /> *!/*/}
-                {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
-                <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
-                <QbProgressBar showProgressText={true} compStyle={{ margin: '50px 0' }} percentage={'35%'} />
-                <QbImgSection sectionType="English" style={{ 'height': '200px' }}></QbImgSection>
-                <QbImgSection sectionType="science"></QbImgSection>
-
-                <QbStar num="33"></QbStar>
-
-                <QbScore score="1"></QbScore>
-                <QbScore score="99"></QbScore>
-
-                <QbScore score="1" content="over all" style={{ 'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px' }}></QbScore>
-                <QbScore score="32" content="over all" style={{ 'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px' }}></QbScore>
-                <h1>
-                    My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
-                </h1>
                 <QbButton label="hello"
                     isSubmit="true"
                     className="btn btn-secondary btn-sm"
@@ -200,15 +183,24 @@ export default class Test extends Component {
                     dataTarget="#modal" dataToggle='modal'>
                     <img src={CloseIcon} style={{ height: 'inherit', width: 'inherit' }} />
                 </QbButton>
-                <QbButton label="t"
-                    className="btn btn-primary btn-lg"
-                    clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
-                <QbCheckBox label="hello" changeHandler={() => alert('hi')} fontStyle={{ fontSize: 16 }} />
-                <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
-                <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
-                <QbInput size="small" changeHandler={(e) => alert(e.target.value)}>
-                    @
-                </QbInput>
+                <QbDropDown option={{
+                                inputType: "input",
+                                btnStyle:{ width: 350, textAlign: 'left' },
+                                style: { position: 'relative', width: 400, height: 52 },
+                                dropdownStyle:{ width: '100%' }}} content={dropDownContent}
+                            onChange={(data) => {
+                                console.log('TAg data:', data);
+                                this.setState({show: !this.state.show});
+                            }}/>
+                            <QbButton label="t"
+                                className="btn btn-primary btn-lg"
+                                clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
+                            <QbCheckBox label="hello" changeHandler={() => alert('hi')} fontStyle={{ fontSize: 16 }} />
+                            <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                            <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                            <QbInput size="small" changeHandler={(e) => alert(e.target.value)}>
+                                @
+                            </QbInput>
                 <QbModal target="modal" show={this.state.showModal}
                     afterHidden={() => this.setState({ showModal: false })}
                     afterShown={() => this.setState({ showModal: true })}
@@ -226,16 +218,27 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal' />
                     </QbModalFooter>
                 </QbModal>
+                {/*/!* <QbClassCard {...classCardData2} /> *!/*/}
+                {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
+                <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
+                <QbProgressBar showProgressText={true} compStyle={{ margin: '50px 0' }} percentage={'35%'} />
+                <QbImgSection sectionType="English" style={{ 'height': '200px' }}></QbImgSection>
+                <QbImgSection sectionType="science"></QbImgSection>
+
+                <QbStar num="33"></QbStar>
+
+                <QbScore score="1"></QbScore>
+                <QbScore score="99"></QbScore>
+
+                <QbScore score="1" content="over all" style={{ 'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px' }}></QbScore>
+                <QbScore score="32" content="over all" style={{ 'borderColor': '#b9cff3', 'color': '#b9cff3', 'fontSize': '40px' }}></QbScore>
+                <h1>
+                    My StudyPlan <QbHighlight content="Quesbook Web"></QbHighlight>
+                </h1>
+
+
                 npm
-                <QbDropDown option={{
-                                inputType: "input",
-                                btnStyle:{ width: 350, textAlign: 'left' },
-                                style: { position: 'relative', width: 400, height: 52 },
-                                dropdownStyle:{ width: '100%' }}} content={dropDownContent}
-                            onChange={(data) => {
-                                console.log('TAg data:', data);
-                                this.setState({show: !this.state.show});
-                            }}/>
+
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
                 <QbTimePicker id="startPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
                     option={{btnStyle: { width: 100, height: 52, fontSize: 20 },

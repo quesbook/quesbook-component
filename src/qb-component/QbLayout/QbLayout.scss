@@ -6,18 +6,33 @@ html {
         font-style: normal;
         font-weight: 400;
 
+        .btn-secondary {
+            color: #192230;
+            background-color: #fff;
+            border-color: #192230;
+        }
+
+        .btn-secondary:hover {
+            color: #192230;
+            background-color: #e6e6e6;
+            border-color: #040508;
+        }
+
         .box-font-narrow {
             font-family: "Gotham Narrow A", "Gotham Narrow B";
         }
+
         .box-a-nostyle {
             a,
             a:hover {
                 text-decoration: none;
             }
         }
+
         .box-cursor:hover {
             cursor: pointer;
         }
+
         .box-list {
             ul {
                 width: 100%;
@@ -26,24 +41,30 @@ html {
                 list-style: none;
             }
         }
+
         .box-ct {
             border: 1px solid rgba(0, 0, 0, 0.5);
             box-sizing: border-box;
         }
+
         .box-block {
             display: block;
         }
+
         .box-hidden {
             display: none !important;
         }
+
         .box-flex {
             display: flex;
         }
+
         .box-flex-center {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .box-flex-item {
             flex: 1;
         }
