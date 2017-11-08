@@ -10,10 +10,18 @@
 .btn-primary.disabled {
   background-color: #bcc4d0;
 }
+.btn-primary {
+  background-color: #203a62;
+  border-color: #203a62;
+}
 
 .btn-secondary.disabled {
   border: solid 1px #bcc4d0;
   color: #bcc4d0;
+}
+.btn-secondary{
+  background-color: #ffffff;
+  border-color: #192230;
 }
 .btn {
   font-family: 'Gotham Narrow A', 'Gotham Narrow B';
