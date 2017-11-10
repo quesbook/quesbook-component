@@ -34,9 +34,28 @@ class QbDropDown extends Component {
             }} />
         );
     }
+    renderMask() {
+        const {disable} = this.props.option;
+        if (disable) {
+            return (
+                <div style={{
+                    position: 'absolute',
+                    width: '100%', 
+                    height: '100%', 
+                    opacity: 0.1, 
+                    top:0,
+                    left: 0,
+                    background: '#000',
+                    borderRadius: 4, zIndex: 10}}/>
+            );
+        } else {
+            return null;
+        }
+    }
     render() {
         const { option, className, btnClassName, onChange, content} = this.props;
         let children;
+        let mask = this.renderMask();
         if (option.inputType === 'button') {
             children = this.renderDropDownList(content);
             return (
@@ -57,14 +76,17 @@ class QbDropDown extends Component {
                             }}>
                         {this.state.selectedObj.label}
                     </button>
-                    <button type="button" style={{ ...style.button.publicStyle, borderLeft: 0}}
-                            className={btnClassName + ' dropdown-toggle'} data-toggle="dropdown"
+                    <button type="button" 
+                            style={{ ...style.button.publicStyle, borderLeft: 0}}
+                            className={btnClassName + ' dropdown-toggle'} 
+                            data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                         <span className="sr-only">Toggle Dropdown</span>
                     </button>
                     <div className="dropdown-menu dropdown-menu-right" style={option.dropdownStyle}>
                         {children}
                     </div>
+                    {mask}
                 </div>
             );
         } else if (option.inputType === 'input') {
@@ -73,7 +95,7 @@ class QbDropDown extends Component {
             return (
                 <div className={className} style={{position: 'relative', height: 52, ...option.style}}>
                     <input type="text" style={{...style.input.default, ...option.inputStyle}}
-                           data-toggle="dropdown" className="form-control"
+                           data-toggle="dropdown" className="form-control disable"
                            onChange={(e) => {
                                this.setState({
                                    keyword: e.target.value
@@ -82,6 +104,7 @@ class QbDropDown extends Component {
                     <div className="dropdown-menu dropdown-menu-right" style={option.dropdownStyle}>
                         {children}
                     </div>
+                    {mask}
                 </div>
             );
         }
