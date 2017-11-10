@@ -14,6 +14,12 @@
   background-color: #203a62;
   border-color: #203a62;
 }
+.btn-primary:hover {
+  background-color: #182b49;
+}
+.btn-primary:active {
+	background-color: #192230;
+}
 
 .btn-secondary.disabled {
   border: solid 1px #bcc4d0;
@@ -21,7 +27,13 @@
 }
 .btn-secondary{
   background-color: #ffffff;
-  border-color: #192230;
+  border-color: #203a62;
+}
+.btn-secondary:hover {
+	background-color: #d1d2d5;
+}
+.btn-secondary:active {
+	background-color: #192230;
 }
 .btn {
   font-family: 'Gotham Narrow A', 'Gotham Narrow B';
