@@ -31,3 +31,5 @@ export const NAV_ITEM_LIST = [
 export const HOME_PAGE = '/';
 
 export const DEFAULT_FOLDER='/start';
+
+export const TUTOR_ADMIN = 'tutor_admin'
