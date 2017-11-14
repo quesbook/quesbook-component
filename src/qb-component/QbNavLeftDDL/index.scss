@@ -3,12 +3,16 @@
 .section-navleft {
     display: none;
 	font-size: 21.6px;
-	line-height: 1.5;
+	line-height: 1.2;
 	color: $midNight;
     padding: 0 0 20px;
 
     @media (min-width: $mediaTablet) {
         display: block;
+    }
+
+    .section-navleft-item {
+        padding: 0 15px 20px;
     }
 }
 
