@@ -59,6 +59,8 @@ class QbLayout extends Component {
           }
         `, fetchPolicy: 'network-only'}).then((res) => {
             let navItemList = this.props.navItemList || this.props.route.navItemList;
+            console.log("layout this.props -->", this.props);
+            console.log("window.location.pathname -->", window.location.pathname);
             if (!res.data.currentUser && window.location.pathname !== HOME_PAGE) {
                 this.navHomePage();
             } else {
