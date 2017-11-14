@@ -118,6 +118,7 @@ const style = {
             lineHeight: 1,
             boderRadius: 0,
             height: '100%',
+            fontSize: 20,
         },
         default: {
             margin: '9px 26px',
@@ -126,7 +127,7 @@ const style = {
     input: {
         default: {
             height: '100%',
-            fontSize: 16,
+            fontSize: 20,
         },
     },
 };
