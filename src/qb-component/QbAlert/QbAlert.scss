@@ -2,3 +2,20 @@
     display: flex;
     justify-content: center;
 }
+
+.alert-success {
+    background-color: #72b567;
+    color: #ffffff;
+}
+.alert-danger {
+    background-color: #e17367;
+    color: #ffffff;
+}
+.alert-info {
+    background-color: #5d90e3;
+    color: #ffffff;
+}
+.alert-warning {
+    background-color: #faee67;
+    color: #192230;
+}
