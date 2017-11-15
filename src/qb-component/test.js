@@ -82,6 +82,12 @@ export default class Test extends Component {
             numlist: a
         })
     }
+    alertMessage() {
+        QbAlert.error('hi', 'hello', 300);
+        QbAlert.info('hi', 'hello', 300);
+        QbAlert.warning('hi', 'hello', 300);
+        QbAlert.success('hi', 'hello', 300);
+    }
     render() {
         const dropDownContent = [{
             label: 'abc',
@@ -203,6 +209,7 @@ export default class Test extends Component {
                             <QbInput size="small" changeHandler={(e) => alert(e.target.value)}>
                                 @
                             </QbInput>
+                <button onClick={this.alertMessage.bind(this)}>add</button>
                 <QbModal target="modal" show={this.state.showModal}
                     afterHidden={() => this.setState({ showModal: false })}
                     afterShown={() => this.setState({ showModal: true })}
@@ -263,7 +270,7 @@ export default class Test extends Component {
                     style={{ height: 100, width: 300 }}
                     changeHandler={this.sliderChange.bind(this)} />
                 <QbCard cardStyle={{ height: 120, width: 500 }} avatarSrc={CloseIcon} rate={3.5} />
-                <button onClick={this.add.bind(this)}>add</button>
+                
                 <QbTabs>
                     <QbTab ref="hlo">
                         {list}

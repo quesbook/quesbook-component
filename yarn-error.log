@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/local/Cellar/node/8.6.0/bin/node /usr/local/Cellar/yarn/1.1.0/libexec/bin/yarn.js install
+  /usr/local/Cellar/node/8.9.1/bin/node /usr/local/Cellar/yarn/1.3.2/libexec/bin/yarn.js install
 
 PATH: 
   /Users/az/.rvm/gems/ruby-2.3.0/bin:/Users/az/.rvm/gems/ruby-2.3.0@global/bin:/Users/az/.rvm/rubies/ruby-2.3.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/az/.rvm/bin
 
 Yarn version: 
-  1.1.0
+  1.3.2
 
 Node version: 
-  8.6.0
+  8.9.1
 
 Platform: 
   darwin x64
@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "quesbook-component",
-    "version": "0.1.57",
+    "version": "0.1.61",
     "description": "",
     "devDependencies": {
       "babel-cli": "^6.24.1",
@@ -41,13 +41,13 @@ npm manifest:
     "dependencies": {
       "apollo-client": "^1.9.0-0",
       "babel-preset-es2015": "^6.24.1",
-      "bootstrap": "4.0.0-beta.2",
+      "bootstrap": "4.0.0-alpha.6",
       "graphql-tag": "^2.4.2",
       "jquery": "^3.2.1",
       "js-cookie": "^2.1.4",
       "moment": "^2.18.1",
       "rc-collapse": "^1.7.6",
-      "rc-notification": "^2.0.5",
+      "rc-notification": "^3.0.0",
       "rc-slider": "^8.3.4",
       "react": "^15.4.2",
       "react-addons-css-transition-group": "^15.6.0",
@@ -89,15 +89,8 @@ Lockfile:
   No lockfile
 
 Trace: 
-  Error: https://registry.yarnpkg.com/apollo-client: tunneling socket could not be established, cause=write EPROTO 140736950907840:error:140770FC:SSL routines:SSL23_GET_SERVER_HELLO:unknown protocol:../deps/openssl/openssl/ssl/s23_clnt.c:797:
-  
-      at ClientRequest.onError (/usr/local/Cellar/yarn/1.1.0/libexec/lib/cli.js:136167:17)
-      at Object.onceWrapper (events.js:316:30)
-      at emitOne (events.js:115:13)
-      at ClientRequest.emit (events.js:210:7)
-      at TLSSocket.socketErrorListener (_http_client.js:401:9)
-      at emitOne (events.js:115:13)
-      at TLSSocket.emit (events.js:210:7)
-      at onwriteError (_stream_writable.js:408:12)
-      at onwrite (_stream_writable.js:430:5)
-      at _destroy (internal/streams/destroy.js:39:7)
+  Error: https://registry.yarnpkg.com/graphql: ETIMEDOUT
+      at Timeout._onTimeout (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:123749:19)
+      at ontimeout (timers.js:475:11)
+      at tryOnTimeout (timers.js:310:5)
+      at Timer.listOnTimeout (timers.js:270:5)
