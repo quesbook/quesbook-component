@@ -4,7 +4,7 @@ import QbHeader from '../QbHeader';
 import QbFooter from '../QbFooter';
 import gql from 'graphql-tag';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { QB_COMPONENT_GQL_URL, TOKEN_KEY, TOKEN_KEY_QB, HOME_PAGE, DEFAULT_FOLDER, TUTOR_ADMIN } from '../common/const';
+import { QB_COMPONENT_GQL_URL, TOKEN_KEY, TOKEN_KEY_QB, HOME_PAGE, DEFAULT_FOLDER, TUTOR_ADMIN, ALLOWED_TYPES } from '../common/const';
 import Cookies from 'js-cookie';
 import iconLoading from '../assets/image/icon/loading.gif';
 
@@ -66,7 +66,7 @@ class QbLayout extends Component {
             console.log("pathname -->", pathname);
             if (!currentUser && pathname !== HOME_PAGE) {
                 this.navHomePage();
-            } else if (pathname === TUTOR_ADMIN && (currentUser.type !== 'EditorAdmin' || currentUser.type !== 'TutorAdmin')) {
+            } else if (pathname === TUTOR_ADMIN && ALLOWED_TYPES.findIndex(currentUser.type) === -1) {
                 this.navHomePage();
             } else {
                 this.setState({ currentUser: currentUser, navItemList: navItemList })
