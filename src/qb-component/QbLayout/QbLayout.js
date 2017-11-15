@@ -63,6 +63,10 @@ class QbLayout extends Component {
             let navItemList = this.props.navItemList || this.props.route.navItemList;
             let currentUser = res.data.currentUser;
             let pathname = window.location.pathname;
+            console.log("currentUser -->", currentUser);
+            console.log("pathname -->", pathname);
+            console.log("ALLOWED_TYPES -->", ALLOWED_TYPES);
+            console.log("ALLOWED_TYPES.includes(currentUser.type) -->", ALLOWED_TYPES.includes(currentUser.type))
             if (!currentUser && pathname !== HOME_PAGE) {
                 this.navHomePage();
             } else if (pathname === TUTOR_ADMIN && !ALLOWED_TYPES.includes(currentUser.type)) {
