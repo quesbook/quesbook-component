@@ -64,6 +64,8 @@ class QbLayout extends Component {
             let currentUser = res.data.currentUser;
             let pathname = window.location.pathname;
             console.log("pathname -->", pathname);
+            console.log("ALLOWED_TYPES -->", ALLOWED_TYPES)
+            console.log('ALLOWED_TYPES.findIndex(currentUser.type) -->', ALLOWED_TYPES.findIndex(currentUser.type));
             if (!currentUser && pathname !== HOME_PAGE) {
                 this.navHomePage();
             } else if (pathname === TUTOR_ADMIN && ALLOWED_TYPES.findIndex(currentUser.type) === -1) {
