@@ -33,13 +33,13 @@ class QbSideBar extends Component {
                         {this.renderUserIconSection(currentUser)}
                         {this.renderUserExamSection(currentUser)}
                         <div className='col-lg-12 section-user'>
-                            <div hidden={currentUser.type==='Tutor'} onClick={this.props.onClick_MyClass}>
+                            <div className="box-cursor" hidden={currentUser.type==='Tutor'} onClick={this.props.onClick_MyClass}>
                                 My Class
                             </div>
-                            <div onClick={this.props.onClick_Setting.bind(this, currentUser.type)}>
+                            <div className="box-cursor" onClick={this.props.onClick_Setting.bind(this, currentUser.type)}>
                                 My Account
                             </div>
-                            <div onClick={this.onClick_SignOut.bind(this)}>Log out</div>
+                            <div className="box-cursor" onClick={this.onClick_SignOut.bind(this)}>Log out</div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ class QbSideBar extends Component {
             let currentUserExamList = currentUser.exam_type_names;
             let examItemList = currentUserExamList.map((item, index) => {
                 return (
-                    <div key={index}>
+                    <div className="box-cursor" key={index}>
                         {item}
                     </div>
                 );

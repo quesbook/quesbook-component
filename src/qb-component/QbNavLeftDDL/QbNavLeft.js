@@ -34,7 +34,7 @@ class QbNavLeft extends Component {
 
         ret = array.map((item, index) => {
             return (
-                <li className="box-cursor" onClick={this.onClick_LeftNavList.bind(this, item)} key={index}>
+                <li className="section-navleft-item box-cursor" onClick={this.onClick_LeftNavList.bind(this, item)} key={index}>
                     {this.renderLeftNavItem(item, selItem)}
                 </li>
             )

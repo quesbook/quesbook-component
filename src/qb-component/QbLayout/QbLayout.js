@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './QbLayout.scss';
 import QbHeader from '../QbHeader';
 import QbFooter from '../QbFooter';
 import gql from 'graphql-tag';
-import ApolloClient, {createNetworkInterface} from 'apollo-client';
-import {QB_COMPONENT_GQL_URL, TOKEN_KEY, TOKEN_KEY_QB, HOME_PAGE, DEFAULT_FOLDER} from '../common/const';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import { QB_COMPONENT_GQL_URL, TOKEN_KEY, TOKEN_KEY_QB, HOME_PAGE, DEFAULT_FOLDER, TUTOR_ADMIN, ALLOWED_TYPES } from '../common/const';
 import Cookies from 'js-cookie';
 import iconLoading from '../assets/image/icon/loading.gif';
 
@@ -12,11 +12,11 @@ class QbLayout extends Component {
     constructor(props) {
         super(props);
 
-        const {gqlUrl, route} = this.props;
+        const { gqlUrl, route } = this.props;
         const GQL_URL = gqlUrl || (route
             ? route.gqlUrl
             : route) || QB_COMPONENT_GQL_URL;
-        const networkInterface = createNetworkInterface({uri: GQL_URL});
+        const networkInterface = createNetworkInterface({ uri: GQL_URL });
 
         networkInterface.use([
             {
@@ -33,7 +33,7 @@ class QbLayout extends Component {
                 }
             }
         ]);
-        this.client = new ApolloClient({networkInterface});
+        this.client = new ApolloClient({ networkInterface });
 
         this.state = {
             currentUser: null,
@@ -44,7 +44,8 @@ class QbLayout extends Component {
     }
 
     componentWillMount() {
-        this.client.query({query: gql `
+        this.client.query({
+            query: gql`
           query {
               currentUser: current_user {
                 id
@@ -57,12 +58,20 @@ class QbLayout extends Component {
                 type
               }
           }
-        `, fetchPolicy: 'network-only'}).then((res) => {
+        `, fetchPolicy: 'network-only'
+        }).then((res) => {
             let navItemList = this.props.navItemList || this.props.route.navItemList;
-            if (!res.data.currentUser && window.location.pathname.indexOf(HOME_PAGE) === -1) {
+            let currentUser = res.data.currentUser;
+            let pathname = window.location.pathname;
+            console.log("pathname -->", pathname);
+            console.log("ALLOWED_TYPES -->", ALLOWED_TYPES)
+            console.log('ALLOWED_TYPES.findIndex(currentUser.type) -->', ALLOWED_TYPES.findIndex(currentUser.type));
+            if (!currentUser && pathname !== HOME_PAGE) {
+                this.navHomePage();
+            } else if (pathname === TUTOR_ADMIN && ALLOWED_TYPES.findIndex(currentUser.type) === -1) {
                 this.navHomePage();
             } else {
-                this.setState({currentUser: res.data.currentUser, navItemList: navItemList})
+                this.setState({ currentUser: currentUser, navItemList: navItemList })
             }
         }).catch((e) => {
             this.navHomePage();
@@ -73,12 +82,12 @@ class QbLayout extends Component {
     componentWillReceiveProps(newProps) {
         let navItemList = newProps.navItemList || newProps.route.navItemList;
 
-        this.setState({navItemList: navItemList});
+        this.setState({ navItemList: navItemList });
     }
 
     navHomePage = () => {
         if (!this.state.isShowLoading) {
-            this.setState({isShowLoading: true});
+            this.setState({ isShowLoading: true });
 
             if (window.location.hostname !== 'localhost') {
                 window.location.href = HOME_PAGE;
@@ -115,7 +124,7 @@ class QbLayout extends Component {
             return response;
         }
 
-        const {gqlUrl, route} = this.props;
+        const { gqlUrl, route } = this.props;
         const GQL_URL = gqlUrl || (route
             ? route.gqlUrl
             : route) || QB_COMPONENT_GQL_URL;
@@ -127,7 +136,7 @@ class QbLayout extends Component {
             console.log('success');
             Cookies.remove(TOKEN_KEY);
             Cookies.remove(TOKEN_KEY_QB);
-            this.setState({currentUser: null});
+            this.setState({ currentUser: null });
             this.navHomePage();
             return res.data;
         }).catch(error => {
@@ -149,14 +158,14 @@ class QbLayout extends Component {
                 }}>
                     <img style={{
                         margin: 'auto'
-                    }} src={iconLoading} alt=""/>
+                    }} src={iconLoading} alt="" />
                 </div>
             );
         }
     }
 
     render() {
-        const {messageId} = this.props;
+        const { messageId } = this.props;
         let currentUser = this.state.currentUser;
         let styleNoLogin;
 
@@ -169,11 +178,11 @@ class QbLayout extends Component {
         return (
             <div className="layout-ct">
                 {this.renderLoading()}
-                <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_MyClass={this.onClick_MyClass.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)}/>
+                <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_MyClass={this.onClick_MyClass.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)} />
                 <div className="body-content" style={styleNoLogin}>
                     {this.props.children}
                 </div>
-                <QbFooter/>
+                <QbFooter />
             </div>
         );
     }
