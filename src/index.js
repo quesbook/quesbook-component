@@ -3,9 +3,9 @@
  */
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import QbLayout, { QbSimpleLayout } from './QbLayout';
-import './scss/_variables.scss';
-import {NAV_ITEM_LIST} from './common/const';
+import QbLayout, { QbSimpleLayout } from './qb-component/QbLayout';
+import './qb-component/scss/_variables.scss';
+import {NAV_ITEM_LIST} from './qb-component/common/const';
 import Routers from './router';
 
 class App extends Component {
