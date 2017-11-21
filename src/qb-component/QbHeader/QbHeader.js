@@ -142,14 +142,38 @@ class QbHeader extends Component {
         );
     }
 
+    renderComingSoon(item){
+        if (item.href === '/eclass') {
+            let style = {
+                backgroundColor: '#faee67',
+                borderRadius: '8px',
+                color: '#192230',
+                fontSize: '12px',
+                marginLeft: '7px',
+                padding: '3px 8px',
+                fontWeight: 'bold',
+            };
+
+            return (
+                <div style={{
+                    cursor: 'default'
+                }}>
+                    <span style={{
+                        color: '#fff',
+                        opacity: 0.5,
+                    }}>{item.label}</span>
+                    <span style={style}>Coming soon!</span>
+                </div>
+            );
+        }
+    }
+
     renderExternalLink(item, index) {
         return (
             <li key={index} className={item.isActive
                 ? 'active'
                 : ''}>
-                <a href='/eclass' onClick={this.onClick_NavLinkItem.bind(this, item)}>
-                    {item.label}
-                </a>
+                {this.renderComingSoon(item)}
             </li>
         );
     }

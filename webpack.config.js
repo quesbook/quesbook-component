@@ -4,7 +4,7 @@
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
-    entry: __dirname+'/src/qb-component/index.js',
+    entry: __dirname+'/src/index.js',
     output: {
         path: __dirname+'/dist',
         filename: 'bundle.js',
