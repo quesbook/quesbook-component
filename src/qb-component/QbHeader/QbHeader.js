@@ -79,6 +79,9 @@ class QbHeader extends Component {
     }
 
     resetNavLinkItem_Active(hashName) {
+        console.log('resetNavLinkItem_Active', hashName);
+        hashName = this.resetHashName(hashName);
+
         this.setState({isShowSideBar: false});
         let linkItems = this.state.linkItems;
 
@@ -89,6 +92,18 @@ class QbHeader extends Component {
 
             this.setState({linkItems: linkItems});
         }
+    }
+
+    resetHashName(hashName){
+        let ret = hashName;
+
+        if (ret === '#/') {
+            ret = '#/getStart';
+        } else if (ret.indexOf('#/diagnostic') === 0) {
+            ret = '#/studyPlan';
+        }
+
+        return ret;
     }
 
     onHover_Signed() {
