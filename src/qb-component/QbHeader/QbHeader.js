@@ -186,9 +186,12 @@ class QbHeader extends Component {
     renderExternalLink(item, index) {
         return (
             <li key={index} className={item.isActive
-                ? 'active'
-                : ''}>
-                {this.renderComingSoon(item)}
+                ? 'box-font-narrow active'
+                : 'box-font-narrow'}>
+                <a href='/eclass' onClick={this.onClick_NavLinkItem.bind(this, item)}>
+                    {item.label}
+                </a>
+                {/* {this.renderComingSoon(item)} */}
             </li>
         );
     }
