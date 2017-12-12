@@ -7,7 +7,7 @@ export const TOKEN_KEY_QB = '_quesbook_session';
 export const NAV_ITEM_LIST = [
     {
         label: 'Getting started',
-        href: '/start',
+        href: '/getStart',
         userType: ['Tutor', 'Student', 'TutorAdmin', 'EditorAdmin', 'SuperAdmin', 'Guest']
     }, {
         label: 'Student Menu',

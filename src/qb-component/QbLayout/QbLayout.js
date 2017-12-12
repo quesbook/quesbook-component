@@ -56,6 +56,7 @@ class QbLayout extends Component {
                 last_name
                 exam_type_names
                 type
+                one_of_section_part1_finished
               }
           }
         `, fetchPolicy: 'network-only'

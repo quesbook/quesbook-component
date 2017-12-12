@@ -121,8 +121,17 @@ class QbHeader extends Component {
 
     renderLinkItems(currentUser) {
         let ret = [];
+        let linkItemsFiltered = [];
 
-        ret = this.state.linkItems.filter(item=>item.userType.indexOf(currentUser.type)!==-1).map((item, index) => {
+        this.state.linkItems.map((item, index) => {
+            if (!(currentUser.one_of_section_part1_finished && item.href === '/getStart')) {
+                linkItemsFiltered.push(item);
+            }
+        });
+
+        linkItemsFiltered = linkItemsFiltered.filter(item=>item.userType.indexOf(currentUser.type)!==-1);
+
+        ret = linkItemsFiltered.map((item, index) => {
             return (item.isRedirect
                 ? this.renderExternalLink(item, index)
                 : this.renderInnerLink(item, index));
