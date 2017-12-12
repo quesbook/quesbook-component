@@ -157,8 +157,8 @@ class QbHeader extends Component {
     renderInnerLink(item, index) {
         return (
             <li key={index} className={item.isActive
-                ? 'active'
-                : ''}>
+                ? 'box-font-narrow active'
+                : 'box-font-narrow'}>
                 <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
                     {item.label}
                 </Link>
