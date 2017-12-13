@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import Notification from 'rc-notification';
 import './QbAlert.scss';
+import closeIcon from '../assets/image/icon/x-icon@3x.png';
 
 let key = 1;
 let messageInstance;
 Notification.newInstance({
     getContainer: ()=> {
-        console.log('Tag ssss');
         let div = document.createElement('div');
         div.style.position = 'fixed';
         div.style.bottom = 0; 
@@ -20,8 +20,13 @@ Notification.newInstance({
     }
 }, (n) => messageInstance = n);
 
+function close(key) {
+    messageInstance.removeNotice(key);
+}
+
 function notice(title, content, duration, titleStyle, contentStyle, type) {
     let className = 'alert alert-info';
+    let closable = true;
     switch (type) {
         case 'success': 
             className = 'alert alert-success';
@@ -36,14 +41,28 @@ function notice(title, content, duration, titleStyle, contentStyle, type) {
             className = 'alert alert-warning';
             break;
     }
+    const key = Date.now();
     messageInstance.notice({
         content: (
             <div className={className}
-                style={{maxWidth: 800, width: '100%', pointerEvents: 'all'}} role="alert">
+                style={{maxWidth: 800,
+                    width: '100%',
+                    pointerEvents: 'all',
+                    alignItems: 'center',
+                    display: 'flex'}} role="alert">
+                <div style={{display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%', position: 'absolute', right: 20}}
+                    onClick={close.bind(null, key)}>
+                    <img style={{height: 10}} src={closeIcon} alt='close'/>
+                </div>
                 <span style={titleStyle}>{title}:&nbsp;</span>
                 <span style={contentStyle}>{content}</span>
             </div>
         ),
+        key,
+        closable,
         duration,
         onClose: ()=> {}
     });
