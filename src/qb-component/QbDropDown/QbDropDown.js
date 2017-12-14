@@ -90,7 +90,7 @@ class QbDropDown extends Component {
                 </div>
             );
         } else if (option.inputType === 'input') {
-            let filterArray = content.filter((data) => data.label.indexOf(this.state.keyword) !== -1);
+            let filterArray = content.filter((data) => data.label.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1);
             children = this.renderDropDownList(filterArray);
             return (
                 <div className={className} style={{position: 'relative', height: 52, ...option.style}}>

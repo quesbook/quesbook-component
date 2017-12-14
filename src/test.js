@@ -192,7 +192,6 @@ export default class Test extends Component {
                 </QbButton>
                 <QbDropDown option={{
                                 inputType: "input",
-                                disable: true,
                                 btnStyle:{ width: 350, textAlign: 'left' },
                                 style: { position: 'relative', width: 400, height: 52 },
                                 dropdownStyle:{ width: '100%' }}} content={dropDownContent}
