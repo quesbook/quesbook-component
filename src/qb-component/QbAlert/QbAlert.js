@@ -42,6 +42,7 @@ function notice(title, content, duration, titleStyle, contentStyle, type) {
             break;
     }
     const key = Date.now();
+    const exceptionTitle = (title.replace(/(^\s+)|(\s+$)/g, '').length !== 0)? '': (title + ':');
     messageInstance.notice({
         content: (
             <div className={className}
@@ -57,8 +58,8 @@ function notice(title, content, duration, titleStyle, contentStyle, type) {
                     onClick={close.bind(null, key)}>
                     <img style={{height: 10}} src={closeIcon} alt='close'/>
                 </div>
-                <span style={titleStyle}>{title}:&nbsp;</span>
-                <span style={contentStyle}>{content}</span>
+                <span style={titleStyle}>{exceptionTitle}</span>
+                <span style={contentStyle}>&nbsp;{content}</span>
             </div>
         ),
         key,

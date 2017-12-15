@@ -209,7 +209,9 @@ export default class Test extends Component {
                                 @
                             </QbInput>
                 <button onClick={this.alertMessage.bind(this)}>add</button>
-                <QbModal target="azmodal" afterHidden={() => {}}>
+                <QbModal target="azmodal" show={this.state.show}
+                    afterHidden={()=>{this.setState({show: false})}}
+                    afterShown={()=>{this.setState({show: true})}}>
                     <QbModalHeader>
                         <div>headerssss</div>
                     </QbModalHeader>
