@@ -187,7 +187,7 @@ export default class Test extends Component {
                     isSubmit="true"
                     className="btn btn-secondary btn-sm"
                     iconClick={this.buttonIconClick.bind(this)}
-                    dataTarget="#modal" dataToggle='modal'>
+                    dataTarget="#azmodal" dataToggle='modal'>
                     <img src={CloseIcon} style={{ height: 'inherit', width: 'inherit' }} />
                 </QbButton>
                 <QbDropDown option={{
@@ -210,12 +210,9 @@ export default class Test extends Component {
                                 @
                             </QbInput>
                 <button onClick={this.alertMessage.bind(this)}>add</button>
-                <QbModal target="modal" show={this.state.showModal}
-                    afterHidden={() => this.setState({ showModal: false })}
-                    afterShown={() => this.setState({ showModal: true })}
-                >
+                <QbModal target="azmodal" afterHidden={() => {}}>
                     <QbModalHeader>
-                        <div>header</div>
+                        <div>headerssss</div>
                     </QbModalHeader>
                     <QbModalBody>
                         <div>

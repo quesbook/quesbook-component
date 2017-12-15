@@ -4,15 +4,18 @@
 import React, {Component} from 'react';
 import CloseIcon from '../assets/image/icon/x-icon@3x.png';
 
-/*eslint-disable*/
 class QbModal extends Component {
     constructor(props) {
         super(props);
         const {target, afterHidden, afterShown} = this.props;
         $('#'+ target).on('hidden.bs.modal', function (e) {
-            afterHidden();
+            if (typeof afterHidden === 'function') {
+                afterHidden();
+            }
         }).on('shown.bs.modal', function (e) {
-            afterShown();
+            if (typeof afterShown === 'function') {
+                afterShown();
+            }
         });
     }
     render() {
