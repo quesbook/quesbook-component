@@ -24,6 +24,40 @@ function close(key) {
     messageInstance.removeNotice(key);
 }
 
+function parseDom(arg) {
+　　 let objE = document.createElement("div");
+　　 objE.innerHTML = arg;
+　　 return objE.childNodes;
+};
+    
+function extractDom(str, contentStyle) {
+    const regexStart = new RegExp("<[a-z]+[^>]*>");
+    const regexEnd = new RegExp("</[a-z]+>");
+    let start = regexStart.exec(str);
+    let e = regexEnd.exec(str);
+    if (start && e) {
+        let end = e[0].length + e.index;
+        let descStr = str.substring(0, start.index);
+        let s = str.substring(start.index, end);
+        let tagName = parseDom(s)[0].tagName.toLowerCase();
+        if (tagName === 'a') {
+            return (
+                <span style={contentStyle}>
+                    {descStr}
+                    <a href="javascript:void(0);" onClick={()=> fetch(parseDom(s)[0].href)}>
+                        {parseDom(s)[0].text}
+                    </a>
+                </span>
+            )
+        };
+    }
+    return (
+        <span style={contentStyle}>
+            str
+        </span>
+    );
+} 
+
 function notice(title, content, duration, titleStyle, contentStyle, type) {
     let className = 'alert alert-info';
     let closable = true;
@@ -42,7 +76,11 @@ function notice(title, content, duration, titleStyle, contentStyle, type) {
             break;
     }
     const key = Date.now();
-    const exceptionTitle = (title.replace(/(^\s+)|(\s+$)/g, '').length !== 0)? '': (title + ':');
+    let noticeTitle = '';
+    if (title && title.replace(/(^\s+)|(\s+$)/g, '').length !== 0) {
+        noticeTitle = title + ': ';
+    }
+    let noticeContent = extractDom(content, contentStyle);
     messageInstance.notice({
         content: (
             <div className={className}
@@ -58,8 +96,8 @@ function notice(title, content, duration, titleStyle, contentStyle, type) {
                     onClick={close.bind(null, key)}>
                     <img style={{height: 10}} src={closeIcon} alt='close'/>
                 </div>
-                <span style={titleStyle}>{exceptionTitle}</span>
-                <span style={contentStyle}>&nbsp;{content}</span>
+                <span style={titleStyle}>{noticeTitle}</span>
+                {noticeContent}
             </div>
         ),
         key,
