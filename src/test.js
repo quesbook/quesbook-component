@@ -6,6 +6,7 @@ import './qb-component/_default.scss';
 import QbLayout from './qb-component/QbLayout';
 import { QbDatePicker, QbTimePicker } from './qb-component/QbDatePicker';
 
+import QbRateStar from './qb-component/QbRateStar';
 import QbButton from './qb-component/QbButton';
 import QbHighlight from './qb-component/QbHighlight';
 import QbScore from './qb-component/QbScore';
@@ -152,6 +153,10 @@ export default class Test extends Component {
         };
         return (
             <div>
+                <QbRateStar />
+                <QbRateStar rate={3.3} compStyle={{width: 'maxContent'}}/>
+                <QbRateStar starWidth={31.1} starHeight={30} rate={'3.75'} gap={8}/>
+                <QbRateStar starWidth={31.1} starHeight={30} rate={'4'} gap={8}/>
                 <QbNavLeft params={paramQbNav} />
 
                 {/* <QbClassCard {...classCardData} /> */}
