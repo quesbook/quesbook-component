@@ -84,7 +84,7 @@ export default class Test extends Component {
         })
     }
     alertMessage() {
-        QbAlert.error('hi', 'hello', 300);
+        QbAlert.error('hi', 'click<a href="http://stg.quesbook.com/api/v1/user/password?email=gzhang%2B3%40quesbook.com">Resend the email</a>', 300);
         QbAlert.info('hi', 'hello', 300);
         QbAlert.warning('hi', 'hello', 300);
         QbAlert.success('hi', 'hello', 300);
@@ -214,7 +214,9 @@ export default class Test extends Component {
                                 @
                             </QbInput>
                 <button onClick={this.alertMessage.bind(this)}>add</button>
-                <QbModal target="azmodal" afterHidden={() => {}}>
+                <QbModal target="azmodal" show={this.state.show}
+                    afterHidden={()=>{this.setState({show: false})}}
+                    afterShown={()=>{this.setState({show: true})}}>
                     <QbModalHeader>
                         <div>headerssss</div>
                     </QbModalHeader>
