@@ -76,6 +76,8 @@ const style = {
         flex: 1,
         display: 'flex',
         alignItems: 'center',
+        fontWeight: 'bold',
+        fontFamily: 'Gotham Narrow A, Gotham Narrow B',
         justifyContent: 'center',
         background: '#203a62',
         color: '#ffffff',

@@ -53,9 +53,10 @@ class QbDropDown extends Component {
         }
     }
     render() {
-        const { option, className, btnClassName, onChange, content} = this.props;
+        const {option, className, btnClassName, onChange, content, icon} = this.props;
         let children;
         let mask = this.renderMask();
+
         if (option.inputType === 'button') {
             children = this.renderDropDownList(content);
             return (
@@ -92,9 +93,19 @@ class QbDropDown extends Component {
         } else if (option.inputType === 'input') {
             let filterArray = content.filter((data) => data.label.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1);
             children = this.renderDropDownList(filterArray);
+            let additionIcon = null;
+            let additionStyle = {};
+            if (children) {
+                additionIcon = (
+                    <span className="input-group-addon" style={{borderRight: 0, background: '#ffffff'}}>{icon}</span>
+                );
+                additionStyle = {borderLeft: 'none'};
+            }
             return (
-                <div className={className} style={{position: 'relative', height: 52, ...option.style}}>
-                    <input type="text" style={{...style.input.default, ...option.inputStyle}}
+                <div className={className + (additionIcon?'input-group':'')} style={{position: 'relative', height: 52, ...option.style}}>
+                    {additionIcon}
+                    <input type="text" style={{...style.input.default, ...additionStyle, ...option.inputStyle}}
+                           placeholder= {option.placeHolder}
                            data-toggle="dropdown" className="form-control disable"
                            onChange={(e) => {
                                this.setState({
@@ -128,6 +139,7 @@ const style = {
         default: {
             height: '100%',
             fontSize: 20,
+            borderRadius: '0 4px 4px 0',
         },
     },
 };
@@ -164,6 +176,7 @@ QbDropDown.propTypes = {
         btnStyle: React.PropTypes.object,
         dropdownStyle: React.PropTypes.object,
     }),
+    icon: React.PropTypes.object,
     defaultData: React.PropTypes.object,
     content: React.PropTypes.array,
     onChange: React.PropTypes.func,

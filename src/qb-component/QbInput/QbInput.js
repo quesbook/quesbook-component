@@ -21,11 +21,13 @@ class QbInput extends Component {
         let finallClass = className? finallClass = className +' form-control': 'form-control';
         let inputClass = '';
         let additionButton = null;
+        let additionStyle = {};
         if (children) {
             inputClass = 'input-group';
             additionButton = (
                 <span className="input-group-addon" style={{borderRight: 0, background: '#ffffff'}}>{children}</span>
             );
+            additionStyle = {borderLeft: 'none'};
         }
         return (
             <div style={{height: height}} className={inputClass}>
@@ -36,7 +38,7 @@ class QbInput extends Component {
                              onChange={(e)=> {
                                  changeHandler.bind(this)(e);
                              }}
-                             style={{...style, ...privateStyle.input, height}}/>
+                             style={{...style, ...additionStyle, ...privateStyle.input, height}}/>
             </div>
         );
     }
