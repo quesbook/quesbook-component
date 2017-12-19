@@ -35,7 +35,7 @@ class QbRateStar extends Component {
 
     get scoreStyle() {
         // Suppose that the full rate is five points, if not, please convert it manually
-        const rate = Number(this.props.rate);
+        const rate = this.props.rate ? Number(this.props.rate) : 0;
         const { starWidth, gap } = this.props;
         const integer = Math.floor(rate);
         const decimal = rate - integer;
@@ -75,7 +75,7 @@ class QbRateStar extends Component {
 QbRateStar.propTypes = {
     compStyle: React.PropTypes.object,
     // Suppose that the full rate is five points, if not, please convert it manually
-    rate: React.PropTypes.oneOfType([   
+    rate: React.PropTypes.oneOfType([
         React.PropTypes.string,
         React.PropTypes.number
     ]),

@@ -156,7 +156,7 @@ export default class Test extends Component {
                 <QbRateStar />
                 <QbRateStar rate={3.3} compStyle={{width: 'maxContent'}}/>
                 <QbRateStar starWidth={31.1} starHeight={30} rate={'3.75'} gap={8}/>
-                <QbRateStar starWidth={31.1} starHeight={30} rate={'4'} gap={8}/>
+                <QbRateStar starWidth={31.1} starHeight={30} rate={undefined} gap={8}/>
                 <QbNavLeft params={paramQbNav} />
 
                 {/* <QbClassCard {...classCardData} /> */}
