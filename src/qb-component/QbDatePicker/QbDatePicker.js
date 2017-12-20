@@ -38,13 +38,12 @@ class QbDatePicker extends Component {
         onDateChange(date);
     }
     renderPicker() {
-        const {singlePicker, icon, small} = this.props.option;
+        const {singlePicker, icon} = this.props.option;
         if (singlePicker) {
             return (
                 <SingleDatePicker date = {this.state.singleDate}
                     onDateChange={this.dateChange.bind(this)}
                     focused={this.state.focused}
-                    small={small}
                     numberOfMonths={1}
                     customInputIcon={icon}
                     onFocusChange={focusedInput => {
@@ -57,7 +56,6 @@ class QbDatePicker extends Component {
                 <DateRangePicker startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                     endDate={this.state.endDate} // momentPropTypes.momentObj or null,
                     onDatesChange = {({startDate, endDate})=> this.datesChange({startDate, endDate})}
-                    small={true}     
                     customInputIcon={icon}
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,

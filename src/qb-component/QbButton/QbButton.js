@@ -97,6 +97,10 @@ const privateStyle = {
         fontFamily: 'Gotham Narrow A, Gotham Narrow B',
     },
     content: {
+        width: '100%',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
         flex: 1,
         fontFamily: 'Gotham Narrow A, Gotham Narrow B',
     }

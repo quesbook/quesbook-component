@@ -220,6 +220,7 @@ export default class Test extends Component {
                             }}
                             />
                 <QbButton label="talksndonoadn3oqnwodnqowndoqnodiqhwpir"
+                    style = {{width: 100}}
                     className="btn btn-primary btn-lg"
                     clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
                 <QbCheckBox label="hello" value={1}  changeHandler={(value) => console.log('hello',value)} fontStyle={{ fontSize: 16 }} />

@@ -30,35 +30,35 @@ function parseDom(arg) {
 　　 return objE.childNodes;
 };
     
-function extractDom(str, contentStyle) {
-    const regexStart = new RegExp("<[a-z]+[^>]*>");
-    const regexEnd = new RegExp("</[a-z]+>");
-    let start = regexStart.exec(str);
-    let e = regexEnd.exec(str);
-    if (start && e) {
-        let end = e[0].length + e.index;
-        let descStr = str.substring(0, start.index);
-        let s = str.substring(start.index, end);
-        let tagName = parseDom(s)[0].tagName.toLowerCase();
-        if (tagName === 'a') {
-            return (
-                <span style={contentStyle}>
-                    {descStr}
-                    <a href="javascript:void(0);" onClick={()=> fetch(parseDom(s)[0].href)}>
-                        {parseDom(s)[0].text}
-                    </a>
-                </span>
-            )
-        };
-    }
-    return (
-        <span style={contentStyle}>
-            str
-        </span>
-    );
-} 
+// function extractDom(str, contentStyle) {
+//     const regexStart = new RegExp("<[a-z]+[^>]*>");
+//     const regexEnd = new RegExp("</[a-z]+>");
+//     let start = regexStart.exec(str);
+//     let e = regexEnd.exec(str);
+//     if (start && e) {
+//         let end = e[0].length + e.index;
+//         let descStr = str.substring(0, start.index);
+//         let s = str.substring(start.index, end);
+//         let tagName = parseDom(s)[0].tagName.toLowerCase();
+//         if (tagName === 'a') {
+//             return (
+//                 <span style={contentStyle}>
+//                     {descStr}
+//                     <a href="javascript:void(0);" onClick={()=> fetch(parseDom(s)[0].href)}>
+//                         {parseDom(s)[0].text}
+//                     </a>
+//                 </span>
+//             )
+//         };
+//     }
+//     return (
+//         <span style={contentStyle}>
+//             str
+//         </span>
+//     );
+// } 
 
-function notice(title, content, duration, titleStyle, contentStyle, type) {
+function notice(title, content, duration, titleStyle, contentStyle, type, additionButton) {
     let className = 'alert alert-info';
     let closable = true;
     switch (type) {
@@ -80,7 +80,7 @@ function notice(title, content, duration, titleStyle, contentStyle, type) {
     if (title && title.replace(/(^\s+)|(\s+$)/g, '').length !== 0) {
         noticeTitle = title + ': ';
     }
-    let noticeContent = extractDom(content, contentStyle);
+    // let noticeContent = extractDom(content, contentStyle);
     messageInstance.notice({
         content: (
             <div className={className}
@@ -97,7 +97,10 @@ function notice(title, content, duration, titleStyle, contentStyle, type) {
                     <img style={{height: 10}} src={closeIcon} alt='close'/>
                 </div>
                 <span style={titleStyle}>{noticeTitle}</span>
-                {noticeContent}
+                <span style={contentStyle}>
+                    {content}
+                    {additionButton}
+                </span>
             </div>
         ),
         key,
@@ -108,16 +111,16 @@ function notice(title, content, duration, titleStyle, contentStyle, type) {
 }
 
 export default{
-    success(title, content, duration, titleStyle, contentStyle) {
-        return notice(title, content, duration, titleStyle, contentStyle, 'success');
+    success(title, content, duration, titleStyle, contentStyle, additionButton) {
+        return notice(title, content, duration, titleStyle, contentStyle, 'success', additionButton);
     },
-    error(title, content, duration, titleStyle, contentStyle) {
-        return notice(title, content, duration, titleStyle, contentStyle, 'error');
+    error(title, content, duration, titleStyle, contentStyle, additionButton) {
+        return notice(title, content, duration, titleStyle, contentStyle, 'error', additionButton);
     },
-    info(title, content, duration, titleStyle, contentStyle) {
-        return notice(title, content, duration, titleStyle, contentStyle, 'info');
+    info(title, content, duration, titleStyle, contentStyle, additionButton) {
+        return notice(title, content, duration, titleStyle, contentStyle, 'info', additionButton);
     },
-    warning(title, content, duration, titleStyle, contentStyle) {
-        return notice(title, content, duration, titleStyle, contentStyle, 'warning');
+    warning(title, content, duration, titleStyle, contentStyle, additionButton) {
+        return notice(title, content, duration, titleStyle, contentStyle, 'warning', additionButton);
     },
 }
