@@ -53,7 +53,7 @@ class QbDropDown extends Component {
         }
     }
     render() {
-        const {option, className, btnClassName, onChange, content, icon} = this.props;
+        const {option, className, btnClassName, onChange, content} = this.props;
         let children;
         let mask = this.renderMask();
 
@@ -94,12 +94,12 @@ class QbDropDown extends Component {
             let filterArray = content.filter((data) => data.label.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1);
             children = this.renderDropDownList(filterArray);
             let additionIcon = null;
-            let additionStyle = {};
-            if (children) {
+            let additionStyle = {borderRadius: 4};
+            if (option.icon) {
                 additionIcon = (
-                    <span className="input-group-addon" style={{borderRight: 0, background: '#ffffff'}}>{icon}</span>
+                    <span className="input-group-addon" style={{borderRight: 0, background: '#ffffff'}}>{option.icon}</span>
                 );
-                additionStyle = {borderLeft: 'none'};
+                additionStyle = {borderLeft: 'none', borderRadius: '0 4px 4px 0'};
             }
             return (
                 <div className={className + (additionIcon?'input-group':'')} style={{position: 'relative', height: 52, ...option.style}}>
@@ -139,7 +139,6 @@ const style = {
         default: {
             height: '100%',
             fontSize: 20,
-            borderRadius: '0 4px 4px 0',
         },
     },
 };

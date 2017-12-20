@@ -65,7 +65,7 @@ class QbDatePicker extends Component {
         }
     }
     render() {
-        const {option, className} = this.props;
+        const {option, className, small} = this.props;
         let picker = this.renderPicker();
         let finalClass = className?className: '';
         return (

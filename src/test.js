@@ -201,22 +201,34 @@ export default class Test extends Component {
                                 inputType: "input",
                                 btnStyle:{ width: 350, textAlign: 'left' },
                                 style: { position: 'relative', width: 400, height: 52 },
+                                dropdownStyle:{ width: '100%' },
+                                icon: <img alt="icon" src={CalendarIcon}/>
+                            }} content={dropDownContent}
+                            onChange={(data) => {
+                                console.log('TAg data:', data);
+                                this.setState({show: !this.state.show});
+                            }}/>
+                <QbDropDown option={{
+                                placeHolder: 'e.g. Apostrophes',
+                                inputType: "input",
+                                btnStyle:{ width: 350, textAlign: 'left' },
+                                style: { position: 'relative', width: 400, height: 52 },
                                 dropdownStyle:{ width: '100%' }}} content={dropDownContent}
                             onChange={(data) => {
                                 console.log('TAg data:', data);
                                 this.setState({show: !this.state.show});
                             }}
-                            icon={<img alt="icon" src={CalendarIcon}/>}/>
-                            <QbButton label="t"
-                                className="btn btn-primary btn-lg"
-                                clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
-                            <QbCheckBox label="hello" value={1}  changeHandler={(value) => console.log('hello',value)} fontStyle={{ fontSize: 16 }} />
-                            <QbCheckBox label="hi"  value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
-                            <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
-                            <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
-                            <QbInput placeHolder='e.g. math' size="small" changeHandler={(e) => alert(e.target.value)}>
-                                <img alt="icon" src={SearchIcon}/>
-                            </QbInput>
+                            />
+                <QbButton label="t"
+                    className="btn btn-primary btn-lg"
+                    clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
+                <QbCheckBox label="hello" value={1}  changeHandler={(value) => console.log('hello',value)} fontStyle={{ fontSize: 16 }} />
+                <QbCheckBox label="hi"  value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
+                <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                <QbInput placeHolder='e.g. math' size="small" changeHandler={(e) => alert(e.target.value)}>
+                    <img alt="icon" src={SearchIcon}/>
+                </QbInput>
                 <button onClick={this.alertMessage.bind(this)}>add</button>
                 <QbModal target="azmodal" show={this.state.show}
                     afterHidden={()=>{this.setState({show: false})}}
