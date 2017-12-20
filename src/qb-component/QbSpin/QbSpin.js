@@ -35,9 +35,7 @@ class QbSpin extends Component {
     render() {
         return (
             <div className="qb_spin" style={{ ...rootStyle, display: this.props.spinning ? 'flex' : 'none' }}>
-                {
-                    this.props.spinning && <img src={loadingImg} style={this.ImgStyle} />
-                }
+                <img src={loadingImg} style={this.ImgStyle} />
             </div>
         );
     }
