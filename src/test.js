@@ -219,7 +219,7 @@ export default class Test extends Component {
                                 this.setState({show: !this.state.show});
                             }}
                             />
-                <QbButton label="t"
+                <QbButton label="talksndonoadn3oqnwodnqowndoqnodiqhwpir"
                     className="btn btn-primary btn-lg"
                     clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
                 <QbCheckBox label="hello" value={1}  changeHandler={(value) => console.log('hello',value)} fontStyle={{ fontSize: 16 }} />
@@ -248,7 +248,8 @@ export default class Test extends Component {
                 </QbModal>
                 <QbDatePicker
                     option= {{
-                        icon: <img alt="icon" src={CalendarIcon}/>
+                        icon: <img alt="icon" src={CalendarIcon}/>,
+                        small: true,
                     }}
                     onDatesChange={this.datesChange.bind(this)}
                     onDateChange={this.dateChange.bind(this)}/>
