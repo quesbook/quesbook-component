@@ -195,6 +195,7 @@ class QbHeader extends Component {
                 <span style={{
                     color: '#fff',
                     opacity: 0.5,
+                    fontWeight: 'bold'
                 }}>{item.label}</span>
                 <span style={style}>Coming soon!</span>
             </div>
