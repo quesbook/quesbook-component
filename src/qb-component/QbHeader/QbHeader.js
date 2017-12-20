@@ -155,41 +155,50 @@ class QbHeader extends Component {
     }
 
     renderInnerLink(item, index) {
-        return (
-            <li key={index} className={item.isActive
-                ? 'box-font-narrow active'
-                : 'box-font-narrow'}>
-                <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
-                    {item.label}
-                </Link>
-            </li>
-        );
+        if (item.href === '/eclass' && window.location.hostname === 'www.quesbook.com' ) {
+            return (
+                <li key={index} className={item.isActive
+                    ? 'box-font-narrow active'
+                    : 'box-font-narrow'}>
+                    {this.renderComingSoon(item)}
+                </li>
+            );
+        } else {
+            return (
+                <li key={index} className={item.isActive
+                    ? 'box-font-narrow active'
+                    : 'box-font-narrow'}>
+                    <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
+                        {item.label}
+                    </Link>
+                </li>
+            );
+        }
     }
 
     renderComingSoon(item){
-        if (item.href === '/eclass') {
-            let style = {
-                backgroundColor: '#faee67',
-                borderRadius: '8px',
-                color: '#192230',
-                fontSize: '12px',
-                marginLeft: '7px',
-                padding: '3px 8px',
-                fontWeight: 'bold',
-            };
+        let style = {
+            backgroundColor: '#faee67',
+            borderRadius: '8px',
+            color: '#192230',
+            fontSize: '12px',
+            marginLeft: '7px',
+            padding: '3px 8px',
+            fontWeight: 'bold',
+        };
 
-            return (
-                <div style={{
-                    cursor: 'default'
-                }}>
-                    <span style={{
-                        color: '#fff',
-                        opacity: 0.5,
-                    }}>{item.label}</span>
-                    <span style={style}>Coming soon!</span>
-                </div>
-            );
-        }
+        return (
+            <div style={{
+                cursor: 'default',
+                minWidth: '175px'
+            }}>
+                <span style={{
+                    color: '#fff',
+                    opacity: 0.5,
+                }}>{item.label}</span>
+                <span style={style}>Coming soon!</span>
+            </div>
+        );
     }
 
     renderExternalLink(item, index) {
@@ -200,7 +209,6 @@ class QbHeader extends Component {
                 <a href='/eclass' onClick={this.onClick_NavLinkItem.bind(this, item)}>
                     {item.label}
                 </a>
-                {/* {this.renderComingSoon(item)} */}
             </li>
         );
     }
