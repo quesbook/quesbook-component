@@ -6,6 +6,7 @@ import './qb-component/_default.scss';
 import QbLayout from './qb-component/QbLayout';
 import { QbDatePicker, QbTimePicker } from './qb-component/QbDatePicker';
 
+import QbSpin from './qb-component/QbSpin';
 import QbRateStar from './qb-component/QbRateStar';
 import QbButton from './qb-component/QbButton';
 import QbHighlight from './qb-component/QbHighlight';
@@ -46,6 +47,7 @@ export default class Test extends Component {
             numlist: ['yahaha'],
             showModal: false,
             showAlert: false,
+            showSpin: false
         }
     }
     toggleModal() {
@@ -90,6 +92,18 @@ export default class Test extends Component {
         QbAlert.info('hi', 'hello', 300);
         QbAlert.warning('hi', 'hello', 300);
         QbAlert.success('hi', 'hello', 300);
+    }
+    handleClickLoad = () => {
+        let self = this;
+        self.setState({
+            showSpin: true
+        },()=>{
+            setTimeout(()=>{
+                self.setState({
+                    showSpin: false
+                })
+            }, 600)
+        })
     }
     render() {
         const dropDownContent = [{
