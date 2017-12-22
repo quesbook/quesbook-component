@@ -1,90 +1,71 @@
 @import '../scss/_variables.scss';
-// @import '~react-dates/css/variables.scss';
-// @import '~react-dates/css/styles.scss';
 
-.CalendarDay {
-  border: 0;
+.CalendarDay,
+.CalendarDay:hover,
+.CalendarDay:active,
+.DayPickerNavigation_button {
+  border: 0
 }
-.CalendarDay--hovered {
-  border: 0 ;
+.DayPickerNavigation_button__default:focus, .DayPickerNavigation_button__default:hover {
+  border: 0
 }
-.CalendarDay--selected-span.CalendarDay--hovered, .CalendarDay--selected-span:active {
-  border: 0;
-  border-radius: 0;
+.DateRangePickerInput_calendarIcon {
+  padding: 0;
 }
-CalendarDay--selected-span:active{
-  border: 0;
+.DateRangePickerInput_arrow {
+  display: flex;
+  align-items: center;
+  margin-right: -1px
 }
-.CalendarDay.CalendarDay--valid.CalendarDay--selected-span {
-  background: $clearSky;
+.CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
+  border: 0
 }
-.CalendarDay CalendarDay--valid CalendarDay--selected-span CalendarDay--hovered {
-  border: 0;
+.CalendarDay__selected_start,
+.CalendarDay__selected_start:hover,
+.CalendarDay__selected_start:active
+ {
+  border-radius: 5px 0 0 5px;
+  background: #203a62;
 }
-.DayPickerNavigation__prev--default:focus, .DayPickerNavigation__prev--default:hover, .DayPickerNavigation__next--default:focus, .DayPickerNavigation__next--default:hover{
-  border: 0;
+.CalendarDay__selected_end,
+.CalendarDay__selected_end:hover,
+.CalendarDay__selected_end:active {
+  border-radius: 0 5px 5px 0;
+  background: #203a62;
 }
-.DayPickerNavigation__prev--default:focus, .DayPickerNavigation__prev--default:hover, .DayPickerNavigation__next--default:focus, .DayPickerNavigation__next--default:hover{
-  border: 0;
+.CalendarDay__selected_span {
+  background: #b9cff3;
 }
-.CalendarDay--blocked-out-of-range {
-  border: 0;
-  border-radius: 50px;
+.DateInput,
+.DateInput_input,
+.DateRangePickerInput,
+.SingleDatePickerInput {
+  border-radius: 4px;
 }
-.DayPickerNavigation__prev {
-  border: 0;
+.DateInput_input__focused {
+  border: 0
 }
-.DayPickerNavigation__next {
-  border: 0;
+.DateInput_input__small {
+  height: 38px;
+}
+.CalendarDay__default {
+  width: 40px !important
+}
+.DateRangePicker {
+  width: 100%;
+}
+.DateRangePicker > .div {
+  width: 100%;
+  display: flex;
 }
 .DateRangePickerInput {
-  height: 38px;
-  border-radius: 5px;
-  width: 100%;
-  display: flex;
-}
-.SingleDatePickerInput {
-  border-radius: 5px;
-  width: 100%;
-  display: flex;
-  font-size: 20px;
-  border: 1px solid rgb(204, 204, 204);
-}
-.DateRangePickerInput__arrow {
-  align-items: center;
+  flex: 1;
   display: flex;
 }
 .DateInput {
-  border-radius: 5px;
   flex: 1;
-  display: flex;
-  justify-content: center;
 }
-.CalendarDay--selected-start {
-  border-radius: 5px 0 0 5px;
-  background: $darkSky;
-},
-.CalendarDay--selected-end {
-  border-radius: 0 5px 5px 0;
-  background: $darkSky
-}
-.DateInput__display-text--focused {
-  background: #ffffff
-}
-.DateInput__display-text {
-  font-size: 16px;
-  padding: 0;
-}
-.DateRangePicker{
-  height: 38px;
-  width: 100%;
-}
-.qb-component-time-picker > .btn {
-  border-radius: 4px;
-}
-
-.DateRangePickerInput__calendar-icon{
-  margin: 0 !important;
-  padding-top: 0;
-  padding-bottom: 0;
+.DateInput_input {
+  text-align: center;
+  cursor: pointer;
 }

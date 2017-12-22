@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import { DateRangePicker, SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize';
 import './QbDatePicker.scss';
 
 /*eslint-disable*/
@@ -38,24 +39,32 @@ class QbDatePicker extends Component {
         onDateChange(date);
     }
     renderPicker() {
-        const {singlePicker, icon} = this.props.option;
+        const {singlePicker, icon, small} = this.props.option;
         if (singlePicker) {
+            const id = this.props.id;
             return (
                 <SingleDatePicker date = {this.state.singleDate}
                     onDateChange={this.dateChange.bind(this)}
                     focused={this.state.focused}
-                    numberOfMonths={1}
-                    customInputIcon={icon}
+                    small={small}
+                    readOnly={true}
+                    id={id}
                     onFocusChange={focusedInput => {
                         this.setState({ focused: focusedInput.focused });
                     }}
                 />
             );
         } else {
+            const {startDateId, endDateId} = this.props;
             return (
-                <DateRangePicker startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                <DateRangePicker
+                    startDateId={startDateId}
+                    endDateId={endDateId}
+                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                     endDate={this.state.endDate} // momentPropTypes.momentObj or null,
                     onDatesChange = {({startDate, endDate})=> this.datesChange({startDate, endDate})}
+                    small={small}
+                    readOnly={true}                    
                     customInputIcon={icon}
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
@@ -76,6 +85,7 @@ class QbDatePicker extends Component {
 }
 
 QbDatePicker.propTypes = {
+    id: React.PropTypes.string,
     option: React.PropTypes.shape({
         style: React.PropTypes.object,
         icon: React.PropTypes.node,

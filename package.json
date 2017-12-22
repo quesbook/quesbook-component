@@ -1,6 +1,6 @@
 {
   "name": "quesbook-component",
-  "version": "0.2.27",
+  "version": "0.2.31",
   "description": "",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -38,7 +38,7 @@
     "react-addons-shallow-compare": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
     "react-bootstrap": "^0.31.1",
-    "react-dates": "12.3.0",
+    "react-dates": "16.0.1",
     "react-dom": "^15.4.2",
     "react-router": "^2.8.1",
     "rheostat": "^2.1.1"

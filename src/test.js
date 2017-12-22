@@ -154,7 +154,31 @@ export default class Test extends Component {
             queryStrName: 'keyNav',
         };
         return (
-            <div>
+            <div style={{marginLeft: 100}}>
+                <QbDatePicker
+                    startDateId="startDateId"
+                    endDateId="endDateId"
+                    option= {{
+                        icon: <img alt="icon" src={CalendarIcon}/>,
+                    }}
+                    onDatesChange={this.datesChange.bind(this)}
+                    onDateChange={this.dateChange.bind(this)}/>
+                <QbDatePicker
+                    startDateId="startDateId"
+                    endDateId="endDateId"
+                    option= {{
+                        icon: <img alt="icon" src={CalendarIcon}/>,
+                        small: true
+                    }}
+                    onDatesChange={this.datesChange.bind(this)}
+                    onDateChange={this.dateChange.bind(this)}/>
+                <QbDatePicker
+                    id="testSingle"
+                    option= {{
+                        singlePicker: true,
+                    }}
+                    onDatesChange={this.datesChange.bind(this)}
+                    onDateChange={this.dateChange.bind(this)}/>
                 <QbRateStar />
                 <QbRateStar rate={3.3} compStyle={{width: 'maxContent'}}/>
                 <QbRateStar starWidth={31.1} starHeight={30} rate={'3.75'} gap={8}/>
@@ -247,13 +271,6 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal' />
                     </QbModalFooter>
                 </QbModal>
-                <QbDatePicker
-                    option= {{
-                        icon: <img alt="icon" src={CalendarIcon}/>,
-                        small: true,
-                    }}
-                    onDatesChange={this.datesChange.bind(this)}
-                    onDateChange={this.dateChange.bind(this)}/>
                 {/*/!* <QbClassCard {...classCardData2} /> *!/*/}
                 {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
                 <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
