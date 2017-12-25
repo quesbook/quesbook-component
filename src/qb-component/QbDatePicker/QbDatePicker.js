@@ -39,12 +39,14 @@ class QbDatePicker extends Component {
         onDateChange(date);
     }
     renderPicker() {
-        const {singlePicker, icon, small} = this.props.option;
+        const {singlePicker, icon, small, placeHolder} = this.props.option;
+        console.log(placeHolder);
         if (singlePicker) {
             const id = this.props.id;
             return (
                 <SingleDatePicker date = {this.state.singleDate}
                     onDateChange={this.dateChange.bind(this)}
+                    placeholder={placeHolder}
                     focused={this.state.focused}
                     small={small}
                     readOnly={true}
@@ -95,6 +97,7 @@ QbDatePicker.propTypes = {
     onDateChange: React.PropTypes.func,
     onDatesChange: React.PropTypes.func,
     className: React.PropTypes.string,
+    placeHolder: React.PropTypes.string,
 }
 QbDatePicker.defaultProps = {
     option: {

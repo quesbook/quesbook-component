@@ -190,6 +190,7 @@ export default class Test extends Component {
                     id="testSingle"
                     option= {{
                         singlePicker: true,
+                        placeHolder: "2012-1-1"
                     }}
                     onDatesChange={this.datesChange.bind(this)}
                     onDateChange={this.dateChange.bind(this)}/>
