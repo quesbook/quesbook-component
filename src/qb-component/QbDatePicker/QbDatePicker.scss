@@ -64,8 +64,10 @@
 }
 .DateInput {
   flex: 1;
+  padding: 1px;
 }
 .DateInput_input {
   text-align: center;
   cursor: pointer;
+  height: 48px;
 }
