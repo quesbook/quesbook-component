@@ -40,7 +40,6 @@ class QbDatePicker extends Component {
     }
     renderPicker() {
         const {singlePicker, icon, small, placeHolder} = this.props.option;
-        console.log(placeHolder);
         if (singlePicker) {
             const id = this.props.id;
             return (
