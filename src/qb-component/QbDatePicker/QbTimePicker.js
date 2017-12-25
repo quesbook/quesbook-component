@@ -147,7 +147,7 @@ class QbTimePicker extends Component {
         }
         let display = this.state.displayPicker?'flex':'none';
         let minutePicker = this.renderMinutePicker();
-        let btnClassName = 'btn btn-secondary ' + (option.btnClassName?option.btnClassName: '');
+        let btnClassName = 'btn btn-secondary timepicker' + (option.btnClassName?option.btnClassName: '');
         let finalClassName =  'qb-component-time-picker ' + (className?className: '');
         return (
             <div className={finalClassName} style={{position: 'relative', ...option.style}}>
@@ -245,7 +245,6 @@ const style = {
             width: 150,
             height: 38,
             fontSize: 21,
-            boderRadius: 5
         },
     },
 }

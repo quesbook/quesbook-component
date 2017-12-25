@@ -286,6 +286,12 @@ export default class Test extends Component {
                         <QbButton label="close" dataTarget="#modal" dataToggle='modal' />
                     </QbModalFooter>
                 </QbModal>
+                <QbTimePicker id="startPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
+                    option={{btnStyle: { width: 100, height: 52, fontSize: 20 },
+                        style: {width: 100}}} />
+                <QbTimePicker id="endPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
+                              option={{btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
+                                  displayMinute: true}}/>
                 {/*/!* <QbClassCard {...classCardData2} /> *!/*/}
                 {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
                 <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
@@ -308,12 +314,6 @@ export default class Test extends Component {
                 npm
 
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
-                <QbTimePicker id="startPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
-                    option={{btnStyle: { width: 100, height: 52, fontSize: 20 },
-                        style: {width: 100}}} />
-                <QbTimePicker id="endPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
-                              option={{btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
-                                  displayMinute: true}}/>
                 <QbButton label="show message"
                     className="btn btn-lg btn-primary"
                     clickHandler={this.messageToggle.bind(this)} />
