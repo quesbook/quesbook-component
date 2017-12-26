@@ -65,7 +65,7 @@ class QbDatePicker extends Component {
                     endDate={this.state.endDate} // momentPropTypes.momentObj or null,
                     onDatesChange = {({startDate, endDate})=> this.datesChange({startDate, endDate})}
                     small={small}
-                    readOnly={true}                    
+                    readOnly={true}
                     customInputIcon={icon}
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,

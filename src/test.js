@@ -66,8 +66,6 @@ export default class Test extends Component {
         }));
     }
     sliderChange(lowPrice, highPrice) {
-        console.log(lowPrice, highPrice);
-        // setTimeout(()=> {throw new Error('wtf')}, 0);
         this.setState((prevState, props) => ({ switchState: !prevState.switchState }));
     }
     buttonIconClick() {

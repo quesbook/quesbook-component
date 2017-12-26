@@ -30,34 +30,6 @@ function parseDom(arg) {
 　　 return objE.childNodes;
 };
     
-// function extractDom(str, contentStyle) {
-//     const regexStart = new RegExp("<[a-z]+[^>]*>");
-//     const regexEnd = new RegExp("</[a-z]+>");
-//     let start = regexStart.exec(str);
-//     let e = regexEnd.exec(str);
-//     if (start && e) {
-//         let end = e[0].length + e.index;
-//         let descStr = str.substring(0, start.index);
-//         let s = str.substring(start.index, end);
-//         let tagName = parseDom(s)[0].tagName.toLowerCase();
-//         if (tagName === 'a') {
-//             return (
-//                 <span style={contentStyle}>
-//                     {descStr}
-//                     <a href="javascript:void(0);" onClick={()=> fetch(parseDom(s)[0].href)}>
-//                         {parseDom(s)[0].text}
-//                     </a>
-//                 </span>
-//             )
-//         };
-//     }
-//     return (
-//         <span style={contentStyle}>
-//             str
-//         </span>
-//     );
-// } 
-
 function notice(title, content, duration, titleStyle, contentStyle, type, additionButton) {
     let className = 'alert alert-info';
     let closable = true;
