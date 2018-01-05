@@ -14,6 +14,7 @@ class QbTimePicker extends Component {
             minute: 0,
             periods: 'AM',
             displayPicker: false,
+            notSelect: true, // style is different before first slect
         };
         this.clickEvent = null;
         this.componentOpen = this.componentOpen.bind(this);
@@ -107,6 +108,11 @@ class QbTimePicker extends Component {
     componentClose(e) {
         if (e) e.stopPropagation();
         const {onPickerClose} = this.props;
+        if (this.state.notSelect) {
+            this.setState({
+                notSelect: false
+            });
+        }
         onPickerClose(this.state);
         this.toggleDisplayPicker();
         if (this.clickEvent) {
@@ -149,10 +155,11 @@ class QbTimePicker extends Component {
         let minutePicker = this.renderMinutePicker();
         let btnClassName = 'btn btn-secondary timepicker' + (option.btnClassName?option.btnClassName: '');
         let finalClassName =  'qb-component-time-picker ' + (className?className: '');
+        let fontColor = this.state.notSelect ? '#94989E': '#192230';
         return (
             <div className={finalClassName} style={{position: 'relative', ...option.style}}>
                 <button className={btnClassName}
-                        style={{...style.button.defaultStyle, ...option.btnStyle,}} onClick={()=> {
+                        style={{...style.button.defaultStyle, color: fontColor, ...option.btnStyle,}} onClick={()=> {
                         if (this.state.displayPicker) {
                             this.componentClose();
                         } else {
