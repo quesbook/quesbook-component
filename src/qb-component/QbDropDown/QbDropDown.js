@@ -73,6 +73,8 @@ class QbDropDown extends Component {
                             style={{
                                 ...style.button.publicStyle,
                                 borderRight: 0,
+                                fontFamily: 'Gotham A, Gotham B',
+                                fontWeight: 500,
                                 ...option.btnStyle,
                             }}>
                         {this.state.selectedObj.label}
