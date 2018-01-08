@@ -42,6 +42,7 @@ const defaultStyle = {
         color: '#192230',
         padding: '15px 15px 10px 15px',
         fontSize: 26,
+        fontFamily: "Gotham Narrow A, Gotham Narrow B"
     },
     content: {
         color: '#192230',
