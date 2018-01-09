@@ -30,8 +30,9 @@ import 'rc-collapse/assets/index.css';
 import { QbAvatar } from './qb-component/QbHeader';
 import QbAlert from './qb-component/QbAlert';
 import QbClassCard from './qb-component/QbClassCard';
-import {QbNavLeft, QbNavDDL} from './qb-component/QbNavLeftDDL';
+import { QbNavLeft, QbNavDDL } from './qb-component/QbNavLeftDDL';
 import Rheostat from 'rheostat';
+import QbEClassCard from './qb-component/QbEClassCard';
 import 'rheostat/css/slider.css';
 import 'rheostat/css/slider-horizontal.css';
 
@@ -47,7 +48,8 @@ export default class Test extends Component {
             numlist: ['yahaha'],
             showModal: false,
             showAlert: false,
-            showSpin: false
+            showSpin: false,
+            expand: false
         }
     }
     toggleModal() {
@@ -95,12 +97,17 @@ export default class Test extends Component {
         let self = this;
         self.setState({
             showSpin: true
-        },()=>{
-            setTimeout(()=>{
+        }, () => {
+            setTimeout(() => {
                 self.setState({
                     showSpin: false
                 })
             }, 600)
+        })
+    }
+    onClickCard = () => {
+        this.setState({
+            expand: !this.state.expand
         })
     }
     render() {
@@ -166,36 +173,48 @@ export default class Test extends Component {
             queryStrName: 'keyNav',
         };
         return (
-            <div style={{marginLeft: 100}}>
+            <div style={{ marginLeft: 100 }}>
+                <QbEClassCard 
+                    compStyle={{ margin: 30 }}
+                    expand={this.state.expand}
+                    onClickCard={this.onClickCard}
+                >
+                    <div>
+                        明月几时有？把酒问青天。不知天上宫阙，今夕是何年。
+                        我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。
+                        转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？
+                        人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。
+                    </div>
+                </QbEClassCard>
                 <QbDatePicker
                     startDateId="startDateId"
                     endDateId="endDateId"
-                    option= {{
-                        icon: <img alt="icon" src={CalendarIcon}/>,
+                    option={{
+                        icon: <img alt="icon" src={CalendarIcon} />,
                     }}
                     onDatesChange={this.datesChange.bind(this)}
-                    onDateChange={this.dateChange.bind(this)}/>
+                    onDateChange={this.dateChange.bind(this)} />
                 <QbDatePicker
                     startDateId="startDateId"
                     endDateId="endDateId"
-                    option= {{
-                        icon: <img alt="icon" src={CalendarIcon}/>,
+                    option={{
+                        icon: <img alt="icon" src={CalendarIcon} />,
                         small: true
                     }}
                     onDatesChange={this.datesChange.bind(this)}
-                    onDateChange={this.dateChange.bind(this)}/>
+                    onDateChange={this.dateChange.bind(this)} />
                 <QbDatePicker
                     id="testSingle"
-                    option= {{
+                    option={{
                         singlePicker: true,
                         placeHolder: "2012-1-1"
                     }}
                     onDatesChange={this.datesChange.bind(this)}
-                    onDateChange={this.dateChange.bind(this)}/>
+                    onDateChange={this.dateChange.bind(this)} />
                 <QbRateStar />
-                <QbRateStar rate={3.3} compStyle={{width: 'maxContent'}}/>
-                <QbRateStar starWidth={31.1} starHeight={30} rate={'3.75'} gap={8}/>
-                <QbRateStar starWidth={31.1} starHeight={30} rate={undefined} gap={8}/>
+                <QbRateStar rate={3.3} compStyle={{ width: 'maxContent' }} />
+                <QbRateStar starWidth={31.1} starHeight={30} rate={'3.75'} gap={8} />
+                <QbRateStar starWidth={31.1} starHeight={30} rate={undefined} gap={8} />
                 <QbNavLeft params={paramQbNav} />
 
                 {/* <QbClassCard {...classCardData} /> */}
@@ -203,15 +222,15 @@ export default class Test extends Component {
                 <QbNavDDL params={paramQbNav} />
                 <QbSwitcher switchState={this.state.switchState} clickHandler={this.switchHandler.bind(this)} />
                 <QbSlider maxMark="$10+"
-                          minMark="Free!"
-                          maxPrice={15}
-                          style={{ height: 100, width: 300 }}
-                          changeHandler={this.sliderChange.bind(this)} />
+                    minMark="Free!"
+                    maxPrice={15}
+                    style={{ height: 100, width: 300 }}
+                    changeHandler={this.sliderChange.bind(this)} />
                 <QbSlider maxMark="$10+"
-                          minMark="Free!"
-                          maxPrice={15}
-                          style={{height: 80, width: '100%', padding: '0 15px', marginTop: 15}}
-                          changeHandler={this.sliderChange.bind(this)}/>
+                    minMark="Free!"
+                    maxPrice={15}
+                    style={{ height: 80, width: '100%', padding: '0 15px', marginTop: 15 }}
+                    changeHandler={this.sliderChange.bind(this)} />
                 <Rheostat
                     min={1}
                     max={100}
@@ -219,13 +238,14 @@ export default class Test extends Component {
                 />
                 <QbDropDown option={{
                     inputType: "button",
-                    btnStyle:{ width: 350, textAlign: 'left' },
+                    btnStyle: { width: 350, textAlign: 'left' },
                     style: { position: 'relative', width: 400, height: 52 },
-                    dropdownStyle:{ width: '100%' }}} content={dropDownContent}
-                            onChange={(data) => {
-                                console.log('TAg data:', data);
-                                this.setState({show: !this.state.show});
-                            }}/>
+                    dropdownStyle: { width: '100%' }
+                }} content={dropDownContent}
+                    onChange={(data) => {
+                        console.log('TAg data:', data);
+                        this.setState({ show: !this.state.show });
+                    }} />
                 <QbButton label="hello"
                     isSubmit="true"
                     className="btn btn-secondary btn-sm"
@@ -234,50 +254,51 @@ export default class Test extends Component {
                     <img src={CloseIcon} style={{ height: 'inherit', width: 'inherit' }} />
                 </QbButton>
                 <QbDropDown option={{
-                                placeHolder: 'e.g. Apostrophes',
-                                inputType: "input",
-                                btnStyle:{ width: 350, textAlign: 'left' },
-                                style: { position: 'relative', width: 400, height: 52 },
-                                dropdownStyle:{ width: '100%' },
-                                icon: <img alt="icon" src={CalendarIcon}/>
-                            }} content={dropDownContent}
-                            onChange={(data) => {
-                                console.log('TAg data:', data);
-                                this.setState({show: !this.state.show});
-                            }}/>
+                    placeHolder: 'e.g. Apostrophes',
+                    inputType: "input",
+                    btnStyle: { width: 350, textAlign: 'left' },
+                    style: { position: 'relative', width: 400, height: 52 },
+                    dropdownStyle: { width: '100%' },
+                    icon: <img alt="icon" src={CalendarIcon} />
+                }} content={dropDownContent}
+                    onChange={(data) => {
+                        console.log('TAg data:', data);
+                        this.setState({ show: !this.state.show });
+                    }} />
                 <QbDropDown option={{
-                                placeHolder: 'e.g. Apostrophes',
-                                inputType: "input",
-                                btnStyle:{ width: 350, textAlign: 'left' },
-                                style: { position: 'relative', width: 400, height: 52 },
-                                dropdownStyle:{ width: '100%' }}} content={dropDownContent}
-                            onChange={(data) => {
-                                console.log('TAg data:', data);
-                                this.setState({show: !this.state.show});
-                            }}
-                            />
+                    placeHolder: 'e.g. Apostrophes',
+                    inputType: "input",
+                    btnStyle: { width: 350, textAlign: 'left' },
+                    style: { position: 'relative', width: 400, height: 52 },
+                    dropdownStyle: { width: '100%' }
+                }} content={dropDownContent}
+                    onChange={(data) => {
+                        console.log('TAg data:', data);
+                        this.setState({ show: !this.state.show });
+                    }}
+                />
                 <QbButton label="talksndonoadn3oqnwodnqowndoqnodiqhwpir"
-                    style = {{width: 100}}
+                    style={{ width: 100 }}
                     className="btn btn-primary btn-lg"
                     clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
-                <QbCheckBox label="hello" value={1}  changeHandler={(value) => console.log('hello',value)} fontStyle={{ fontSize: 16 }} />
-                <QbCheckBox label="hi"  value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
+                <QbCheckBox label="hello" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                <QbCheckBox label="hi" value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbInput placeHolder='e.g. math' size="small" changeHandler={(e) => alert(e.target.value)}>
-                    <img alt="icon" src={SearchIcon}/>
+                    <img alt="icon" src={SearchIcon} />
                 </QbInput>
                 <button onClick={this.alertMessage.bind(this)}>add</button>
                 <QbModal target="azmodal" show={this.state.show}
-                    afterHidden={()=>{this.setState({show: false})}}
-                    afterShown={()=>{this.setState({show: true})}}>
+                    afterHidden={() => { this.setState({ show: false }) }}
+                    afterShown={() => { this.setState({ show: true }) }}>
                     <QbModalHeader>
                         <div>headerssss</div>
                     </QbModalHeader>
                     <QbModalBody>
                         <div>
                             <QbSwitcher switchState={this.state.switchState}
-                                        clickHandler={this.switchHandler.bind(this)}/>
+                                clickHandler={this.switchHandler.bind(this)} />
                         </div>
                     </QbModalBody>
                     <QbModalFooter>
@@ -285,11 +306,15 @@ export default class Test extends Component {
                     </QbModalFooter>
                 </QbModal>
                 <QbTimePicker id="startPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
-                    option={{btnStyle: { width: 100, height: 52, fontSize: 20 },
-                        style: {width: 100}}} />
+                    option={{
+                        btnStyle: { width: 100, height: 52, fontSize: 20 },
+                        style: { width: 100 }
+                    }} />
                 <QbTimePicker id="endPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
-                              option={{btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
-                                  displayMinute: true}}/>
+                    option={{
+                        btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
+                        displayMinute: true
+                    }} />
                 {/*/!* <QbClassCard {...classCardData2} /> *!/*/}
                 {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
                 <QbProgressBar compStyle={{ margin: '50px 0' }} percentage={'100%'} />
