@@ -10,7 +10,7 @@ class QbTimePicker extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            hour: 1,
+            hour: 0,
             minute: 0,
             periods: 'AM',
             displayPicker: false,
@@ -27,10 +27,10 @@ class QbTimePicker extends Component {
         ).join(0) + num);
     }
     addHour() {
-        if (this.state.hour === 12) {
+        if (this.state.hour === 11) {
             let p = this.state.periods==='AM'?'PM':'AM';
             this.setState({
-                hour: 1,
+                hour: 0,
                 periods: p,
             })
         } else {
@@ -41,10 +41,10 @@ class QbTimePicker extends Component {
 
     }
     minHour() {
-        if (this.state.hour === 1) {
+        if (this.state.hour === 0) {
             let p = this.state.periods==='AM'?'PM':'AM';
             this.setState({
-                hour: 12,
+                hour: 11,
                 periods: p,
             })
         } else {
@@ -55,32 +55,16 @@ class QbTimePicker extends Component {
     }
     addMinute(interval) {
         let realMinute = (this.state.minute + interval) % 60;
-        if (this.state.hour === 12 && this.state.minute % 60 === 0) {
-            let p = this.state.periods==='AM'?'PM':'AM';
-            this.setState({
-                minute: realMinute,
-                periods: p,
-            });
-        } else {
-            this.setState({
-                minute: realMinute,
-            });
-        }
+        this.setState({
+            minute: realMinute,
+        });
     }
     minMinute(interval) {
         let min = this.state.minute - interval;
         let realMinute = min<0? min+60: min;
-        if (this.state.hour === 12 && realMinute === 0) {
-            let p = this.state.periods==='AM'?'PM':'AM';
-            this.setState({
-                minute: realMinute,
-                periods: p,
-            });
-        } else {
-            this.setState({
-                minute: realMinute,
-            });
-        }
+        this.setState({
+            minute: realMinute,
+        });
     }
     togglePeriods() {
         let p = this.state.periods==='AM'?'PM':'AM';

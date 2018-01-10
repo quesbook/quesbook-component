@@ -6,7 +6,6 @@ import './qb-component/_default.scss';
 import QbLayout from './qb-component/QbLayout';
 import { QbDatePicker, QbTimePicker } from './qb-component/QbDatePicker';
 
-import QbSpin from './qb-component/QbSpin';
 import QbRateStar from './qb-component/QbRateStar';
 import QbButton from './qb-component/QbButton';
 import QbHighlight from './qb-component/QbHighlight';
@@ -29,7 +28,6 @@ import QbProgressBar from './qb-component/QbProgressBar';
 import 'rc-collapse/assets/index.css';
 import { QbAvatar } from './qb-component/QbHeader';
 import QbAlert from './qb-component/QbAlert';
-import QbClassCard from './qb-component/QbClassCard';
 import { QbNavLeft, QbNavDDL } from './qb-component/QbNavLeftDDL';
 import Rheostat from 'rheostat';
 import QbEClassCardTemplate from './qb-component/QbEClassCardTemplate';
@@ -214,8 +212,16 @@ export default class Test extends Component {
                         singlePicker: true,
                         placeHolder: "2012-1-1"
                     }}
-                    onDatesChange={this.datesChange.bind(this)}
-                    onDateChange={this.dateChange.bind(this)} />
+                    onDateChange={this.dateChange.bind(this)}/>
+                <QbDatePicker
+                    id="testSingle"
+                    option= {{
+                        icon: <img alt="icon" src={CalendarIcon}/>,
+                        singlePicker: true,
+                        placeHolder: "today(2012-1-1)",
+                        small: true
+                    }}
+                    onDateChange={this.dateChange.bind(this)}/>
                 <QbRateStar />
                 <QbRateStar rate={3.3} compStyle={{ width: 'maxContent' }} />
                 <QbRateStar starWidth={31.1} starHeight={30} rate={'3.75'} gap={8} />
