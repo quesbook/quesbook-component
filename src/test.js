@@ -174,10 +174,15 @@ export default class Test extends Component {
         };
         return (
             <div style={{ marginLeft: 100 }}>
-                <QbEClassCard 
+                <QbEClassCard
                     compStyle={{ margin: 30 }}
                     expand={this.state.expand}
-                    onClickCard={this.onClickCard}
+                    cardClickHandler={this.onClickCard}
+                    sectionName={'math'}
+                    courseName={'E-Class for Opening, Transitional & Closing Sentences'}
+                    startsAt={'Jan. 15th at 5PM'}
+                    description={'Take this e-class to learn the important elements that go into writing and identifying effective paragraphs made up of opening, transitional and closing sentences.'}
+                    skillName={'Analyzing Function'}
                 >
                     <div>
                         明月几时有？把酒问青天。不知天上宫阙，今夕是何年。
