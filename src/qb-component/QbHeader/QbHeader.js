@@ -155,25 +155,35 @@ class QbHeader extends Component {
     }
 
     renderInnerLink(item, index) {
-        if (item.href === '/eclass' && window.location.hostname === 'www.quesbook.com' ) {
-            return (
-                <li key={index} className={item.isActive
-                    ? 'box-font-narrow active'
-                    : 'box-font-narrow'}>
-                    {this.renderComingSoon(item)}
-                </li>
-            );
-        } else {
-            return (
-                <li key={index} className={item.isActive
-                    ? 'box-font-narrow active'
-                    : 'box-font-narrow'}>
-                    <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
-                        {item.label}
-                    </Link>
-                </li>
-            );
-        }
+        // if (item.href === '/eclass' && window.location.hostname === 'www.quesbook.com' ) {
+        //     return (
+        //         <li key={index} className={item.isActive
+        //             ? 'box-font-narrow active'
+        //             : 'box-font-narrow'}>
+        //             {this.renderComingSoon(item)}
+        //         </li>
+        //     );
+        // } else {
+        //     return (
+        //         <li key={index} className={item.isActive
+        //             ? 'box-font-narrow active'
+        //             : 'box-font-narrow'}>
+        //             <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
+        //                 {item.label}
+        //             </Link>
+        //         </li>
+        //     );
+        // }
+
+        return (
+            <li key={index} className={item.isActive
+                ? 'box-font-narrow active'
+                : 'box-font-narrow'}>
+                <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
+                    {item.label}
+                </Link>
+            </li>
+        );
     }
 
     renderComingSoon(item){

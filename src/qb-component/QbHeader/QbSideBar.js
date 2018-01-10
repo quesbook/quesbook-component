@@ -34,7 +34,7 @@ class QbSideBar extends Component {
                         {this.renderUserExamSection(currentUser)}
                         <div className='col-lg-12 section-user'>
                             <div className="box-cursor" hidden={currentUser.type==='Tutor'} onClick={this.props.onClick_MyClass}>
-                                My Class
+                                My Classes
                             </div>
                             <div className="box-cursor" onClick={this.props.onClick_Setting.bind(this, currentUser.type)}>
                                 My Account
