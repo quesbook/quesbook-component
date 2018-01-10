@@ -69,7 +69,7 @@ class QbLayout extends Component {
             } else if (pathname.indexOf(TUTOR_ADMIN) !== -1 && !ALLOWED_TYPES.includes(currentUser.type)) {
                 this.navHomePage();
             } else {
-                this.setState({ currentUser: currentUser, navItemList: navItemList })
+                this.setState({ currentUser, navItemList });
             }
         }).catch((e) => {
             this.navHomePage();

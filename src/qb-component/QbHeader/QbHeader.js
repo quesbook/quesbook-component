@@ -132,6 +132,9 @@ class QbHeader extends Component {
         linkItemsFiltered = linkItemsFiltered.filter(item=>item.userType.indexOf(currentUser.type)!==-1);
 
         ret = linkItemsFiltered.map((item, index) => {
+            if (currentUser.type === 'Tutor' && item.href === '/eclass') {
+                item.label = 'E-classes';
+            }
             return (item.isRedirect
                 ? this.renderExternalLink(item, index)
                 : this.renderInnerLink(item, index));
