@@ -32,7 +32,7 @@ import QbAlert from './qb-component/QbAlert';
 import QbClassCard from './qb-component/QbClassCard';
 import { QbNavLeft, QbNavDDL } from './qb-component/QbNavLeftDDL';
 import Rheostat from 'rheostat';
-import QbEClassCard from './qb-component/QbEClassCard';
+import QbEClassCardTemplate from './qb-component/QbEClassCardTemplate';
 import 'rheostat/css/slider.css';
 import 'rheostat/css/slider-horizontal.css';
 
@@ -174,7 +174,7 @@ export default class Test extends Component {
         };
         return (
             <div style={{ marginLeft: 100 }}>
-                <QbEClassCard
+                <QbEClassCardTemplate
                     compStyle={{ margin: 30 }}
                     expand={this.state.expand}
                     cardClickHandler={this.onClickCard}
@@ -190,7 +190,7 @@ export default class Test extends Component {
                         转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？
                         人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。
                     </div>
-                </QbEClassCard>
+                </QbEClassCardTemplate>
                 <QbDatePicker
                     startDateId="startDateId"
                     endDateId="endDateId"

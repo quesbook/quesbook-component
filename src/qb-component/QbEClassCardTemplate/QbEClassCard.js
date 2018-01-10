@@ -29,7 +29,7 @@ const style = {
     }
 }
 
-class QbEClassCard extends Component {
+class QbEClassCardTemplate extends Component {
 
 
     constructor() {
@@ -90,7 +90,7 @@ class QbEClassCard extends Component {
     }
 }
 
-QbEClassCard.propTypes = {
+QbEClassCardTemplate.propTypes = {
     compClass: PropTypes.string,
     compStyle: PropTypes.object,
     sectionName: PropTypes.string,
@@ -103,11 +103,11 @@ QbEClassCard.propTypes = {
     children: PropTypes.node
 };
 
-QbEClassCard.defaultProps = {
+QbEClassCardTemplate.defaultProps = {
     expand: false,
     btnText: '',
     compClass: null,
     compStyle: null
 };
 
-export default QbEClassCard;
+export default QbEClassCardTemplate;
