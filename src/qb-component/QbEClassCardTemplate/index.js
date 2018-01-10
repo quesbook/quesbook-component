@@ -1,3 +1,3 @@
-import QbEClassCardTemplate from './QbEClassCard.js';
+import QbEClassCardTemplate from './QbEClassCardTemplate.js';
 
 export default QbEClassCardTemplate;
