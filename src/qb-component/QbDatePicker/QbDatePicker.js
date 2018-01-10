@@ -49,6 +49,7 @@ class QbDatePicker extends Component {
                     focused={this.state.focused}
                     small={small}
                     readOnly={true}
+                    customInputIcon={icon}
                     id={id}
                     onFocusChange={focusedInput => {
                         this.setState({ focused: focusedInput.focused });

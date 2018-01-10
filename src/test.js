@@ -190,7 +190,15 @@ export default class Test extends Component {
                         singlePicker: true,
                         placeHolder: "2012-1-1"
                     }}
-                    onDatesChange={this.datesChange.bind(this)}
+                    onDateChange={this.dateChange.bind(this)}/>
+                <QbDatePicker
+                    id="testSingle"
+                    option= {{
+                        icon: <img alt="icon" src={CalendarIcon}/>,
+                        singlePicker: true,
+                        placeHolder: "today(2012-1-1)",
+                        small: true
+                    }}
                     onDateChange={this.dateChange.bind(this)}/>
                 <QbRateStar />
                 <QbRateStar rate={3.3} compStyle={{width: 'maxContent'}}/>

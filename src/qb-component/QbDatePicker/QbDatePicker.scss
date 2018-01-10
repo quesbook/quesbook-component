@@ -9,7 +9,8 @@
 .DayPickerNavigation_button__default:focus, .DayPickerNavigation_button__default:hover {
   border: 0
 }
-.DateRangePickerInput_calendarIcon {
+.DateRangePickerInput_calendarIcon,
+.SingleDatePickerInput_calendarIcon {
   padding: 0;
 }
 .DateRangePickerInput_arrow {
@@ -51,16 +52,22 @@
 .CalendarDay__default {
   width: 40px !important
 }
-.DateRangePicker {
+.DateRangePicker,
+.SingleDatePicker {
   width: 100%;
 }
-.DateRangePicker > .div {
+.DateRangePicker > div,
+.SingleDatePicker > div {
   width: 100%;
   display: flex;
 }
-.DateRangePickerInput {
+.DateRangePickerInput,
+.SingleDatePickerInput {
   flex: 1;
   display: flex;
+}
+.SingleDatePickerInput > div > input {
+  text-align: start;
 }
 .DateInput {
   flex: 1;
@@ -70,4 +77,7 @@
   text-align: center;
   cursor: pointer;
   height: 48px;
+}
+.DateInput_input__small {
+  font-size: 16px
 }
