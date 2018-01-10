@@ -6,7 +6,6 @@ import './qb-component/_default.scss';
 import QbLayout from './qb-component/QbLayout';
 import { QbDatePicker, QbTimePicker } from './qb-component/QbDatePicker';
 
-import QbSpin from './qb-component/QbSpin';
 import QbRateStar from './qb-component/QbRateStar';
 import QbButton from './qb-component/QbButton';
 import QbHighlight from './qb-component/QbHighlight';
@@ -29,7 +28,6 @@ import QbProgressBar from './qb-component/QbProgressBar';
 import 'rc-collapse/assets/index.css';
 import { QbAvatar } from './qb-component/QbHeader';
 import QbAlert from './qb-component/QbAlert';
-import QbClassCard from './qb-component/QbClassCard';
 import { QbNavLeft, QbNavDDL } from './qb-component/QbNavLeftDDL';
 import Rheostat from 'rheostat';
 import QbEClassCardTemplate from './qb-component/QbEClassCardTemplate';
