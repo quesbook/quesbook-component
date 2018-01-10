@@ -35,7 +35,6 @@ class QbEClassCard extends Component {
     constructor() {
         super(...arguments);
         this.onClickCard = this.onClickCard.bind(this);
-        this.onClickBtn = this.onClickBtn.bind(this);
 
     }
 
@@ -44,16 +43,9 @@ class QbEClassCard extends Component {
     }
 
     onClickCard() {
-        let { onClickCard } = this.props;
-        if (typeof onClickCard === 'function') {
-            onClickCard();
-        }
-    }
-
-    onClickBtn() {
-        let { onClickBtn } = this.props;
-        if (typeof onClickBtn === 'function') {
-            onClickBtn();
+        let { cardClickHandler } = this.props;
+        if (typeof cardClickHandler === 'function') {
+            cardClickHandler();
         }
     }
 
@@ -106,7 +98,7 @@ QbEClassCard.propTypes = {
     startsAt: PropTypes.string,
     description: PropTypes.string,
     skillName: PropTypes.string,
-    onClickCard: PropTypes.func,
+    cardClickHandler: PropTypes.func,
     expand: PropTypes.bool,
     children: PropTypes.node
 };
@@ -115,12 +107,7 @@ QbEClassCard.defaultProps = {
     expand: false,
     btnText: '',
     compClass: null,
-    compStyle: null,
-    sectionName: 'math',
-    courseName: 'E-Class for Opening, Transitional & Closing Sentences',
-    startsAt: 'Jan. 15th at 5PM',
-    description: 'Take this e-class to learn the important elements that go into writing and identifying effective paragraphs made up of opening, transitional and closing sentences. This class will teach you how to master this skill for the ACT',
-    skillName: 'Analyzing Function'
+    compStyle: null
 };
 
 export default QbEClassCard;
