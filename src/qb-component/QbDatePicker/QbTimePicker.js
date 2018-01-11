@@ -130,7 +130,7 @@ class QbTimePicker extends Component {
         const {option, className, id} = this.props;
         let time = '';
         if (option.displayMinute) {
-            time = `${this.state.hour}:${this.state.minute, 2} ${this.state.periods}`;
+            time = `${this.state.hour}:${this.padNumber(this.state.minute, 2)} ${this.state.periods}`;
         } else {
             time = this.state.hour + ' ' + this.state.periods;
         }
