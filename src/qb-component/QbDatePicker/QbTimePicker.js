@@ -128,12 +128,11 @@ class QbTimePicker extends Component {
     }
     render() {
         const {option, className, id} = this.props;
-        let hourStr = this.padNumber(this.state.hour, 2);
         let time = '';
         if (option.displayMinute) {
-            time = `${hourStr}:${this.padNumber(this.state.minute, 2)} ${this.state.periods}`;
+            time = `${this.state.hour}:${this.state.minute, 2} ${this.state.periods}`;
         } else {
-            time = hourStr + ' ' + this.state.periods;
+            time = this.state.hour + ' ' + this.state.periods;
         }
         let display = this.state.displayPicker?'flex':'none';
         let minutePicker = this.renderMinutePicker();
@@ -159,7 +158,7 @@ class QbTimePicker extends Component {
                                 onClick={this.addHour.bind(this)}>
                             <img style={style.upImg} src={up} alt=""/>
                         </button>
-                        <div style={style.hour}>{hourStr}</div>
+                        <div style={style.hour}>{this.state.hour}</div>
                         <button className="btn btn-secondary" style={style.pickerButton}
                                 onClick={this.minHour.bind(this)}>
                             <img style={style.downImg} src={down} alt=""/>
@@ -236,6 +235,8 @@ const style = {
             width: 150,
             height: 38,
             fontSize: 21,
+            display: 'flex',
+            justifyContent: 'center',
         },
     },
 }
