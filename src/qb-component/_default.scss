@@ -13,6 +13,14 @@
   background-color: #bcc4d0;
   border-color: #bcc4d0;
 }
+
+.btn-primary.disabled:hover,
+.btn-primary.disabled:active,
+.btn-primary:disabled:hover,
+.btn-primary:disabled:active, {
+    background-color: #bcc4d0 !important;
+}
+
 .btn-secondary.disabled, .btn-secondary:disabled {
   color: #bcc4d0;
   background-color: #ffffff;
