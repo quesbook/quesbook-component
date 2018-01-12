@@ -37,7 +37,7 @@ class QbSideBar extends Component {
                                 My Classes
                             </div>
                             <div className="box-cursor" onClick={this.props.onClick_Setting.bind(this, currentUser.type)}>
-                                My Account
+                                {currentUser.type !== 'Tutor' ? 'My Account':'Settings'}
                             </div>
                             <div className="box-cursor" onClick={this.onClick_SignOut.bind(this)}>Log out</div>
                         </div>

@@ -14,6 +14,10 @@ export const NAV_ITEM_LIST = [
         href: '/getStart',
         userType: ['Tutor', 'Student', 'TutorAdmin', 'EditorAdmin', 'SuperAdmin', 'Guest']
     }, {
+        label: 'Live E-Classes',
+        href: '/eclass',
+        userType: ['Tutor', 'Student', 'TutorAdmin', 'EditorAdmin', 'SuperAdmin', 'Guest']
+    }, {
         label: 'Student Menu',
         href: '/studyplan',
         userType: ['Student']

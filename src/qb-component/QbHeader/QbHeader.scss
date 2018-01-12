@@ -112,6 +112,39 @@
 
         > li {
             padding: 0 25px;
+
+            .eclass-hand-ct {
+                opacity: 0.4;
+                transition: opacity .25s ease-in-out;
+
+                img {
+                    height: 20px;
+                }
+
+                a {
+                    color: #FAEE67 !important;
+                    font-family: arial;
+                    font-weight: bold;
+                    padding-left: 10px;
+                }
+            }
+            .eclass-hand-ct:hover {
+                opacity: 1.0;
+
+                img {
+                    animation-name: bounce;
+                    animation-iteration-count: infinite;
+                    animation-duration: 2s;
+                }
+
+                @keyframes bounce
+                {
+                  25% { transform: translateX(-5px); }
+                  50% { transform: translateX(0px); }
+                  75% { transform: translateX(-5px); }
+                  100% { transform: translateX(0px); }
+                }
+            }
         }
 
         > li a {
@@ -126,7 +159,8 @@
             opacity: 1;
         }
 
-        > li.active a {
+        > li.active a,
+        > li.active .eclass-hand-ct {
             opacity: 1;
         }
     }

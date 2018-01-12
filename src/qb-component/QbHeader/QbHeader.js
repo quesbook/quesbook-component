@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './QbHeader.scss';
 import logo from '../assets/image/logo/dark.png';
+import eClassIcon from '../assets/image/icon/eclass-hand.png';
 import QbSideBar from './QbSideBar';
 import {Link} from 'react-router';
 import QbMessageCard from '../QbMessageCard';
@@ -158,34 +159,45 @@ class QbHeader extends Component {
     }
 
     renderInnerLink(item, index) {
-        // if (item.href === '/eclass' && window.location.hostname === 'www.quesbook.com' ) {
-        //     return (
-        //         <li key={index} className={item.isActive
-        //             ? 'box-font-narrow active'
-        //             : 'box-font-narrow'}>
-        //             {this.renderComingSoon(item)}
-        //         </li>
-        //     );
-        // } else {
-        //     return (
-        //         <li key={index} className={item.isActive
-        //             ? 'box-font-narrow active'
-        //             : 'box-font-narrow'}>
-        //             <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
-        //                 {item.label}
-        //             </Link>
-        //         </li>
-        //     );
-        // }
+        if (item.href === '/eclass') {
+            return (
+                <li key={index} className={item.isActive
+                    ? 'box-font-narrow active'
+                    : 'box-font-narrow'}>
+                    {this.renderEClassHand(item)}
+                </li>
+            );
+        } else {
+            return (
+                <li key={index} className={item.isActive
+                    ? 'box-font-narrow active'
+                    : 'box-font-narrow'}>
+                    <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
+                        {item.label}
+                    </Link>
+                </li>
+            );
+        }
+        //
+        // return (
+        //     <li key={index} className={item.isActive
+        //         ? 'box-font-narrow active'
+        //         : 'box-font-narrow'}>
+        //         <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
+        //             {item.label}
+        //         </Link>
+        //     </li>
+        // );
+    }
 
+    renderEClassHand(item){
         return (
-            <li key={index} className={item.isActive
-                ? 'box-font-narrow active'
-                : 'box-font-narrow'}>
+            <div className='eclass-hand-ct'>
+                <img src={eClassIcon} alt=""/>
                 <Link to={item.href} onClick={this.onClick_NavLinkItem.bind(this, item)}>
                     {item.label}
                 </Link>
-            </li>
+            </div>
         );
     }
 
