@@ -159,7 +159,7 @@ class QbHeader extends Component {
     }
 
     renderInnerLink(item, index) {
-        if (item.href === '/eclass') {
+        if (item.href === '/eclass' && item.label.toUpperCase() === 'LIVE E-CLASSES') {
             return (
                 <li key={index} className={item.isActive
                     ? 'box-font-narrow active'
