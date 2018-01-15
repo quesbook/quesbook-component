@@ -116,6 +116,7 @@
             .eclass-hand-ct {
                 opacity: 0.4;
                 transition: opacity .25s ease-in-out;
+                min-width: 152px;
 
                 img {
                     height: 20px;
@@ -123,7 +124,6 @@
 
                 a {
                     color: #FAEE67 !important;
-                    font-family: arial;
                     font-weight: bold;
                     padding-left: 10px;
                 }
