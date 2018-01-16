@@ -2,6 +2,7 @@
  * Created by az on 2017/8/7.
  */
 import React, {Component} from 'react';
+import './QbTabs.scss';
 
 class QbTabs extends Component {
     constructor(props) {
@@ -50,7 +51,7 @@ class QbTabs extends Component {
         return (
             <div style={{...style.frame, ...frameStyle}}>
                 <div style={{...style.tabs, ...tabsStyle}}>{tabs}</div>
-                <div style={{...style.content, ...contentStyle}}>
+                <div className="qb-component-tabs" style={{...style.content, ...contentStyle}}>
                     {content}
                 </div>
             </div>
