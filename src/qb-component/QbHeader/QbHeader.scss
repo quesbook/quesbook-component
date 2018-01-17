@@ -114,9 +114,10 @@
             padding: 0 25px;
 
             .eclass-hand-ct {
-                opacity: 0.4;
                 transition: opacity .25s ease-in-out;
-                min-width: 152px;
+                @media (max-width: $mediaPhone) {
+                    min-width: 152px;
+                }
 
                 img {
                     height: 20px;
