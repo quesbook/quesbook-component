@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './QbHeader.scss';
 import logo from '../assets/image/logo/dark.png';
-import eClassIcon from '../assets/image/icon/eclass-hand@3x.png';
+import eClassIcon from '../assets/image/icon/eclass-handraising.png';
 import QbSideBar from './QbSideBar';
 import {Link} from 'react-router';
 import QbMessageCard from '../QbMessageCard';
