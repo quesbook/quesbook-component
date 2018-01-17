@@ -21,22 +21,28 @@ class QbAvatar extends Component {
                 : {};
 
             if (user.avatar && user.avatar !== '') {
-                if (size === 'big') {
-                    return (<img style={{
-                        ...styleMain,
-                        ...styleWithImg,
-                        ...styleSize,
-                        ...style
-                    }} src={user.avatar} alt={user.name.charAt(0)}/>);
-                } else {
-                    let styleBGUrl = {
-                        'background': `url(${user.avatar}) no-repeat center`
-                    };
-
-                    return (
-                        <div style={{...styleBGUrl, ...styleAvatarNav}}></div>
-                    )
-                }
+                return (<img style={{
+                    ...styleMain,
+                    ...styleWithImg,
+                    ...styleSize,
+                    ...style
+                }} src={user.avatar} alt={user.name.charAt(0)}/>);
+                // if (size === 'big') {
+                //     return (<img style={{
+                //         ...styleMain,
+                //         ...styleWithImg,
+                //         ...styleSize,
+                //         ...style
+                //     }} src={user.avatar} alt={user.name.charAt(0)}/>);
+                // } else {
+                //     let styleBGUrl = {
+                //         'background': `url(${user.avatar}) no-repeat center`
+                //     };
+                //
+                //     return (
+                //         <div style={{...styleBGUrl, ...styleAvatarNav}}></div>
+                //     )
+                // }
             } else {
                 return (
                     <div style={{
