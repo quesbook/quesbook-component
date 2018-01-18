@@ -220,7 +220,7 @@ const style = {
     },
     periodsPicker: {
         ...picker,
-        flex: 1.1
+        flex: 1.2
     },
     hour: {
         fontSize: 56
