@@ -139,6 +139,7 @@ class QbTimePicker extends Component {
         let btnClassName = 'btn btn-secondary timepicker' + (option.btnClassName?option.btnClassName: '');
         let finalClassName =  'qb-component-time-picker ' + (className?className: '');
         let fontColor = this.state.notSelect ? '#94989E': '#192230';
+        let displayText = this.state.notSelect ? (option.placeHolder || ""): time;
         return (
             <div className={finalClassName} style={{position: 'relative', ...option.style}}>
                 <button className={btnClassName}
@@ -149,7 +150,7 @@ class QbTimePicker extends Component {
                             this.componentOpen();
                         }
                         this.toggleDisplayPicker.bind(this);
-                }}>{time}</button>
+                }}>{displayText}</button>
                 <div id={id} className="dropdown-menu dropdown-menu-left"
                      style={{...style.timePicker, display: display}}>
                     <div className="filter-time-dropdown" style={style.hourPicker}>
@@ -165,7 +166,7 @@ class QbTimePicker extends Component {
                         </button>
                     </div>
                     {minutePicker}
-                    <div className="filter-time-dropdown" style={style.hourPicker}>
+                    <div className="filter-time-dropdown" style={style.periodsPicker}>
                         <button className="btn btn-secondary" style={style.pickerButton}
                                 onClick={this.togglePeriods.bind(this)}>
                             <img style={style.upImg} src={up} alt=""/>
@@ -184,11 +185,10 @@ class QbTimePicker extends Component {
 
 const picker= {
     flex: 1,
-        display: 'flex',
-        height: '100%',
-        width: 100,
-        flexDirection: 'column',
-        alignItems: 'center',
+    display: 'flex',
+    height: '100%',
+    flexDirection: 'column',
+    alignItems: 'center',
 };
 const style = {
     pickerButton: {
@@ -218,7 +218,10 @@ const style = {
         justifyContent: 'center',
         position: 'relative',
     },
-    periodsPicker: picker,
+    periodsPicker: {
+        ...picker,
+        flex: 1.1
+    },
     hour: {
         fontSize: 56
     },
