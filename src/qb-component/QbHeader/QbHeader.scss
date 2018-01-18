@@ -121,6 +121,7 @@
 
                 img {
                     height: 20px;
+                    opacity: 0.5;
                 }
 
                 a {
@@ -132,6 +133,7 @@
                 opacity: 1.0;
 
                 img {
+                    opacity: 1.0;
                     animation-name: bounce;
                     animation-iteration-count: infinite;
                     animation-duration: 2s;
