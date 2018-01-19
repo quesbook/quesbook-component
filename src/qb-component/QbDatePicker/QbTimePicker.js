@@ -236,6 +236,8 @@ const style = {
             fontSize: 21,
             display: 'flex',
             justifyContent: 'center',
+            fontWeight: 500,
+            fontFamily: 'Gotham A, Gotham B',
         },
     },
 }
