@@ -10,7 +10,7 @@ class QbTimePicker extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            hour: 0,
+            hour: 1,
             minute: 0,
             periods: 'AM',
             displayPicker: false,
@@ -27,10 +27,10 @@ class QbTimePicker extends Component {
         ).join(0) + num);
     }
     addHour() {
-        if (this.state.hour === 11) {
+        if (this.state.hour === 12) {
             let p = this.state.periods==='AM'?'PM':'AM';
             this.setState({
-                hour: 0,
+                hour: 1,
                 periods: p,
             })
         } else {
@@ -41,10 +41,10 @@ class QbTimePicker extends Component {
 
     }
     minHour() {
-        if (this.state.hour === 0) {
+        if (this.state.hour === 1) {
             let p = this.state.periods==='AM'?'PM':'AM';
             this.setState({
-                hour: 11,
+                hour: 12,
                 periods: p,
             })
         } else {
