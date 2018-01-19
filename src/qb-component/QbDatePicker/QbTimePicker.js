@@ -109,13 +109,13 @@ class QbTimePicker extends Component {
             let minStr = this.padNumber(this.state.minute, 2);
             return (
                 <div className="filter-time-dropdown" style={style.minutePicker}>
-                    <img style={{position: 'absolute', width: 10, left: -8}} src={colon} alt="colon"/>
+                    <img style={{position: 'absolute', width: 7, left: -11}} src={colon} alt="colon"/>
                     <button className="btn btn-secondary"
                             style={style.pickerButton}
                             onClick={()=> this.addMinute.bind(this)(15)}>
                         <img style={style.upImg} src={up} alt=""/>
                     </button>
-                    <div style={style.hour}>{minStr}</div>
+                    <div style={style.font}>{minStr}</div>
                     <button className="btn btn-secondary" style={style.pickerButton}
                             onClick={()=> this.minMinute.bind(this)(15)}>
                         <img style={style.downImg} src={down} alt=""/>
@@ -159,7 +159,7 @@ class QbTimePicker extends Component {
                                 onClick={this.addHour.bind(this)}>
                             <img style={style.upImg} src={up} alt=""/>
                         </button>
-                        <div style={style.hour}>{this.state.hour}</div>
+                        <div style={style.font}>{this.state.hour}</div>
                         <button className="btn btn-secondary" style={style.pickerButton}
                                 onClick={this.minHour.bind(this)}>
                             <img style={style.downImg} src={down} alt=""/>
@@ -171,7 +171,7 @@ class QbTimePicker extends Component {
                                 onClick={this.togglePeriods.bind(this)}>
                             <img style={style.upImg} src={up} alt=""/>
                         </button>
-                        <div style={style.periods}>{this.state.periods}</div>
+                        <div style={style.font}>{this.state.periods}</div>
                         <button className="btn btn-secondary" style={style.pickerButton}
                                 onClick={this.togglePeriods.bind(this)}>
                             <img style={style.downImg} src={down} alt=""/>
@@ -222,14 +222,10 @@ const style = {
         ...picker,
         flex: 1.2
     },
-    hour: {
-        fontSize: 56
-    },
-    minute: {
-        fontSize: 56
-    },
-    periods: {
-        fontSize: 56
+    font: {
+        fontSize: 56,
+        fontFamily: 'Gotham Narrow A, Gotham Narrow B',
+        fontWeight: 'bold',
     },
     button: {
         defaultStyle: {
