@@ -109,7 +109,7 @@ class QbTimePicker extends Component {
             let minStr = this.padNumber(this.state.minute, 2);
             return (
                 <div className="filter-time-dropdown" style={style.minutePicker}>
-                    <img style={{position: 'absolute', width: 7, left: -11}} src={colon} alt="colon"/>
+                    <img style={{position: 'absolute', width: 8, left: -11}} src={colon} alt="colon"/>
                     <button className="btn btn-secondary"
                             style={style.pickerButton}
                             onClick={()=> this.addMinute.bind(this)(15)}>
@@ -225,7 +225,7 @@ const style = {
     font: {
         fontSize: 56,
         fontFamily: 'Gotham Narrow A, Gotham Narrow B',
-        fontWeight: 'bold',
+        fontWeight: 700,
     },
     button: {
         defaultStyle: {
