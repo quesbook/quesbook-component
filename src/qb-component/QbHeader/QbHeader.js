@@ -104,6 +104,8 @@ class QbHeader extends Component {
             ret = '#/studyPlan';
         }
 
+        ret = ret.replace('#', '')
+
         return ret;
     }
 
