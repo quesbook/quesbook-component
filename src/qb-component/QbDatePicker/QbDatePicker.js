@@ -1,7 +1,7 @@
 /**
  * Created by az on 2017/7/20.
  */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { DateRangePicker, SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
@@ -12,21 +12,21 @@ class QbDatePicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate : null,
+            startDate: null,
             endDate: null,
             focusedInput: null,
             singleDate: null,
             focused: false,
         };
     }
-    datesChange({startDate, endDate}) {
-        const {onDatesChange} = this.props;
-        if(startDate) {
+    datesChange({ startDate, endDate }) {
+        const { onDatesChange } = this.props;
+        if (startDate) {
             this.setState({
                 startDate,
             });
         };
-        if(endDate) {
+        if (endDate) {
             this.setState({
                 endDate,
             });
@@ -34,16 +34,19 @@ class QbDatePicker extends Component {
         onDatesChange(startDate, endDate);
     }
     dateChange(date) {
-        const {onDateChange} = this.props;
-        this.setState({singleDate: date});
+        const { onDateChange } = this.props;
+        this.setState({ singleDate: date });
         onDateChange(date);
     }
     renderPicker() {
-        const {singlePicker, icon, small, placeHolder} = this.props.option;
+        const { singlePicker, icon, small, placeHolder } = this.props.option;
+        const enhancementProps = this.props.allowPastDays ? { isOutsideRange: () => {} } : null;
         if (singlePicker) {
             const id = this.props.id;
             return (
-                <SingleDatePicker date = {this.state.singleDate}
+                <SingleDatePicker
+                    {...enhancementProps}
+                    date={this.state.singleDate}
                     onDateChange={this.dateChange.bind(this)}
                     placeholder={placeHolder}
                     focused={this.state.focused}
@@ -57,14 +60,15 @@ class QbDatePicker extends Component {
                 />
             );
         } else {
-            const {startDateId, endDateId} = this.props;
+            const { startDateId, endDateId } = this.props;
             return (
                 <DateRangePicker
+                    {...enhancementProps}
                     startDateId={startDateId}
                     endDateId={endDateId}
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                     endDate={this.state.endDate} // momentPropTypes.momentObj or null,
-                    onDatesChange = {({startDate, endDate})=> this.datesChange({startDate, endDate})}
+                    onDatesChange={({ startDate, endDate }) => this.datesChange({ startDate, endDate })}
                     small={small}
                     readOnly={true}
                     customInputIcon={icon}
@@ -75,9 +79,9 @@ class QbDatePicker extends Component {
         }
     }
     render() {
-        const {option, className} = this.props;
+        const { option, className } = this.props;
         let picker = this.renderPicker();
-        let finalClass = className?className: '';
+        let finalClass = className ? className : '';
         return (
             <div style={option.style} className={finalClass}>
                 {picker}
@@ -98,6 +102,7 @@ QbDatePicker.propTypes = {
     onDatesChange: React.PropTypes.func,
     className: React.PropTypes.string,
     placeHolder: React.PropTypes.string,
+    allowPastDays: React.PropTypes.bool
 }
 QbDatePicker.defaultProps = {
     option: {
@@ -105,9 +110,10 @@ QbDatePicker.defaultProps = {
         icon: null,
         singlePicker: false,
     },
-    onDateChange: ()=> {},
-    onDatesChange: ()=> {},
-    className: ''
+    onDateChange: () => { },
+    onDatesChange: () => { },
+    className: '',
+    allowPastDays: false
 }
 
 export default QbDatePicker;
