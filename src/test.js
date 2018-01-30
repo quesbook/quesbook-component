@@ -189,7 +189,9 @@ export default class Test extends Component {
                         人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。
                     </div>
                 </QbEClassCardTemplate>
+                <p>可以选择过去的时间</p>
                 <QbDatePicker
+                    allowPastDays
                     startDateId="startDateId"
                     endDateId="endDateId"
                     option={{
@@ -197,6 +199,15 @@ export default class Test extends Component {
                     }}
                     onDatesChange={this.datesChange.bind(this)}
                     onDateChange={this.dateChange.bind(this)} />
+                <QbDatePicker
+                    allowPastDays
+                    id="testSingle"
+                    option={{
+                        singlePicker: true,
+                        placeHolder: "2012-1-1"
+                    }}
+                    onDateChange={this.dateChange.bind(this)} />
+                <p>不能选择过去的时间</p>
                 <QbDatePicker
                     startDateId="startDateId"
                     endDateId="endDateId"
@@ -212,16 +223,16 @@ export default class Test extends Component {
                         singlePicker: true,
                         placeHolder: "2012-1-1"
                     }}
-                    onDateChange={this.dateChange.bind(this)}/>
+                    onDateChange={this.dateChange.bind(this)} />
                 <QbDatePicker
                     id="testSingle"
-                    option= {{
-                        icon: <img alt="icon" src={CalendarIcon}/>,
+                    option={{
+                        icon: <img alt="icon" src={CalendarIcon} />,
                         singlePicker: true,
                         placeHolder: "today(2012-1-1)",
                         small: true
                     }}
-                    onDateChange={this.dateChange.bind(this)}/>
+                    onDateChange={this.dateChange.bind(this)} />
                 <QbRateStar />
                 <QbRateStar rate={3.3} compStyle={{ width: 'maxContent' }} />
                 <QbRateStar starWidth={31.1} starHeight={30} rate={'3.75'} gap={8} />
