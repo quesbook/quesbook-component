@@ -303,8 +303,8 @@ export default class Test extends Component {
                     style={{ width: 100 }}
                     className="btn btn-primary btn-lg"
                     clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
-                <QbCheckBox label="hello" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
-                <QbCheckBox label="hi" value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
+                <QbCheckBox label="hello" id="hello" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                <QbCheckBox label="hi" id="hi" value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbInput placeHolder='e.g. math' size="small" changeHandler={(e) => alert(e.target.value)}>

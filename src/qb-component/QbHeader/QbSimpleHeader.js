@@ -68,10 +68,10 @@ class QbSimpleHeader extends Component {
                     <div className='signed-text'>
                         Welcome, {userName}!
                     </div>
-                    <div className='signed-avatar' onClick={this.onHover_Signed.bind(this)} onMouseOver={this.onHover_Signed.bind(this)}>
-                        <QbAvatar user={currentUser}></QbAvatar>
+                    <div className='signed-avatar' >
+                        
                     </div>
-                    <div className='signed-arrowdown'></div>
+                    <div className='signed-arrowdown' onClick={this.onHover_Signed.bind(this)} onMouseOver={this.onHover_Signed.bind(this)}></div>
                 </div>
             );
         } else {
