@@ -48,7 +48,7 @@ class QbRateStar extends Component {
 
     render() {
         return (
-            <div className="qb_rate_star" style={{ ...this.props.compStyle, position: 'relative' }}>
+            <div className="qb_rate_star" style={{ position: 'relative', lineHeight: 0, ...this.props.compStyle }}>
                 <div className="qb_rate_star_empty_layer" style={this.layerStyle}>
                     {
                         this.starCounts.map((item) => (

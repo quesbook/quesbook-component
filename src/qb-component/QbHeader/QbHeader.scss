@@ -115,9 +115,7 @@
 
             .eclass-hand-ct {
                 transition: opacity .25s ease-in-out;
-                @media (max-width: $mediaPhone) {
-                    min-width: 127px;
-                }
+                min-width: 132px;
 
                 img {
                     margin-top: -3px;

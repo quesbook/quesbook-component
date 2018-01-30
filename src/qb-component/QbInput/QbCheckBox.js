@@ -2,7 +2,7 @@
  * Created by az on 2017/7/13.
  */
 import React, {Component} from 'react';
-// import './QbInput.scss';
+import './QbInput.scss';
 
 /*eslint-disable*/
 class QbCheckBox extends Component {
@@ -21,7 +21,7 @@ class QbCheckBox extends Component {
                     style={style}
                     checked={checked}
                     onChange={()=> {
-                        changeHandler(!checked);
+                        changeHandler(!checked, value);
                     }}/>
                 <label htmlFor={id}>
                     {label}

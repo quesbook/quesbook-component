@@ -25,7 +25,8 @@ const style = {
         fontWeight: 'bold'
     },
     contentStyle: {
-        fontSize: 16
+        fontSize: 16,
+        margin: 0
     }
 }
 
@@ -55,6 +56,10 @@ class QbEClassCardTemplate extends Component {
         }
     }
 
+    get startsAtStyle() {
+        return this.props.expand ? null : { margin: 0 };
+    }
+
     render() {
         let { sectionName,
             courseName,
@@ -76,7 +81,7 @@ class QbEClassCardTemplate extends Component {
                     <div className="right-content" style={{ marginLeft: 20 }}>
                         <h5 style={style.header}>{courseName}</h5>
                         <h6 style={{ ...style.header, opacity: 0.5 }}>{skillName}</h6>
-                        <h6 style={{ ...style.header, color: COLOR.sky }}>{startsAt}</h6>
+                        <h6 style={{ ...style.header, color: COLOR.sky, ...this.startsAtStyle }}>{startsAt}</h6>
                         <p style={{ ...style.contentStyle, ...this.displayStyle }}>{description}</p>
                     </div>
                 </div>
