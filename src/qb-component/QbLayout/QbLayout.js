@@ -70,12 +70,13 @@ class QbLayout extends Component {
             } else if (pathname.indexOf(TUTOR_ADMIN) !== -1 && !ALLOWED_TYPES.includes(currentUser.type)) {
                 this.navHomePage();
             } else {
-                this.setState({ currentUser, navItemList });
                 console.log("<-- 进入 fetch user 成功后的回调函数 -->");
-                if (typeof this.props.doSthWhenFetchUserSuccess === 'function') {
+                this.setState({ currentUser, navItemList }, () => {
                     console.log("<-- typeof this.props.doSthWhenFetchUserSuccess -->", typeof this.props.doSthWhenFetchUserSuccess);
-                    this.props.doSthWhenFetchUserSuccess(currentUser);
-                }
+                    if (typeof this.props.doSthWhenFetchUserSuccess === 'function') {
+                        this.props.doSthWhenFetchUserSuccess(currentUser);
+                    }
+                });
             }
         }).catch((e) => {
             this.navHomePage();
