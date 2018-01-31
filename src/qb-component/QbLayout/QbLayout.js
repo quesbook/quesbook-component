@@ -55,6 +55,7 @@ class QbLayout extends Component {
                 first_name
                 last_name
                 exam_type_names
+                avg_tutor_rating
                 type
                 one_of_section_part1_finished
               }
@@ -69,7 +70,16 @@ class QbLayout extends Component {
             } else if (pathname.indexOf(TUTOR_ADMIN) !== -1 && !ALLOWED_TYPES.includes(currentUser.type)) {
                 this.navHomePage();
             } else {
-                this.setState({ currentUser, navItemList });
+                const self = this;
+                this.setState({ currentUser, navItemList }, () => {
+                    console.log("<--- Qblayout this props ---->", self.props);
+                    if (self.props.route) {
+                        const { doSthWhenFetchUserSuccess } = self.props.route;
+                        if (typeof doSthWhenFetchUserSuccess === 'function') {
+                            doSthWhenFetchUserSuccess(currentUser);
+                        }
+                    }
+                });
             }
         }).catch((e) => {
             this.navHomePage();
