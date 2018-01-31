@@ -73,6 +73,8 @@ class QbLayout extends Component {
                 console.log("<-- 进入 fetch user 成功后的回调函数 -->");
                 const self = this;
                 this.setState({ currentUser, navItemList }, () => {
+                    console.log("<--- this ---->", self);
+                    console.log("<--- this props ---->", self.props);
                     console.log("<-- typeof this.props.doSthWhenFetchUserSuccess -->", typeof self.props.doSthWhenFetchUserSuccess);
                     if (typeof self.props.doSthWhenFetchUserSuccess === 'function') {
                         self.props.doSthWhenFetchUserSuccess(currentUser);
