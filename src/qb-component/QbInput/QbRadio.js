@@ -6,11 +6,12 @@ import React, {Component} from 'react';
 /*eslint-disable*/
 class QbRadio extends Component {
     render() {
-        const {className, value, changeHandler, style, label, name, id} = this.props;
+        const {value, changeHandler, style, label, name, id} = this.props;
         return (
             <div style={style}>
                 <input 
                     id={id}
+                    className="qb-radio"
                     type="radio"
                     value={value}
                     name={name}

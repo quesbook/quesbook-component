@@ -10,7 +10,7 @@ class QbCheckBox extends Component {
         super(props);
     }
     render() {
-        const {className, value, changeHandler, style, label, id, checked} = this.props;
+        const {value, changeHandler, style, label, id, checked} = this.props;
         return (
             <div style={style}>
                 <input 

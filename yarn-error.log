@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "quesbook-component",
-    "version": "0.2.100",
+    "version": "0.2.102",
     "description": "",
     "devDependencies": {
       "babel-cli": "^6.24.1",
@@ -5182,7 +5182,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.4.4.tgz#c244c71eaebef79a985ccf9895bc90307a6e9712"
 
 Trace: 
-  Error: https://registry.yarnpkg.com/quesbook-component: You cannot publish over the previously published version 0.2.100.
+  Error: https://registry.yarnpkg.com/quesbook-component: You cannot publish over the previously published version 0.2.102.
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:62098:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:123085:22)
       at emitTwo (events.js:126:13)
