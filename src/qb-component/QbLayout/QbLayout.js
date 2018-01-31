@@ -55,6 +55,7 @@ class QbLayout extends Component {
                 first_name
                 last_name
                 exam_type_names
+                avg_tutor_rating
                 type
                 one_of_section_part1_finished
               }
@@ -70,6 +71,10 @@ class QbLayout extends Component {
                 this.navHomePage();
             } else {
                 this.setState({ currentUser, navItemList });
+                if (typeof this.props.doSthWhenFetchUserSuccess === 'function') {
+                    console.log("进入 fetch user 成功后的回调函数 -->");
+                    this.props.doSthWhenFetchUserSuccess();
+                }
             }
         }).catch((e) => {
             this.navHomePage();
