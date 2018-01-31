@@ -1,21 +1,27 @@
-input[type="checkbox"]:checked {
-    background-color: black;
-    width: 100px;
-    color: red;
-}
-// input[type="checkbox"]+label::before {
-//     content: '';
-//     display: inline-block;
-//     width: 14px;
-//     height: 14px;
-//     border-radius: 2px;
-//     border: 1px solid #cccccc;
-//     margin-right: 5px;
-//     margin-top: 1px;
-//     background-clip: content-box;
-//     background-color: white;
+// input[type="checkbox"]{
+//     display: none;
 // }
 // input[type="checkbox"]:checked+label::before {
+//     content: '';  
+//     opacity: 1; /*设置复选框标签透明度0.2,半透明的对勾 下面悬停时候加深*/  
+//     position: absolute;  
+//     width: 9px;  
+//     height: 5px;  
+//     background: transparent;  
+//     top: 6px;  
+//     left: 7px;  
+//     border: 3px solid #333;  
+//     border-top: none;  
+//     border-right: none;  
+//     -webkit-transform: rotate(-45deg);  
+//     -moz-transform: rotate(-45deg);  
+//     -o-transform: rotate(-45deg);  
+//     -ms-transform: rotate(-45deg);  
+//     transform: rotate(-45deg);  
+// }
+// input[type="checkbox"]:checked+label::before {
+//     height: 14px;
+//     width: 14px;
 //     background-color: #192230;
 //     color: white;
 //     border-color: #192230;
