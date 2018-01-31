@@ -70,14 +70,11 @@ class QbLayout extends Component {
             } else if (pathname.indexOf(TUTOR_ADMIN) !== -1 && !ALLOWED_TYPES.includes(currentUser.type)) {
                 this.navHomePage();
             } else {
-                console.log("<-- 进入 fetch user 成功后的回调函数 -->");
                 const self = this;
                 this.setState({ currentUser, navItemList }, () => {
-                    console.log("<--- this ---->", self);
-                    console.log("<--- this props ---->", self.props);
+                    console.log("<--- Qblayout this props ---->", self.props);
                     if (self.props.route) {
                         const { doSthWhenFetchUserSuccess } = self.props.route;
-                        console.log("<--- typeof doSthWhenFetchUserSuccess ---->", typeof doSthWhenFetchUserSuccess);
                         if (typeof doSthWhenFetchUserSuccess === 'function') {
                             doSthWhenFetchUserSuccess(currentUser);
                         }
