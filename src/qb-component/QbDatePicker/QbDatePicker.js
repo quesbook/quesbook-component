@@ -40,12 +40,15 @@ class QbDatePicker extends Component {
     }
     renderPicker() {
         const { singlePicker, icon, small, placeHolder } = this.props.option;
-        const enhancementProps = this.props.allowPastDays ? { isOutsideRange: () => {} } : null;
+        const { orientation, allowPastDays, verticalHeight } = this.props;
+        const enhancementProps = allowPastDays ? { isOutsideRange: () => { } } : null;
         if (singlePicker) {
             const id = this.props.id;
             return (
                 <SingleDatePicker
                     {...enhancementProps}
+                    orientation={orientation}
+                    verticalHeight={verticalHeight}
                     date={this.state.singleDate}
                     onDateChange={this.dateChange.bind(this)}
                     placeholder={placeHolder}
@@ -64,6 +67,8 @@ class QbDatePicker extends Component {
             return (
                 <DateRangePicker
                     {...enhancementProps}
+                    orientation={orientation}
+                    verticalHeight={verticalHeight}
                     startDateId={startDateId}
                     endDateId={endDateId}
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
@@ -102,7 +107,9 @@ QbDatePicker.propTypes = {
     onDatesChange: React.PropTypes.func,
     className: React.PropTypes.string,
     placeHolder: React.PropTypes.string,
-    allowPastDays: React.PropTypes.bool
+    allowPastDays: React.PropTypes.bool,
+    orientation: React.PropTypes.oneOf(['horizontal', 'vertical']),
+    verticalHeight: React.PropTypes.number
 }
 QbDatePicker.defaultProps = {
     option: {
@@ -113,7 +120,9 @@ QbDatePicker.defaultProps = {
     onDateChange: () => { },
     onDatesChange: () => { },
     className: '',
-    allowPastDays: false
+    allowPastDays: false,
+    orientation: 'horizontal',
+    verticalHeight: 280
 }
 
 export default QbDatePicker;
