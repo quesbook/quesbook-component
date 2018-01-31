@@ -305,8 +305,8 @@ export default class Test extends Component {
                     clickHandler={() => this.setState({ showAlert: !this.state.showAlert })} />
                 <QbCheckBox label="hello" id="hello" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbCheckBox label="hi" id="hi" value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
-                <QbRadio label="hello" name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
-                <QbRadio label="hi" name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                <QbRadio label="hello" id='r1' name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                <QbRadio label="hi" id='r2'name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbInput placeHolder='e.g. math' size="small" changeHandler={(e) => alert(e.target.value)}>
                     <img alt="icon" src={SearchIcon} />
                 </QbInput>
