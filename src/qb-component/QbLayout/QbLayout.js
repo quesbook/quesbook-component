@@ -71,9 +71,10 @@ class QbLayout extends Component {
                 this.navHomePage();
             } else {
                 this.setState({ currentUser, navItemList });
+                console.log("<-- 进入 fetch user 成功后的回调函数 -->");
                 if (typeof this.props.doSthWhenFetchUserSuccess === 'function') {
-                    console.log("进入 fetch user 成功后的回调函数 -->");
-                    this.props.doSthWhenFetchUserSuccess();
+                    console.log("<-- typeof this.props.doSthWhenFetchUserSuccess -->", typeof this.props.doSthWhenFetchUserSuccess);
+                    this.props.doSthWhenFetchUserSuccess(currentUser);
                 }
             }
         }).catch((e) => {
