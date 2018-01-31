@@ -191,11 +191,13 @@ export default class Test extends Component {
                 </QbEClassCardTemplate>
                 <p>可以选择过去的时间</p>
                 <QbDatePicker
+                    orientation={'vertical'}
                     allowPastDays
                     startDateId="startDateId"
                     endDateId="endDateId"
                     option={{
                         icon: <img alt="icon" src={CalendarIcon} />,
+                        style: {marginBottom: 30}
                     }}
                     onDatesChange={this.datesChange.bind(this)}
                     onDateChange={this.dateChange.bind(this)} />
