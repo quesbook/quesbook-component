@@ -38,17 +38,25 @@ class QbDatePicker extends Component {
         this.setState({ singleDate: date });
         onDateChange(date);
     }
+    get enhancementProps() {
+        const ret = {};
+        const { orientation, allowPastDays, verticalHeight } = this.props;
+        if (allowPastDays) {
+            ret.isOutsideRange = () => { };
+        }
+        if (orientation) {
+            ret.orientation = orientation;
+            ret.verticalHeight = verticalHeight || 350
+        }
+        return ret;
+    }
     renderPicker() {
         const { singlePicker, icon, small, placeHolder } = this.props.option;
-        const { orientation, allowPastDays, verticalHeight } = this.props;
-        const enhancementProps = allowPastDays ? { isOutsideRange: () => { } } : null;
         if (singlePicker) {
             const id = this.props.id;
             return (
                 <SingleDatePicker
-                    {...enhancementProps}
-                    orientation={orientation}
-                    verticalHeight={verticalHeight}
+                    {...this.enhancementProps}
                     date={this.state.singleDate}
                     onDateChange={this.dateChange.bind(this)}
                     placeholder={placeHolder}
@@ -66,9 +74,7 @@ class QbDatePicker extends Component {
             const { startDateId, endDateId } = this.props;
             return (
                 <DateRangePicker
-                    {...enhancementProps}
-                    orientation={orientation}
-                    verticalHeight={verticalHeight}
+                    {...this.enhancementProps}
                     startDateId={startDateId}
                     endDateId={endDateId}
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
@@ -120,9 +126,7 @@ QbDatePicker.defaultProps = {
     onDateChange: () => { },
     onDatesChange: () => { },
     className: '',
-    allowPastDays: false,
-    orientation: 'horizontal',
-    verticalHeight: 280
+    allowPastDays: false
 }
 
 export default QbDatePicker;
