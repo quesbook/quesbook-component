@@ -15,6 +15,7 @@ class QbTimePicker extends Component {
             periods: 'AM',
             displayPicker: false,
             notSelect: true, // style is different before first slect
+            dropDownOffset: 0,
         };
         this.clickEvent = null;
         this.componentOpen = this.componentOpen.bind(this);
@@ -126,6 +127,19 @@ class QbTimePicker extends Component {
             return null;
         }
     }
+    componentDidUpdate(){
+        if (this.state.displayPicker) {
+            const {id} = this.props;
+            console.log(this.refs[id].getBoundingClientRect(), window.screen.width);
+            const domRect = this.refs[id].getBoundingClientRect();
+            if (domRect.right > window.screen.width) {
+                const offset = window.screen.width - domRect.right;
+                this.setState({
+                    dropDownOffset: offset,
+                })
+            }
+        }
+    }
     render() {
         const {option, className, id} = this.props;
         let time = '';
@@ -151,8 +165,8 @@ class QbTimePicker extends Component {
                         }
                         this.toggleDisplayPicker.bind(this);
                 }}>{displayText}</button>
-                <div id={id} className="dropdown-menu dropdown-menu-left"
-                     style={{...style.timePicker, display: display}}>
+                <div id={id} className="dropdown-menu dropdown-menu-left" ref={id}
+                     style={{...style.timePicker, display: display, marginLeft: this.state.dropDownOffset}}>
                     <div className="filter-time-dropdown" style={style.hourPicker}>
                         <button className="btn btn-secondary"
                                 style={style.pickerButton}

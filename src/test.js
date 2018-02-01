@@ -301,6 +301,11 @@ export default class Test extends Component {
                         this.setState({ show: !this.state.show });
                     }}
                 />
+                <QbTimePicker id="endPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
+                    option={{
+                        btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
+                        displayMinute: true
+                    }} />
                 <QbButton label="talksndonoadn3oqnwodnqowndoqnodiqhwpir"
                     style={{ width: 100 }}
                     className="btn btn-primary btn-lg"
@@ -333,11 +338,6 @@ export default class Test extends Component {
                     option={{
                         btnStyle: { width: 100, height: 52, fontSize: 20 },
                         style: { width: 100 }
-                    }} />
-                <QbTimePicker id="endPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
-                    option={{
-                        btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
-                        displayMinute: true
                     }} />
                 {/*/!* <QbClassCard {...classCardData2} /> *!/*/}
                 {/* <QbAvatar user={{ name: 'Tom Zhu', avatar: '' }} size='big'></QbAvatar>
