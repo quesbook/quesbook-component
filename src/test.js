@@ -191,13 +191,15 @@ export default class Test extends Component {
                 </QbEClassCardTemplate>
                 <p>可以选择过去的时间</p>
                 <QbDatePicker
+                    displayFormat="MM/DD/YY"
                     orientation={'vertical'}
                     allowPastDays
                     startDateId="startDateId"
                     endDateId="endDateId"
                     option={{
                         icon: <img alt="icon" src={CalendarIcon} />,
-                        style: {marginBottom: 30}
+                        style: {marginBottom: 30},
+                        small: true
                     }}
                     onDatesChange={this.datesChange.bind(this)}
                     onDateChange={this.dateChange.bind(this)} />
@@ -374,7 +376,7 @@ export default class Test extends Component {
                     style={{ height: 100, width: 300 }}
                     changeHandler={this.sliderChange.bind(this)} />
                 <QbCard cardStyle={{ height: 120, width: 500 }} avatarSrc={CloseIcon} rate={3.5} />
-                
+
                 <QbTabs>
                     <QbTab ref="hlo">
                         {list}

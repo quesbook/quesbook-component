@@ -40,7 +40,7 @@ class QbDatePicker extends Component {
     }
     get enhancementProps() {
         const ret = {};
-        const { orientation, allowPastDays, verticalHeight } = this.props;
+        const { orientation, allowPastDays, verticalHeight, disabled, displayFormat } = this.props;
         if (allowPastDays) {
             ret.isOutsideRange = () => { };
         }
@@ -48,6 +48,10 @@ class QbDatePicker extends Component {
             ret.orientation = orientation;
             ret.verticalHeight = verticalHeight || 350
         }
+
+        ret.disabled = disabled;
+        ret.displayFormat = displayFormat;
+
         return ret;
     }
     renderPicker() {
