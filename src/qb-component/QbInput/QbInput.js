@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 
 class QbInput extends Component {
     render() {
-        const {placeHolder, className, size, style, changeHandler, children} = this.props;
+        const {placeHolder, className, size, style, changeHandler, children, value} = this.props;
         let height = 38;
         switch (size) {
             case 'small':
@@ -33,20 +33,16 @@ class QbInput extends Component {
             <div style={{height: height}} className={inputClass}>
                 {additionButton}
                 <input type='text'
-                             className={finallClass}
-                             placeholder={placeHolder}
-                             onChange={(e)=> {
-                                 changeHandler.bind(this)(e);
-                             }}
-                             style={{...style, ...additionStyle, ...privateStyle.input, height}}/>
+                    className={finallClass}
+                    placeholder={placeHolder}
+                    value={value || ''}
+                    onChange={(e)=> {
+                        changeHandler.bind(this)(e.target.value);
+                    }}
+                    style={{...style, ...additionStyle, height}}/>
             </div>
         );
     }
 }
-
-const privateStyle = {
-    input: {
-    }
-};
 
 export default QbInput;

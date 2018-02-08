@@ -98,7 +98,11 @@ class QbTimePicker extends Component {
                 notSelect: false
             });
         }
-        onPickerClose(this.state);
+        onPickerClose({
+            hour: this.state.hour,
+            minute: this.state.minute,
+            periods: this.state.periods,
+        });
         this.toggleDisplayPicker();
         if (this.clickEvent) {
             document.removeEventListener('click', this.clickEvent);
@@ -141,19 +145,21 @@ class QbTimePicker extends Component {
         }
     }
     render() {
-        const {option, className, id} = this.props;
-        let time = '';
-        if (option.displayMinute) {
-            time = `${this.state.hour}:${this.padNumber(this.state.minute, 2)} ${this.state.periods}`;
-        } else {
-            time = this.state.hour + ' ' + this.state.periods;
+        const {option, className, id, time} = this.props;
+        let timeStr = '';
+        if (time && Object.keys(time).length !== 0) {
+            if (option.displayMinute) {
+                timeStr = `${time.hour}:${this.padNumber(time.minute, 2)} ${time.periods}`;
+            } else {
+                timeStr = time.hour + ' ' + time.periods;
+            }
         }
         let display = this.state.displayPicker?'flex':'none';
         let minutePicker = this.renderMinutePicker();
         let btnClassName = 'btn btn-secondary timepicker' + (option.btnClassName?option.btnClassName: '');
         let finalClassName =  'qb-component-time-picker ' + (className?className: '');
         let fontColor = this.state.notSelect ? '#94989E': '#192230';
-        let displayText = this.state.notSelect ? (option.placeHolder || ""): time;
+        let displayText = this.state.notSelect ? (option.placeHolder || ""): timeStr;
         return (
             <div className={finalClassName} style={{position: 'relative', ...option.style}}>
                 <button className={btnClassName}
@@ -262,6 +268,11 @@ QbTimePicker.PropTypes = {
         btnStyle:  React.PropTypes.object,
         btnClassName: React.PropTypes.string,
         displayMinute: React.PropTypes.bool,
+    }),
+    time: React.PropTypes.shape({
+        hour: React.PropTypes.number,
+        minute: React.PropTypes.number,
+        periods: React.PropTypes.string,
     }),
     className: React.PropTypes.string,
     id: React.PropTypes.string.isRequired,

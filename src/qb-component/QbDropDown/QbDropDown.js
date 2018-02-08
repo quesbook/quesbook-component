@@ -10,17 +10,7 @@ class QbDropDown extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedObj: props.defaultData,
             keyword: ''
-        }
-    }
-    componentWillReceiveProps(nextProps) {
-        let oldDefaultValue = this.props.defaultData.value;
-        let newDefaultValue = nextProps.defaultData.value;
-        if (oldDefaultValue !== newDefaultValue) {
-            this.setState({
-                selectedObj: nextProps.defaultData
-            })
         }
     }
     renderDropDownList(content) {
@@ -28,8 +18,8 @@ class QbDropDown extends Component {
         return content.map((data, index) =>
             <QbDropDownItem label={data.label} key={index} value={data.value} onClick={() => {
                 this.setState({
-                    selectedObj: data
-                });
+                    keyword: '',
+                })
                 onChange(data);
             }} />
         );
@@ -53,23 +43,18 @@ class QbDropDown extends Component {
         }
     }
     render() {
-        const {option, className, btnClassName, onChange, content} = this.props;
+        const {option, className, btnClassName, onChange, content, value} = this.props;
         let children;
         let mask = this.renderMask();
 
         if (option.inputType === 'button') {
             children = this.renderDropDownList(content);
+            let btnText = value? value.label : '';
             return (
                 <div className={className + ' btn-group'}
                      style={{position: 'relative', height: 52, ...option.style}}>
                     <button type="button"
                             className={btnClassName}
-                            onChange={(e) => {
-                                this.setState({
-                                    keyword: e.target.value
-                                });
-                                onChange(this.state.selectedObj);
-                            }}
                             style={{
                                 ...style.button.publicStyle,
                                 borderRight: 0,
@@ -77,7 +62,7 @@ class QbDropDown extends Component {
                                 fontWeight: 500,
                                 ...option.btnStyle,
                             }}>
-                        {this.state.selectedObj.label}
+                        {btnText}
                     </button>
                     <button type="button" 
                             style={{ ...style.button.publicStyle, borderLeft: 0}}
@@ -106,13 +91,15 @@ class QbDropDown extends Component {
             return (
                 <div className={className + (additionIcon?'input-group':'')} style={{position: 'relative', height: 52, ...option.style}}>
                     {additionIcon}
-                    <input type="text" style={{...style.input.default, ...additionStyle, ...option.inputStyle}}
-                           placeholder= {option.placeHolder}
-                           data-toggle="dropdown" className="form-control disable"
-                           onChange={(e) => {
-                               this.setState({
-                                   keyword: e.target.value
-                               });
+                    <input type="text"
+                        style={{...style.input.default, ...additionStyle, ...option.inputStyle}}
+                        placeholder= {option.placeHolder}
+                        data-toggle="dropdown" className="form-control disable"
+                        value={this.state.keyword}
+                        onChange={(e) => {
+                            this.setState({
+                                keyword: e.target.value
+                            });
                     }} />
                     <div className="dropdown-menu dropdown-menu-right" style={option.dropdownStyle}>
                         {children}
@@ -161,10 +148,6 @@ QbDropDown.defaultProps = {
         },
         dropdownStyle: {},
     },
-    defaultData: {
-        label: null,
-        value: null,
-    },
     content: [],
     onChange: ()=>{},
     className: '',
@@ -178,7 +161,6 @@ QbDropDown.propTypes = {
         dropdownStyle: React.PropTypes.object,
     }),
     icon: React.PropTypes.object,
-    defaultData: React.PropTypes.object,
     content: React.PropTypes.array,
     onChange: React.PropTypes.func,
     className: React.PropTypes.string,

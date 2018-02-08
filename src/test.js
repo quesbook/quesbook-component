@@ -47,7 +47,22 @@ export default class Test extends Component {
             showModal: false,
             showAlert: false,
             showSpin: false,
-            expand: false
+            expand: false,
+            singleDate: null,
+            startDate: null,
+            endDate: null,
+            btnDropDownValue: null,
+            inputDropDownValue: null,
+            inputValue: '',
+            price: {
+                low: 0,
+                high: 15,
+            },
+            time: {
+                hour: 0,
+                minute: 0,
+                periods: 'AM',
+            }
         }
     }
     toggleModal() {
@@ -66,16 +81,24 @@ export default class Test extends Component {
         }));
     }
     sliderChange(lowPrice, highPrice) {
-        this.setState((prevState, props) => ({ switchState: !prevState.switchState }));
+        this.setState({price: {
+            low: lowPrice,
+            high: highPrice,
+        }});
     }
     buttonIconClick() {
         alert('icon cliasc');
     }
     datesChange(start, end) {
-        console.log(start, end);
+        this.setState({
+            startDate: start,
+            endDate: end,
+        })
     }
     dateChange(date) {
-        console.log(date);
+        this.setState({
+            singleDate: date,
+        })
     }
     add() {
         console.log('Tag before numlist:', this.state.numlist);
@@ -196,6 +219,8 @@ export default class Test extends Component {
                     allowPastDays
                     startDateId="startDateId"
                     endDateId="endDateId"
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
                     option={{
                         icon: <img alt="icon" src={CalendarIcon} />,
                         style: {marginBottom: 30},
@@ -206,13 +231,26 @@ export default class Test extends Component {
                 <QbDatePicker
                     allowPastDays
                     id="testSingle"
+                    singleDate = {this.state.singleDate}
                     option={{
                         singlePicker: true,
                         placeHolder: "2012-1-1"
                     }}
                     onDateChange={this.dateChange.bind(this)} />
+                <button onClick={() => {
+                    this.setState({
+                        startDate: null,
+                        endDate: null,
+                        singleDate: null,
+                        time: null,
+                        price: null,
+                        btnDropDownValue: null,
+                        inputDropDownValue: null,
+                        inputValue: null,
+                    });
+                }}>reset</button>
                 <p>不能选择过去的时间</p>
-                <QbDatePicker
+                {/* <QbDatePicker
                     startDateId="startDateId"
                     endDateId="endDateId"
                     option={{
@@ -236,7 +274,7 @@ export default class Test extends Component {
                         placeHolder: "today(2012-1-1)",
                         small: true
                     }}
-                    onDateChange={this.dateChange.bind(this)} />
+                    onDateChange={this.dateChange.bind(this)} /> */}
                 <QbRateStar />
                 <QbRateStar rate={3.3} compStyle={{ width: 'maxContent' }} />
                 <QbRateStar starWidth={31.1} starHeight={30} rate={'3.75'} gap={8} />
@@ -250,27 +288,19 @@ export default class Test extends Component {
                 <QbSlider maxMark="$10+"
                     minMark="Free!"
                     maxPrice={15}
+                    value={this.state.price}
                     style={{ height: 100, width: 300 }}
                     changeHandler={this.sliderChange.bind(this)} />
-                <QbSlider maxMark="$10+"
-                    minMark="Free!"
-                    maxPrice={15}
-                    style={{ height: 80, width: '100%', padding: '0 15px', marginTop: 15 }}
-                    changeHandler={this.sliderChange.bind(this)} />
-                <Rheostat
-                    min={1}
-                    max={100}
-                    values={[1, 100]}
-                />
-                <QbDropDown option={{
-                    inputType: "button",
-                    btnStyle: { width: 350, textAlign: 'left' },
-                    style: { position: 'relative', width: 400, height: 52 },
-                    dropdownStyle: { width: '100%' }
-                }} content={dropDownContent}
+                <QbDropDown
+                    value={this.state.btnDropDownValue}
+                    option={{
+                        inputType: "button",
+                        btnStyle: { width: 350, textAlign: 'left' },
+                        style: { position: 'relative', width: 400, height: 52 },
+                        dropdownStyle: { width: '100%' }
+                    }} content={dropDownContent}
                     onChange={(data) => {
-                        console.log('TAg data:', data);
-                        this.setState({ show: !this.state.show });
+                        this.setState({ btnDropDownValue: data});
                     }} />
                 <QbButton label="hello"
                     isSubmit="true"
@@ -279,31 +309,23 @@ export default class Test extends Component {
                     dataTarget="#azmodal" dataToggle='modal'>
                     <img src={CloseIcon} style={{ height: 'inherit', width: 'inherit' }} />
                 </QbButton>
-                <QbDropDown option={{
-                    placeHolder: 'e.g. Apostrophes',
-                    inputType: "input",
-                    btnStyle: { width: 350, textAlign: 'left' },
-                    style: { position: 'relative', width: 400, height: 52 },
-                    dropdownStyle: { width: '100%' },
-                    icon: <img alt="icon" src={CalendarIcon} />
-                }} content={dropDownContent}
+                <QbDropDown
+                    value={this.state.inputDropDownValue}
+                    option={{
+                        placeHolder: 'e.g. Apostrophes',
+                        inputType: "input",
+                        btnStyle: { width: 350, textAlign: 'left' },
+                        style: { position: 'relative', width: 400, height: 52 },
+                        dropdownStyle: { width: '100%' },
+                        icon: <img alt="icon" src={CalendarIcon} />
+                    }} content={dropDownContent}
                     onChange={(data) => {
                         console.log('TAg data:', data);
-                        this.setState({ show: !this.state.show });
+                        this.setState({ inputDropDownValue: data });
                     }} />
-                <QbDropDown option={{
-                    placeHolder: 'e.g. Apostrophes',
-                    inputType: "input",
-                    btnStyle: { width: 350, textAlign: 'left' },
-                    style: { position: 'relative', width: 400, height: 52 },
-                    dropdownStyle: { width: '100%' }
-                }} content={dropDownContent}
-                    onChange={(data) => {
-                        console.log('TAg data:', data);
-                        this.setState({ show: !this.state.show });
-                    }}
-                />
-                <QbTimePicker id="endPicker" onPickerClose={(time) => console.log('Tag time is:', time)}
+                <QbTimePicker id="endPicker" 
+                    onPickerClose={(time) => this.setState({time: time})}
+                    time={this.state.time}
                     option={{
                         btnStyle: { width: 150, height: 52, fontSize: 20, justifyContent: 'center' },
                         displayMinute: true
@@ -316,7 +338,11 @@ export default class Test extends Component {
                 <QbCheckBox label="hi" id="hi" value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hello" id='r1' name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hi" id='r2'name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
-                <QbInput placeHolder='e.g. math' size="small" changeHandler={(e) => alert(e.target.value)}>
+                <QbInput placeHolder='e.g. math' size="small"
+                    value={this.state.inputValue}
+                    changeHandler={(value) => this.setState({
+                        inputValue: value
+                    })}>
                     <img alt="icon" src={SearchIcon} />
                 </QbInput>
                 <button onClick={this.alertMessage.bind(this)}>add</button>
@@ -370,11 +396,6 @@ export default class Test extends Component {
                     title="hello!"
                     content="ha lou a !"
                     onCancelClick={this.messageToggle.bind(this)} />
-                <QbSlider maxMark="$10+"
-                    minMark="Free!"
-                    maxPrice={15}
-                    style={{ height: 100, width: 300 }}
-                    changeHandler={this.sliderChange.bind(this)} />
                 <QbCard cardStyle={{ height: 120, width: 500 }} avatarSrc={CloseIcon} rate={3.5} />
 
                 <QbTabs>

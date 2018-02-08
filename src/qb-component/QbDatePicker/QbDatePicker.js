@@ -12,30 +12,16 @@ class QbDatePicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: null,
-            endDate: null,
             focusedInput: null,
-            singleDate: null,
             focused: false,
         };
     }
     datesChange({ startDate, endDate }) {
         const { onDatesChange } = this.props;
-        if (startDate) {
-            this.setState({
-                startDate,
-            });
-        };
-        if (endDate) {
-            this.setState({
-                endDate,
-            });
-        }
         onDatesChange(startDate, endDate);
     }
     dateChange(date) {
         const { onDateChange } = this.props;
-        this.setState({ singleDate: date });
         onDateChange(date);
     }
     get enhancementProps() {
@@ -61,7 +47,7 @@ class QbDatePicker extends Component {
             return (
                 <SingleDatePicker
                     {...this.enhancementProps}
-                    date={this.state.singleDate}
+                    date={this.props.singleDate}
                     onDateChange={this.dateChange.bind(this)}
                     placeholder={placeHolder}
                     focused={this.state.focused}
@@ -75,14 +61,14 @@ class QbDatePicker extends Component {
                 />
             );
         } else {
-            const { startDateId, endDateId } = this.props;
+            const { startDateId, endDateId, startDate, endDate } = this.props;
             return (
                 <DateRangePicker
                     {...this.enhancementProps}
                     startDateId={startDateId}
                     endDateId={endDateId}
-                    startDate={this.state.startDate} // momentPropTypes.momentObj or null,
-                    endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                    startDate={startDate} // momentPropTypes.momentObj or null,
+                    endDate={endDate} // momentPropTypes.momentObj or null,
                     onDatesChange={({ startDate, endDate }) => this.datesChange({ startDate, endDate })}
                     small={small}
                     readOnly={true}
@@ -113,6 +99,9 @@ QbDatePicker.propTypes = {
         singlePicker: React.PropTypes.bool,
         small: React.PropTypes.bool,
     }),
+    singleDate: React.PropTypes.object,
+    startDate: React.PropTypes.object,
+    endDate: React.PropTypes.object,
     onDateChange: React.PropTypes.func,
     onDatesChange: React.PropTypes.func,
     className: React.PropTypes.string,
