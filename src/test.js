@@ -51,7 +51,10 @@ export default class Test extends Component {
             singleDate: null,
             startDate: null,
             endDate: null,
-            btnDropDownValue: null,
+            btnDropDownValue: {
+                label:"Start time",
+                value: "date"
+            },
             inputDropDownValue: null,
             inputValue: '',
             price: {
