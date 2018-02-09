@@ -21,12 +21,16 @@ class QbSimpleHeader extends Component {
         });
     }
 
+    onClick_Logo(){
+        window.location.href = "/";
+    }
+
     render() {
         const { currentUser } = this.state;
         return (
             <div className="box-a-nostyle">
                 <div className="section-ct-navbar box-flex box-font-narrow">
-                    <div className="navbar-logo">
+                    <div onClick={this.onClick_Logo.bind(this)} className="navbar-logo box-cursor">
                         <img src={logo} alt=""/>
                     </div>
                     {this.renderSign(currentUser)}
@@ -62,14 +66,14 @@ class QbSimpleHeader extends Component {
     renderSign(currentUser) {
         if (currentUser) {
             let userName = currentUser.name;
-    
+
             return (
                 <div className='navbar-signed box-flex-center'>
                     <div className='signed-text'>
                         Welcome, {userName}!
                     </div>
                     <div className='signed-avatar' >
-                        
+
                     </div>
                     <div className='signed-arrowdown' onClick={this.onHover_Signed.bind(this)} onMouseOver={this.onHover_Signed.bind(this)}></div>
                 </div>

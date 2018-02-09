@@ -258,6 +258,10 @@ class QbHeader extends Component {
         // });
     }
 
+    onClick_Logo() {
+        window.location.href = "/";
+    }
+
     renderSign(currentUser) {
         if (currentUser) {
             let userName = currentUser.name;
@@ -303,7 +307,7 @@ class QbHeader extends Component {
             <div className="box-a-nostyle">
                 <div className={this.state.activeClass}>
                     <div className='section-ct-navbar box-flex box-font-narrow'>
-                        <div className="navbar-logo">
+                        <div onClick={this.onClick_Logo.bind(this)} className="navbar-logo box-cursor">
                             <img src={logo} alt=""/>
                             <span>{this.renderTargetExam(currentUser)}</span>
                         </div>
