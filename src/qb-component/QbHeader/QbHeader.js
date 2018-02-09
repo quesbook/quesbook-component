@@ -100,7 +100,9 @@ class QbHeader extends Component {
 
         if (ret === '#/') {
             ret = '#/getStart';
-        } else if (ret.indexOf('#/diagnostic') === 0) {
+        } else if (ret.indexOf('#/diagnostic') === 0 ||
+            ret.indexOf('#/myClasses') === 0
+        ) {
             ret = '#/studyPlan';
         }
 
