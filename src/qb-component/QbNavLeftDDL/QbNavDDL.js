@@ -38,6 +38,7 @@ class QbNavDDL extends Component {
         };
 
         return (<QbDropDown defaultData={defaultData} default
+            value={defaultData}
             option={{
             inputType: 'button',
             btnStyle: {
