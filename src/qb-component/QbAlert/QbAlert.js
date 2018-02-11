@@ -14,7 +14,7 @@ Notification.newInstance({
         div.style.paddingLeft = '10px';
         div.style.paddingRight = '10px';
         div.style.pointerEvents = 'none';
-        div.style.zIndex= 10002;
+        div.style.zIndex= 10032;
         document.body.appendChild(div);
         return div;
     }
