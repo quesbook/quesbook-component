@@ -23,3 +23,25 @@ $brand-primary: $darkSky;
 
 $btn-secondary-color:            $midNight;
 $btn-secondary-border:           $midNight;
+
+@mixin screen {
+    @media (max-width: $Small) {
+        max-width: none;
+    }
+
+    @media (min-width: $Small) {
+        max-width: 540px;
+    }
+
+    @media (min-width: $Medium) {
+        max-width: 720px;
+    }
+
+    @media (min-width: $Large) {
+        max-width: 960px;
+    }
+
+    @media (min-width: $XLarge) {
+        max-width: 1140px;
+    }
+}
