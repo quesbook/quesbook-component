@@ -80,7 +80,7 @@ class QbHeader extends Component {
     }
 
     resetNavLinkItem_Active(hashName) {
-        console.log('resetNavLinkItem_Active', hashName);
+        // console.log('resetNavLinkItem_Active', hashName);
         hashName = this.resetHashName(hashName);
 
         this.setState({isShowSideBar: false});
@@ -112,7 +112,6 @@ class QbHeader extends Component {
     }
 
     onHover_Signed() {
-        console.log('onHover_Signed');
         this.setState({isShowSideBar: true});
     }
 
@@ -146,7 +145,7 @@ class QbHeader extends Component {
         });
 
         return (
-            <ul>
+            <ul className="navbar-ct-center">
                 {ret}
             </ul>
         );
@@ -307,8 +306,8 @@ class QbHeader extends Component {
         let currentUser = this.state.currentUser;
         return (
             <div className="box-a-nostyle">
-                <div className={this.state.activeClass}>
-                    <div className='section-ct-navbar box-flex box-font-narrow'>
+                <div className="navbar-ct">
+                    <div className='section-ct-navbar box-flex box-font-narrow navbar-ct-center'>
                         <div onClick={this.onClick_Logo.bind(this)} className="navbar-logo box-cursor">
                             <img src={logo} alt=""/>
                             <span>{this.renderTargetExam(currentUser)}</span>

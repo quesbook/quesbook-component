@@ -198,7 +198,7 @@ export default class Test extends Component {
             queryStrName: 'keyNav',
         };
         return (
-            <div style={{ marginLeft: 100 }}>
+            <div>
                 <QbEClassCardTemplate
                     compStyle={{ margin: 30 }}
                     expand={this.state.expand}
@@ -327,7 +327,7 @@ export default class Test extends Component {
                         console.log('TAg data:', data);
                         this.setState({ inputDropDownValue: data });
                     }} />
-                <QbTimePicker id="endPicker" 
+                <QbTimePicker id="endPicker"
                     onPickerClose={(time) => this.setState({time: time})}
                     time={this.state.time}
                     option={{

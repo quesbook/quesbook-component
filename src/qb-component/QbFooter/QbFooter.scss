@@ -3,7 +3,7 @@
 footer {
     z-index: 9999;
     font-size: 16px;
-    margin: auto;
+    margin: 0;
     width: 100%;
     color: $white !important;
     background-color: $darkSky;
@@ -11,63 +11,75 @@ footer {
         height: 60px;
     }
 
-    a:hover {
-        color: $white !important;
-    }
+    .footer-ct {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 30px;
 
-    > ul {
-        margin: 0;
-        list-style: none;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-items: center;
-        @media (min-width: $mediaTablet) {
-            padding: 0 10px 0 20px;
-        }
-        @media (max-width: $mediaPhone) {
+        @media (max-width: $Medium) {
             padding: 0;
         }
 
-        > li {
-            margin: 0 10px;
-            line-height: 60px;
-            @media (max-width: $mediaPhone) {
-                text-align: center;
-                flex-basis: 100%;
-                line-height: 1;
-            }
+        @media (max-width: $Small) {
+            padding: 0 10px;
         }
 
-        > li.footer-right {
-            @media (max-width: $mediaPhone) {
-                padding: 10px 0;
-            }
-        }
+        @include screen;
 
-        > li.logo {
-            margin: 0;
-            @media (max-width: $mediaPhone) {
-                padding: 40px 0 20px;
-            }
-        }
-
-        > li.copy-right {
-            line-height: 1;
-            font-size: 11px;
-            flex: 1;
-            @media (max-width: $mediaPhone) {
-                order: 10;
-            }
-        }
-
-        > li.logo, li.copy-right {
-            @media (max-width: $mediaPhone) {
-                padding: 40px 0;
-            }
-        }
-
-        li > a {
+        a:hover {
             color: $white !important;
+        }
+
+        > ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+
+            > li {
+                margin: 0 10px;
+                line-height: 60px;
+                @media (max-width: $mediaPhone) {
+                    text-align: center;
+                    flex-basis: 100%;
+                    line-height: 1;
+                }
+            }
+
+            > li.footer-right {
+                @media (max-width: $mediaPhone) {
+                    padding: 10px 0;
+                }
+            }
+
+            > li.logo {
+                margin: 0;
+                @media (max-width: $mediaPhone) {
+                    padding: 40px 0 20px;
+                }
+            }
+
+            > li.copy-right {
+                line-height: 1;
+                font-size: 11px;
+                flex: 1;
+                @media (max-width: $mediaPhone) {
+                    order: 10;
+                }
+            }
+
+            > li.logo,
+            li.copy-right {
+                @media (max-width: $mediaPhone) {
+                    padding: 40px 0;
+                }
+            }
+
+            li > a {
+                color: $white !important;
+            }
         }
     }
 }

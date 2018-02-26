@@ -1,16 +1,50 @@
 @import "../scss/variables";
 
+.navbar-ct {
+    // left: 0;
+    // right: 0;
+    // top: 0;
+    // margin: 0 auto;
+    position: fixed;
+    z-index: 98;
+    width: 100%;
+    // height: 51px;
+    background: $white;
+    // border: solid 1px rgba(25, 34, 48,0.2);
+    // @include screen;
+
+    .navbar-ct-center {
+        margin: 0 auto;
+        padding: 0 30px;
+
+        @media (max-width: $Medium) {
+            padding: 0;
+        }
+
+        @media (max-width: $Small) {
+            padding: 0 10px;
+        }
+
+        @include screen;
+    }
+}
+
+
+
 .section-ct-navbar {
     height: 50px;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    position: fixed;
+    // position: fixed;
     width: 100%;
-    z-index: 98;
+    // z-index: 98;
     background-color: $white;
-    border: solid 1px rgba(25, 34, 48,0.2);
+    // border: solid 1px rgba(25, 34, 48,0.2);
+    // left: 0;
+    // right: 0;
+    // top: 0;
 
     .navbar-logo,
     .navbar-signed,
@@ -19,7 +53,7 @@
     }
 
     .navbar-logo {
-        margin-left: 10px;
+        // margin-left: 10px;
 
         img {
             height: 24px;
@@ -40,10 +74,12 @@
             color: $midNight;
         }
 
-        .signed-arrowdown,
+        // .signed-arrowdown,
         .signed-avatar,
         .signed-text {
-            margin-right: 12px;
+            @media (min-width: $Medium) {
+                margin-right: 12px;
+            }
         }
 
         .signed-text {
@@ -95,10 +131,10 @@
     font-size: 16px;
     line-height: 50px;
     overflow: hidden;
-    position: fixed;
+    // position: fixed;
     width: 100%;
     top: 50px;
-    z-index: 98;
+    // z-index: 98;
 
     > ul {
         margin: 0 0 0 -10px;
@@ -111,7 +147,8 @@
         overflow: auto;
 
         > li {
-            padding: 0 25px;
+            padding-right: 40px;
+            // padding: 0 25px;
 
             .eclass-hand-ct {
                 transition: opacity .25s ease-in-out;

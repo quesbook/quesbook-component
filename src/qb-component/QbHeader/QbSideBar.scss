@@ -36,11 +36,16 @@
     @media (min-width: $mediaDesktop) {
         .navbarside-section {
             position: fixed;
-            width: 167px;
+            width: 100%;
+            // width: 167px;
             height: 65px;
-            right: 10px;
             top: 0;
             cursor: pointer;
+        }
+
+        .navbarside-section,
+        .navbarside-content {
+            right: 12.18%;
         }
 
         .navbarside-user {
@@ -53,7 +58,6 @@
 
         .navbarside-content {
             margin-top: 65px;
-            right: 10px;
 
             &.tutor {
                 margin-top: 50px;
