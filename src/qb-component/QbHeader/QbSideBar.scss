@@ -45,7 +45,17 @@
 
         .navbarside-section,
         .navbarside-content {
-            right: 12.18%;
+            @media (min-width: $Medium) {
+                right: calc((100vw - 720px)/2);
+            }
+
+            @media (min-width: $Large) {
+                right: calc((100vw - 960px)/2);
+            }
+
+            @media (min-width: $XLarge) {
+                right: calc((100vw - 1140px)/2);
+            }
         }
 
         .navbarside-user {
