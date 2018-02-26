@@ -65,7 +65,8 @@ export default class Test extends Component {
                 hour: 0,
                 minute: 0,
                 periods: 'AM',
-            }
+            },
+            isValid: true
         }
     }
     toggleModal() {
@@ -341,8 +342,11 @@ export default class Test extends Component {
                 <QbCheckBox label="hi" id="hi" value={2} changeHandler={(value) => console.log('hi', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hello" id='r1' name="1" value={1} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
                 <QbRadio label="hi" id='r2'name='1' value={2} changeHandler={(value) => console.log('hello', value)} fontStyle={{ fontSize: 16 }} />
+                <QbButton label={'改变输入框的文本合法性'} clickHandler={()=>{this.setState({isValid: !this.state.isValid})}}/>
                 <QbInput placeHolder='e.g. math' size="small"
                     value={this.state.inputValue}
+                    isValid={this.state.isValid}
+                    errorMsg={'输入的文本格式不对'}
                     changeHandler={(value) => this.setState({
                         inputValue: value
                     })}>
