@@ -13,7 +13,8 @@ class QbNavDDL extends Component {
         itemList = params.itemList;
         queryStrName = params.queryStrName;
 
-        let selItemKey = (new URLSearchParams(this.context.location.search)).get(queryStrName);
+        // let selItemKey = (new URLSearchParams(this.context.location.search)).get(queryStrName);
+        let selItemKey = this.context.location.query[queryStrName];
         if (itemList.length > 0) {
             selItem = itemList.find(item => item.key === selItemKey);
             if (!selItemKey) {
