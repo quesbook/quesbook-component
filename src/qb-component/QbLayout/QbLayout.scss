@@ -81,7 +81,8 @@ html {
                 background-color: rgba(25, 34, 48, 0.05);
             }
 
-            .body-content {
+            .body-content,
+            .body-content-simple {
                 margin: 100px auto 0;
                 width: 100%;
                 display: flex;
@@ -89,6 +90,14 @@ html {
                 background-color: $white;
 
                 @include screen;
+            }
+
+            .body-content {
+                margin: 100px auto 0;
+            }
+
+            .body-content-simple {
+                margin: 0 auto 0;
             }
         }
     }

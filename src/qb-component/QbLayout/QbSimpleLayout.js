@@ -59,7 +59,7 @@ class QbSimpleLayout extends Component {
 
     render() {
         const { currentUser } = this.state;
-        
+
         return (
             <div className="layout-ct">
                 <QbSimpleHeader
@@ -67,7 +67,7 @@ class QbSimpleLayout extends Component {
                     onClick_SignOut={this.onClick_SignOut.bind(this)}
                     onClick_Setting={this.onClick_Setting.bind(this)}
                 />
-                <div className="body-content">
+                <div className="body-content-simple">
                     {this.props.children}
                 </div>
                 <QbFooter/>
