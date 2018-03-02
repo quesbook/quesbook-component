@@ -98,7 +98,9 @@ class QbLayout extends Component {
             this.setState({ isShowLoading: true });
 
             if (window.location.hostname !== 'localhost') {
+              if (window.location.href !== window.location.origin + '/start/#/elass') {
                 window.location.href = HOME_PAGE;
+              }
             }
         }
     }
