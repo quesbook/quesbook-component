@@ -1,6 +1,6 @@
 {
   "name": "quesbook-component",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "description": "",
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -29,7 +29,7 @@
     "graphql-tag": "^2.4.2",
     "jquery": "^3.2.1",
     "js-cookie": "^2.1.4",
-    "moment": "^2.18.1",
+    "moment": "^2.20.0",
     "rc-collapse": "^1.7.6",
     "rc-notification": "^3.0.0",
     "rc-slider": "^8.3.4",
