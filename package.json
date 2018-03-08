@@ -30,6 +30,7 @@
     "jquery": "^3.2.1",
     "js-cookie": "^2.1.4",
     "moment": "^2.18.1",
+    "npm": "^5.7.1",
     "rc-collapse": "^1.7.6",
     "rc-notification": "^3.0.0",
     "rc-slider": "^8.3.4",
