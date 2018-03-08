@@ -65,7 +65,7 @@ class QbLayout extends Component {
             let navItemList = this.props.navItemList || this.props.route.navItemList;
             let currentUser = res.data.currentUser;
             let pathname = window.location.pathname;
-            if (!currentUser && pathname !== HOME_PAGE) {
+            if (!currentUser && pathname !== HOME_PAGE && window.location.href.indexOf("eclass") !== -1) {
                 this.navHomePage();
             } else if (pathname.indexOf(TUTOR_ADMIN) !== -1 && !ALLOWED_TYPES.includes(currentUser.type)) {
                 this.navHomePage();
@@ -98,9 +98,7 @@ class QbLayout extends Component {
             this.setState({ isShowLoading: true });
 
             if (window.location.hostname !== 'localhost') {
-              if (window.location.href !== window.location.origin + '/start/#/elass') {
-                window.location.href = HOME_PAGE;
-              }
+              window.location.href = HOME_PAGE;
             }
         }
     }
