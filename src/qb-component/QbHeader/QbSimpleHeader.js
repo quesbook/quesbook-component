@@ -29,11 +29,13 @@ class QbSimpleHeader extends Component {
         const { currentUser } = this.state;
         return (
             <div className="box-a-nostyle">
-                <div className="section-ct-navbar box-flex box-font-narrow">
-                    <div onClick={this.onClick_Logo.bind(this)} className="navbar-logo box-cursor">
-                        <img src={logo} alt=""/>
+                <div className="navbar-ct">
+                    <div className="section-ct-navbar box-flex box-font-narrow navbar-ct-center">
+                        <div onClick={this.onClick_Logo.bind(this)} className="navbar-logo box-cursor">
+                            <img src={logo} alt=""/>
+                        </div>
+                        {this.renderSign(currentUser)}
                     </div>
-                    {this.renderSign(currentUser)}
                 </div>
                 {this.renderQbSideBar(currentUser)}
             </div>
