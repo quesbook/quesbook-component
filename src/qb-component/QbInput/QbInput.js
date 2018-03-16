@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 
 class QbInput extends Component {
     render() {
-        const { placeHolder, className, size, style, changeHandler, children, value, isValid, errorMsg } = this.props;
+        const { placeHolder, className, size, style, changeHandler, children, value, isValid, errorMsg, hintIcon } = this.props;
         let height = 38;
         switch (size) {
             case 'small':
@@ -24,6 +24,7 @@ class QbInput extends Component {
         let inputClass = '';
         let additionButton = null;
         let additionStyle = {};
+        let hintButton = null;
         if (children) {
             inputClass = 'input-group';
             additionButton = (
@@ -37,6 +38,17 @@ class QbInput extends Component {
                 <div>{errorMsg}</div>
             )
         }
+        if (hintIcon) {
+            hintButton = (
+                <span className="input-group-addon" style={{ ...iconBorderStyle, borderLeft: 'none', background: '#ffffff' }}>
+                    <img alt="icon" src={hintIcon} style={{ height: 24, width: 34 }}/>
+                </span>
+            );
+            inputBorderStyle = {
+                ...inputBorderStyle,
+                borderRight: 'none',
+            };
+        }
         return (
             <div>
                 <div style={{ height: height }} className={inputClass}>
@@ -49,6 +61,7 @@ class QbInput extends Component {
                             changeHandler.bind(this)(e.target.value);
                         }}
                         style={{ ...style, ...inputBorderStyle, ...additionStyle, height }} />
+                    {hintButton}
                 </div>
                 {errorMessage}
             </div>
