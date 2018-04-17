@@ -12,15 +12,15 @@ export const NAV_ITEM_LIST = [
     {
         label: 'Getting started',
         href: '/getStart',
-        userType: ['Tutor', 'Student', 'TutorAdmin', 'EditorAdmin', 'SuperAdmin', 'Guest']
+        userType: ['Tutor', 'Student', 'TutorAdmin', 'EditorAdmin', 'SuperAdmin', 'Guest', 'Educator']
     }, {
         label: 'Live E-Classes',
         href: '/eclass',
-        userType: ['Tutor', 'Student', 'TutorAdmin', 'EditorAdmin', 'SuperAdmin', 'Guest']
+        userType: ['Tutor', 'Student', 'TutorAdmin', 'EditorAdmin', 'SuperAdmin', 'Guest', 'Educator']
     }, {
         label: 'Student Menu',
         href: '/studyplan',
-        userType: ['Student']
+        userType: ['Student', 'Educator']
     }, {
         label: 'Tutor Menu',
         href: '/practicequestions',
@@ -28,11 +28,11 @@ export const NAV_ITEM_LIST = [
     }, {
         label: 'Articles',
         href: '/articles',
-        userType: ['Tutor', 'Student']
+        userType: ['Tutor', 'Student', 'Educator']
     }, {
         label: 'Simulation',
         href: '/simulation',
-        userType: ['Tutor', 'Student']
+        userType: ['Tutor', 'Student', 'Educator']
     }
 ];
 
