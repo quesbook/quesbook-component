@@ -41,23 +41,23 @@ class QbDatePicker extends Component {
         return ret;
     }
     renderPicker() {
-        const { singlePicker, icon, small, placeHolder } = this.props.option;
+        const { singlePicker, icon, small, placeHolder, readOnly } = this.props.option;
         if (singlePicker) {
             const id = this.props.id;
             return (
                 <SingleDatePicker
-                    {...this.enhancementProps}
                     date={this.props.singleDate}
                     onDateChange={this.dateChange.bind(this)}
                     placeholder={placeHolder}
                     focused={this.state.focused}
                     small={small}
-                    readOnly={true}
+                    readOnly={readOnly}
                     customInputIcon={icon}
                     id={id}
                     onFocusChange={focusedInput => {
                         this.setState({ focused: focusedInput.focused });
                     }}
+                    {...this.enhancementProps}                    
                 />
             );
         } else {
@@ -71,7 +71,7 @@ class QbDatePicker extends Component {
                     endDate={endDate} // momentPropTypes.momentObj or null,
                     onDatesChange={({ startDate, endDate }) => this.datesChange({ startDate, endDate })}
                     small={small}
-                    readOnly={true}
+                    readOnly={readOnly}
                     customInputIcon={icon}
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
