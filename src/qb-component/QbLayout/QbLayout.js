@@ -58,12 +58,14 @@ class QbLayout extends Component {
                 avg_tutor_rating
                 type
                 one_of_section_part1_finished
+                current_test
               }
           }
         `, fetchPolicy: 'network-only'
         }).then((res) => {
             let navItemList = this.props.navItemList || this.props.route.navItemList;
             let currentUser = res.data.currentUser;
+            debugger;
             let pathname = window.location.pathname;
             if (!currentUser && pathname !== HOME_PAGE && window.location.href.indexOf("eclass") !== -1) {
                 this.navHomePage();

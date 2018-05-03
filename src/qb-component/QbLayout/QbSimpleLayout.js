@@ -48,6 +48,7 @@ class QbSimpleLayout extends Component {
                 first_name
                 last_name
                 exam_type_names
+                current_test
               }
           }
         `, fetchPolicy: 'network-only'}).then((res) => {
