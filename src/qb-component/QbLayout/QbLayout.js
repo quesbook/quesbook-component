@@ -65,7 +65,6 @@ class QbLayout extends Component {
         }).then((res) => {
             let navItemList = this.props.navItemList || this.props.route.navItemList;
             let currentUser = res.data.currentUser;
-            debugger;
             let pathname = window.location.pathname;
             if (!currentUser && pathname !== HOME_PAGE && window.location.href.indexOf("eclass") !== -1) {
                 this.navHomePage();
@@ -188,7 +187,16 @@ class QbLayout extends Component {
         return (
             <div className="layout-ct">
                 {this.renderLoading()}
-                <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_MyClass={this.onClick_MyClass.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)} />
+                <QbHeader
+                    messageId={messageId}
+                    client={this.client}
+                    currentUser={currentUser}
+                    navItemList={this.state.navItemList}
+                    onClick_SignOut={this.onClick_SignOut.bind(this)}
+                    onClick_MyClass={this.onClick_MyClass.bind(this)}
+                    onClick_Setting={this.onClick_Setting.bind(this)}
+                    updateUser={this.props.route.updateUser}
+                />
                 <div className="body-content" style={styleNoLogin}>
                     {this.props.children}
                 </div>

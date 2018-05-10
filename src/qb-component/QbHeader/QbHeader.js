@@ -300,7 +300,16 @@ class QbHeader extends Component {
 
     renderQbSideBar(currentUser) {
         if (this.state.isShowSideBar) {
-            return (<QbSideBar currentUser={currentUser} isShow={this.state.isShowSideBar} onHideSideBar={this.hideSideBar.bind(this)} onClick_MyClass={this.props.onClick_MyClass} onClick_Setting={this.props.onClick_Setting} onClick_SignOut={this.onClick_SignOut.bind(this)}/>);
+            return (
+                <QbSideBar
+                    currentUser={currentUser}
+                    isShow={this.state.isShowSideBar}
+                    onHideSideBar={this.hideSideBar.bind(this)}
+                    onClick_MyClass={this.props.onClick_MyClass}
+                    onClick_Setting={this.props.onClick_Setting}
+                    onClick_SignOut={this.onClick_SignOut.bind(this)}
+                    updateUser={this.props.updateUser}
+                    />);
         }
     }
 
