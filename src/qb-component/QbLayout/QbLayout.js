@@ -58,6 +58,7 @@ class QbLayout extends Component {
                 avg_tutor_rating
                 type
                 one_of_section_part1_finished
+                current_test
               }
           }
         `, fetchPolicy: 'network-only'
@@ -186,7 +187,16 @@ class QbLayout extends Component {
         return (
             <div className="layout-ct">
                 {this.renderLoading()}
-                <QbHeader messageId={messageId} client={this.client} currentUser={currentUser} navItemList={this.state.navItemList} onClick_SignOut={this.onClick_SignOut.bind(this)} onClick_MyClass={this.onClick_MyClass.bind(this)} onClick_Setting={this.onClick_Setting.bind(this)} />
+                <QbHeader
+                    messageId={messageId}
+                    client={this.client}
+                    currentUser={currentUser}
+                    navItemList={this.state.navItemList}
+                    onClick_SignOut={this.onClick_SignOut.bind(this)}
+                    onClick_MyClass={this.onClick_MyClass.bind(this)}
+                    onClick_Setting={this.onClick_Setting.bind(this)}
+                    updateUser={this.props.route.updateUser}
+                />
                 <div className="body-content" style={styleNoLogin}>
                     {this.props.children}
                 </div>

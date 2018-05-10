@@ -90,7 +90,7 @@ class QbSideBar extends Component {
             let currentUserExamList = currentUser.exam_type_names;
             let examItemList = currentUserExamList.map((item, index) => {
                 return (
-                    <div className="box-cursor" key={index}>
+                    <div className="box-cursor" key={index} onClick={() => this.props.updateUser(item) }>
                         {item}
                     </div>
                 );
