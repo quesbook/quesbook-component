@@ -78,7 +78,8 @@ class QbDropDown extends Component {
                 </div>
             );
         } else if (option.inputType === 'input') {
-            let filterArray = content.filter((data) => data.label.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1);
+            
+            let filterArray = content.filter((data) => data.label != null && data.label.toLowerCase().indexOf(this.state.keyword.toLowerCase()) !== -1);
             children = this.renderDropDownList(filterArray);
             let additionIcon = null;
             let additionStyle = {borderRadius: 4};

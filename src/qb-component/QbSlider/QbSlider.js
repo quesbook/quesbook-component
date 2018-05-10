@@ -27,8 +27,8 @@ class QbSlider extends Component {
             lowPirce = value.low;
             highPrice = value.high;
         }
-        const low = (parseInt(lowPirce) * 100/maxPrice).toFixed(0);
-        const high = (parseInt(highPrice) * 100/maxPrice).toFixed(0);
+        const low = Math.floor(parseInt(lowPirce) * 100/maxPrice);
+        const high = Math.floor(parseInt(highPrice) * 100/maxPrice);
         return (
             <div style={style}>
                 <Range defaultValue={[0, 100]}
