@@ -10,6 +10,7 @@
     .score {
         font-weight: bold;
         margin: -20% 0;
+
     }
 
     .content {
@@ -23,5 +24,27 @@
     .score {
         display: block;
         transform: rotate(-15deg);
+    }
+
+    &.three-digits {
+        .score {
+            margin:0% -10%;
+            font-size:70px;
+        }
+
+        .content {
+            margin:-33px 14px;
+        }
+    }
+
+    &.four-digits {
+        .score {
+            margin:8% -10%;
+            font-size:56px;
+        }
+
+        .content {
+            margin:-33px 14px;
+        }
     }
 }
