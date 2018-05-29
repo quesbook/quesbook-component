@@ -289,8 +289,10 @@ class QbHeader extends Component {
     }
 
     renderTargetExam(currentUser) {
-        if (currentUser && currentUser.current_test) {
-            return currentUser.current_test;
+        if (this.props.currentTest ) {
+            return this.props.currentTest;
+        } else if (currentUser && currentUser.current_test) {
+            return currentUser.current_test;            
         } else  if (currentUser && currentUser.exam_type_names.length > 0) {
             return currentUser.exam_type_names[0];
         } else {
