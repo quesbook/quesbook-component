@@ -19,6 +19,7 @@ class QbImgSection extends Component {
             case 'MATH':
                 return (<img src={imgMath} style={style} alt={sectionType}/>);
                 break;
+            case 'READINGWRITING':
             case 'READING':
                 return (<img src={imgReading} style={style} alt={sectionType}/>);
                 break;
