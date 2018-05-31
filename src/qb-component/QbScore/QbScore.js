@@ -12,8 +12,8 @@ class QbScore extends Component {
         const el = ReactDOM.findDOMNode(this);
         const dim = el.getBoundingClientRect();
 
-        el.style.width = `${dim.width}px`;
-        el.style.height = `${dim.width}px`;
+        // el.style.width = `${dim.width}px`;
+        // el.style.height = `${dim.width}px`;
     }
 
     render() {
