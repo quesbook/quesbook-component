@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import imgEng from '../assets/image/icon/illustration-english.png';
-import imgMath from '../assets/image/icon/illustration-math.png';
-import imgReading from '../assets/image/icon/illustration-reading.png';
-import imgScience from '../assets/image/icon/illustration-science.png';
+import imgEng from '../assets/image/icon/illustration-english.svg';
+import imgMath from '../assets/image/icon/illustration-math.svg';
+import imgReading from '../assets/image/icon/illustration-reading.svg';
+import imgScience from '../assets/image/icon/illustration-science.svg';
 
 // props:  num, style
 // Example
