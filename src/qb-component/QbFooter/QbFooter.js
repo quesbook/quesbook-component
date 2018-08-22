@@ -16,7 +16,7 @@ class QbFooter extends Component {
                         <li className='copy-right box-font-narrow'>
                             <div>
                                 <div>&copy; {(new Date()).getFullYear()} Quesbook USA, Inc.</div>
-                                <div style={{opacity: 0.5}}>450 Lexington Ave.</div>
+                                <div style={{opacity: 0.5}}>575 5th Avenue</div>
                                 <div style={{opacity: 0.5}}>New York, NY 10017</div>
                             </div>
                         </li>
