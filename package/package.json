@@ -1,0 +1,67 @@
+{
+  "name": "quesbook-component",
+  "version": "0.3.29",
+  "description": "",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "6.17.0",
+    "babel-eslint": "7.1.1",
+    "babel-jest": "17.0.2",
+    "babel-loader": "6.2.7",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^2.0.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
+    "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^3.1.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "1.14.0",
+    "webpack-dev-server": "1.16.2"
+  },
+  "dependencies": {
+    "apollo-client": "^1.9.0-0",
+    "bootstrap": "^4.0.0-beta.2",
+    "graphql-tag": "^2.4.2",
+    "jquery": "^3.2.1",
+    "js-cookie": "^2.1.4",
+    "moment": "^2.20.0",
+    "rc-collapse": "^1.7.6",
+    "rc-notification": "^3.0.0",
+    "rc-slider": "^8.3.4",
+    "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-shallow-compare": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
+    "react-bootstrap": "^0.31.1",
+    "react-dates": "16.0.1",
+    "react-dom": "^15.4.2",
+    "react-router": "^2.8.1",
+    "rheostat": "^2.1.1"
+  },
+  "files": [
+    "lib",
+    "package.json"
+  ],
+  "scripts": {
+    "start": "node_modules/.bin/webpack-dev-server",
+    "i": "webpack",
+    "build": "rm -rf ./lib && babel src/qb-component -d ./lib --copy-files",
+    "dev": "webpack-dev-server --content-base dist/",
+    "deploy": "yarn run build && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quesbook/quesbook-component.git"
+  },
+  "author": "alic_z",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quesbook/quesbook-component/issues"
+  },
+  "homepage": "https://github.com/quesbook/quesbook-component#readme"
+}
