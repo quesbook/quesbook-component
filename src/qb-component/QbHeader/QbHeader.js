@@ -6,10 +6,14 @@ import QbSideBar from './QbSideBar';
 import {Link} from 'react-router';
 import QbMessageCard from '../QbMessageCard';
 import QbAvatar from './QbAvatar';
+import IdleTimer from 'react-idle-timer'
+
 
 class QbHeader extends Component {
     constructor() {
         super();
+        this.idleTimer = null
+        this.onUnload = this.onUnload.bind(this); 
 
         this.state = {
             activeClass: '',
@@ -18,7 +22,8 @@ class QbHeader extends Component {
             isShowSideBar: false,
             showMessageCard: false,
             messageTitle: '',
-            messageContent: ''
+            messageContent: '',
+            timeOnPlatform:0,
         };
     }
 
@@ -56,6 +61,7 @@ class QbHeader extends Component {
     }
 
     componentDidMount() {
+        window.addEventListener("beforeunload", this.onUnload)
         // window.addEventListener('scroll', (event) => {
         //     var doc = document.documentElement;
         //     var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
@@ -69,6 +75,18 @@ class QbHeader extends Component {
         //     this.setState({activeClass: classScroll});
         // });
     }
+
+    componentWillUnmount() {
+        window.removeEventListener("beforeunload", this.onUnload)
+    }
+
+
+
+    onUnload(event) {
+        let timeOnPlatform =  this.idleTimer.getElapsedTime();
+        this.sendTimeOnPlatform(timeOnPlatform)
+    }
+
 
     onClick_NavLinkItem(item, e) {
         if (item && item.isRedirect) {
@@ -116,7 +134,13 @@ class QbHeader extends Component {
     }
 
     onClick_SignOut() {
+        let timeOnPlatform =  this.idleTimer.getElapsedTime();
+        this.sendTimeOnPlatform(timeOnPlatform)
         this.props.onClick_SignOut();
+    }
+
+    sendTimeOnPlatform(time) {
+        this.props.sendTimeOnPlatform(time);
     }
 
     hideSideBar() {
@@ -269,6 +293,13 @@ class QbHeader extends Component {
 
             return (
                 <div className='navbar-signed box-flex-center'>
+                    <IdleTimer
+                      ref={ref => { this.idleTimer = ref }}
+                      element={document}
+                      stopOnIdle={true}
+                      debounce={250}
+                      timeout={1000 * 60 * 30} />
+
                     <div className='signed-text'>
                         Welcome, {userName}!
                     </div>

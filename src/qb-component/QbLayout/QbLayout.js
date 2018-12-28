@@ -154,6 +154,38 @@ class QbLayout extends Component {
         });
     }
 
+    sendTimeOnPlatform(time){
+        let token = Cookies.get(TOKEN_KEY);
+        function handleErrors(response) {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+        }
+
+        const { gqlUrl, route } = this.props;
+        const GQL_URL = gqlUrl || (route
+            ? route.gqlUrl
+            : route) || QB_COMPONENT_GQL_URL;
+
+        fetch('http://localhost:3000/api/v1/time_on_platform', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                Accept: 'application/vnd.api+json',
+                'Content-Type': 'application/vnd.api+json',
+                Authorization: 'bearer ' + token
+            },
+            body: JSON.stringify({"total_time": {"time_on_platform": time}})
+        }).then(handleErrors).then(res => {
+            console.log('success');
+            return res.data;
+        }).catch(error => {
+            console.log(error);
+        });
+
+    }
+
     renderLoading() {
         if (this.state.isShowLoading) {
             return (
@@ -195,6 +227,7 @@ class QbLayout extends Component {
                     onClick_SignOut={this.onClick_SignOut.bind(this)}
                     onClick_MyClass={this.onClick_MyClass.bind(this)}
                     onClick_Setting={this.onClick_Setting.bind(this)}
+                    sendTimeOnPlatform={this.sendTimeOnPlatform.bind(this)}
                     updateUser={this.props.route.updateUser}
                 />
                 <div className="body-content" style={styleNoLogin}>
