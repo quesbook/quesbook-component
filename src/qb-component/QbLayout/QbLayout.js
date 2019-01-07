@@ -167,8 +167,8 @@ class QbLayout extends Component {
         const GQL_URL = gqlUrl || (route
             ? route.gqlUrl
             : route) || QB_COMPONENT_GQL_URL;
-
-        fetch('http://localhost:3000/api/v1/time_on_platform', {
+        
+        fetch(GQL_URL.replace('/graphql', '') + '/api/v1/time_on_platform', {
             method: 'POST',
             credentials: 'include',
             headers: {
