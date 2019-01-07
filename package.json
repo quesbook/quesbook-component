@@ -1,6 +1,6 @@
 {
   "name": "quesbook-component",
-  "version": "0.3.29",
+  "version": "0.3.34",
   "description": "",
   "devDependencies": {
     "babel-cli": "^6.24.1",
