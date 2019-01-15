@@ -81,9 +81,8 @@ class QbHeader extends Component {
     }
 
 
-
     onUnload(event) {
-        let timeOnPlatform =  this.idleTimer.getElapsedTime();
+        let timeOnPlatform =  this.idleTimer ?  Math.ceil(this.idleTimer.getElapsedTime()/1000) : 0;
         this.sendTimeOnPlatform(timeOnPlatform)
     }
 
@@ -134,7 +133,7 @@ class QbHeader extends Component {
     }
 
     onClick_SignOut() {
-        let timeOnPlatform =  this.idleTimer.getElapsedTime();
+        let timeOnPlatform =   this.idleTimer ?  Math.ceil(this.idleTimer.getElapsedTime()/1000) : 0;
         this.sendTimeOnPlatform(timeOnPlatform)
         this.props.onClick_SignOut();
     }
