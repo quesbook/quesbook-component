@@ -347,9 +347,16 @@ class QbHeader extends Component {
 
     render() {
         let currentUser = this.state.currentUser;
+        const banner = true;
         return (
             <div className="box-a-nostyle">
                 <div className="navbar-ct">
+                    { banner ?
+                    <div className='section-ct-banner box-flex box-font-narrow navbar-ct-center'>
+                        <p>You are viewing the old Quesbook! Prefer to use new version? <a >Click here</a> or just <a >dismiss this banner</a></p>
+                    </div>
+                    : null }
+                    </div>
                     <div className='section-ct-navbar box-flex box-font-narrow navbar-ct-center'>
                         <div onClick={this.onClick_Logo.bind(this)} className="navbar-logo box-cursor">
                             <img src={logo} alt=""/>
