@@ -29,7 +29,21 @@
     }
 }
 
+.section-ct-banner{
+    height: 24px;
+    background-color: #faee67;
 
+    p{
+        text-align: center;
+        width: 100%;
+
+        a{
+            color: black;
+            cursor: pointer;
+            text-decoration: underline!important;
+        }
+    }
+}
 
 .section-ct-navbar {
     height: 50px;

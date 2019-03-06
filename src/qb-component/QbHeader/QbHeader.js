@@ -6,8 +6,7 @@ import QbSideBar from './QbSideBar';
 import {Link} from 'react-router';
 import QbMessageCard from '../QbMessageCard';
 import QbAvatar from './QbAvatar';
-import IdleTimer from 'react-idle-timer'
-
+import IdleTimer from 'react-idle-timer';
 
 class QbHeader extends Component {
     constructor() {
@@ -18,12 +17,13 @@ class QbHeader extends Component {
         this.state = {
             activeClass: '',
             currentUser: null,
+            banner: true,
             linkItems: [],
             isShowSideBar: false,
             showMessageCard: false,
             messageTitle: '',
             messageContent: '',
-            timeOnPlatform:0,
+            timeOnPlatform:0
         };
     }
 
@@ -54,8 +54,10 @@ class QbHeader extends Component {
 
     componentWillReceiveProps(newProps) {
         let currentUser = newProps.currentUser;
+        let banner = newProps.banner
         this.setState({
             currentUser: currentUser,
+            banner: banner,
             linkItems: newProps.navItemList
         }, () => this.resetNavLinkItem_Active(window.location.hash));
     }
@@ -347,13 +349,14 @@ class QbHeader extends Component {
 
     render() {
         let currentUser = this.state.currentUser;
-        const banner = true;
+        let banner = this.state.banner.banner;
+        console.log('banner1', banner)
         return (
             <div className="box-a-nostyle">
                 <div className="navbar-ct">
                     { banner ?
                     <div className='section-ct-banner box-flex box-font-narrow navbar-ct-center'>
-                        <p>You are viewing the old Quesbook! Prefer to use new version? <a >Click here</a> or just <a >dismiss this banner</a></p>
+                        <p>You are viewing the old Quesbook! Prefer to use new version? <a onClick={this.props.updateUser}>Click here</a> or just <a onClick={this.props.dismissBanner}>dismiss this banner</a></p>
                     </div>
                     : null }
                     <div className='section-ct-navbar box-flex box-font-narrow navbar-ct-center'>

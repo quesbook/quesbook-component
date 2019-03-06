@@ -229,6 +229,8 @@ class QbLayout extends Component {
                     onClick_Setting={this.onClick_Setting.bind(this)}
                     sendTimeOnPlatform={this.sendTimeOnPlatform.bind(this)}
                     updateUser={this.props.route.updateUser}
+                    dismissBanner={this.props.route.dismissBanner}
+                    banner = {this.props.route.banner}
                 />
                 <div className="body-content" style={styleNoLogin}>
                     {this.props.children}
