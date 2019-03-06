@@ -350,7 +350,6 @@ class QbHeader extends Component {
     render() {
         let currentUser = this.state.currentUser;
         let banner = this.state.banner.banner;
-        console.log('banner1', banner)
         return (
             <div className="box-a-nostyle">
                 <div className="navbar-ct">
